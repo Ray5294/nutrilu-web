@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrilú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --off:#F7F5F0;
+  --dark:#1A1A18;
+  --mid:#5F5E5A;
+  --light:#B4B2A9;
+  --border:rgba(0,0,0,.07);
+}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--off);
+  color:var(--dark);
+  min-height:100vh;
+  display:flex;flex-direction:column;
+}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 48px;
+  border-bottom:1px solid var(--border);
+}
+.logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--dark)}
+.all-pages{
+  font-size:13px;color:var(--mid);
+  text-decoration:none;
+  display:flex;align-items:center;gap:6px;
+  transition:color .15s;
+}
+.all-pages:hover{color:var(--dark)}
+.all-pages svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round}
+
+/* HERO */
+.hero{
+  padding:80px 48px 56px;
+  max-width:600px;
+}
+.eyebrow{
+  font-size:11px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--light);
+  margin-bottom:20px;
+  display:flex;align-items:center;gap:8px;
+}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--light)}
+h1{
+  font-family:'DM Serif Display',serif;
+  font-size:48px;line-height:1.08;
+  margin-bottom:14px;
+}
+h1 em{font-style:italic;color:var(--mid)}
+.sub{font-size:16px;color:var(--mid);line-height:1.7;font-weight:300}
+
+/* MARCAS */
+.marcas{
+  padding:0 48px 80px;
+  display:flex;flex-direction:column;gap:12px;
+  max-width:720px;
+}
+
+.marca-row{
+  display:flex;align-items:center;
+  padding:20px 24px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  text-decoration:none;
+  color:var(--dark);
+  transition:all .15s;
+  gap:16px;
+}
+.marca-row:hover{
+  border-color:rgba(0,0,0,.16);
+  transform:translateY(-1px);
+  box-shadow:0 6px 20px rgba(0,0,0,.06);
+}
+
+.marca-color{
+  width:12px;height:12px;border-radius:50%;flex-shrink:0;
+}
+.marca-info{flex:1;min-width:0}
+.marca-nombre{font-family:'DM Serif Display',serif;font-size:20px;line-height:1.2}
+.marca-desc{font-size:13px;color:var(--mid);margin-top:2px}
+.marca-tag{
+  font-size:11px;font-weight:500;
+  padding:3px 10px;border-radius:100px;
+  flex-shrink:0;
+}
+.btn-ver{
+  font-size:13px;font-weight:500;
+  padding:9px 22px;
+  border-radius:100px;
+  border:1.5px solid var(--border);
+  background:transparent;
+  color:var(--dark);
+  cursor:pointer;
+  text-decoration:none;
+  flex-shrink:0;
+  transition:all .15s;
+  font-family:'DM Sans',sans-serif;
+}
+.marca-row:hover .btn-ver{
+  background:var(--dark);
+  color:#fff;
+  border-color:var(--dark);
+}
+
+/* colores */
+.c-palm{background:#1D9E75}
+.c-kifud{background:#F0BC32}
+.c-kiwilu{background:#7F77DD}
+.c-chef{background:#D85A30}
+
+.t-palm{background:#E1F5EE;color:#085041}
+.t-kifud{background:#FEF8E3;color:#633806}
+.t-kiwilu{background:#EEEDFE;color:#3C3489}
+.t-chef{background:#FAECE7;color:#712B13}
+.t-plan{background:#F1EFE8;color:#5F5E5A}
+
+/* FOOTER */
+footer{
+  margin-top:auto;
+  padding:24px 48px;
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;
+  font-size:12px;color:var(--light);
+}
+
+@media(max-width:640px){
+  nav{padding:16px 20px}
+  .hero{padding:48px 20px 36px}
+  .marcas{padding:0 20px 56px}
+  footer{padding:20px;flex-direction:column;gap:4px}
+  h1{font-size:34px}
+  .marca-row{padding:16px 18px;gap:12px}
+  .marca-nombre{font-size:18px}
+  .marca-tag{display:none}
+  .btn-ver{padding:8px 16px;font-size:12px}
+  .all-pages .label{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Nutrilú</div>
+  <a href="nutrilu_marcas.html" class="all-pages">
+    <svg viewBox="0 0 14 14"><rect x="1" y="1" width="5" height="5" rx="1"/><rect x="8" y="1" width="5" height="5" rx="1"/><rect x="1" y="8" width="5" height="5" rx="1"/><rect x="8" y="8" width="5" height="5" rx="1"/></svg>
+    <span class="label">Todas las páginas</span>
+  </a>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">nutrilu.difud.com</div>
+  <h1>Ecosistema<br><em>Nutrilú.</em></h1>
+  <p class="sub">Alimentación saludable personalizada. Saltillo, Coahuila.</p>
+</div>
+
+<div class="marcas">
+
+  <a href="nutripalm_index.html" class="marca-row">
+    <div class="marca-color c-palm"></div>
+    <div class="marca-info">
+      <div class="marca-nombre">NutriPalm</div>
+      <div class="marca-desc">Comida saludable lista para llevar · Adultos trabajadores</div>
+    </div>
+    <span class="marca-tag t-palm">Prioridad #1</span>
+    <span class="btn-ver">Ver →</span>
+  </a>
+
+  <a href="kifud_index__2_.html" class="marca-row">
+    <div class="marca-color c-kifud"></div>
+    <div class="marca-info">
+      <div class="marca-nombre">Kifud</div>
+      <div class="marca-desc">Lonchera saludable para niños · Mamás y colegios</div>
+    </div>
+    <span class="marca-tag t-kifud">En planeación</span>
+    <span class="btn-ver">Ver →</span>
+  </a>
+
+  <a href="kiwilu_paciente.html" class="marca-row">
+    <div class="marca-color c-kiwilu"></div>
+    <div class="marca-info">
+      <div class="marca-nombre">Kiwilu</div>
+      <div class="marca-desc">Tu plan nutricional, cocinado para ti · Pacientes de nutriólogas</div>
+    </div>
+    <span class="marca-tag t-kiwilu">En planeación</span>
+    <span class="btn-ver">Ver →</span>
+  </a>
+
+  <div class="marca-row" style="opacity:.5;pointer-events:none">
+    <div class="marca-color c-chef"></div>
+    <div class="marca-info">
+      <div class="marca-nombre">Nutrichef</div>
+      <div class="marca-desc">Dietas terapéuticas · Pacientes de médicos</div>
+    </div>
+    <span class="marca-tag t-plan">Pendiente</span>
+    <span class="btn-ver">Ver →</span>
+  </div>
+
+</div>
+
+<footer>
+  <span>Nutrilú · Saltillo, Coahuila · 2026</span>
+  <span>nutrilu.difud.com</span>
+</footer>
+
+</body>
+</html>
