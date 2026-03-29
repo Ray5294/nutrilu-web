@@ -45,18 +45,20 @@ h1{font-family:'DM Serif Display',serif;font-size:42px;line-height:1.1;margin-bo
 /* ── CARDS GRANDES (GR) ── */
 .pages-gr{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:20px}
 .card-gr{
-  display:flex;flex-direction:row;align-items:center;gap:12px;
-  padding:14px 16px;border-radius:12px;
+  display:flex;flex-direction:row;align-items:center;gap:10px;
+  padding:12px 14px;border-radius:12px;
   border:1px solid var(--border);
   text-decoration:none;color:var(--dark);
   transition:all .15s;
+  flex-wrap:wrap;
 }
 .card-gr:hover{border-color:rgba(0,0,0,.16);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.07)}
 .card-gr-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .card-gr-icon svg{width:16px;height:16px}
 .card-gr-title{font-size:14px;font-weight:500}
-.card-gr-url{font-size:10px;color:var(--light);font-family:monospace;margin-top:1px}
-.card-gr-foot{margin-left:auto;flex-shrink:0}
+.card-gr-url{font-size:10px;color:var(--light);font-family:monospace;margin-top:1px;word-break:break-all}
+.card-gr-info{flex:1;min-width:0}
+.card-gr-foot{flex-shrink:0;margin-left:auto}
 
 /* ── ACORDEÓN FUTURO ── */
 .accordion{margin-top:4px}
@@ -173,17 +175,17 @@ footer{padding:28px 40px;border-top:1px solid var(--border);display:flex;justify
   <div class="pages-gr">
     <a href="https://nutrilu.difud.com/nutrilu-index" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
-      <div><div class="card-gr-title">Página principal</div><div class="card-gr-url">nutrilu.difud.com</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Página principal</div><div class="card-gr-url">nutrilu.difud.com</div></div>
       <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
     </a>
     <a href="https://nutrilu.difud.com/nutrilu-nutriologa" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/><path d="M14 3l1.5 1.5L13 7"/></svg></div>
-      <div><div class="card-gr-title">Portal nutrióloga</div><div class="card-gr-url">nutrilu.difud.com/nutrilu-nutriologa</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Portal nutrióloga</div><div class="card-gr-url">nutrilu.difud.com/nutrilu-nutriologa</div></div>
       <div class="card-gr-foot"><span class="badge badge-live">Activo</span></div>
     </a>
     <a href="https://nutrilu.difud.com/nutrilu-marcas" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg></div>
-      <div><div class="card-gr-title">Índice de marcas</div><div class="card-gr-url">nutrilu.difud.com/nutrilu-marcas</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Índice de marcas</div><div class="card-gr-url">nutrilu.difud.com/nutrilu-marcas</div></div>
       <div class="card-gr-foot"><span class="badge badge-live">Activo</span></div>
     </a>
   </div>
@@ -201,17 +203,17 @@ footer{padding:28px 40px;border-top:1px solid var(--border);display:flex;justify
   <div class="pages-gr">
     <a href="https://nutripalm.difud.com" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
-      <div><div class="card-gr-title">Página principal</div><div class="card-gr-url">nutripalm.difud.com</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Página principal</div><div class="card-gr-url">nutripalm.difud.com</div></div>
       <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
     </a>
     <a href="https://nutripalm.difud.com/nutripalm-registro" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M10 4v12M4 10h12"/><circle cx="10" cy="10" r="7.5"/></svg></div>
-      <div><div class="card-gr-title">Registro</div><div class="card-gr-url">nutripalm.difud.com/nutripalm-registro</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Registro</div><div class="card-gr-url">nutripalm.difud.com/nutripalm-registro</div></div>
       <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
     </a>
     <a href="https://nutripalm.difud.com/nutripalm-cliente" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/></svg></div>
-      <div><div class="card-gr-title">Portal cliente</div><div class="card-gr-url">nutripalm.difud.com/nutripalm-cliente</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Portal cliente</div><div class="card-gr-url">nutripalm.difud.com/nutripalm-cliente</div></div>
       <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
     </a>
   </div>
@@ -255,17 +257,17 @@ footer{padding:28px 40px;border-top:1px solid var(--border);display:flex;justify
   <div class="pages-gr">
     <a href="https://kifud.difud.com" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
-      <div><div class="card-gr-title">Página principal</div><div class="card-gr-url">kifud.difud.com</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Página principal</div><div class="card-gr-url">kifud.difud.com</div></div>
       <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
     </a>
     <a href="https://kifud.difud.com/kifud-registro" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M10 4v12M4 10h12"/><circle cx="10" cy="10" r="7.5"/></svg></div>
-      <div><div class="card-gr-title">Registro</div><div class="card-gr-url">kifud.difud.com/kifud-registro</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Registro</div><div class="card-gr-url">kifud.difud.com/kifud-registro</div></div>
       <div class="card-gr-foot"><span class="badge badge-plan">Pendiente</span></div>
     </a>
     <a href="https://kifud.difud.com/kifud-mama" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/></svg></div>
-      <div><div class="card-gr-title">Portal mamá</div><div class="card-gr-url">kifud.difud.com/kifud-mama</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Portal mamá</div><div class="card-gr-url">kifud.difud.com/kifud-mama</div></div>
       <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
     </a>
   </div>
@@ -311,17 +313,17 @@ footer{padding:28px 40px;border-top:1px solid var(--border);display:flex;justify
   <div class="pages-gr">
     <a href="https://kiwilu.difud.com" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
-      <div><div class="card-gr-title">Página principal</div><div class="card-gr-url">kiwilu.difud.com</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Página principal</div><div class="card-gr-url">kiwilu.difud.com</div></div>
       <div class="card-gr-foot"><span class="badge badge-plan">Pendiente</span></div>
     </a>
     <a href="https://kiwilu.difud.com/kiwilu-registro" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M10 4v12M4 10h12"/><circle cx="10" cy="10" r="7.5"/></svg></div>
-      <div><div class="card-gr-title">Registro</div><div class="card-gr-url">kiwilu.difud.com/kiwilu-registro</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Registro</div><div class="card-gr-url">kiwilu.difud.com/kiwilu-registro</div></div>
       <div class="card-gr-foot"><span class="badge badge-plan">Pendiente</span></div>
     </a>
     <a href="https://kiwilu.difud.com/kiwilu-paciente" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/></svg></div>
-      <div><div class="card-gr-title">Portal paciente</div><div class="card-gr-url">kiwilu.difud.com/kiwilu-paciente</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Portal paciente</div><div class="card-gr-url">kiwilu.difud.com/kiwilu-paciente</div></div>
       <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
     </a>
   </div>
@@ -330,7 +332,7 @@ footer{padding:28px 40px;border-top:1px solid var(--border);display:flex;justify
   <div class="pages-gr">
     <a href="https://nutrilu.difud.com/nutrilu-nutriologa" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/><path d="M14 3l1.5 1.5L13 7"/></svg></div>
-      <div><div class="card-gr-title">Portal nutrióloga</div><div class="card-gr-url">nutrilu.difud.com/nutrilu-nutriologa</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Portal nutrióloga</div><div class="card-gr-url">nutrilu.difud.com/nutrilu-nutriologa</div></div>
       <div class="card-gr-foot"><span class="badge badge-live">Activo</span></div>
     </a>
   </div>
@@ -350,17 +352,17 @@ footer{padding:28px 40px;border-top:1px solid var(--border);display:flex;justify
   <div class="pages-gr">
     <a href="https://nutrichef.difud.com" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
-      <div><div class="card-gr-title">Página principal</div><div class="card-gr-url">nutrichef.difud.com</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Página principal</div><div class="card-gr-url">nutrichef.difud.com</div></div>
       <div class="card-gr-foot"><span class="badge badge-plan">Pendiente</span></div>
     </a>
     <a href="https://nutrichef.difud.com/nutrichef-registro" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M10 4v12M4 10h12"/><circle cx="10" cy="10" r="7.5"/></svg></div>
-      <div><div class="card-gr-title">Registro</div><div class="card-gr-url">nutrichef.difud.com/nutrichef-registro</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Registro</div><div class="card-gr-url">nutrichef.difud.com/nutrichef-registro</div></div>
       <div class="card-gr-foot"><span class="badge badge-plan">Pendiente</span></div>
     </a>
     <a href="https://nutrichef.difud.com/nutrichef-paciente" target="_blank" class="card-gr">
       <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/></svg></div>
-      <div><div class="card-gr-title">Portal paciente</div><div class="card-gr-url">nutrichef.difud.com/nutrichef-paciente</div></div>
+      <div class="card-gr-info"><div class="card-gr-title">Portal paciente</div><div class="card-gr-url">nutrichef.difud.com/nutrichef-paciente</div></div>
       <div class="card-gr-foot"><span class="badge badge-plan">Pendiente</span></div>
     </a>
   </div>
