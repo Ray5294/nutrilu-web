@@ -312,6 +312,60 @@ textarea{resize:vertical;min-height:80px}
 .det-dot{width:5px;height:5px;border-radius:50%;background:var(--palm);flex-shrink:0;margin-top:7px}
 .itag{font-size:11px;color:var(--palm-d);background:var(--palm-l);padding:2px 9px;border-radius:100px;display:inline-block;margin:2px;font-weight:500}
 .vtag{font-size:11px;color:var(--kiwilu-d);background:var(--kiwilu-l);padding:2px 9px;border-radius:100px;display:inline-block;margin:2px;font-weight:500}
+
+/* ── CAMPANA ── */
+.bell-wrap{position:relative}
+.bell-btn{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border);background:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.14s}
+.bell-btn:hover{border-color:var(--palm)}
+.bell-dot{position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--danger);border:2px solid var(--off)}
+.notif-panel{position:absolute;top:42px;right:0;width:320px;background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.12);z-index:100;display:none}
+.notif-panel.open{display:block}
+.np-head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+.np-title{font-size:13px;font-weight:700}
+.np-clear{font-size:11px;color:var(--palm);background:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600}
+.np-item{display:flex;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);transition:.1s}
+.np-item:last-child{border-bottom:none}
+.np-item.unread{background:var(--palm-l)}
+.np-item:hover{background:var(--cream)}
+.np-icon{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--cream)}
+.np-msg{font-size:12px;color:var(--dark);line-height:1.45}
+.np-time{font-size:10px;color:var(--light);margin-top:3px;font-weight:500}
+/* ── HEADER CON CAMPANA ── */
+.main-header{display:flex;justify-content:flex-end;align-items:center;padding:16px 30px 0;position:sticky;top:0;z-index:50;background:var(--off)}
+/* ── SECCIÓN HOY ── */
+.hoy-alerta{background:var(--palm-d);border-radius:14px;padding:18px 22px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.hoy-alerta-txt{font-size:13px;color:rgba(255,255,255,.7);line-height:1.5}
+.hoy-alerta-txt strong{color:#fff;display:block;font-size:15px;margin-bottom:3px}
+.hoy-alerta-hora{font-family:'Playfair Display',serif;font-size:28px;color:#fff;flex-shrink:0;text-align:right}
+.hoy-alerta-hora span{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.hoy-marca-row{background:var(--white);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.hoy-marca-h{padding:12px 18px;background:var(--cream);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.hoy-marca-n{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px}
+.hoy-platillo-row{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;border-bottom:1px solid var(--border);font-size:13px}
+.hoy-platillo-row:last-child{border-bottom:none}
+.hoy-platillo-name{display:flex;align-items:center;gap:8px}
+.hoy-count{font-family:'Playfair Display',serif;font-size:22px;font-weight:600}
+.hoy-count-lbl{font-size:10px;color:var(--light);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+/* ── GRÁFICA PAGOS ── */
+.grow-bars{display:flex;align-items:flex-end;gap:8px;height:80px;margin-top:14px}
+.gb-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+.gb{width:100%;border-radius:4px 4px 0 0;min-height:4px;transition:height .3s}
+.gb-lbl{font-size:9px;color:var(--light);font-weight:600;text-align:center}
+.gb-val{font-size:9px;color:var(--mid);font-weight:700}
+/* ── KIFUD PLANES EDAD ── */
+.edad-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+.edad-card{background:var(--white);border:2px solid var(--border);border-radius:14px;padding:18px;transition:.15s;position:relative}
+.edad-card.activo{border-color:var(--kifud)}
+.edad-card.inactivo{opacity:.5}
+.edad-toggle{position:absolute;top:14px;right:14px;width:36px;height:20px;border-radius:100px;background:var(--cream);border:none;cursor:pointer;transition:.15s;display:flex;align-items:center;padding:2px}
+.edad-toggle.on{background:var(--kifud)}
+.edad-toggle-knob{width:16px;height:16px;border-radius:50%;background:#fff;transition:.15s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.edad-toggle.on .edad-toggle-knob{transform:translateX(16px)}
+.edad-icon{font-size:28px;margin-bottom:8px}
+.edad-name{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:2px}
+.edad-rango{font-size:12px;color:var(--mid);font-weight:300}
+.edad-desc{font-size:12px;color:var(--mid);margin-top:8px;line-height:1.5;font-weight:300}
+
 #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:12px 24px;border-radius:100px;font-size:13px;z-index:9999;opacity:0;transition:opacity .3s;white-space:nowrap;font-weight:500}
 </style>
 </head>
@@ -326,6 +380,10 @@ textarea{resize:vertical;min-height:80px}
   <button class="sbtn active" onclick="showV('resumen',this)">
     <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5" opacity=".5"/><rect x="1" y="9" width="6" height="6" rx="1.5" opacity=".5"/><rect x="9" y="9" width="6" height="6" rx="1.5" opacity=".3"/></svg>
     Esta semana
+  </button>
+  <button class="sbtn" onclick="showV('hoy',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5" stroke-linecap="round"/></svg>
+    Hoy
   </button>
   <button class="sbtn" onclick="showV('pedidos',this)">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="2" width="14" height="12" rx="2"/><path d="M4 6h8M4 9h5" stroke-linecap="round"/></svg>
@@ -375,6 +433,82 @@ textarea{resize:vertical;min-height:80px}
 </aside>
 
 <main class="main">
+
+<!-- HEADER CAMPANA -->
+<div class="main-header">
+  <div class="bell-wrap" id="bell-wrap">
+    <button class="bell-btn" onclick="toggleNotif(this)">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5a4.5 4.5 0 00-4.5 4.5v2.5L2 10h12l-1.5-1.5V6A4.5 4.5 0 008 1.5z" stroke="currentColor" stroke-width="1.2"/><path d="M6.5 10.5a1.5 1.5 0 003 0" stroke="currentColor" stroke-width="1.2"/></svg>
+    </button>
+    <div class="bell-dot" id="bell-dot"></div>
+    <div class="notif-panel" id="notif-panel">
+      <div class="np-head"><span class="np-title">Notificaciones</span><button class="np-clear" onclick="clearNotifs()">Marcar como leídas</button></div>
+      <div class="np-item unread">
+        <div class="np-icon">🧑</div>
+        <div><div class="np-msg"><strong>Nuevo cliente:</strong> Ana G. se unió a tu plan NutriPalm.</div><div class="np-time">Hace 12 min</div></div>
+      </div>
+      <div class="np-item unread">
+        <div class="np-icon">📋</div>
+        <div><div class="np-msg"><strong>Menú pendiente:</strong> Faltan platillos por asignar la próxima semana.</div><div class="np-time">Hace 1 hora</div></div>
+      </div>
+      <div class="np-item unread">
+        <div class="np-icon">💰</div>
+        <div><div class="np-msg"><strong>Pago procesado:</strong> Tu depósito de $3,168 fue enviado.</div><div class="np-time">Ayer</div></div>
+      </div>
+      <div class="np-item">
+        <div class="np-icon">⭐</div>
+        <div><div class="np-msg"><strong>Nueva reseña:</strong> Claudia M. te dejó 5 estrellas.</div><div class="np-time">Hace 2 días</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ HOY ══════ -->
+<div class="view" id="v-hoy">
+  <div class="ph"><div><div class="pt"><em>Hoy</em> — domingo 6 de abril</div><div class="ps">Lo que debes preparar hoy para la entrega de mañana</div></div></div>
+
+  <div class="hoy-alerta">
+    <div class="hoy-alerta-txt">
+      <strong>⏰ Recuerda el horario de entrega en Escápate Café</strong>
+      Los platillos del lunes deben estar en Escápate Café antes de las 4 PM de hoy domingo. Lleva todo empacado y etiquetado por marca.
+    </div>
+    <div class="hoy-alerta-hora"><span>límite hoy</span>4:00 PM</div>
+  </div>
+
+  <div class="hoy-marca-row">
+    <div class="hoy-marca-h">
+      <div class="hoy-marca-n"><div class="dot dot-palm"></div>NutriPalm · Lunes 7 abr</div>
+      <span class="pill pill-palm">7 personas</span>
+    </div>
+    <div class="hoy-platillo-row">
+      <div class="hoy-platillo-name"><span style="font-size:20px">🍋</span><span>Pollo al limón con quinoa</span></div>
+      <div style="text-align:right"><div class="hoy-count" style="color:var(--palm)">5</div><div class="hoy-count-lbl">personas</div></div>
+    </div>
+    <div class="hoy-platillo-row">
+      <div class="hoy-platillo-name"><span style="font-size:20px">🫒</span><span>Bowl mediterráneo de pollo</span></div>
+      <div style="text-align:right"><div class="hoy-count" style="color:var(--palm)">2</div><div class="hoy-count-lbl">personas</div></div>
+    </div>
+  </div>
+
+  <div class="hoy-marca-row">
+    <div class="hoy-marca-h">
+      <div class="hoy-marca-n"><div class="dot dot-kifud"></div>Kifud · Lunes 7 abr</div>
+      <span class="pill pill-kifud">9 loncheras</span>
+    </div>
+    <div class="hoy-platillo-row">
+      <div class="hoy-platillo-name"><span style="font-size:20px">🥕</span><span>Croquetitas de atún con puré de camote</span><span class="pill pill-off" style="margin-left:8px;font-size:10px">Preescolar</span></div>
+      <div style="text-align:right"><div class="hoy-count" style="color:var(--kifud-d)">3</div><div class="hoy-count-lbl">loncheras</div></div>
+    </div>
+    <div class="hoy-platillo-row">
+      <div class="hoy-platillo-name"><span style="font-size:20px">🍔</span><span>Mini hamburguesas de lentejas</span><span class="pill pill-off" style="margin-left:8px;font-size:10px">Primaria baja</span></div>
+      <div style="text-align:right"><div class="hoy-count" style="color:var(--kifud-d)">4</div><div class="hoy-count-lbl">loncheras</div></div>
+    </div>
+    <div class="hoy-platillo-row">
+      <div class="hoy-platillo-name"><span style="font-size:20px">🌯</span><span>Rollitos de pollo y espinaca</span><span class="pill pill-off" style="margin-left:8px;font-size:10px">Primaria alta</span></div>
+      <div style="text-align:right"><div class="hoy-count" style="color:var(--kifud-d)">2</div><div class="hoy-count-lbl">loncheras</div></div>
+    </div>
+  </div>
+</div>
 
 <!-- ══════ RESUMEN ══════ -->
 <div class="view active" id="v-resumen">
@@ -529,12 +663,23 @@ textarea{resize:vertical;min-height:80px}
     <div style="display:grid;grid-template-columns:1fr 90px 100px 120px" class="trow2"><div>17 – 21 mar</div><div>29</div><div style="color:var(--palm);font-weight:600">$2,552</div><div><span class="pill pill-ok">Depositado</span></div></div>
     <div style="display:grid;grid-template-columns:1fr 90px 100px 120px" class="trow2"><div>10 – 14 mar</div><div>25</div><div style="color:var(--palm);font-weight:600">$2,200</div><div><span class="pill pill-ok">Depositado</span></div></div>
   </div>
-  <div class="card">
-    <div class="card-h"><div class="card-t">Datos bancarios</div><button class="btn-sm" onclick="showToast('Datos actualizados ✓')">Editar</button></div>
-    <div class="inner">
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">CLABE</span><span style="font-weight:600">•••• •••• •••• 4821</span></div>
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Banco</span><span style="font-weight:600">BBVA México</span></div>
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0"><span style="color:var(--mid)">Próximo depósito</span><span style="font-weight:600;color:var(--palm)">Lunes 7 de abril</span></div>
+  <div class="g2" style="margin-bottom:0">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-h"><div class="card-t">Crecimiento de personas</div><span style="font-size:11px;color:var(--palm);font-weight:600">↑ +80% en 3 meses</span></div>
+      <div class="inner">
+        <div style="font-size:11px;color:var(--mid);margin-bottom:4px;font-weight:300">Personas atendidas por semana</div>
+        <div class="grow-bars" id="grow-bars"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="card-h"><div class="card-t">Próximo depósito</div></div>
+      <div class="inner">
+        <div style="font-size:11px;color:var(--light);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Fecha confirmada</div>
+        <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--palm);margin-bottom:4px">Lunes 7 de abril</div>
+        <div style="font-size:13px;color:var(--mid);font-weight:300;margin-bottom:16px">Depósito automático a tu CLABE registrada</div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-top:1px solid var(--border)"><span style="color:var(--mid)">Monto confirmado</span><span style="font-weight:700;font-size:18px;color:var(--dark)">$3,168</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-top:1px solid var(--border)"><span style="color:var(--mid)">CLABE</span><span style="font-weight:600">•••• 4821 · BBVA</span></div>
+      </div>
     </div>
   </div>
 </div>
@@ -591,6 +736,35 @@ textarea{resize:vertical;min-height:80px}
         </div>
         <button class="fsave" style="margin-top:14px" onclick="showToast('Estilo actualizado ✓')">Guardar cambios</button>
       </div>
+      <div class="pform-sec">
+        <div class="pform-t">Planes Kifud por rango de edad <span>Activa los que ofreces</span></div>
+        <div style="font-size:13px;color:var(--mid);margin-bottom:16px;font-weight:300">Cada rango tiene su propio menú, porciones y presentación. Puedes activar o desactivar según tu capacidad.</div>
+        <div class="edad-cards">
+          <div class="edad-card activo" id="edad-pre">
+            <button class="edad-toggle on" id="toggle-pre" onclick="toggleEdad('pre')"><div class="edad-toggle-knob"></div></button>
+            <div class="edad-icon">🐣</div>
+            <div class="edad-name">Preescolar</div>
+            <div class="edad-rango">3 – 5 años</div>
+            <div class="edad-desc">Porciones pequeñas, presentación lúdica con formas de animales o personajes. Sin picante, sin semillas enteras. Texturas suaves.</div>
+          </div>
+          <div class="edad-card activo" id="edad-pbaja">
+            <button class="edad-toggle on" id="toggle-pbaja" onclick="toggleEdad('pbaja')"><div class="edad-toggle-knob"></div></button>
+            <div class="edad-icon">🎒</div>
+            <div class="edad-name">Primaria baja</div>
+            <div class="edad-rango">6 – 8 años</div>
+            <div class="edad-desc">Porciones medianas, presentación colorida y divertida. Introducción a ingredientes nuevos. Recetas con sabores más definidos.</div>
+          </div>
+          <div class="edad-card inactivo" id="edad-palta">
+            <button class="edad-toggle" id="toggle-palta" onclick="toggleEdad('palta')"><div class="edad-toggle-knob"></div></button>
+            <div class="edad-icon">📚</div>
+            <div class="edad-name">Primaria alta</div>
+            <div class="edad-rango">9 – 12 años</div>
+            <div class="edad-desc">Porciones mayores, presentación más sobria. Recetas con más proteína y carbohidratos complejos. Diseño sin infantilizar.</div>
+          </div>
+        </div>
+        <button class="fsave" onclick="showToast('Planes de edad actualizados ✓')">Guardar cambios</button>
+      </div>
+
       <div class="pform-sec">
         <div class="pform-t">Nota de privacidad</div>
         <div style="font-size:13px;color:var(--mid);line-height:1.65;font-weight:300">Los clientes solo ven tu <strong style="color:var(--dark)">nombre de pila e inicial de apellido</strong>. En pedidos, reseñas y toda comunicación de la plataforma aparece "Valeria M." — nunca tu apellido completo ni datos de contacto directos.</div>
@@ -748,6 +922,7 @@ function showV(id, btn) {
   if(id==='menu'){renderWeekInfoCard();renderMenuNota();renderBuilder();renderDPList();}
   if(id==='platillos') renderGrid('all');
   if(id==='resenas') renderReviews('all');
+  if(id==='pagos') renderGrowthChart();
   if(id==='pedidos'){renderPedidosStatusBar();renderPedidos();}
   if(id==='compras') renderCompras();
 }
@@ -1160,6 +1335,50 @@ function handlePhotoFile(f){
 function handleDrop(e){e.preventDefault();handlePhotoFile(e.dataTransfer.files[0]);}
 function clearPhoto(){currentPhoto=null;document.getElementById('photo-input').value='';document.getElementById('photo-img').src='';document.getElementById('photo-name').textContent='';document.getElementById('photo-placeholder').style.display='block';document.getElementById('photo-preview').style.display='none';document.getElementById('photo-drop').style.borderColor='';}
 
+/* ─── CAMPANA ─── */
+function toggleNotif(btn) {
+  const p = document.getElementById('notif-panel');
+  p.classList.toggle('open');
+  document.addEventListener('click', function h(e) {
+    if(!document.getElementById('bell-wrap').contains(e.target)){
+      p.classList.remove('open');
+      document.removeEventListener('click', h);
+    }
+  });
+}
+function clearNotifs() {
+  document.querySelectorAll('.np-item.unread').forEach(i => i.classList.remove('unread'));
+  document.getElementById('bell-dot').style.display = 'none';
+}
+
+/* ─── GRÁFICA CRECIMIENTO ─── */
+function renderGrowthChart() {
+  const data = [
+    {l:'S1 dic',v:20},{l:'S2 dic',v:22},{l:'S1 ene',v:25},
+    {l:'S2 ene',v:28},{l:'S1 feb',v:30},{l:'S2 feb',v:33},{l:'S1 mar',v:36}
+  ];
+  const max = Math.max(...data.map(d=>d.v));
+  const el = document.getElementById('grow-bars');
+  if(!el) return;
+  el.innerHTML = data.map(d => `
+    <div class="gb-wrap">
+      <div class="gb-val">${d.v}</div>
+      <div class="gb" style="height:${Math.round(d.v/max*56)}px;background:${d.v===max?'var(--palm)':'var(--palm-l)'};border:1px solid rgba(29,158,117,.2)"></div>
+      <div class="gb-lbl">${d.l}</div>
+    </div>`).join('');
+}
+
+/* ─── TOGGLE EDAD KIFUD ─── */
+function toggleEdad(id) {
+  const card = document.getElementById('edad-' + id);
+  const toggle = document.getElementById('toggle-' + id);
+  const isOn = toggle.classList.contains('on');
+  toggle.classList.toggle('on', !isOn);
+  card.classList.toggle('activo', !isOn);
+  card.classList.toggle('inactivo', isOn);
+  showToast(isOn ? 'Plan desactivado' : 'Plan activado ✓');
+}
+
 /* ─── PERFIL ─── */
 function toggleCk(label){const inp=label.querySelector('input');inp.checked=!inp.checked;label.classList.toggle('checked',inp.checked);}
 
@@ -1170,6 +1389,7 @@ function toggleCk(label){const inp=label.querySelector('input');inp.checked=!inp
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.opacity='1';clearTimeout(t._to);t._to=setTimeout(()=>t.style.opacity='0',3200);}
 
 /* ─── INIT ─── */
+renderGrowthChart();
 renderPedidosStatusBar();
 renderPedidos();
 renderWeekInfoCard();
