@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Nutrióloga · Nutrilú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --off:#F7F5F0;--dark:#1A1A18;--mid:#5F5E5A;--light:#B4B2A9;
+  --border:rgba(0,0,0,.07);--white:#fff;--cream:#F3F1EC;
+  --palm:#1D9E75;--palm-l:#E1F5EE;--palm-d:#085041;--palm-m:#5FC4A4;
+  --kifud:#F0BC32;--kifud-l:#FEF8E3;--kifud-d:#633806;
+  --kiwilu:#7F77DD;--kiwilu-l:#EEEDFE;--kiwilu-d:#3C3489;
+  --chef:#D85A30;--chef-l:#FAECE7;--chef-d:#712B13;
+  --ok:#15803D;--okl:#DCFCE7;
+  --danger:#E24B4A;--dangerl:#FCEBEB;
+  --warn:#C47A00;--warnl:#FFFBEA;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--off);color:var(--dark);min-height:100vh;display:grid;grid-template-columns:240px 1fr}
+
+/* ── SIDEBAR ── */
+.sidebar{background:var(--dark);display:flex;flex-direction:column;padding:24px 14px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sb-logo{font-family:'Playfair Display',serif;font-size:20px;color:#fff;letter-spacing:-.02em;margin-bottom:4px}
+.sb-logo em{font-style:italic;color:rgba(255,255,255,.4);font-size:16px}
+.sb-role{font-size:10px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-sect{font-size:10px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.1em;font-weight:700;padding:12px 10px 5px}
+.sbtn{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;font-size:13px;color:rgba(255,255,255,.4);cursor:pointer;border:none;background:transparent;width:100%;font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;transition:.14s;text-align:left}
+.sbtn:hover{background:rgba(255,255,255,.07);color:rgba(255,255,255,.8)}
+.sbtn.active{background:rgba(255,255,255,.12);color:#fff}
+.sbtn svg{width:14px;height:14px;flex-shrink:0;opacity:.5}
+.sbtn.active svg{opacity:1}
+.sb-div{height:1px;background:rgba(255,255,255,.07);margin:4px 0}
+.sb-sp{flex:1}
+.sb-earn{background:rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-top:8px}
+.se-label{font-size:10px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:5px}
+.se-val{font-family:'Playfair Display',serif;font-size:24px;color:#fff}
+.se-sub{font-size:11px;color:rgba(255,255,255,.28);margin-top:3px;font-weight:300}
+.sb-profile{margin-top:10px;padding:12px;background:rgba(255,255,255,.05);border-radius:9px;display:flex;align-items:center;gap:10px}
+.sp-av{width:32px;height:32px;border-radius:50%;background:var(--palm-l);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--palm-d);flex-shrink:0}
+.sp-name{font-size:12px;font-weight:700;color:#fff}
+.sp-sub{font-size:10px;color:rgba(255,255,255,.28);margin-top:2px}
+
+/* ── MAIN ── */
+.main{overflow-y:auto}
+.view{display:none;padding:28px 30px}
+.view.active{display:block}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;gap:12px;flex-wrap:wrap}
+.pt{font-family:'Playfair Display',serif;font-size:26px;color:var(--dark);line-height:1.1}
+.pt em{color:var(--palm);font-style:italic}
+.ps{font-size:13px;color:var(--mid);margin-top:4px;font-weight:300}
+
+/* ── BUTTONS ── */
+.btn-primary{background:var(--palm);color:#fff;border:none;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s}
+.btn-primary:hover{background:var(--palm-d)}
+.btn-sm{font-size:12px;padding:6px 14px;border-radius:100px;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--mid);font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:.12s}
+.btn-sm:hover{border-color:var(--palm);color:var(--palm)}
+
+/* ── METRICS ── */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.metric{background:var(--white);border-radius:13px;padding:16px;border:1px solid var(--border)}
+.ml{font-size:10px;color:var(--light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px;font-weight:700}
+.mv{font-size:22px;font-weight:700;color:var(--dark)}
+.ms{font-size:11px;color:var(--mid);margin-top:3px;font-weight:300}
+.mb{display:inline-block;margin-top:5px;font-size:11px;padding:2px 9px;border-radius:100px;font-weight:600}
+.mb-ok{background:var(--okl);color:var(--ok)}
+.mb-palm{background:var(--palm-l);color:var(--palm-d)}
+
+/* ── CARDS ── */
+.card{background:var(--white);border-radius:14px;border:1px solid var(--border);margin-bottom:18px}
+.card-h{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border)}
+.card-t{font-size:14px;font-weight:700;color:var(--dark)}
+.inner{padding:18px 20px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+
+/* ── PILLS ── */
+.pill{display:inline-block;font-size:11px;padding:2px 9px;border-radius:100px;font-weight:600}
+.pill-palm{background:var(--palm-l);color:var(--palm-d)}
+.pill-kifud{background:var(--kifud-l);color:var(--kifud-d)}
+.pill-kiwilu{background:var(--kiwilu-l);color:var(--kiwilu-d)}
+.pill-chef{background:var(--chef-l);color:var(--chef-d)}
+.pill-ok{background:var(--okl);color:var(--ok)}
+.pill-off{background:var(--cream);color:var(--light)}
+.pill-warn{background:var(--warnl);color:var(--warn)}
+
+/* ── DOTS / MARCA TABS ── */
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-palm{background:var(--palm)}
+.dot-kifud{background:var(--kifud)}
+.dot-kiwilu{background:var(--kiwilu)}
+.dot-chef{background:var(--chef)}
+.marca-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.mtab{display:flex;align-items:center;gap:7px;padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1.5px solid var(--border);background:var(--white);cursor:pointer;transition:.14s;color:var(--mid);font-family:'Plus Jakarta Sans',sans-serif}
+.mtab:hover{border-color:rgba(0,0,0,.15)}
+.mtab.active{color:var(--white)}
+.mtab[data-m="all"].active{background:var(--dark);border-color:var(--dark)}
+.mtab[data-m="palm"].active{background:var(--palm);border-color:var(--palm)}
+.mtab[data-m="kifud"].active{background:var(--kifud-d);border-color:var(--kifud-d)}
+.mtab[data-m="kiwilu"].active{background:var(--kiwilu);border-color:var(--kiwilu)}
+
+/* ── MARCA SUMMARY CARDS ── */
+.marca-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:22px}
+.mcard{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.mcard-h{padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.mcard-n{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.mcard-num{font-family:'Playfair Display',serif;font-size:28px;padding:0 18px 14px}
+.mcard-foot{padding:10px 18px;border-top:1px solid var(--border);font-size:12px;color:var(--mid)}
+.mcard.inactive{opacity:.4}
+
+/* ── PEDIDOS ── */
+.pedidos-day{background:var(--white);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.pd-header{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--cream)}
+.pd-dia{font-size:14px;font-weight:700}
+.pd-total{font-size:12px;color:var(--mid)}
+.pd-marca-row{padding:11px 18px;display:grid;grid-template-columns:90px 1fr 1fr 80px;gap:10px;align-items:center;border-bottom:1px solid var(--border);font-size:13px}
+.pd-marca-row:last-child{border-bottom:none}
+.pd-marca-row:hover{background:var(--off)}
+.pd-marca-label{display:flex;align-items:center;gap:7px;font-weight:600;font-size:12px}
+.pd-platillo{display:flex;align-items:center;gap:8px;min-width:0}
+.pd-pname{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px}
+.pd-count{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;text-align:right}
+.pd-personas{font-size:10px;color:var(--light);font-weight:700;text-transform:uppercase;letter-spacing:.06em;text-align:right}
+.pd-dish-chip{display:flex;align-items:center;gap:6px;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:5px 10px;min-width:0}
+.pd-dish-chip-num{font-weight:700;font-size:13px;flex-shrink:0}
+
+/* ── LISTA DE COMPRAS ── */
+.lc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.lc-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.lc-card-h{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.lc-card-title{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.lc-item{display:flex;justify-content:space-between;align-items:center;padding:9px 18px;border-bottom:1px solid var(--border);font-size:13px}
+.lc-item:last-child{border-bottom:none}
+.lc-item:hover{background:var(--off)}
+.lc-ing{color:var(--dark)}
+.lc-qty{font-weight:700;color:var(--palm-d);font-size:13px}
+.lc-platillo-tag{font-size:10px;color:var(--light);margin-top:1px}
+.lc-total-bar{background:var(--palm-d);border-radius:14px;padding:18px 22px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between}
+.lc-total-label{font-size:12px;color:rgba(255,255,255,.6);font-weight:500}
+.lc-total-val{font-family:'Playfair Display',serif;font-size:28px;color:#fff}
+.lc-total-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px}
+
+/* ── BUILDER ── */
+/* ── SELECTOR DE SEMANA ── */
+.wsel-btn{flex:1;padding:14px 10px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;border:2px solid var(--border);background:var(--white);color:var(--mid);font-family:'Plus Jakarta Sans',sans-serif;transition:.15s;text-align:center}
+.wsel-btn:hover{border-color:rgba(0,0,0,.15);color:var(--dark)}
+.wsel-btn.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+/* ── WEEK INFO CARD ── */
+.wic{border-radius:14px;padding:20px 24px;border:1px solid var(--border)}
+.wic-locked{background:var(--dark);border-color:var(--dark)}
+.wic-open{background:var(--white)}
+.wic-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:600}
+.wic-locked .wic-title{color:#fff}
+.wic-open .wic-title{color:var(--dark)}
+.wic-periodo{font-size:13px;margin-top:3px;font-weight:400}
+.wic-locked .wic-periodo{color:rgba(255,255,255,.5)}
+.wic-open .wic-periodo{color:var(--mid)}
+.wic-confirmed{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;font-weight:700;color:var(--palm-m);background:rgba(255,255,255,.08);padding:5px 12px;border-radius:100px}
+.wic-body{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.wic-meta{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.wic-deadline{font-size:13px;color:var(--mid)}
+.wic-deadline strong{color:var(--warn)}
+.wic-slots{font-size:13px;color:var(--mid)}
+.wic-slots strong{color:var(--palm)}
+.wic-publish{background:var(--palm);color:#fff;border:none;padding:10px 24px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s;white-space:nowrap}
+.wic-publish:hover{background:var(--palm-d)}
+/* ── NOTA ── */
+.menu-nota-bar{background:var(--palm-l);border:1px solid rgba(29,158,117,.2);border-radius:10px;padding:11px 16px;font-size:13px;color:var(--palm-d);display:flex;align-items:center;gap:8px}
+.locked-slot{border-radius:8px;padding:10px 12px;background:var(--cream);border:1px solid var(--border);font-size:12px;color:var(--light);text-align:center}
+
+.builder-tabs{display:flex;gap:8px;margin-bottom:18px}
+.btab{display:flex;align-items:center;gap:7px;padding:8px 18px;border-radius:10px;font-size:13px;font-weight:600;border:1.5px solid var(--border);background:var(--white);cursor:pointer;color:var(--mid);transition:.14s;font-family:'Plus Jakarta Sans',sans-serif}
+.btab.active-palm{background:var(--palm);border-color:var(--palm);color:#fff}
+.btab.active-kifud{background:var(--kifud-d);border-color:var(--kifud-d);color:#fff}
+.builder{display:grid;grid-template-columns:1fr 300px;gap:16px}
+.dayscol{display:flex;flex-direction:column;gap:10px}
+.dayslot{background:var(--white);border-radius:12px;padding:14px;border:1px solid var(--border)}
+.dslh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.dsld{font-size:13px;font-weight:700}
+.dslt{font-size:11px;color:var(--light)}
+.drow2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.adish{border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:flex-start;border:1px solid transparent}
+.adish-palm{background:var(--palm-l);border-color:rgba(29,158,117,.2)}
+.adish-kifud{background:var(--kifud-l);border-color:rgba(240,188,50,.25)}
+.adn{font-size:12px;font-weight:700}
+.adn-palm{color:var(--palm-d)}
+.adn-kifud{color:var(--kifud-d)}
+.adm{font-size:11px;margin-top:3px}
+.adm-palm{color:var(--palm)}
+.adm-kifud{color:var(--kifud-d);opacity:.7}
+.adrm{width:18px;height:18px;border-radius:50%;background:rgba(0,0,0,.07);border:none;cursor:pointer;flex-shrink:0;font-size:13px;color:var(--mid);display:flex;align-items:center;justify-content:center}
+.eslot{border:1.5px dashed var(--border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--light);font-size:12px;background:transparent;width:100%;font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;transition:.12s}
+.eslot:hover{border-color:var(--palm);color:var(--palm);background:var(--palm-l)}
+.locked-slot{border-radius:8px;padding:10px 12px;background:var(--cream);border:1px solid var(--border);font-size:12px;color:var(--light);text-align:center}
+
+.dpanel{background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden;position:sticky;top:20px}
+.dph{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.dpt{font-size:13px;font-weight:700}
+.dpsearch{padding:10px 14px;border-bottom:1px solid var(--border)}
+.dpsearch input{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;outline:none;background:var(--off);transition:.12s}
+.dpsearch input:focus{border-color:var(--palm)}
+.dplist{padding:8px;max-height:440px;overflow-y:auto;display:flex;flex-direction:column;gap:5px}
+.ditem{padding:10px 12px;border-radius:8px;border:1.5px solid var(--border);cursor:pointer;background:var(--white);transition:.12s}
+.ditem:hover,.ditem.in-use{border-color:var(--palm);background:var(--palm-l)}
+.dinm{font-size:13px;font-weight:700;margin-bottom:3px}
+.dimac{display:flex;gap:6px;font-size:11px;color:var(--mid)}
+.dimm{padding:1px 6px;background:var(--cream);border-radius:4px;font-weight:500}
+.ditg{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
+.dta-palm{font-size:10px;color:var(--palm-d);background:var(--palm-l);padding:1px 7px;border-radius:100px;font-weight:600}
+.dta-kifud{font-size:10px;color:var(--kifud-d);background:var(--kifud-l);padding:1px 7px;border-radius:100px;font-weight:600}
+
+/* ── PLATILLOS GRID ── */
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.dc2{background:var(--white);border-radius:13px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:.15s}
+.dc2:hover{box-shadow:0 6px 24px rgba(0,0,0,.09);border-color:var(--palm-m)}
+.dc2img{height:80px;display:flex;align-items:center;justify-content:center;font-size:38px}
+.dc2body{padding:14px}
+.dc2n{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:5px;line-height:1.3}
+.dc2m{display:flex;gap:6px;margin-bottom:6px}
+.dc2mm{font-size:11px;color:var(--mid);background:var(--cream);padding:2px 7px;border-radius:4px;font-weight:500}
+.dc2t{display:flex;flex-wrap:wrap;gap:4px}
+.dc2ta{font-size:10px;padding:1px 7px;border-radius:100px;font-weight:600}
+.dc2-palm .dc2ta{color:var(--palm-d);background:var(--palm-l)}
+.dc2-kifud .dc2ta{color:var(--kifud-d);background:var(--kifud-l)}
+.dc2-kiwilu .dc2ta{color:var(--kiwilu-d);background:var(--kiwilu-l)}
+
+/* ── RESEÑAS ── */
+.rev-row{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid var(--border)}
+.rev-row:last-child{border-bottom:none}
+.rev-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.rev-av-palm{background:var(--palm-l);color:var(--palm-d)}
+.rev-av-kifud{background:var(--kifud-l);color:var(--kifud-d)}
+.rev-av-kiwilu{background:var(--kiwilu-l);color:var(--kiwilu-d)}
+.rev-name{font-size:13px;font-weight:700}
+.rev-meta{font-size:11px;color:var(--mid);margin-top:2px;font-weight:300}
+.rev-stars{font-size:13px;letter-spacing:1px;margin-bottom:4px;color:var(--kifud)}
+.rev-txt{font-size:13px;color:var(--mid);line-height:1.6;font-weight:300;margin-top:5px}
+
+/* ── PAGOS ── */
+.pago-hero{background:var(--palm-d);border-radius:16px;padding:22px 26px;margin-bottom:18px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ph-left{}
+.ph-label{font-size:11px;color:rgba(255,255,255,.45);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.ph-val{font-family:'Playfair Display',serif;font-size:44px;color:#fff;line-height:1}
+.ph-sub{font-size:12px;color:rgba(255,255,255,.5);margin-top:6px}
+.ph-right{display:flex;flex-direction:column;justify-content:center;gap:10px}
+.ph-stat{background:rgba(255,255,255,.08);border-radius:10px;padding:12px 16px}
+.ph-stat-label{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.ph-stat-val{font-size:18px;font-weight:700;color:#fff}
+.pagos-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.pago-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px}
+.pago-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--light)}
+.pago-num{font-family:'Playfair Display',serif;font-size:36px;margin:8px 0 4px}
+.pago-sub{font-size:12px;color:var(--mid)}
+.brow{display:flex;justify-content:space-between;font-size:13px;padding:9px 0;border-bottom:1px solid var(--border);align-items:center}
+.brow:last-child{border-bottom:none;font-weight:700}
+
+/* ── PERFIL ── */
+.perfil-wrap{display:grid;grid-template-columns:310px 1fr;gap:18px;align-items:start}
+.pcard{background:var(--white);border-radius:14px;border:1px solid var(--border);overflow:hidden;position:sticky;top:20px}
+.pcard-top{background:var(--palm-d);padding:24px;text-align:center}
+.pav{width:64px;height:64px;border-radius:50%;background:var(--palm-l);border:3px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;color:var(--palm-d);margin:0 auto 12px;font-weight:600}
+.pname{font-size:17px;font-weight:700;color:#fff;font-family:'Playfair Display',serif}
+.psub{font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;font-weight:300}
+.prating{margin-top:10px;font-size:13px;color:rgba(255,255,255,.8)}
+.pcard-body{padding:16px}
+.prow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
+.prow:last-child{border-bottom:none}
+.plbl{color:var(--mid);font-weight:300}
+.pval{font-weight:700;color:var(--dark)}
+.marcas-activas{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.marca-badge{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;font-size:12px;font-weight:600;border:1.5px solid transparent}
+.mb-palm{background:var(--palm-l);color:var(--palm-d);border-color:var(--palm)}
+.mb-kifud{background:var(--kifud-l);color:var(--kifud-d);border-color:var(--kifud)}
+.mb-kiwilu{background:var(--kiwilu-l);color:var(--kiwilu-d);border-color:var(--kiwilu)}
+.pform-sec{background:var(--white);border-radius:14px;padding:20px;border:1px solid var(--border);margin-bottom:14px}
+.pform-t{font-size:14px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);color:var(--dark);display:flex;justify-content:space-between;align-items:center}
+.pform-t span{font-size:11px;font-weight:400;color:var(--light)}
+.frow2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.frow3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+label{display:block;font-size:10px;font-weight:700;color:var(--light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+input,select,textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--dark);background:var(--off);outline:none;transition:.15s}
+input:focus,select:focus,textarea:focus{border-color:var(--palm);background:var(--white)}
+textarea{resize:vertical;min-height:80px}
+.fsave{background:var(--palm);color:#fff;border:none;padding:10px 26px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+.check-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.ck-item{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;border:1.5px solid var(--border);font-size:12px;font-weight:600;cursor:pointer;user-select:none;transition:.12s;background:var(--white)}
+.ck-item:hover{border-color:var(--palm)}
+.ck-item.checked{background:var(--palm-l);border-color:var(--palm);color:var(--palm-d)}
+.ck-item input[type=checkbox]{display:none}
+
+/* ── MODAL ── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.modal{background:var(--white);border-radius:20px;width:100%;max-width:540px;max-height:92vh;overflow-y:auto}
+.modal-head{padding:20px 22px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--dark);font-weight:600}
+.modal-close{width:28px;height:28px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--mid)}
+.modal-body{padding:22px}
+.modal-foot{padding:14px 22px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end}
+.mbtn-ghost{padding:9px 20px;border-radius:100px;border:1.5px solid var(--border);background:transparent;font-size:13px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:var(--mid)}
+.mbtn-prim{padding:9px 22px;border-radius:100px;background:var(--palm);border:none;font-size:13px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:#fff}
+.photo-drop{border:1.5px dashed var(--border);border-radius:10px;padding:24px;text-align:center;cursor:pointer;background:var(--off);transition:.2s}
+.photo-drop:hover{border-color:var(--palm);background:var(--palm-l)}
+.photo-preview{display:none;align-items:center;gap:12px;padding:10px 12px;background:var(--palm-l);border-radius:8px;margin-top:10px}
+.photo-preview img{width:48px;height:48px;border-radius:6px;object-fit:cover}
+.det-macro-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:14px 0}
+.det-macro{text-align:center;background:var(--cream);border-radius:8px;padding:8px 4px}
+.det-mv{font-size:14px;font-weight:700}
+.det-ml{font-size:9px;color:var(--light);margin-top:2px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.det-ben{display:flex;gap:8px;font-size:13px;color:var(--mid);padding:5px 0;border-bottom:1px solid var(--border);line-height:1.55}
+.det-ben:last-child{border-bottom:none}
+.det-dot{width:5px;height:5px;border-radius:50%;background:var(--palm);flex-shrink:0;margin-top:7px}
+.itag{font-size:11px;color:var(--palm-d);background:var(--palm-l);padding:2px 9px;border-radius:100px;display:inline-block;margin:2px;font-weight:500}
+.vtag{font-size:11px;color:var(--kiwilu-d);background:var(--kiwilu-l);padding:2px 9px;border-radius:100px;display:inline-block;margin:2px;font-weight:500}
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:12px 24px;border-radius:100px;font-size:13px;z-index:9999;opacity:0;transition:opacity .3s;white-space:nowrap;font-weight:500}
+</style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sb-logo">Nutri<em>lú</em></div>
+  <div class="sb-role">Portal Nutrióloga</div>
+
+  <div class="sb-sect">General</div>
+  <button class="sbtn active" onclick="showV('resumen',this)">
+    <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5" opacity=".5"/><rect x="1" y="9" width="6" height="6" rx="1.5" opacity=".5"/><rect x="9" y="9" width="6" height="6" rx="1.5" opacity=".3"/></svg>
+    Esta semana
+  </button>
+  <button class="sbtn" onclick="showV('pedidos',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="2" width="14" height="12" rx="2"/><path d="M4 6h8M4 9h5" stroke-linecap="round"/></svg>
+    Pedidos
+  </button>
+  <div class="sb-div"></div>
+
+  <div class="sb-sect">Semana</div>
+  <button class="sbtn" onclick="showV('compras',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 2h2l2 7h6l1.5-4H5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="13" r="1"/><circle cx="12" cy="13" r="1"/></svg>
+    Lista de compras
+  </button>
+  <button class="sbtn" onclick="showV('menu',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="1" width="14" height="14" rx="2"/><path d="M4 5h8M4 8h8M4 11h5" stroke-linecap="round"/></svg>
+    Constructor de menú
+  </button>
+  <button class="sbtn" onclick="showV('platillos',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="9" r="4"/><path d="M8 1v4" stroke-linecap="round"/></svg>
+    Mis platillos
+  </button>
+  <div class="sb-div"></div>
+
+  <div class="sb-sect">Cuenta</div>
+  <button class="sbtn" onclick="showV('resenas',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 2h12v9H2z" rx="2"/><path d="M5 14l3-3 3 3" stroke-linecap="round"/></svg>
+    Reseñas
+  </button>
+  <button class="sbtn" onclick="showV('pagos',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="4" width="14" height="9" rx="2"/><path d="M1 7h14" stroke-linecap="round"/></svg>
+    Pagos
+  </button>
+  <button class="sbtn" onclick="showV('perfil',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="5.5" r="2.5"/><path d="M2.5 13.5c0-3 2.5-4.5 5.5-4.5s5.5 1.5 5.5 4.5" stroke-linecap="round"/></svg>
+    Mi perfil
+  </button>
+
+  <div class="sb-sp"></div>
+  <div class="sb-earn">
+    <div class="se-label">Tu pago esta semana</div>
+    <div class="se-val">$3,168</div>
+    <div class="se-sub">36 porciones · lunes 7 abr</div>
+  </div>
+  <div class="sb-profile">
+    <div class="sp-av">VM</div>
+    <div><div class="sp-name">Valeria M.</div><div class="sp-sub">Lic. Nutrición · UANL</div></div>
+  </div>
+</aside>
+
+<main class="main">
+
+<!-- ══════ RESUMEN ══════ -->
+<div class="view active" id="v-resumen">
+  <div class="ph"><div><div class="pt">Buenos días, <em>Valeria.</em></div><div class="ps">Semana del 31 mar – 4 abr · 2025</div></div></div>
+  <div class="metrics">
+    <div class="metric"><div class="ml">Porciones esta semana</div><div class="mv">36</div><div class="ms">NutriPalm + Kifud + Kiwilu</div><div class="mb mb-ok">↑ +9% vs semana pasada</div></div>
+    <div class="metric"><div class="ml">Tu pago esta semana</div><div class="mv" style="font-size:22px">$3,168</div><div class="ms">Se deposita el lunes 7 abr</div></div>
+    <div class="metric"><div class="ml">Marcas activas</div><div class="mv">3</div><div class="ms">NutriPalm · Kifud · Kiwilu</div></div>
+    <div class="metric"><div class="ml">Reseñas esta semana</div><div class="mv">12</div><div class="ms">⭐ 5.0 promedio</div><div class="mb mb-ok">Excelente</div></div>
+  </div>
+  <div class="marca-cards">
+    <div class="mcard"><div class="mcard-h"><div class="mcard-n"><div class="dot dot-palm"></div>NutriPalm</div><span class="pill pill-palm">Activa</span></div><div class="mcard-num">20 <span style="font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--mid)">personas</span></div><div class="mcard-foot">Lun–Vie · 2 opciones por día</div></div>
+    <div class="mcard"><div class="mcard-h"><div class="mcard-n"><div class="dot dot-kifud"></div>Kifud</div><span class="pill pill-kifud">Activa</span></div><div class="mcard-num">12 <span style="font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--mid)">personas</span></div><div class="mcard-foot">Lun–Vie · Loncheras escolares</div></div>
+    <div class="mcard"><div class="mcard-h"><div class="mcard-n"><div class="dot dot-kiwilu"></div>Kiwilu</div><span class="pill pill-kiwilu">Activa</span></div><div class="mcard-num">4 <span style="font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--mid)">personas</span></div><div class="mcard-foot">Planes nutricionales</div></div>
+    <div class="mcard inactive"><div class="mcard-h"><div class="mcard-n"><div class="dot dot-chef"></div>Nutrichef</div><span class="pill pill-chef">Inactiva</span></div><div class="mcard-num">—</div><div class="mcard-foot">Sin asignar aún</div></div>
+  </div>
+  <div class="g2">
+    <div class="card" style="margin-bottom:0"><div class="card-h"><div class="card-t">Menú esta semana</div></div><div class="inner" style="display:flex;flex-direction:column;gap:0">
+      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Lunes</span><span>Pollo al limón · Bowl mediterráneo</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Martes</span><span>Salmón glaseado · Pollo mostaza</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Miércoles</span><span>Bowl de res · Salmón al horno</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Jueves</span><span>Pollo mostaza · Bowl mediterráneo</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0"><span style="color:var(--mid)">Viernes</span><span>Bowl mediterráneo · Pollo al limón</span></div>
+    </div></div>
+    <div class="card" style="margin-bottom:0"><div class="card-h"><div class="card-t">Últimas reseñas</div></div><div class="inner" style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><strong>Claudia M.</strong> <span style="color:var(--mid);font-weight:300">sobre Emilio</span><div style="color:var(--mid);margin-top:3px;font-size:12px;font-weight:300">"El pollo al limón fue un hit."</div></div>
+      <div style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><strong>Fernanda R.</strong> <span style="color:var(--mid);font-weight:300">sobre Isabella</span><div style="color:var(--mid);margin-top:3px;font-size:12px;font-weight:300">"Se lo comió todo. Eso dice todo."</div></div>
+      <div style="font-size:13px;padding:8px 0"><strong>Ana L.</strong><div style="color:var(--mid);margin-top:3px;font-size:12px;font-weight:300">"Llego a casa, caliento y listo. Me salvó."</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ══════ PEDIDOS ══════ -->
+<div class="view" id="v-pedidos">
+  <div class="ph">
+    <div><div class="pt">Pedidos de la <em>semana</em></div></div>
+  </div>
+  <div style="display:flex;gap:10px;margin-bottom:20px">
+    <button class="wsel-btn active" id="psel-0" onclick="setPedidosSemana(0,this)">Esta semana</button>
+    <button class="wsel-btn" id="psel-1" onclick="setPedidosSemana(1,this)">Próxima semana</button>
+  </div>
+  <div id="pedidos-status-bar" style="margin-bottom:16px"></div>
+  <div id="pedidos-container"></div>
+</div>
+
+<!-- ══════ LISTA DE COMPRAS ══════ -->
+<div class="view" id="v-compras">
+  <div class="ph">
+    <div><div class="pt">Lista de <em>compras</em></div></div>
+    <button class="btn-primary" onclick="showToast('Lista copiada al portapapeles ✓')">Exportar lista</button>
+  </div>
+  <div style="display:flex;gap:10px;margin-bottom:20px">
+    <button class="wsel-btn active" id="csel-0" onclick="setComprasSemana(0,this)">Esta semana</button>
+    <button class="wsel-btn" id="csel-1" onclick="setComprasSemana(1,this)">Próxima semana</button>
+  </div>
+  <div id="lc-header-bar" style="margin-bottom:18px"></div>
+  <div class="lc-grid" id="lc-grid"></div>
+</div>
+
+<!-- ══════ CONSTRUCTOR DE MENÚ ══════ -->
+<div class="view" id="v-menu">
+  <div class="ph">
+    <div><div class="pt">Constructor de <em>menú</em></div></div>
+  </div>
+
+  <!-- Nota recordatorio por marca -->
+  <div id="menu-nota" style="margin-bottom:20px"></div>
+
+  <!-- Selector de semana: 3 botones grandes -->
+  <div class="wselector" style="display:flex;gap:10px;margin-bottom:20px">
+    <button class="wsel-btn active" id="wsel-0" onclick="setWeek(0,this)">Esta semana</button>
+    <button class="wsel-btn" id="wsel-1" onclick="setWeek(1,this)">Próxima</button>
+    <button class="wsel-btn" id="wsel-2" onclick="setWeek(2,this)">Siguiente</button>
+  </div>
+
+  <!-- Info card de la semana seleccionada -->
+  <div id="week-info-card" style="margin-bottom:20px"></div>
+
+  <!-- Tabs de marca -->
+  <div class="builder-tabs">
+    <button class="btab active-palm" id="btab-palm" onclick="setBuilderMarca('palm',this)"><div class="dot dot-palm"></div>NutriPalm</button>
+    <button class="btab" id="btab-kifud" onclick="setBuilderMarca('kifud',this)"><div class="dot dot-kifud"></div>Kifud</button>
+  </div>
+
+  <div class="builder">
+    <div class="dayscol" id="builder-days"></div>
+    <div class="dpanel">
+      <div class="dph"><span class="dpt">Banco de platillos</span><button class="btn-sm" onclick="openModal()">+ Nuevo</button></div>
+      <div class="dpsearch"><input placeholder="Buscar platillo…" oninput="filterDPList(this.value)"></div>
+      <div class="dplist" id="dplist"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MIS PLATILLOS ══════ -->
+<div class="view" id="v-platillos">
+  <div class="ph">
+    <div><div class="pt">Mis <em>platillos</em></div><div class="ps">Tu banco de recetas para los menús semanales</div></div>
+    <button class="btn-primary" onclick="openModal()">+ Nuevo platillo</button>
+  </div>
+  <div class="marca-tabs">
+    <button class="mtab active" data-m="all" onclick="filterPlatillos('all',this)">Todos</button>
+    <button class="mtab" data-m="palm" onclick="filterPlatillos('palm',this)"><div class="dot dot-palm"></div>NutriPalm</button>
+    <button class="mtab" data-m="kifud" onclick="filterPlatillos('kifud',this)"><div class="dot dot-kifud"></div>Kifud</button>
+    <button class="mtab" data-m="kiwilu" onclick="filterPlatillos('kiwilu',this)"><div class="dot dot-kiwilu"></div>Kiwilu</button>
+  </div>
+  <div class="dgrid" id="dgrid"></div>
+</div>
+
+<!-- ══════ RESEÑAS ══════ -->
+<div class="view" id="v-resenas">
+  <div class="ph"><div><div class="pt"><em>Reseñas</em></div><div class="ps">Lo que los clientes dicen de tus menús</div></div></div>
+  <div class="metrics" style="grid-template-columns:repeat(3,1fr)">
+    <div class="metric"><div class="ml">Calificación promedio</div><div class="mv">5.0</div><div class="ms">Ciclo Ene–Jun 2025</div><div class="mb mb-ok">73 reseñas</div></div>
+    <div class="metric"><div class="ml">⭐⭐⭐⭐⭐ 5 estrellas</div><div class="mv">68</div><div class="ms">93% de las reseñas</div><div class="mb mb-ok">Excelente</div></div>
+    <div class="metric"><div class="ml">Platillo mejor calificado</div><div class="mv" style="font-size:16px;margin-top:4px">Pollo al limón</div><div class="ms">4.9 promedio · 18 reseñas</div></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="card-t">Reseñas recientes</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn-sm" onclick="filterResenas('all',this)" style="border-color:var(--palm);color:var(--palm)">Todas</button>
+        <button class="btn-sm" onclick="filterResenas('palm',this)">NutriPalm</button>
+        <button class="btn-sm" onclick="filterResenas('kifud',this)">Kifud</button>
+      </div>
+    </div>
+    <div class="inner" id="reviews-list"></div>
+  </div>
+</div>
+
+<!-- ══════ PAGOS ══════ -->
+<div class="view" id="v-pagos">
+  <div class="ph"><div><div class="pt">Pagos y <em>ganancias</em></div><div class="ps">Semana del 31 mar – 4 abr</div></div></div>
+
+  <div class="pago-hero">
+    <div class="ph-left">
+      <div class="ph-label">Tu pago esta semana</div>
+      <div class="ph-val">$3,168</div>
+      <div class="ph-sub">36 porciones · Se deposita el <strong style="color:#fff">lunes 7 de abril</strong></div>
+    </div>
+    <div class="ph-right">
+      <div class="ph-stat"><div class="ph-stat-label">NutriPalm · 20 personas</div><div class="ph-stat-val">$1,760</div></div>
+      <div class="ph-stat"><div class="ph-stat-label">Kifud · 12 personas</div><div class="ph-stat-val">$1,080</div></div>
+      <div class="ph-stat"><div class="ph-stat-label">Kiwilu · 4 personas</div><div class="ph-stat-val">$328</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h"><div class="card-t">Historial de pagos</div></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 100px 120px;padding:10px 18px;font-size:10px;font-weight:700;color:var(--light);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--border)"><div>Semana</div><div>Personas</div><div>Pago</div><div>Estado</div></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 100px 120px" class="trow2"><div>31 mar – 4 abr</div><div>36</div><div style="color:var(--palm);font-weight:600">$3,168</div><div><span class="pill pill-warn">Pendiente</span></div></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 100px 120px" class="trow2"><div>24 – 28 mar</div><div>33</div><div style="color:var(--palm);font-weight:600">$2,904</div><div><span class="pill pill-ok">Depositado</span></div></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 100px 120px" class="trow2"><div>17 – 21 mar</div><div>29</div><div style="color:var(--palm);font-weight:600">$2,552</div><div><span class="pill pill-ok">Depositado</span></div></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 100px 120px" class="trow2"><div>10 – 14 mar</div><div>25</div><div style="color:var(--palm);font-weight:600">$2,200</div><div><span class="pill pill-ok">Depositado</span></div></div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="card-t">Datos bancarios</div><button class="btn-sm" onclick="showToast('Datos actualizados ✓')">Editar</button></div>
+    <div class="inner">
+      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">CLABE</span><span style="font-weight:600">•••• •••• •••• 4821</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Banco</span><span style="font-weight:600">BBVA México</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0"><span style="color:var(--mid)">Próximo depósito</span><span style="font-weight:600;color:var(--palm)">Lunes 7 de abril</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PERFIL ══════ -->
+<div class="view" id="v-perfil">
+  <div class="ph"><div><div class="pt">Mi <em>perfil</em> público</div><div class="ps">Información que ven los clientes al elegirte</div></div></div>
+  <div class="perfil-wrap">
+    <div class="pcard">
+      <div class="pcard-top">
+        <div class="pav">VM</div>
+        <div class="pname">Valeria M.</div>
+        <div class="psub">Lic. Nutrición · UANL · 6 años</div>
+        <div class="prating">⭐ 5.0 · 73 reseñas</div>
+      </div>
+      <div class="pcard-body">
+        <div class="prow"><span class="plbl">Especialidades</span><span class="pval" style="font-size:12px;text-align:right">Clínica · Deportiva</span></div>
+        <div class="prow"><span class="plbl">Estilo</span><span class="pval" style="font-size:12px;text-align:right">Mediterránea · Mexicana</span></div>
+        <div class="prow"><span class="plbl">Nunca usa</span><span class="pval" style="font-size:12px;color:var(--danger)">Sin glutamato</span></div>
+        <div class="prow" style="flex-direction:column;gap:6px;border-bottom:none">
+          <span class="plbl">Marcas activas</span>
+          <div class="marcas-activas">
+            <div class="marca-badge mb-palm"><div class="dot dot-palm"></div>NutriPalm</div>
+            <div class="marca-badge mb-kifud"><div class="dot dot-kifud"></div>Kifud</div>
+            <div class="marca-badge mb-kiwilu"><div class="dot dot-kiwilu"></div>Kiwilu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="pform-sec">
+        <div class="pform-t">Datos profesionales <span>Visibles en tu perfil público</span></div>
+        <div class="frow2"><div><label>Nombre completo</label><input value="Dra. Valeria Soto"></div><div><label>Cédula profesional</label><input value="4821093"></div></div>
+        <div class="frow3"><div><label>Universidad</label><input value="UANL"></div><div><label>Años de experiencia</label><input type="number" value="6"></div><div><label>Calificación</label><input value="⭐ 5.0 · 73 reseñas" readonly style="background:var(--okl);color:var(--ok);font-weight:700"></div></div>
+        <div><label>Bio (visible en tu tarjeta pública)</label><textarea>Mi filosofía: comida real, balanceada y sabrosa. Me especializo en nutrición clínica y deportiva para personas que quieren resultados sin sacrificar el sabor.</textarea></div>
+        <div style="margin-top:12px"><label>Especialidades (separadas por coma)</label><input value="Nutrición clínica, Pérdida de peso, Deportiva"></div>
+        <button class="fsave" style="margin-top:14px" onclick="showToast('Perfil actualizado ✓')">Guardar cambios</button>
+      </div>
+      <div class="pform-sec">
+        <div class="pform-t">Estilo de cocina <span>Ayuda a los clientes a elegirte</span></div>
+        <div class="frow2"><div><label>Estilo culinario</label><input value="Mediterránea saludable · Mexicana nutritiva"></div><div><label>Ingrediente estrella</label><input placeholder="Ej. Quinoa, linaza, cúrcuma"></div></div>
+        <div class="frow2"><div><label>Nunca uso</label><input placeholder="Ej. Azúcar refinada, glutamato"></div><div><label>Alérgenos que manejo</label><input placeholder="Ej. Sin gluten disponible"></div></div>
+        <div style="margin-top:4px"><label>Métodos de preparación activos</label>
+          <div class="check-group">
+            <label class="ck-item checked" onclick="toggleCk(this)"><input type="checkbox" checked>Superalimentos</label>
+            <label class="ck-item checked" onclick="toggleCk(this)"><input type="checkbox" checked>Aceite de oliva</label>
+            <label class="ck-item checked" onclick="toggleCk(this)"><input type="checkbox" checked>Sin glutamato</label>
+            <label class="ck-item checked" onclick="toggleCk(this)"><input type="checkbox" checked>Prep. diaria</label>
+            <label class="ck-item" onclick="toggleCk(this)"><input type="checkbox">Al vapor</label>
+            <label class="ck-item" onclick="toggleCk(this)"><input type="checkbox">Horneado</label>
+            <label class="ck-item" onclick="toggleCk(this)"><input type="checkbox">Sin lácteos</label>
+            <label class="ck-item" onclick="toggleCk(this)"><input type="checkbox">Sin gluten</label>
+          </div>
+        </div>
+        <button class="fsave" style="margin-top:14px" onclick="showToast('Estilo actualizado ✓')">Guardar cambios</button>
+      </div>
+      <div class="pform-sec">
+        <div class="pform-t">Nota de privacidad</div>
+        <div style="font-size:13px;color:var(--mid);line-height:1.65;font-weight:300">Los clientes solo ven tu <strong style="color:var(--dark)">nombre de pila e inicial de apellido</strong>. En pedidos, reseñas y toda comunicación de la plataforma aparece "Valeria M." — nunca tu apellido completo ni datos de contacto directos.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ── MODAL NUEVO PLATILLO ── -->
+<div class="modal-bg" id="modal-nuevo">
+  <div class="modal">
+    <div class="modal-head"><div class="modal-title">Nuevo platillo</div><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">
+      <div style="margin-bottom:14px"><label>Nombre del platillo</label><input id="d-nombre" placeholder="Ej: Pollo al limón con quinoa"></div>
+      <div style="margin-bottom:14px"><label>¿Para cuál marca?</label><select id="d-marca"><option value="palm">NutriPalm</option><option value="kifud">Kifud</option><option value="kiwilu">Kiwilu</option><option value="all">Todas las marcas</option></select></div>
+      <div class="frow2" style="margin-bottom:14px"><div><label>Emoji</label><input id="d-emoji" placeholder="🥕" maxlength="4" style="font-size:22px;text-align:center"></div><div><label>Color de fondo</label><input id="d-color" type="color" value="#E1F5EE" style="height:42px;padding:4px"></div></div>
+      <div style="margin-bottom:14px"><label>Ingredientes principales (separados por coma)</label><input id="d-ing" placeholder="Pollo, Quinoa, Calabacita…"></div>
+      <div class="frow2" style="margin-bottom:14px"><div><label>Calorías (kcal)</label><input id="d-cal" type="number" placeholder="420"></div><div><label>Proteína (g)</label><input id="d-prot" type="number" placeholder="32"></div></div>
+      <div class="frow2" style="margin-bottom:14px"><div><label>Carbohidratos (g)</label><input id="d-carb" type="number" placeholder="38"></div><div><label>Fibra (g)</label><input id="d-fiber" type="number" placeholder="5"></div></div>
+      <div style="margin-bottom:14px"><label>Índice glucémico</label><select id="d-gi"><option value="bajo">Bajo (≤ 45)</option><option value="bajo-mod" selected>Bajo–Moderado (46–54)</option><option value="moderado">Moderado (55–65)</option></select></div>
+      <div style="margin-bottom:14px"><label>Tags (separadas por coma)</label><input id="d-tags" placeholder="Alto en proteína, Sin gluten…"></div>
+      <div style="margin-bottom:14px"><label>Beneficios (uno por línea)</label><textarea id="d-ben" rows="3" placeholder="Proteína magra ideal para crecimiento&#10;Bajo IG para energía sostenida"></textarea></div>
+      <div style="margin-bottom:4px"><label>Foto del platillo (opcional)</label></div>
+      <div class="photo-drop" id="photo-drop" ondragover="event.preventDefault()" ondrop="handleDrop(event)" onclick="document.getElementById('photo-input').click()">
+        <div id="photo-placeholder"><div style="font-size:28px;margin-bottom:8px">📷</div><div style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px">Arrastra tu foto aquí</div><div style="font-size:12px;color:var(--mid);font-weight:300">JPG, PNG o WEBP · máx. 5 MB</div></div>
+        <div class="photo-preview" id="photo-preview"><img id="photo-img" src="" alt=""><div><div id="photo-name" style="font-size:12px;font-weight:700;color:var(--palm-d)"></div><button onclick="event.stopPropagation();clearPhoto()" style="font-size:11px;color:var(--danger);background:none;border:none;cursor:pointer;margin-top:4px;font-family:'Plus Jakarta Sans',sans-serif">Quitar foto</button></div></div>
+        <input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handlePhotoFile(this.files[0])">
+      </div>
+    </div>
+    <div class="modal-foot"><button class="mbtn-ghost" onclick="closeModal()">Cancelar</button><button class="mbtn-prim" onclick="saveD()">Guardar platillo</button></div>
+  </div>
+</div>
+
+<!-- ── MODAL DETALLE ── -->
+<div class="modal-bg" id="modal-det">
+  <div class="modal">
+    <div class="modal-head"><div class="modal-title" id="det-title">Detalle</div><button class="modal-close" onclick="closeDet()">✕</button></div>
+    <div class="modal-body">
+      <div id="det-emoji" style="width:100%;height:80px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:52px;margin-bottom:14px"></div>
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin-bottom:10px" id="det-name"></div>
+      <div id="det-gi" style="display:inline-block;font-size:12px;background:var(--palm-l);color:var(--palm-d);padding:4px 12px;border-radius:100px;font-weight:600;margin-bottom:14px"></div>
+      <div class="det-macro-row" id="det-macros"></div>
+      <div style="margin-bottom:12px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--light);margin-bottom:8px">Ingredientes</div><div id="det-ingredients"></div></div>
+      <div style="margin-bottom:12px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--light);margin-bottom:8px">Vitaminas y minerales</div><div id="det-vitamins"></div></div>
+      <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--light);margin-bottom:8px">Beneficios</div><div id="det-benefits"></div></div>
+    </div>
+    <div class="modal-foot"><button class="mbtn-ghost" onclick="closeDet()">Cerrar</button><button class="mbtn-prim" id="det-add-btn" style="display:none">+ Asignar al menú</button></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+<style>.trow2{padding:13px 18px;border-bottom:1px solid var(--border);align-items:center;font-size:13px;transition:background .1s}.trow2:last-child{border-bottom:none}.trow2:hover{background:var(--cream)}</style>
+
+<script>
+/* ═══ DATOS ═══ */
+let DB = [
+  {marca:'palm',name:'Pollo al limón con quinoa',emoji:'🍋',color:'#E1F5EE',cal:420,prot:36,fat:10,carb:38,fiber:5,gi:'Bajo–Moderado (45–50)',
+   ingredients:['Pechuga de pollo','Quinoa','Calabacita','Limón','Ajo','Aceite de oliva'],
+   // gramos por porción para lista de compras
+   insumos:[{ing:'Pechuga de pollo',g:180},{ing:'Quinoa',g:60},{ing:'Calabacita',g:100},{ing:'Limón',g:30},{ing:'Aceite de oliva',g:15}],
+   vitamins:['Vitamina C','Vitamina B6','Hierro','Zinc','Potasio'],benefits:['Proteína completa para músculo','Quinoa de bajo IG','Limón antioxidante'],tags:['Alto en proteína','Sin gluten','Bajo IG']},
+  {marca:'palm',name:'Salmón glaseado con puré de coliflor',emoji:'🐟',color:'#EEF6FE',cal:510,prot:38,fat:22,carb:28,fiber:6,gi:'Bajo (38–44)',
+   ingredients:['Salmón','Coliflor','Espinaca','Limón','Miel','Aceite de oliva'],
+   insumos:[{ing:'Salmón',g:200},{ing:'Coliflor',g:150},{ing:'Espinaca',g:60},{ing:'Aceite de oliva',g:15}],
+   vitamins:['Omega-3','Vitamina D','Vitamina B12','Selenio','Magnesio'],benefits:['Omega-3 antiinflamatorio','Salud cardiovascular','Alta proteína'],tags:['Omega-3','Alto en proteína','Sin gluten']},
+  {marca:'palm',name:'Bowl de res con quinoa y verduras',emoji:'🥩',color:'#FEF0E6',cal:490,prot:40,fat:14,carb:42,fiber:7,gi:'Bajo–Moderado (46–52)',
+   ingredients:['Res magra','Quinoa','Pimiento','Cebolla morada','Aguacate','Cilantro'],
+   insumos:[{ing:'Res magra',g:180},{ing:'Quinoa',g:60},{ing:'Pimiento',g:80},{ing:'Aguacate',g:60}],
+   vitamins:['Hierro','Zinc','Vitamina B12','Folato','Vitamina K'],benefits:['Hierro hemo de alta absorción','Grasas saludables','Aminoácidos completos'],tags:['Alto en hierro','Sin lácteos','Alta proteína']},
+  {marca:'palm',name:'Pollo a la mostaza con verduras al vapor',emoji:'🍗',color:'#FEFEE6',cal:440,prot:34,fat:13,carb:40,fiber:5,gi:'Moderado (50–55)',
+   ingredients:['Muslo de pollo','Papa','Brócoli','Mostaza Dijon','Ajo','Aceite de oliva'],
+   insumos:[{ing:'Muslo de pollo',g:200},{ing:'Papa',g:120},{ing:'Brócoli',g:100},{ing:'Mostaza Dijon',g:20}],
+   vitamins:['Vitamina C','Vitamina K','Folato','Potasio','Calcio'],benefits:['Calcio para huesos','Proteína completa','Vitamina C inmune'],tags:['Calcio','Alta proteína','Vitamina C']},
+  {marca:'palm',name:'Bowl mediterráneo de pollo',emoji:'🫒',color:'#EEEDFE',cal:460,prot:35,fat:16,carb:44,fiber:6,gi:'Bajo (40–46)',
+   ingredients:['Pollo','Garbanzo','Pepino','Tomate cherry','Aceitunas','Feta','Orégano'],
+   insumos:[{ing:'Pollo',g:160},{ing:'Garbanzo cocido',g:100},{ing:'Pepino',g:80},{ing:'Tomate cherry',g:80},{ing:'Queso feta',g:40}],
+   vitamins:['Vitamina E','Calcio','Hierro vegetal','Folato','Potasio'],benefits:['Grasa saludable','Proteína vegetal','Dieta mediterránea'],tags:['Mediterráneo','Calcio','Anti-inflamatorio']},
+  {marca:'kifud',name:'Croquetitas de atún con puré de camote',emoji:'🥕',color:'#FEF8E3',cal:360,prot:24,fat:8,carb:44,fiber:6,gi:'Bajo–Moderado (45–50)',
+   ingredients:['Atún en agua','Camote','Zanahoria','Huevo','Avena integral','Limón'],
+   insumos:[{ing:'Atún en agua (lata)',g:120},{ing:'Camote',g:150},{ing:'Zanahoria',g:60},{ing:'Huevo',g:50},{ing:'Avena integral',g:30}],
+   vitamins:['Omega-3','Vitamina A','Vitamina B12','Calcio','Hierro'],benefits:['Omega-3 cognitivo','Vitamina A para la vista','Proteína para crecimiento'],tags:['Omega-3','Vitamina A','Infantil']},
+  {marca:'kifud',name:'Mini hamburguesas de lentejas y queso',emoji:'🍔',color:'#E6FEF5',cal:380,prot:20,fat:10,carb:50,fiber:8,gi:'Bajo–Moderado (45–52)',
+   ingredients:['Lentejas','Queso Oaxaca','Pan integral','Jitomate','Lechuga','Mostaza'],
+   insumos:[{ing:'Lentejas',g:100},{ing:'Queso Oaxaca',g:60},{ing:'Pan integral',g:60},{ing:'Jitomate',g:60}],
+   vitamins:['Hierro vegetal','Folato','Calcio','Vitamina K','Fibra'],benefits:['Alta fibra','Calcio de queso','Proteína vegetal'],tags:['Alta fibra','Vegetal','Calcio']},
+  {marca:'kifud',name:'Rollitos de pollo y espinaca integral',emoji:'🌯',color:'#FEEFEE',cal:340,prot:22,fat:9,carb:42,fiber:5,gi:'Bajo (40–46)',
+   ingredients:['Pollo desmenuzado','Espinaca','Tortilla integral','Queso','Jitomate','Aguacate'],
+   insumos:[{ing:'Pollo desmenuzado',g:140},{ing:'Espinaca',g:60},{ing:'Tortilla integral',g:60},{ing:'Aguacate',g:40}],
+   vitamins:['Vitamina K','Vitamina C','Calcio','Hierro','Vitamina B6'],benefits:['Vitaminas liposolubles','Bajo IG','Grasas buenas para el cerebro'],tags:['Vitamina K','Bajo IG','Infantil']},
+];
+
+// Pedidos semanales: por día, por marca, 2 platillos con personas
+const PEDIDOS_SEMANA = [
+  {dia:'Lunes', fecha:'31 mar', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Pollo al limón con quinoa',personas:5},{name:'Bowl mediterráneo de pollo',personas:2}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Croquetitas de atún con puré de camote',personas:4},{name:'Mini hamburguesas de lentejas',personas:2}]},
+  ]},
+  {dia:'Martes', fecha:'1 abr', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Salmón glaseado con puré de coliflor',personas:6},{name:'Pollo a la mostaza con verduras',personas:2}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Mini hamburguesas de lentejas',personas:4},{name:'Rollitos de pollo y espinaca',personas:2}]},
+    {marca:'kiwilu', label:'Kiwilu', platillos:[{name:'Plan diabético · menú B',personas:2}]},
+  ]},
+  {dia:'Miércoles', fecha:'2 abr', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Bowl de res con quinoa y verduras',personas:7},{name:'Salmón al horno',personas:4}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Croquetitas de atún con puré de camote',personas:4},{name:'Rollitos de pollo y espinaca',personas:2}]},
+  ]},
+  {dia:'Jueves', fecha:'3 abr', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Pollo a la mostaza con verduras',personas:8},{name:'Bowl mediterráneo de pollo',personas:0}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Rollitos de pollo y espinaca',personas:5},{name:'Mini hamburguesas de lentejas',personas:0}]},
+    {marca:'kiwilu', label:'Kiwilu', platillos:[{name:'Plan renal · menú C',personas:3}]},
+  ]},
+  {dia:'Viernes', fecha:'4 abr', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Bowl mediterráneo de pollo',personas:7},{name:'Pollo al limón con quinoa',personas:0}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Nidos de pasta integral',personas:5},{name:'Mini hamburguesas de lentejas',personas:0}]},
+    {marca:'kiwilu', label:'Kiwilu', platillos:[{name:'Plan diabético · menú D',personas:4}]},
+  ]},
+];
+
+const REVIEWS = [
+  {mama:'Claudia M.',nino:'Emilio',stars:5,tag:'¡Le encantó!',tagColor:'palm',txt:'El pollo al limón fue un hit. Mi hijo llegó a casa preguntando cuándo volvía a tener esa lonchera.',dish:'Pollo al limón · Lunes 7 Abr',marca:'kifud'},
+  {mama:'Fernanda R.',nino:'Isabella',stars:5,tag:'Se lo comió todo',tagColor:'kifud',txt:'Isabella es muy selectiva con la comida y se acabó todo. Eso dice más que cualquier comentario que yo pueda hacer.',dish:'Pasta integral con atún · Martes 8 Abr',marca:'kifud'},
+  {mama:'Patricia G.',nino:'Mateo',stars:5,tag:'¡Le encantó!',tagColor:'palm',txt:'Mateo ya come el brócoli gracias a como lo preparan. Nunca creí que lo vería comer verduras sin drama.',dish:'Pollo a la mostaza + brócoli · Jueves 3 Abr',marca:'kifud'},
+  {mama:'Ana L.',nino:null,stars:5,tag:'Me salvó la semana',tagColor:'palm',txt:'Las porciones del menú NutriPalm son perfectas para mis tiempos. Llego a casa, caliento y listo.',dish:'Bowl de res · Mié 2 Abr',marca:'palm'},
+  {mama:'Sofía R.',nino:'Diego',stars:4,tag:'Buena variedad',tagColor:'kiwilu',txt:'El menú estuvo muy variado. La única observación es que Diego prefiere menos cebolla cruda. En general, todo excelente.',dish:'Bowl mediterráneo · Vie 28 Mar',marca:'palm'},
+];
+
+const MARCA_COLOR = {palm:'var(--palm)',kifud:'var(--kifud)',kiwilu:'var(--kiwilu)',chef:'var(--chef)'};
+const MARCA_L = {palm:'var(--palm-l)',kifud:'var(--kifud-l)',kiwilu:'var(--kiwilu-l)',chef:'var(--chef-l)'};
+const MARCA_D = {palm:'var(--palm-d)',kifud:'var(--kifud-d)',kiwilu:'var(--kiwilu-d)',chef:'var(--chef-d)'};
+
+const DAYS = ['Lunes','Martes','Miércoles','Jueves','Viernes'];
+const WEEKS = [
+  {label:'Esta semana (31 mar–4 abr)', locked:true},
+  {label:'Próxima semana (7–11 abr)', locked:false},
+  {label:'Semana tentativa (14–18 abr)', locked:false, tentative:true},
+];
+let menus = [
+  [[null,null],[null,null],[null,null],[null,null],[null,null]], // week 0 – locked
+  [[null,null],[null,null],[null,null],[null,null],[null,null]], // week 1 – próxima
+  [[null,null],[null,null],[null,null],[null,null],[null,null]], // week 2 – tentativa
+];
+let activeWeek = 0;
+let activeSlot = null;
+let builderMarca = 'palm';
+let currentPhoto = null;
+
+/* ─── VIEWS ─── */
+function showV(id, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('v-'+id).classList.add('active');
+  document.querySelectorAll('.sbtn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  if(id==='menu'){renderWeekInfoCard();renderMenuNota();renderBuilder();renderDPList();}
+  if(id==='platillos') renderGrid('all');
+  if(id==='resenas') renderReviews('all');
+  if(id==='pedidos'){renderPedidosStatusBar();renderPedidos();}
+  if(id==='compras') renderCompras();
+}
+
+/* ─── PEDIDOS ─── */
+let activePedidosSemana = 0;
+
+const PEDIDOS_PROXIMA = [
+  {dia:'Lunes', fecha:'7 abr', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Salmón glaseado con puré de coliflor',personas:8},{name:'Bowl mediterráneo de pollo',personas:4}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Rollitos de pollo y espinaca integral',personas:6},{name:'Croquetitas de atún con puré de camote',personas:3}]},
+  ]},
+  {dia:'Martes', fecha:'8 abr', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Pollo al limón con quinoa',personas:7},{name:'Bowl de res con quinoa y verduras',personas:5}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Mini hamburguesas de lentejas y queso',personas:5},{name:'Rollitos de pollo y espinaca integral',personas:2}]},
+  ]},
+  {dia:'Miércoles', fecha:'9 abr', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Pollo a la mostaza con verduras al vapor',personas:6},{name:'Salmón glaseado con puré de coliflor',personas:3}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Croquetitas de atún con puré de camote',personas:5},{name:'Mini hamburguesas de lentejas y queso',personas:0}]},
+    {marca:'kiwilu', label:'Kiwilu', platillos:[{name:'Plan diabético · menú B',personas:2}]},
+  ]},
+  {dia:'Jueves', fecha:'10 abr', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Bowl mediterráneo de pollo',personas:9},{name:'Bowl de res con quinoa y verduras',personas:0}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Rollitos de pollo y espinaca integral',personas:6},{name:'Croquetitas de atún con puré de camote',personas:0}]},
+  ]},
+  {dia:'Viernes', fecha:'11 abr', marcas:[
+    {marca:'palm', label:'NutriPalm', platillos:[{name:'Pollo al limón con quinoa',personas:8},{name:'Pollo a la mostaza con verduras al vapor',personas:2}]},
+    {marca:'kifud', label:'Kifud', platillos:[{name:'Mini hamburguesas de lentejas y queso',personas:5},{name:'Rollitos de pollo y espinaca integral',personas:2}]},
+    {marca:'kiwilu', label:'Kiwilu', platillos:[{name:'Plan renal · menú C',personas:3}]},
+  ]},
+];
+
+// Estatus de menú y clientes por semana
+const PEDIDOS_META = [
+  { // esta semana
+    menuEstatus: 'confirmado',
+    clientesTotal: 36,
+    clientesConfirmados: 36,
+    periodo: '31 mar – 4 abr',
+    data: null, // usa PEDIDOS_SEMANA
+  },
+  { // próxima semana
+    menuEstatus: 'pendiente', // 'confirmado' | 'pendiente'
+    clientesTotal: 38,
+    clientesConfirmados: 29,
+    periodo: '7 – 11 abr',
+    data: null, // usa PEDIDOS_PROXIMA
+  },
+];
+
+function setPedidosSemana(idx, btn) {
+  activePedidosSemana = idx;
+  document.querySelectorAll('#v-pedidos .wsel-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPedidosStatusBar();
+  renderPedidos();
+}
+
+function renderPedidosStatusBar() {
+  const meta = PEDIDOS_META[activePedidosSemana];
+  const menuOk = meta.menuEstatus === 'confirmado';
+  const clientesFaltan = meta.clientesTotal - meta.clientesConfirmados;
+  const clientesOk = clientesFaltan === 0;
+
+  document.getElementById('pedidos-status-bar').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:var(--light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Estatus del menú</div>
+          <div style="font-size:13px;color:var(--mid);font-weight:300">${meta.periodo}</div>
+        </div>
+        <span class="pill ${menuOk ? 'pill-ok' : 'pill-warn'}" style="font-size:12px;padding:5px 14px">${menuOk ? '✓ Confirmado' : '⏳ Pendiente'}</span>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:var(--light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Estatus de clientes</div>
+          <div style="font-size:13px;color:var(--mid);font-weight:300">${clientesOk ? 'Todos han confirmado' : `Faltan ${clientesFaltan} de confirmar`}</div>
+        </div>
+        <span class="pill ${clientesOk ? 'pill-ok' : 'pill-warn'}" style="font-size:12px;padding:5px 14px">${clientesOk ? '✓ Completo' : `${meta.clientesConfirmados} / ${meta.clientesTotal}`}</span>
+      </div>
+    </div>
+    ${!menuOk ? `<div class="menu-nota-bar" style="margin-top:10px;background:var(--warnl);border-color:rgba(196,122,0,.2);color:var(--warn)">⚠ El menú de la próxima semana aún no está confirmado. Los clientes no pueden elegir sus platillos hasta que lo publiques.</div>` : ''}`;
+}
+
+function renderPedidos() {
+  const datos = activePedidosSemana === 0 ? PEDIDOS_SEMANA : PEDIDOS_PROXIMA;
+  document.getElementById('pedidos-container').innerHTML = datos.map(dia => {
+    const total = dia.marcas.reduce((s,m) => s + m.platillos.reduce((ss,p) => ss + p.personas, 0), 0);
+    return `<div class="pedidos-day">
+      <div class="pd-header">
+        <div class="pd-dia">${dia.dia} <span style="font-size:12px;color:var(--mid);font-weight:400">${dia.fecha}</span></div>
+        <div class="pd-total">${total} personas</div>
+      </div>
+      ${dia.marcas.map(m => `
+        <div class="pd-marca-row">
+          <div class="pd-marca-label"><div class="dot dot-${m.marca}"></div>${m.label}</div>
+          ${m.platillos.map(p => p.personas > 0 ? `
+            <div class="pd-dish-chip">
+              <span class="pd-pname">${p.name}</span>
+              <span style="flex-shrink:0;font-weight:700;font-size:13px;margin-left:6px;color:${MARCA_COLOR[m.marca]}">${p.personas}</span>
+            </div>` : `<div></div>`).join('')}
+          <div>
+            <div class="pd-count">${m.platillos.reduce((s,p)=>s+p.personas,0)}</div>
+            <div class="pd-personas">personas</div>
+          </div>
+        </div>`).join('')}
+    </div>`;
+  }).join('');
+}
+
+/* ─── LISTA DE COMPRAS ─── */
+let activeComprasSemana = 0;
+
+const COMPRAS_META = [
+  {periodo:'31 mar – 4 abr', comprarAntes:'Jueves 3 abr', total:'$2,740', porciones:36},
+  {periodo:'7 – 11 abr',     comprarAntes:'Jueves 10 abr', total:'$3,080', porciones:42},
+];
+
+function setComprasSemana(idx, btn) {
+  activeComprasSemana = idx;
+  document.querySelectorAll('#v-compras .wsel-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCompras();
+}
+
+function calcInsumos(datos) {
+  const totals = {};
+  datos.forEach(dia => {
+    dia.marcas.forEach(m => {
+      m.platillos.forEach(p => {
+        if(p.personas <= 0) return;
+        const dish = DB.find(d => d.name === p.name);
+        if(!dish || !dish.insumos) return;
+        dish.insumos.forEach(ins => {
+          const key = ins.ing;
+          if(!totals[key]) totals[key] = {total_g: 0, platillos: [], marca: m.marca};
+          totals[key].total_g += ins.g * p.personas;
+          if(!totals[key].platillos.includes(p.name)) totals[key].platillos.push(p.name);
+        });
+      });
+    });
+  });
+  return totals;
+}
+
+function renderCompras() {
+  const meta = COMPRAS_META[activeComprasSemana];
+  const menuConfirmado = activeComprasSemana === 0 || PEDIDOS_META[1].menuEstatus === 'confirmado';
+  const datos = activeComprasSemana === 0 ? PEDIDOS_SEMANA : PEDIDOS_PROXIMA;
+
+  // Header bar
+  document.getElementById('lc-header-bar').innerHTML = menuConfirmado
+    ? `<div class="lc-total-bar">
+        <div>
+          <div class="lc-total-label">Insumos estimados · ${meta.periodo}</div>
+          <div class="lc-total-val">${meta.total}</div>
+          <div class="lc-total-sub">${meta.porciones} porciones · NutriPalm + Kifud + Kiwilu</div>
+        </div>
+        <div style="text-align:right">
+          <div class="lc-total-label">Comprar antes del</div>
+          <div style="font-size:22px;font-weight:700;color:#fff;font-family:'Playfair Display',serif">${meta.comprarAntes}</div>
+        </div>
+      </div>`
+    : `<div class="menu-nota-bar" style="background:var(--warnl);border-color:rgba(196,122,0,.2);color:var(--warn);margin-bottom:4px">
+        ⚠ El menú de esta semana aún no está confirmado. La lista de compras es un estimado preliminar.
+      </div>
+      <div class="lc-total-bar" style="opacity:.7">
+        <div>
+          <div class="lc-total-label">Estimado preliminar · ${meta.periodo}</div>
+          <div class="lc-total-val">${meta.total}</div>
+          <div class="lc-total-sub">${meta.porciones} porciones estimadas</div>
+        </div>
+        <div style="text-align:right">
+          <div class="lc-total-label">Comprar antes del</div>
+          <div style="font-size:22px;font-weight:700;color:#fff;font-family:'Playfair Display',serif">${meta.comprarAntes}</div>
+        </div>
+      </div>`;
+
+  const totals = calcInsumos(datos);
+  const proteinas = ['Pechuga','Salmón','Res','Muslo','Pollo','Atún'];
+  const verduras = ['Calabacita','Espinaca','Brócoli','Coliflor','Pepino','Tomate','Jitomate','Zanahoria','Camote','Aguacate','Pimiento','Cebolla','Lechuga'];
+  const grupos = {'Proteínas':[], 'Verduras y frutas':[], 'Granos y lácteos':[]};
+  Object.entries(totals).forEach(([ing, data]) => {
+    const item = {ing, ...data};
+    if(proteinas.some(p => ing.includes(p))) grupos['Proteínas'].push(item);
+    else if(verduras.some(v => ing.includes(v))) grupos['Verduras y frutas'].push(item);
+    else grupos['Granos y lácteos'].push(item);
+  });
+  const colores = {'Proteínas':'palm','Verduras y frutas':'kiwilu','Granos y lácteos':'kifud'};
+  document.getElementById('lc-grid').innerHTML = Object.entries(grupos).filter(([,items])=>items.length>0).map(([grupo, items]) => {
+    const m = colores[grupo] || 'palm';
+    return `<div class="lc-card">
+      <div class="lc-card-h">
+        <div class="lc-card-title"><div class="dot dot-${m}"></div>${grupo}</div>
+        <span style="font-size:11px;color:var(--light);font-weight:600">${items.length} ingredientes</span>
+      </div>
+      ${items.map(item => {
+        const display = item.total_g >= 1000 ? (item.total_g/1000).toFixed(1)+' kg' : item.total_g+' g';
+        return `<div class="lc-item">
+          <div><div class="lc-ing">${item.ing}</div><div class="lc-platillo-tag">${item.platillos.slice(0,2).join(' · ')}${item.platillos.length>2?' +más':''}</div></div>
+          <div class="lc-qty">${display}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+
+/* ─── BUILDER ─── */
+const WEEK_DATA = [
+  {titulo:'Menú de esta semana',   periodo:'31 marzo – 4 abril',   deadline:null,            locked:true},
+  {titulo:'Menú de la próxima semana', periodo:'7 – 11 abril',     deadline:'viernes 4 abr', locked:false},
+  {titulo:'Menú de la siguiente semana', periodo:'14 – 18 abril',  deadline:'viernes 11 abr',locked:false},
+];
+const NOTA_MARCA = {
+  palm:'NutriPalm · Recuerda que tienes hasta el viernes para publicar el menú de la siguiente semana.',
+  kifud:'Kifud · Recuerda que tienes hasta el viernes para publicar el menú de las loncheras.',
+};
+
+function renderWeekInfoCard() {
+  const w = WEEK_DATA[activeWeek];
+  const menu = menus[activeWeek];
+  const filled = menu.flat().filter(v=>v!==null).length;
+  if(w.locked) {
+    document.getElementById('week-info-card').innerHTML = `
+      <div class="wic wic-locked">
+        <div class="wic-body">
+          <div>
+            <div class="wic-title">${w.titulo}</div>
+            <div class="wic-periodo">${w.periodo}</div>
+            <div class="wic-confirmed">🔒 Menú confirmado — no se puede modificar</div>
+          </div>
+        </div>
+      </div>`;
+  } else {
+    document.getElementById('week-info-card').innerHTML = `
+      <div class="wic wic-open">
+        <div class="wic-body">
+          <div>
+            <div class="wic-title">${w.titulo}</div>
+            <div class="wic-periodo">${w.periodo}</div>
+            <div class="wic-meta">
+              <div class="wic-deadline">Fecha límite para publicar: <strong>${w.deadline}</strong></div>
+              <div class="wic-slots">${filled === 0 ? 'Aún no has asignado platillos esta semana' : filled < 10 ? `${filled} de 10 platillos asignados` : '✓ Menú completo, listo para confirmar'}</div>
+            </div>
+          </div>
+          <button class="wic-publish" onclick="publishMenu()">Confirmar menú →</button>
+        </div>
+      </div>`;
+  }
+}
+
+function renderMenuNota() {
+  const nota = NOTA_MARCA[builderMarca];
+  document.getElementById('menu-nota').innerHTML = nota
+    ? `<div class="menu-nota-bar">💡 ${nota}</div>`
+    : '';
+}
+
+function setWeek(idx, btn) {
+  activeWeek = idx;
+  activeSlot = null;
+  document.querySelectorAll('.wsel-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderWeekInfoCard();
+  renderBuilder();
+  renderDPList();
+}
+function setBuilderMarca(m, btn) {
+  builderMarca = m;
+  document.querySelectorAll('.btab').forEach(t => t.className='btab');
+  btn.className = 'btab active-'+m;
+  renderMenuNota(); renderBuilder(); renderDPList();
+}
+function renderBuilder() {
+  const menu = menus[activeWeek];
+  const locked = WEEK_DATA[activeWeek].locked;
+  const m = builderMarca;
+  document.getElementById('builder-days').innerHTML = DAYS.map((day,di) => `
+    <div class="dayslot">
+      <div class="dslh"><div class="dsld">${day}</div><div class="dslt">${locked ? '🔒 Confirmado' : menu[di].filter(v=>v!==null).length+'/2 opciones'}</div></div>
+      <div class="drow2">
+        ${[0,1].map(si => {
+          const idx = menu[di][si];
+          if(locked) return `<div class="locked-slot">${idx!==null ? DB[idx].emoji+' '+DB[idx].name : 'Sin asignar'}</div>`;
+          if(idx!==null){const d=DB[idx];return `<div class="adish adish-${m}"><div><div class="adn adn-${m}">${d.emoji} ${d.name}</div><div class="adm adm-${m}">${d.cal} kcal · ${d.prot}g prot</div></div><button class="adrm" onclick="removeDish(${di},${si})">×</button></div>`;}
+          return `<button class="eslot" onclick="setSlot(${di},${si})">+ Opción ${si+1}</button>`;
+        }).join('')}
+      </div>
+    </div>`).join('');
+}
+function setSlot(di,si){activeSlot={di,si};renderDPList();}
+function assignDish(idx){
+  if(!activeSlot||WEEK_DATA[activeWeek].locked) return;
+  menus[activeWeek][activeSlot.di][activeSlot.si]=idx; activeSlot=null;
+  renderWeekInfoCard(); renderBuilder(); renderDPList();
+  showToast(`${DB[idx].emoji} ${DB[idx].name} asignado ✓`);
+}
+function removeDish(di,si){if(WEEK_DATA[activeWeek].locked)return;menus[activeWeek][di][si]=null;renderWeekInfoCard();renderBuilder();renderDPList();}
+function publishMenu(){
+  const menu=menus[activeWeek]; const filled=menu.flat().filter(v=>v!==null).length;
+  if(filled<5){showToast('Asigna al menos una opción por día antes de confirmar');return;}
+  showToast(`¡Menú de ${WEEK_DATA[activeWeek].titulo} confirmado! Los clientes ya pueden verlo ✓`);
+}
+
+/* ─── PANEL PLATILLOS ─── */
+function renderDPList(filter=''){
+  const db=DB.map((d,i)=>({...d,i})).filter(d=>(d.marca===builderMarca||d.marca==='all')&&d.name.toLowerCase().includes(filter.toLowerCase()));
+  const menu=menus[activeWeek]; const used=menu.flat().filter(v=>v!==null);
+  document.getElementById('dplist').innerHTML=db.map(d=>{
+    const inUse=used.includes(d.i); const tc=`dta-${builderMarca}`;
+    return `<div class="ditem${inUse?' in-use':''}" onclick="assignDish(${d.i})">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="dinm">${d.emoji} ${d.name}</div>${inUse?'<span style="font-size:10px;color:var(--palm-d);background:var(--palm-l);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-left:6px;font-weight:700">En menú</span>':''}</div>
+      <div class="dimac"><span class="dimm">${d.cal} kcal</span><span class="dimm">${d.prot}g prot</span></div>
+      <div class="ditg">${d.tags.map(t=>`<span class="${tc}">${t}</span>`).join('')}</div>
+      <div style="margin-top:5px;font-size:11px;color:var(--mid)">Toca para asignar · <span style="color:var(--palm);font-weight:600;cursor:pointer" onclick="event.stopPropagation();openDet(${d.i})">ver detalle →</span></div>
+    </div>`;
+  }).join('');
+}
+function filterDPList(v){renderDPList(v);}
+
+/* ─── GRID PLATILLOS ─── */
+function renderGrid(f){
+  const db=f==='all'?DB:DB.filter(d=>d.marca===f);
+  const mc={palm:'dc2-palm',kifud:'dc2-kifud',kiwilu:'dc2-kiwilu'};
+  document.getElementById('dgrid').innerHTML=db.map(d=>`
+    <div class="dc2 ${mc[d.marca]||'dc2-palm'}" onclick="openDet(${DB.indexOf(d)})">
+      <div class="dc2img" style="background:${d.color}">${d.emoji}</div>
+      <div class="dc2body"><div class="dc2n">${d.name}</div><div class="dc2m"><span class="dc2mm">${d.cal} kcal</span><span class="dc2mm">${d.prot}g prot</span></div><div class="dc2t">${d.tags.map(t=>`<span class="dc2ta">${t}</span>`).join('')}</div><div style="margin-top:8px;font-size:11px;color:var(--palm);font-weight:600">Ver detalle →</div></div>
+    </div>`).join('');
+}
+function filterPlatillos(m,btn){
+  document.querySelectorAll('#v-platillos .mtab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active'); renderGrid(m);
+}
+
+/* ─── DETALLE ─── */
+function openDet(idx){
+  const d=DB[idx];
+  document.getElementById('det-title').textContent=d.name;
+  document.getElementById('det-emoji').textContent=d.emoji;
+  document.getElementById('det-emoji').style.background=d.color;
+  document.getElementById('det-name').textContent=d.name;
+  document.getElementById('det-gi').textContent=`Índice glucémico ${d.gi}`;
+  document.getElementById('det-macros').innerHTML=[{v:d.cal,l:'kcal'},{v:d.prot+'g',l:'proteína'},{v:d.fat+'g',l:'grasas'},{v:d.carb+'g',l:'carbos'},{v:d.fiber+'g',l:'fibra'}].map(m=>`<div class="det-macro"><div class="det-mv">${m.v}</div><div class="det-ml">${m.l}</div></div>`).join('');
+  document.getElementById('det-ingredients').innerHTML=d.ingredients.map(i=>`<span class="itag">${i}</span>`).join('');
+  document.getElementById('det-vitamins').innerHTML=d.vitamins.map(v=>`<span class="vtag">${v}</span>`).join('');
+  document.getElementById('det-benefits').innerHTML=d.benefits.map(b=>`<div class="det-ben"><div class="det-dot"></div>${b}</div>`).join('');
+  const btn=document.getElementById('det-add-btn');
+  if(activeSlot&&!WEEK_DATA[activeWeek].locked){btn.style.display='inline-block';btn.textContent=`+ Asignar a ${DAYS[activeSlot.di]} · Opción ${activeSlot.si+1}`;btn.onclick=()=>{assignDish(idx);closeDet();};}
+  else{btn.style.display='none';}
+  document.getElementById('modal-det').style.display='flex';
+}
+function closeDet(){document.getElementById('modal-det').style.display='none';}
+
+/* ─── RESEÑAS ─── */
+function renderReviews(f){
+  const list=f==='all'?REVIEWS:REVIEWS.filter(r=>r.marca===f);
+  const avc={palm:'rev-av-palm',kifud:'rev-av-kifud',kiwilu:'rev-av-kiwilu'};
+  const ts={palm:'background:var(--palm-l);color:var(--palm-d)',kifud:'background:var(--kifud-l);color:var(--kifud-d)',kiwilu:'background:var(--kiwilu-l);color:var(--kiwilu-d)'};
+  document.getElementById('reviews-list').innerHTML=list.map(r=>`
+    <div class="rev-row">
+      <div class="rev-av ${avc[r.marca]||'rev-av-palm'}">${r.mama[0]}${r.mama.split(' ')[1]?.[0]||''}</div>
+      <div style="flex:1">
+        <div class="rev-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+        <div class="rev-name">${r.mama}${r.nino?` <span style="font-size:11px;color:var(--mid);font-weight:300">— sobre ${r.nino}</span>`:''}</div>
+        <div class="rev-meta">${r.dish}</div>
+        <div style="display:inline-block;font-size:11px;padding:2px 10px;border-radius:100px;font-weight:600;margin:6px 0;${ts[r.tagColor]||ts.palm}">${r.tag}</div>
+        <div class="rev-txt">${r.txt}</div>
+      </div>
+    </div>`).join('');
+}
+function filterResenas(m,btn){
+  document.querySelectorAll('#v-resenas .btn-sm').forEach(b=>b.style.cssText='');
+  btn.style.borderColor='var(--palm)';btn.style.color='var(--palm)';
+  renderReviews(m);
+}
+
+/* ─── NUEVO PLATILLO ─── */
+function openModal(){document.getElementById('modal-nuevo').style.display='flex';clearPhoto();}
+function closeModal(){document.getElementById('modal-nuevo').style.display='none';}
+function saveD(){
+  const nom=document.getElementById('d-nombre').value.trim();
+  if(!nom){showToast('El nombre del platillo es obligatorio');return;}
+  const giMap={'bajo':'Bajo (≤ 45)','bajo-mod':'Bajo–Moderado (46–54)','moderado':'Moderado (55–65)'};
+  const ings=(document.getElementById('d-ing').value||'').split(',').map(s=>s.trim()).filter(Boolean);
+  DB.push({
+    marca:document.getElementById('d-marca').value, name:nom,
+    emoji:document.getElementById('d-emoji').value||'🍽',
+    color:document.getElementById('d-color').value+'44',
+    cal:parseInt(document.getElementById('d-cal').value)||400,
+    prot:parseInt(document.getElementById('d-prot').value)||25,
+    fat:12, carb:parseInt(document.getElementById('d-carb').value)||38,
+    fiber:parseInt(document.getElementById('d-fiber').value)||5,
+    gi:giMap[document.getElementById('d-gi').value],
+    ingredients:ings,
+    insumos:ings.map(i=>({ing:i,g:100})), // estimado por defecto
+    vitamins:['Vitaminas del complejo B','Minerales esenciales'],
+    benefits:(document.getElementById('d-ben').value||'').split('\n').map(s=>s.trim()).filter(Boolean),
+    tags:(document.getElementById('d-tags').value||'').split(',').map(s=>s.trim()).filter(Boolean),
+  });
+  closeModal(); renderGrid('all'); renderDPList();
+  showToast(`✓ "${nom}" guardado en tu banco de platillos`);
+}
+function handlePhotoFile(f){
+  if(!f)return; if(f.size>5*1024*1024){showToast('La imagen debe ser menor a 5 MB');return;}
+  const r=new FileReader();
+  r.onload=e=>{currentPhoto=e.target.result;document.getElementById('photo-img').src=currentPhoto;document.getElementById('photo-name').textContent=f.name+' · '+(f.size/1024).toFixed(0)+' KB';document.getElementById('photo-placeholder').style.display='none';document.getElementById('photo-preview').style.display='flex';document.getElementById('photo-drop').style.borderColor='var(--palm)';};
+  r.readAsDataURL(f);
+}
+function handleDrop(e){e.preventDefault();handlePhotoFile(e.dataTransfer.files[0]);}
+function clearPhoto(){currentPhoto=null;document.getElementById('photo-input').value='';document.getElementById('photo-img').src='';document.getElementById('photo-name').textContent='';document.getElementById('photo-placeholder').style.display='block';document.getElementById('photo-preview').style.display='none';document.getElementById('photo-drop').style.borderColor='';}
+
+/* ─── PERFIL ─── */
+function toggleCk(label){const inp=label.querySelector('input');inp.checked=!inp.checked;label.classList.toggle('checked',inp.checked);}
+
+/* ─── MODAL CLOSE ─── */
+['modal-nuevo','modal-det'].forEach(id=>{document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.style.display='none';});});
+
+/* ─── TOAST ─── */
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.opacity='1';clearTimeout(t._to);t._to=setTimeout(()=>t.style.opacity='0',3200);}
+
+/* ─── INIT ─── */
+renderPedidosStatusBar();
+renderPedidos();
+renderWeekInfoCard();
+renderMenuNota();
+renderBuilder();
+renderDPList();
+</script>
+</body>
+</html>
