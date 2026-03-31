@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Únete a Nutrilú · Registro Nutrióloga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --dark:#1A1A18;--mid:#5F5E5A;--light:#B4B2A9;--off:#F7F5F0;--white:#fff;--cream:#F3F1EC;--border:rgba(0,0,0,.07);
+  --palm:#1D9E75;--palm-l:#E1F5EE;--palm-d:#085041;--palm-m:#5FC4A4;
+  --kifud:#F0BC32;--kifud-l:#FEF8E3;--kifud-d:#633806;
+  --kiwilu:#7F77DD;--kiwilu-l:#EEEDFE;--kiwilu-d:#3C3489;
+  --chef:#D85A30;--chef-l:#FAECE7;--chef-d:#712B13;
+  --ok:#15803D;--okl:#DCFCE7;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--off);color:var(--dark);min-height:100vh;display:grid;grid-template-columns:400px 1fr}
+
+/* ══ PANEL IZQUIERDO ══ */
+.left{background:var(--dark);display:flex;flex-direction:column;padding:36px 40px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.left-logo{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:600;text-decoration:none;margin-bottom:44px;display:block;letter-spacing:-.02em}
+.left-logo em{font-style:italic;color:rgba(255,255,255,.3);font-size:17px}
+.progress-label{font-size:10px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:14px}
+.pstep{display:flex;align-items:flex-start;gap:14px;padding:11px 0;position:relative}
+.pstep:not(:last-child)::after{content:'';position:absolute;left:13px;top:36px;width:1px;height:calc(100% - 12px);background:rgba(255,255,255,.07)}
+.pstep-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;transition:.25s;position:relative;z-index:1}
+.pstep.done .pstep-num{background:var(--palm-m);color:#fff}
+.pstep.active .pstep-num{background:#fff;color:var(--dark);box-shadow:0 0 0 4px rgba(255,255,255,.12)}
+.pstep.pending .pstep-num{background:rgba(255,255,255,.07);color:rgba(255,255,255,.2)}
+.pstep-title{font-size:13px;font-weight:600}
+.pstep.done .pstep-title{color:rgba(255,255,255,.4)}
+.pstep.active .pstep-title{color:#fff}
+.pstep.pending .pstep-title{color:rgba(255,255,255,.18)}
+.pstep-sub{font-size:11px;margin-top:2px}
+.pstep.done .pstep-sub{color:rgba(255,255,255,.22)}
+.pstep.active .pstep-sub{color:rgba(255,255,255,.45)}
+.pstep.pending .pstep-sub{color:rgba(255,255,255,.1)}
+.left-bottom{margin-top:auto}
+.left-quote{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:20px}
+.left-quote em{color:var(--palm-m);font-style:normal}
+.left-trust{display:flex;flex-direction:column;gap:9px}
+.lt-item{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:rgba(255,255,255,.3);line-height:1.5}
+.lt-dot{width:5px;height:5px;border-radius:50%;background:var(--palm-m);flex-shrink:0;margin-top:4px}
+
+/* ══ PANEL DERECHO ══ */
+.right{display:flex;flex-direction:column;min-height:100vh}
+.right-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 52px;border-bottom:1px solid var(--border);background:rgba(247,245,240,.96);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.rn-back{font-size:13px;color:var(--mid);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .15s}
+.rn-back:hover{color:var(--dark)}
+.rn-step{font-size:12px;color:var(--light)}
+.right-body{flex:1;padding:48px 52px;max-width:600px}
+.step-eyebrow{font-size:11px;color:var(--palm);text-transform:uppercase;letter-spacing:.13em;font-weight:600;margin-bottom:12px}
+.step-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:var(--dark);line-height:1.1;margin-bottom:8px}
+.step-title em{color:var(--palm);font-style:italic;font-weight:400}
+.step-sub{font-size:15px;color:var(--mid);line-height:1.7;font-weight:300;margin-bottom:32px}
+
+/* ── CAMPOS ── */
+.field{margin-bottom:18px}
+.field label{display:block;font-size:11px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--dark);background:var(--white);outline:none;transition:.15s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--palm);box-shadow:0 0 0 3px rgba(29,158,117,.08)}
+.field textarea{resize:vertical;min-height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field-hint{font-size:12px;color:var(--light);margin-top:5px;line-height:1.5}
+.field-opt{font-weight:300;text-transform:none;letter-spacing:0;font-size:11px}
+
+/* ── CHIPS ── */
+.chips-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:100px;border:1.5px solid var(--border);font-size:12.5px;font-weight:600;cursor:pointer;user-select:none;transition:.15s;background:var(--white);color:var(--mid)}
+.chip:hover{border-color:rgba(29,158,117,.4);color:var(--palm-d)}
+.chip.on{background:var(--palm-l);border-color:var(--palm);color:var(--palm-d)}
+.chip svg{width:11px;height:11px;flex-shrink:0;opacity:0;transition:.12s}
+.chip.on svg{opacity:1}
+.chips-block{margin-bottom:24px}
+.chips-block-title{font-size:11px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.chips-block-hint{font-size:12px;color:var(--light);font-weight:300;margin-bottom:10px;line-height:1.5}
+
+/* ── SERVICIOS ── */
+.svc-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:12px;transition:.2s;cursor:pointer}
+.svc-card:hover{border-color:rgba(0,0,0,.15)}
+.svc-card.sel{border-color:var(--palm);box-shadow:0 0 0 1px var(--palm)}
+.svc-head{display:flex;align-items:flex-start;gap:12px}
+.svc-check{width:20px;height:20px;border-radius:5px;border:2px solid var(--border);flex-shrink:0;margin-top:2px;transition:.15s;position:relative;background:var(--white)}
+.svc-card.sel .svc-check{background:var(--palm);border-color:var(--palm)}
+.svc-card.sel .svc-check::after{content:'';position:absolute;left:4px;top:1px;width:6px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg)}
+.svc-body{flex:1}
+.svc-top{display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-palm{background:var(--palm)}.dot-kifud{background:var(--kifud)}.dot-kiwilu{background:var(--kiwilu)}.dot-chef{background:var(--chef)}
+.svc-name{font-size:14px;font-weight:700;color:var(--dark)}
+.svc-tipo{font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px}
+.tipo-lote{background:var(--palm-l);color:var(--palm-d)}
+.tipo-ind{background:var(--kiwilu-l);color:var(--kiwilu-d)}
+.tipo-clinico{background:var(--chef-l);color:var(--chef-d)}
+.svc-desc{font-size:12px;color:var(--mid);font-weight:300;line-height:1.55;margin-bottom:10px}
+.svc-req-list{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.svc-req{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--mid)}
+.req-ok{width:16px;height:16px;border-radius:50%;background:var(--okl);color:var(--ok);font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.req-pend{width:16px;height:16px;border-radius:50%;background:#FEF8E3;color:#7A5800;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.svc-chips{display:flex;flex-wrap:wrap;gap:5px}
+.svc-chip{font-size:11px;background:var(--cream);color:var(--mid);padding:2px 9px;border-radius:100px;font-weight:500}
+.svc-chip-chef{background:var(--chef-l);color:var(--chef-d)}
+
+/* ── DISCLAIMERS ── */
+.disc-row{display:flex;align-items:flex-start;gap:12px;cursor:pointer;padding:14px 16px;background:var(--white);border:1.5px solid var(--border);border-radius:12px;margin-bottom:10px;transition:.15s}
+.disc-row:hover{border-color:rgba(0,0,0,.14)}
+.disc-row.checked{border-color:var(--palm);background:var(--palm-l)}
+.dchk{width:18px;height:18px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;margin-top:2px;transition:.15s;position:relative;background:var(--white)}
+.disc-row.checked .dchk{background:var(--palm);border-color:var(--palm)}
+.disc-row.checked .dchk::after{content:'';position:absolute;left:3px;top:1px;width:6px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg)}
+.disc-txt{font-size:12.5px;color:var(--mid);line-height:1.65}
+.disc-row.checked .disc-txt{color:var(--palm-d)}
+.disc-txt a{color:var(--palm);font-weight:600;text-decoration:none}
+
+/* ── ÉXITO ── */
+.success-wrap{text-align:center;padding:52px 20px}
+.success-icon{font-size:56px;margin-bottom:20px}
+.success-title{font-family:'Playfair Display',serif;font-size:38px;font-weight:600;color:var(--dark);margin-bottom:12px;line-height:1.1}
+.success-title em{color:var(--palm);font-style:italic;font-weight:400}
+.success-sub{font-size:15px;color:var(--mid);line-height:1.75;font-weight:300;max-width:440px;margin:0 auto 32px}
+.ss-steps{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto 36px;text-align:left}
+.ss-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border)}
+.ss-num{width:26px;height:26px;border-radius:50%;background:var(--palm);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px}
+.ss-title{font-size:13.5px;font-weight:600;color:var(--dark);margin-bottom:2px}
+.ss-sub{font-size:12px;color:var(--mid);line-height:1.5}
+
+/* ── BOTONES ── */
+.btn-primary{background:var(--palm);color:#fff;border:none;padding:14px 36px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;width:100%;transition:.15s}
+.btn-primary:hover{background:var(--palm-d)}
+.btn-primary:disabled{background:var(--light);cursor:not-allowed;opacity:.6}
+.btn-ghost{background:transparent;color:var(--mid);border:1.5px solid var(--border);padding:14px 28px;border-radius:100px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;width:100%;margin-top:10px;transition:.15s}
+.btn-ghost:hover{border-color:var(--palm);color:var(--palm)}
+.btns{display:flex;flex-direction:column;gap:0}
+.step{display:none}
+.step.active{display:block;animation:fadeIn .3s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:12px 24px;border-radius:100px;font-size:13px;z-index:9999;opacity:0;transition:opacity .3s;white-space:nowrap;font-weight:500;pointer-events:none}
+@media(max-width:900px){body{grid-template-columns:1fr}.left{display:none}.right-body{padding:36px 24px}.right-nav{padding:16px 24px}}
+</style>
+</head>
+<body>
+
+<!-- ══ IZQUIERDO ══ -->
+<div class="left">
+  <a href="nutrilu-index.html" class="left-logo">Nutri<em>lú</em></a>
+  <div style="margin-bottom:44px">
+    <div class="progress-label">Tu proceso de registro</div>
+    <div class="pstep active" data-step="1">
+      <div class="pstep-num">1</div>
+      <div><div class="pstep-title">Datos profesionales</div><div class="pstep-sub">Cédula, universidad y experiencia</div></div>
+    </div>
+    <div class="pstep pending" data-step="2">
+      <div class="pstep-num">2</div>
+      <div><div class="pstep-title">Tus servicios</div><div class="pstep-sub">Elige en qué marcas participar</div></div>
+    </div>
+    <div class="pstep pending" data-step="3">
+      <div class="pstep-num">3</div>
+      <div><div class="pstep-title">Tu estilo</div><div class="pstep-sub">Cómo te conocerán los clientes</div></div>
+    </div>
+  </div>
+  <div class="left-bottom">
+    <div class="left-quote">"Tú diseñas y ejecutas.<br><em>Nosotros conectamos y administramos.</em>"</div>
+    <div class="left-trust">
+      <div class="lt-item"><div class="lt-dot"></div>Sin inversión inicial de tu parte</div>
+      <div class="lt-item"><div class="lt-dot"></div>Tú decides en qué marcas participar</div>
+      <div class="lt-item"><div class="lt-dot"></div>Pago semanal automático</div>
+      <div class="lt-item"><div class="lt-dot"></div>Tu nombre en cada contenedor que entregas</div>
+      <div class="lt-item"><div class="lt-dot"></div>Cédula verificada — las familias confían en ti</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DERECHO ══ -->
+<div class="right">
+  <div class="right-nav">
+    <a href="nutrilu-index.html" class="rn-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 3L5 8l5 5"/></svg>
+      Volver a Nutrilú
+    </a>
+    <div class="rn-step" id="rn-step">Paso 1 de 3</div>
+  </div>
+
+  <!-- ══ PASO 1 ══ -->
+  <div class="step active" id="step-1">
+    <div class="right-body">
+      <div class="step-eyebrow">Paso 1 de 3</div>
+      <h1 class="step-title">Tu perfil <em>profesional.</em></h1>
+      <p class="step-sub">Esta información valida tu cédula y construye la confianza con los clientes. Es la base de todo lo que viene.</p>
+
+      <div class="field-row">
+        <div class="field"><label>Nombre</label><input type="text" placeholder="Tu nombre" id="f-nombre"></div>
+        <div class="field"><label>Apellido</label><input type="text" placeholder="Tu apellido" id="f-apellido"></div>
+      </div>
+      <div class="field">
+        <label>Cédula profesional</label>
+        <input type="text" placeholder="Ej. 4821093" id="f-cedula">
+        <div class="field-hint">La verificamos con la SEP. Esto garantiza a las familias que una profesional certificada se encarga de su alimentación.</div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Universidad</label><input type="text" placeholder="Ej. UANL, TEC, UAdeC" id="f-uni"></div>
+        <div class="field"><label>Años de experiencia</label><input type="number" placeholder="Ej. 5" min="0" max="50" id="f-anos"></div>
+      </div>
+      <div class="field">
+        <label>Especialidades <span class="field-opt">— elige las que aplican</span></label>
+        <div class="chips-group">
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Nutrición clínica</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Pérdida de peso</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Nutrición deportiva</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Nutrición pediátrica</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Diabetes y metabolismo</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Enfermedades renales</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Cardiometabólica</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Nutrición geriátrica</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Otra especialidad</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>WhatsApp</label>
+        <input type="tel" placeholder="844 000 0000" id="f-whatsapp">
+        <div class="field-hint">Solo para coordinación interna. Nunca se comparte con clientes.</div>
+      </div>
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tu@correo.com" id="f-email">
+      </div>
+      <div class="btns">
+        <button class="btn-primary" onclick="goStep(2)">Continuar →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PASO 2 ══ -->
+  <div class="step" id="step-2">
+    <div class="right-body">
+      <div class="step-eyebrow">Paso 2 de 3</div>
+      <h1 class="step-title">¿En qué quieres <em>participar?</em></h1>
+      <p class="step-sub">Elige los servicios que quieres cubrir. Puedes activar o pausar cualquiera desde tu portal en cualquier momento, sin perder tu cuenta.</p>
+
+      <div class="svc-card" id="svc-palm" onclick="toggleSvc('palm')">
+        <div class="svc-head">
+          <div class="svc-check" id="chk-palm"></div>
+          <div class="svc-body">
+            <div class="svc-top"><div class="dot dot-palm"></div><div class="svc-name">NutriPalm</div><span class="svc-tipo tipo-lote">Por lote</span></div>
+            <div class="svc-desc">Comida saludable para adultos trabajadores. Diseñas el menú semanal y preparas las porciones para todos los suscriptores.</div>
+            <div class="svc-req-list"><div class="svc-req"><div class="req-ok">✓</div>Sin requisitos adicionales — disponible para todas</div></div>
+            <div class="svc-chips"><span class="svc-chip">📦 Producción por lote</span><span class="svc-chip">💰 ~$88 por porción</span><span class="svc-chip">🗓 Lunes a viernes</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-card" id="svc-kifud" onclick="toggleSvc('kifud')">
+        <div class="svc-head">
+          <div class="svc-check" id="chk-kifud"></div>
+          <div class="svc-body">
+            <div class="svc-top"><div class="dot dot-kifud"></div><div class="svc-name">Kifud</div><span class="svc-tipo tipo-lote">Por lote</span></div>
+            <div class="svc-desc">Loncheras escolares para niños. Diseñas el menú semanal adaptado a rangos de edad — platillos que los niños quieran comer, con alto valor nutricional.</div>
+            <div class="svc-req-list"><div class="svc-req"><div class="req-ok">✓</div>Sin requisitos adicionales — disponible para todas</div></div>
+            <div class="svc-chips"><span class="svc-chip">📦 Producción por lote</span><span class="svc-chip">💰 ~$72 por lonchera</span><span class="svc-chip">👶 3 rangos de edad</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-card" id="svc-kiwilu" onclick="toggleSvc('kiwilu')">
+        <div class="svc-head">
+          <div class="svc-check" id="chk-kiwilu"></div>
+          <div class="svc-body">
+            <div class="svc-top"><div class="dot dot-kiwilu"></div><div class="svc-name">Kiwilu</div><span class="svc-tipo tipo-ind">Individual</span></div>
+            <div class="svc-desc">Planes nutricionales individuales. Recibes el plan de cada paciente prescrito por su nutrióloga y lo cocinas con fidelidad a cada indicación.</div>
+            <div class="svc-req-list"><div class="svc-req"><div class="req-pend">!</div>Requiere cédula verificada — confirmamos antes de activar</div></div>
+            <div class="svc-chips"><span class="svc-chip">👤 Producción individual</span><span class="svc-chip">💰 Precio por paciente</span><span class="svc-chip">📋 Plan prescrito</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-card" id="svc-chef" onclick="toggleSvc('chef')">
+        <div class="svc-head">
+          <div class="svc-check" id="chk-chef"></div>
+          <div class="svc-body">
+            <div class="svc-top"><div class="dot dot-chef"></div><div class="svc-name">Nutrichef</div><span class="svc-tipo tipo-clinico">Clínico</span></div>
+            <div class="svc-desc">Alimentación clínica supervisada. Recibes planes prescritos por médicos para pacientes con condiciones como diabetes renal, hipertensión o recuperación post-quirúrgica.</div>
+            <div class="svc-req-list"><div class="svc-req"><div class="req-pend">!</div>Requiere cédula verificada + capacitación clínica</div></div>
+            <div class="svc-chips"><span class="svc-chip">🏥 Restricciones médicas</span><span class="svc-chip">💰 Precio por paciente</span><span class="svc-chip svc-chip-chef">Requiere capacitación</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--cream);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--mid);line-height:1.6;margin-bottom:24px">
+        <strong style="color:var(--dark)">Puedes cambiar esto después.</strong> Lo que elijas aquí es tu punto de partida. Desde tu portal activas o pausas servicios cuando quieras.
+      </div>
+
+      <div class="btns">
+        <button class="btn-primary" id="btn-paso2" onclick="goStep(3)" disabled>Continuar →</button>
+        <button class="btn-ghost" onclick="goStep(1)">← Regresar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PASO 3 ══ -->
+  <div class="step" id="step-3">
+    <div class="right-body">
+      <div class="step-eyebrow">Paso 3 de 3</div>
+      <h1 class="step-title">Tu <em>estilo.</em></h1>
+      <p class="step-sub">Los clientes usan esto para elegirte. Selecciona lo que describe tu forma de cocinar. Puedes editarlo en cualquier momento desde tu portal.</p>
+
+      <div class="chips-block">
+        <div class="chips-block-title">Tu estilo de cocina</div>
+        <div class="chips-block-hint">Selecciona los que realmente describen tu forma de cocinar. Esto es lo que el cliente ve cuando te compara con otras nutriólogas — elige solo los que aplican.</div>
+        <div class="chips-group">
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Sin glutamato monosódico</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Sin azúcar refinada</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Superalimentos en cada platillo</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Cocción al vapor y horneado</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Sin frituras</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Opciones sin lácteos</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Opciones sin gluten</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Cocina mexicana saludable</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Estilo mediterráneo</div>
+          <div class="chip" onclick="toggleChip(this)"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>Ingredientes locales y de temporada</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Bio <span class="field-opt">— opcional, puedes completarla después</span></label>
+        <textarea id="f-bio" placeholder="Tu filosofía de nutrición en 2–3 oraciones. Ej. Me especializo en nutrición clínica con énfasis en resultados medibles. Creo que la comida saludable debe ser también deliciosa." style="min-height:72px"></textarea>
+      </div>
+
+      <div style="height:1px;background:var(--border);margin:8px 0 24px"></div>
+
+      <!-- Disclaimer único -->
+      <div class="disc-row" id="disc2" onclick="toggleDisc('disc2')">
+        <div class="dchk" id="dchk2"></div>
+        <div class="disc-txt">
+          Confirmo que soy nutrióloga certificada y que asumo plena responsabilidad sobre la preparación, inocuidad y calidad de los alimentos que cocine para los clientes de la plataforma, de acuerdo con los <a href="#" onclick="event.stopPropagation()">Términos y Condiciones</a> de Nutrilú.
+        </div>
+      </div>
+
+      <div style="margin-top:20px" class="btns">
+        <button class="btn-primary" id="btn-enviar" onclick="goStep(4)" disabled>Enviar solicitud →</button>
+        <button class="btn-ghost" onclick="goStep(2)">← Regresar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ÉXITO ══ -->
+  <div class="step" id="step-4">
+    <div class="right-body">
+      <div class="success-wrap">
+        <div class="success-icon">🎉</div>
+        <h1 class="success-title">Solicitud<br><em>recibida.</em></h1>
+        <p class="success-sub">El equipo de Nutrilú revisará tu perfil y te escribirá por WhatsApp en menos de 24 horas para confirmar tu incorporación.</p>
+        <div class="ss-steps">
+          <div class="ss-item">
+            <div class="ss-num">1</div>
+            <div>
+              <div class="ss-title">Verificamos tu cédula</div>
+              <div class="ss-sub">Confirmamos con la SEP que eres nutrióloga certificada. Así garantizamos a las familias que un profesional de salud se encarga de su alimentación.</div>
+            </div>
+          </div>
+          <div class="ss-item">
+            <div class="ss-num">2</div>
+            <div>
+              <div class="ss-title">Activamos tu portal</div>
+              <div class="ss-sub">Una vez aprobada, recibes acceso a tu portal donde gestionas servicios, menús, pacientes y pagos desde un solo lugar.</div>
+            </div>
+          </div>
+          <div class="ss-item">
+            <div class="ss-num">3</div>
+            <div>
+              <div class="ss-title">Tu primera semana</div>
+              <div class="ss-sub">El equipo te acompaña en tu primer ciclo. Tú te enfocas en lo tuyo — nosotros en todo lo demás.</div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="showToast('Redirigiendo a tu portal...')" style="max-width:360px;margin:0 auto;display:block">Ir a mi portal →</button>
+        <div style="text-align:center;margin-top:14px">
+          <a href="nutrilu-index.html" style="font-size:13px;color:var(--mid);text-decoration:none">Volver al inicio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div id="toast"></div>
+
+<script>
+const servicios = {palm:false,kifud:false,kiwilu:false,chef:false};
+let discOk = false;
+
+function toggleSvc(m) {
+  servicios[m] = !servicios[m];
+  document.getElementById('svc-'+m).classList.toggle('sel', servicios[m]);
+  document.getElementById('btn-paso2').disabled = !Object.values(servicios).some(v=>v);
+}
+
+function toggleChip(el) { el.classList.toggle('on'); }
+
+function toggleDisc(id) {
+  discOk = !discOk;
+  document.getElementById(id).classList.toggle('checked', discOk);
+  document.getElementById('btn-enviar').disabled = !discOk;
+}
+
+function goStep(n) {
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step-'+n).classList.add('active');
+  document.querySelectorAll('.pstep').forEach(p=>{
+    const s=parseInt(p.dataset.step);
+    p.classList.remove('active','done','pending');
+    if(s<n) p.classList.add('done');
+    else if(s===n) p.classList.add('active');
+    else p.classList.add('pending');
+  });
+  document.querySelectorAll('.pstep.done .pstep-num').forEach(el=>el.textContent='✓');
+  document.querySelectorAll('.pstep:not(.done) .pstep-num').forEach(el=>{el.textContent=el.closest('.pstep').dataset.step;});
+  const labels={1:'Paso 1 de 3',2:'Paso 2 de 3',3:'Paso 3 de 3',4:'¡Solicitud enviada!'};
+  document.getElementById('rn-step').textContent=labels[n]||'';
+  window.scrollTo(0,0);
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.style.opacity=1;
+  setTimeout(()=>t.style.opacity=0,2500);
+}
+</script>
+</body>
+</html>
