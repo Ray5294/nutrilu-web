@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Familia · Nutrilú</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF7F2;
+  --cream-dark: #F2EDE4;
+  --ink: #1A1612;
+  --ink-soft: #4A4540;
+  --ink-muted: #8A8480;
+  --palm-green: #2D6A4F;
+  --palm-light: #E8F5EE;
+  --palm-mid: #52B788;
+  --kifud-orange: #E8751A;
+  --kifud-light: #FEF0E3;
+  --kifud-mid: #F4A261;
+  --kiwilu-teal: #0E7C7B;
+  --kiwilu-light: #E3F4F4;
+  --kiwilu-mid: #3AAFA9;
+  --nutrichef-plum: #6B3FA0;
+  --nutrichef-light: #F0EBF8;
+  --nutrichef-mid: #9B72CF;
+  --gold: #C9A84C;
+  --gold-light: #FBF5E6;
+  --white: #FFFFFF;
+  --shadow-sm: 0 1px 3px rgba(26,22,18,0.08);
+  --shadow-md: 0 4px 16px rgba(26,22,18,0.10);
+  --shadow-lg: 0 12px 40px rgba(26,22,18,0.13);
+  --r: 16px;
+  --r-sm: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 15px;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--cream-dark);
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.topbar-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--palm-green);
+  letter-spacing: -0.5px;
+}
+.topbar-brand span { color: var(--ink-muted); font-weight: 300; font-size: 14px; margin-left: 8px; font-family: 'DM Sans', sans-serif; }
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+.topbar-familia {
+  background: var(--gold-light);
+  border: 1.5px solid var(--gold);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.topbar-familia .star { color: var(--gold); }
+.topbar-avatar {
+  width: 36px; height: 36px;
+  background: var(--palm-green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 14px; font-weight: 600;
+  cursor: pointer;
+}
+
+/* ── LAYOUT ── */
+.layout { display: flex; min-height: calc(100vh - 60px); }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 220px;
+  background: var(--white);
+  border-right: 1px solid var(--cream-dark);
+  padding: 24px 0;
+  flex-shrink: 0;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+.sidebar-section { padding: 0 16px; margin-bottom: 8px; }
+.sidebar-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 1.2px;
+  color: var(--ink-muted); text-transform: uppercase;
+  padding: 0 8px; margin-bottom: 6px;
+}
+.sidebar-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: var(--r-sm);
+  cursor: pointer; font-size: 14px; font-weight: 500;
+  color: var(--ink-soft); transition: all 0.15s;
+  text-decoration: none;
+}
+.sidebar-item:hover { background: var(--cream); color: var(--ink); }
+.sidebar-item.active { background: var(--palm-light); color: var(--palm-green); font-weight: 600; }
+.sidebar-item .ico { font-size: 16px; width: 20px; text-align: center; }
+.sidebar-divider { height: 1px; background: var(--cream-dark); margin: 12px 16px; }
+
+/* ── MAIN ── */
+.main { flex: 1; padding: 28px 32px; max-width: 960px; }
+
+/* ── WELCOME HEADER ── */
+.welcome {
+  margin-bottom: 28px;
+}
+.welcome-greeting {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+.welcome-greeting em { font-style: italic; color: var(--palm-green); }
+.welcome-sub { color: var(--ink-muted); font-size: 14px; margin-top: 4px; }
+
+/* ── PAQUETE BANNER ── */
+.paquete-banner {
+  background: linear-gradient(135deg, var(--palm-green) 0%, #1B4D36 100%);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.paquete-banner::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+.paquete-banner::after {
+  content: '';
+  position: absolute; bottom: -60px; right: 80px;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.pb-left { position: relative; z-index: 1; }
+.pb-badge {
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 20px;
+  display: inline-block; margin-bottom: 8px;
+}
+.pb-title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px; font-weight: 600;
+  color: white; line-height: 1.2;
+}
+.pb-desc { color: rgba(255,255,255,0.75); font-size: 13px; margin-top: 4px; }
+.pb-right { display: flex; align-items: center; gap: 20px; position: relative; z-index: 1; flex-shrink: 0; }
+.pb-savings {
+  text-align: center;
+}
+.pb-savings-amount {
+  font-family: 'Fraunces', serif;
+  font-size: 28px; font-weight: 700;
+  color: var(--gold); line-height: 1;
+}
+.pb-savings-label { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 2px; }
+.pb-btn {
+  background: var(--gold);
+  color: var(--ink);
+  border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 700;
+  padding: 10px 18px; border-radius: var(--r-sm);
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.pb-btn:hover { background: #B8952A; }
+
+/* ── SECTION TITLE ── */
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title .count {
+  background: var(--cream-dark);
+  color: var(--ink-muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  padding: 2px 8px; border-radius: 20px;
+}
+.section-title .add-btn {
+  margin-left: auto;
+  background: none; border: 1.5px dashed var(--ink-muted);
+  color: var(--ink-muted); font-size: 12px; font-weight: 500;
+  padding: 4px 12px; border-radius: 20px;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s;
+}
+.section-title .add-btn:hover { border-color: var(--palm-green); color: var(--palm-green); background: var(--palm-light); }
+
+/* ── INTEGRANTE CARDS ── */
+.integrantes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.integrante-card {
+  background: var(--white);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1.5px solid transparent;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.integrante-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--cream-dark);
+  transform: translateY(-1px);
+}
+
+.ic-header {
+  padding: 16px 18px 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.ic-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  font-weight: 700;
+}
+.ic-avatar.palm { background: var(--palm-light); }
+.ic-avatar.kifud { background: var(--kifud-light); }
+.ic-avatar.nutrichef { background: var(--nutrichef-light); }
+.ic-avatar.kiwilu { background: var(--kiwilu-light); }
+.ic-avatar.multi { background: var(--gold-light); }
+
+.ic-info { flex: 1; min-width: 0; }
+.ic-name { font-weight: 700; font-size: 15px; color: var(--ink); }
+.ic-role { font-size: 12px; color: var(--ink-muted); margin-top: 1px; }
+.ic-status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #52B788; flex-shrink: 0;
+}
+.ic-status-dot.inactive { background: var(--ink-muted); }
+
+.ic-services {
+  padding: 0 18px 14px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+
+.ic-service {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.ic-service:hover { filter: brightness(0.96); }
+
+.ic-service.palm { background: var(--palm-light); }
+.ic-service.kifud { background: var(--kifud-light); }
+.ic-service.nutrichef { background: var(--nutrichef-light); }
+.ic-service.kiwilu { background: var(--kiwilu-light); }
+.ic-service.add-service {
+  background: none;
+  border: 1.5px dashed var(--cream-dark);
+  justify-content: center;
+  color: var(--ink-muted); font-size: 13px;
+}
+.ic-service.add-service:hover { border-color: var(--palm-green); color: var(--palm-green); background: var(--palm-light); }
+
+.ics-logo {
+  font-size: 16px; width: 24px; text-align: center;
+}
+.ics-info { flex: 1; min-width: 0; }
+.ics-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+.ics-detail { font-size: 11px; color: var(--ink-muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ics-tag {
+  font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 20px;
+  letter-spacing: 0.3px; flex-shrink: 0;
+}
+.ics-tag.active { background: var(--palm-green); color: white; }
+.ics-tag.pending { background: var(--gold); color: var(--ink); }
+.ics-tag.inactive { background: var(--cream-dark); color: var(--ink-muted); }
+
+/* ── RECOLECCIÓN THIS WEEK ── */
+.semana-section { margin-bottom: 32px; }
+.semana-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+.semana-dia {
+  background: var(--white);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.sd-head {
+  padding: 8px 10px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--cream-dark);
+}
+.sd-head.today {
+  background: var(--palm-green);
+  color: white;
+  border-color: var(--palm-green);
+}
+.sd-items { padding: 8px; display: flex; flex-direction: column; gap: 5px; }
+.sd-item {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+.sd-item.palm { background: var(--palm-light); }
+.sd-item.kifud { background: var(--kifud-light); }
+.sd-item.nutrichef { background: var(--nutrichef-light); }
+.sd-item.kiwilu { background: var(--kiwilu-light); }
+.sd-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.sd-dot.palm { background: var(--palm-green); }
+.sd-dot.kifud { background: var(--kifud-orange); }
+.sd-dot.nutrichef { background: var(--nutrichef-plum); }
+.sd-dot.kiwilu { background: var(--kiwilu-teal); }
+.sd-text { color: var(--ink-soft); line-height: 1.2; }
+.sd-name { font-weight: 600; }
+.sd-who { color: var(--ink-muted); font-size: 10px; }
+
+/* ── RESUMEN FINANCIERO ── */
+.resumen-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.resumen-card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+.rc-label { font-size: 12px; color: var(--ink-muted); font-weight: 500; margin-bottom: 6px; }
+.rc-amount {
+  font-family: 'Fraunces', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--ink); line-height: 1;
+}
+.rc-amount small { font-size: 14px; font-weight: 400; color: var(--ink-muted); }
+.rc-sub { font-size: 12px; color: var(--ink-muted); margin-top: 6px; }
+.rc-saving { color: var(--palm-green); font-weight: 600; }
+.rc-breakdown {
+  margin-top: 12px; display: flex; flex-direction: column; gap: 5px;
+}
+.rcb-row { display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+.rcb-dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.rcb-label { display: flex; align-items: center; color: var(--ink-soft); }
+.rcb-val { font-weight: 600; color: var(--ink); }
+
+/* ── AGREGAR MARCA MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(26,22,18,0.5);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.2s ease;
+}
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.modal-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--ink); margin-bottom: 6px;
+}
+.modal-sub { color: var(--ink-muted); font-size: 14px; margin-bottom: 24px; }
+.marca-options { display: flex; flex-direction: column; gap: 10px; }
+.marca-option {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--r-sm);
+  cursor: pointer; border: 2px solid transparent;
+  transition: all 0.15s;
+}
+.marca-option:hover { border-color: currentColor; }
+.marca-option.palm { background: var(--palm-light); color: var(--palm-green); }
+.marca-option.kifud { background: var(--kifud-light); color: var(--kifud-orange); }
+.marca-option.kiwilu { background: var(--kiwilu-light); color: var(--kiwilu-teal); }
+.marca-option.nutrichef { background: var(--nutrichef-light); color: var(--nutrichef-plum); }
+.mo-emoji { font-size: 22px; }
+.mo-info { flex: 1; }
+.mo-name { font-weight: 700; font-size: 15px; }
+.mo-desc { font-size: 12px; opacity: 0.8; margin-top: 2px; }
+.mo-arrow { font-size: 18px; opacity: 0.5; }
+.modal-close {
+  background: none; border: none; cursor: pointer;
+  color: var(--ink-muted); font-size: 22px; line-height: 1;
+  float: right; margin-top: -8px; margin-right: -8px;
+}
+
+/* ── PAQUETES SECTION ── */
+.paquetes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.paquete-card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--cream-dark);
+  cursor: pointer; transition: all 0.2s;
+  position: relative;
+}
+.paquete-card:hover { border-color: var(--palm-green); box-shadow: var(--shadow-md); }
+.paquete-card.featured {
+  border-color: var(--palm-green);
+  background: linear-gradient(160deg, var(--palm-light) 0%, var(--white) 60%);
+}
+.pk-badge {
+  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+  background: var(--palm-green); color: white;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 3px 12px; border-radius: 20px;
+  white-space: nowrap;
+}
+.pk-name {
+  font-family: 'Fraunces', serif;
+  font-size: 17px; font-weight: 700;
+  color: var(--ink); margin-bottom: 6px;
+}
+.pk-marcas { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; }
+.pk-marca-tag {
+  font-size: 10px; font-weight: 700; padding: 2px 8px;
+  border-radius: 20px; letter-spacing: 0.3px;
+}
+.pk-marca-tag.palm { background: var(--palm-light); color: var(--palm-green); }
+.pk-marca-tag.kifud { background: var(--kifud-light); color: var(--kifud-orange); }
+.pk-marca-tag.nutrichef { background: var(--nutrichef-light); color: var(--nutrichef-plum); }
+.pk-marca-tag.kiwilu { background: var(--kiwilu-light); color: var(--kiwilu-teal); }
+.pk-price {
+  font-family: 'Fraunces', serif;
+  font-size: 24px; font-weight: 700; color: var(--ink);
+}
+.pk-price small { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-muted); font-weight: 400; }
+.pk-saving { font-size: 12px; color: var(--palm-green); font-weight: 600; margin-top: 2px; }
+.pk-desc { font-size: 12px; color: var(--ink-muted); margin-top: 8px; line-height: 1.4; }
+
+/* ── NOTIFICACIONES ── */
+.notif-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.notif-item {
+  background: var(--white);
+  border-radius: var(--r-sm);
+  padding: 14px 16px;
+  display: flex; align-items: flex-start; gap: 12px;
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid transparent;
+}
+.notif-item.ready { border-left-color: var(--palm-green); }
+.notif-item.pending { border-left-color: var(--gold); }
+.notif-item.info { border-left-color: var(--kiwilu-teal); }
+.ni-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.ni-text { flex: 1; }
+.ni-title { font-size: 14px; font-weight: 600; color: var(--ink); }
+.ni-sub { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+.ni-time { font-size: 11px; color: var(--ink-muted); flex-shrink: 0; margin-top: 2px; }
+
+/* ── TOAST ── */
+#toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: white;
+  padding: 12px 20px; border-radius: 30px;
+  font-size: 14px; font-weight: 500;
+  opacity: 0; transition: opacity 0.3s;
+  pointer-events: none; z-index: 999;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { padding: 20px 16px; }
+  .semana-grid { grid-template-columns: repeat(3, 1fr); }
+  .resumen-row { grid-template-columns: 1fr; }
+  .paquetes-grid { grid-template-columns: 1fr; }
+  .integrantes-grid { grid-template-columns: 1fr; }
+  .pb-right { flex-direction: column; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-brand">Nutrilú <span>· Mi Familia</span></div>
+  <div class="topbar-right">
+    <div class="topbar-familia">
+      <span class="star">★</span> Paquete Familiar Activo
+    </div>
+    <div class="topbar-avatar" onclick="showToast('Configuración de cuenta')">SR</div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Mi Familia</div>
+      <a class="sidebar-item active" href="#">
+        <span class="ico">🏠</span> Resumen
+      </a>
+      <a class="sidebar-item" href="#" onclick="showToast('Integrantes');return false">
+        <span class="ico">👨‍👩‍👧‍👦</span> Integrantes
+      </a>
+      <a class="sidebar-item" href="#" onclick="showToast('Esta semana');return false">
+        <span class="ico">📅</span> Esta semana
+      </a>
+      <a class="sidebar-item" href="#" onclick="showToast('Historial');return false">
+        <span class="ico">📋</span> Historial
+      </a>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Mis Servicios</div>
+      <a class="sidebar-item" href="https://nutripalm.difud.com/nutripalm-cliente" style="color:var(--palm-green)">
+        <span class="ico">🌿</span> NutriPalm
+      </a>
+      <a class="sidebar-item" href="https://kifud.difud.com/kifud-mama" style="color:var(--kifud-orange)">
+        <span class="ico">🎒</span> Kifud
+      </a>
+      <a class="sidebar-item" href="#" onclick="showToast('Nutrichef · Portal');return false" style="color:var(--nutrichef-plum)">
+        <span class="ico">🩺</span> Nutrichef
+      </a>
+      <a class="sidebar-item" href="https://kiwilu.difud.com/kiwilu-paciente">
+        <span class="ico">🌀</span> Kiwilu
+      </a>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+      <a class="sidebar-item" href="#" onclick="showToast('Pagos y facturación');return false">
+        <span class="ico">💳</span> Pagos
+      </a>
+      <a class="sidebar-item" href="#" onclick="showToast('Soporte vía WhatsApp');return false">
+        <span class="ico">💬</span> Soporte
+      </a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- WELCOME -->
+    <div class="welcome">
+      <div class="welcome-greeting">Hola, <em>familia Rodríguez</em> 👋</div>
+      <div class="welcome-sub">Semana del 31 mar al 4 abr · Escápate Café · Saltillo</div>
+    </div>
+
+    <!-- PAQUETE BANNER -->
+    <div class="paquete-banner">
+      <div class="pb-left">
+        <div class="pb-badge">★ Plan Familia Activo</div>
+        <div class="pb-title">Paquete Familia Completa</div>
+        <div class="pb-desc">NutriPalm · Kifud · Nutrichef · 3 integrantes activos</div>
+      </div>
+      <div class="pb-right">
+        <div class="pb-savings">
+          <div class="pb-savings-amount">$480</div>
+          <div class="pb-savings-label">ahorras al mes</div>
+        </div>
+        <button class="pb-btn" onclick="showToast('Renovación automática el 7 de abril')">Renovar → 7 abr</button>
+      </div>
+    </div>
+
+    <!-- INTEGRANTES -->
+    <div class="section-title">
+      Integrantes <span class="count">3</span>
+      <button class="add-btn" onclick="openModal()">+ Agregar integrante</button>
+    </div>
+    <div class="integrantes-grid">
+
+      <!-- Ana -->
+      <div class="integrante-card" onclick="showToast('Portal NutriPalm de Ana')">
+        <div class="ic-header">
+          <div class="ic-avatar palm">👩</div>
+          <div class="ic-info">
+            <div class="ic-name">Ana · Mamá</div>
+            <div class="ic-role">Adulta · Come sano</div>
+          </div>
+          <div class="ic-status-dot"></div>
+        </div>
+        <div class="ic-services">
+          <div class="ic-service palm" onclick="event.stopPropagation();window.location='nutripalm-cliente.html'">
+            <div class="ics-logo">🌿</div>
+            <div class="ics-info">
+              <div class="ics-name">NutriPalm Premium</div>
+              <div class="ics-detail">Esta semana: Salmón glaseado · Mar</div>
+            </div>
+            <div class="ics-tag active">Activo</div>
+          </div>
+          <div class="ic-service add-service" onclick="event.stopPropagation();openModal()">
+            <span style="margin-right:6px">+</span> Agregar servicio
+          </div>
+        </div>
+      </div>
+
+      <!-- Emilio -->
+      <div class="integrante-card" onclick="showToast('Portal Kifud de Emilio')">
+        <div class="ic-header">
+          <div class="ic-avatar kifud">👦</div>
+          <div class="ic-info">
+            <div class="ic-name">Emilio · Hijo</div>
+            <div class="ic-role">Preescolar · 4 años</div>
+          </div>
+          <div class="ic-status-dot"></div>
+        </div>
+        <div class="ic-services">
+          <div class="ic-service kifud" onclick="event.stopPropagation();window.location='kifud-mama.html'">
+            <div class="ics-logo">🎒</div>
+            <div class="ics-info">
+              <div class="ics-name">Kifud · Lonche escolar</div>
+              <div class="ics-detail">Esta semana: Croquetitas atún · Lun</div>
+            </div>
+            <div class="ics-tag active">Activo</div>
+          </div>
+          <div class="ic-service add-service" onclick="event.stopPropagation();openModal()">
+            <span style="margin-right:6px">+</span> Agregar servicio
+          </div>
+        </div>
+      </div>
+
+      <!-- Roberto -->
+      <div class="integrante-card" onclick="showToast('Portal Nutrichef de Roberto')">
+        <div class="ic-header">
+          <div class="ic-avatar nutrichef">👨</div>
+          <div class="ic-info">
+            <div class="ic-name">Roberto · Papá</div>
+            <div class="ic-role">Adulto · Diabetes tipo 2</div>
+          </div>
+          <div class="ic-status-dot"></div>
+        </div>
+        <div class="ic-services">
+          <div class="ic-service nutrichef" onclick="event.stopPropagation();showToast('Portal Nutrichef de Roberto')">
+            <div class="ics-logo">🩺</div>
+            <div class="ics-info">
+              <div class="ics-name">Nutrichef · Dieta terapéutica</div>
+              <div class="ics-detail">Plan diabético · Dr. Herrera</div>
+            </div>
+            <div class="ics-tag active">Activo</div>
+          </div>
+          <div class="ic-service add-service" onclick="event.stopPropagation();openModal()">
+            <span style="margin-right:6px">+</span> Agregar servicio
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ESTA SEMANA -->
+    <div class="semana-section">
+      <div class="section-title">Esta semana en Escápate Café</div>
+      <div class="semana-grid">
+        <div class="semana-dia">
+          <div class="sd-head today">Lun 31</div>
+          <div class="sd-items">
+            <div class="sd-item palm"><div class="sd-dot palm"></div><div class="sd-text"><div class="sd-name">Pollo limón</div><div class="sd-who">Ana</div></div></div>
+            <div class="sd-item kifud"><div class="sd-dot kifud"></div><div class="sd-text"><div class="sd-name">Croquetitas atún</div><div class="sd-who">Emilio</div></div></div>
+            <div class="sd-item nutrichef"><div class="sd-dot nutrichef"></div><div class="sd-text"><div class="sd-name">Menú diabético A</div><div class="sd-who">Roberto</div></div></div>
+          </div>
+        </div>
+        <div class="semana-dia">
+          <div class="sd-head">Mar 1</div>
+          <div class="sd-items">
+            <div class="sd-item palm"><div class="sd-dot palm"></div><div class="sd-text"><div class="sd-name">Salmón glaseado</div><div class="sd-who">Ana</div></div></div>
+            <div class="sd-item kifud"><div class="sd-dot kifud"></div><div class="sd-text"><div class="sd-name">Mini hamburguesas</div><div class="sd-who">Emilio</div></div></div>
+            <div class="sd-item nutrichef"><div class="sd-dot nutrichef"></div><div class="sd-text"><div class="sd-name">Menú diabético B</div><div class="sd-who">Roberto</div></div></div>
+          </div>
+        </div>
+        <div class="semana-dia">
+          <div class="sd-head">Mié 2</div>
+          <div class="sd-items">
+            <div class="sd-item palm"><div class="sd-dot palm"></div><div class="sd-text"><div class="sd-name">Bowl de res</div><div class="sd-who">Ana</div></div></div>
+            <div class="sd-item kifud"><div class="sd-dot kifud"></div><div class="sd-text"><div class="sd-name">Rollitos pollo</div><div class="sd-who">Emilio</div></div></div>
+            <div class="sd-item nutrichef"><div class="sd-dot nutrichef"></div><div class="sd-text"><div class="sd-name">Menú diabético C</div><div class="sd-who">Roberto</div></div></div>
+          </div>
+        </div>
+        <div class="semana-dia">
+          <div class="sd-head">Jue 3</div>
+          <div class="sd-items">
+            <div class="sd-item palm"><div class="sd-dot palm"></div><div class="sd-text"><div class="sd-name">Pollo mostaza</div><div class="sd-who">Ana</div></div></div>
+            <div class="sd-item kifud"><div class="sd-dot kifud"></div><div class="sd-text"><div class="sd-name">Rollitos pollo</div><div class="sd-who">Emilio</div></div></div>
+            <div class="sd-item nutrichef"><div class="sd-dot nutrichef"></div><div class="sd-text"><div class="sd-name">Menú diabético D</div><div class="sd-who">Roberto</div></div></div>
+          </div>
+        </div>
+        <div class="semana-dia">
+          <div class="sd-head">Vie 4</div>
+          <div class="sd-items">
+            <div class="sd-item palm"><div class="sd-dot palm"></div><div class="sd-text"><div class="sd-name">Bowl mediterráneo</div><div class="sd-who">Ana</div></div></div>
+            <div class="sd-item kifud"><div class="sd-dot kifud"></div><div class="sd-text"><div class="sd-name">Nidos de pasta</div><div class="sd-who">Emilio</div></div></div>
+            <div class="sd-item nutrichef"><div class="sd-dot nutrichef"></div><div class="sd-text"><div class="sd-name">Menú diabético E</div><div class="sd-who">Roberto</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESUMEN FINANCIERO -->
+    <div class="section-title">Resumen de esta semana</div>
+    <div class="resumen-row">
+      <div class="resumen-card">
+        <div class="rc-label">Total del mes</div>
+        <div class="rc-amount">$9,200 <small>/mes</small></div>
+        <div class="rc-sub rc-saving">✓ Ahorras $480 con paquete familiar</div>
+        <div class="rc-breakdown">
+          <div class="rcb-row"><span class="rcb-label"><div class="rcb-dot" style="background:var(--palm-green)"></div>NutriPalm · Ana</span><span class="rcb-val">$2,500</span></div>
+          <div class="rcb-row"><span class="rcb-label"><div class="rcb-dot" style="background:var(--kifud-orange)"></div>Kifud · Emilio</span><span class="rcb-val">$1,800</span></div>
+          <div class="rcb-row"><span class="rcb-label"><div class="rcb-dot" style="background:var(--nutrichef-plum)"></div>Nutrichef · Roberto</span><span class="rcb-val">$4,900</span></div>
+        </div>
+      </div>
+      <div class="resumen-card">
+        <div class="rc-label">Próxima recolección</div>
+        <div class="rc-amount" style="font-size:20px">Hoy, Lun 31</div>
+        <div class="rc-sub">3 contenedores listos en<br>Escápate Café · ~5:30 PM</div>
+        <div style="margin-top:14px">
+          <button onclick="showToast('Aviso enviado por WhatsApp ✓')" style="background:var(--palm-green);color:white;border:none;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">
+            📲 Avisar cuando estén listos
+          </button>
+        </div>
+      </div>
+      <div class="resumen-card">
+        <div class="rc-label">Menú pendiente por confirmar</div>
+        <div class="rc-amount" style="color:var(--gold); font-size:20px">⚠ Ana</div>
+        <div class="rc-sub">NutriPalm · semana del 7–11 abr<br>Confirmar antes del <strong>mié 2 abr 8 PM</strong></div>
+        <div style="margin-top:14px">
+          <button onclick="showToast('Abriendo selector de menú de Ana')" style="background:var(--gold);color:var(--ink);border:none;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">
+            Elegir menú →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAQUETES FAMILIARES -->
+    <div class="section-title">Paquetes familiares disponibles</div>
+    <div class="paquetes-grid">
+      <div class="paquete-card" onclick="showToast('Ver detalle: Dúo Saludable')">
+        <div class="pk-name">Dúo Saludable</div>
+        <div class="pk-marcas">
+          <span class="pk-marca-tag palm">NutriPalm</span>
+          <span class="pk-marca-tag kifud">Kifud</span>
+        </div>
+        <div class="pk-price">$4,200 <small>/mes</small></div>
+        <div class="pk-saving">✓ Ahorra $200 vs. individual</div>
+        <div class="pk-desc">Comida para mamá o papá + lonche escolar para un hijo. Ideal para familias con niños en preescolar o primaria.</div>
+      </div>
+      <div class="paquete-card featured" onclick="showToast('Ver detalle: Familia Completa')">
+        <div class="pk-badge">Más elegido</div>
+        <div class="pk-name">Familia Completa</div>
+        <div class="pk-marcas">
+          <span class="pk-marca-tag palm">NutriPalm</span>
+          <span class="pk-marca-tag kifud">Kifud</span>
+          <span class="pk-marca-tag nutrichef">Nutrichef</span>
+        </div>
+        <div class="pk-price">$8,720 <small>/mes</small></div>
+        <div class="pk-saving">✓ Ahorra $480 vs. individual</div>
+        <div class="pk-desc">Comida adulta + lonche escolar + dieta terapéutica. Cubre a toda la familia con necesidades distintas desde una sola cuenta.</div>
+      </div>
+      <div class="paquete-card" onclick="showToast('Ver detalle: Plan Médico Familiar')">
+        <div class="pk-name">Plan Médico Familiar</div>
+        <div class="pk-marcas">
+          <span class="pk-marca-tag kiwilu">Kiwilu</span>
+          <span class="pk-marca-tag nutrichef">Nutrichef</span>
+        </div>
+        <div class="pk-price">$6,100 <small>/mes</small></div>
+        <div class="pk-saving">✓ Ahorra $300 vs. individual</div>
+        <div class="pk-desc">Para familias donde más de un integrante tiene plan nutricional prescrito por profesional de salud.</div>
+      </div>
+    </div>
+
+    <!-- NOTIFICACIONES -->
+    <div class="section-title">Avisos recientes</div>
+    <div class="notif-list">
+      <div class="notif-item ready">
+        <div class="ni-icon">✅</div>
+        <div class="ni-text">
+          <div class="ni-title">Pedido de hoy listo — 3 contenedores</div>
+          <div class="ni-sub">NutriPalm · Kifud · Nutrichef · Recoge en Escápate Café hoy después de las 5:30 PM</div>
+        </div>
+        <div class="ni-time">Hace 2h</div>
+      </div>
+      <div class="notif-item pending">
+        <div class="ni-icon">⏰</div>
+        <div class="ni-text">
+          <div class="ni-title">Recuerda confirmar el menú de Ana para la semana 7–11 abr</div>
+          <div class="ni-sub">NutriPalm · Límite: miércoles 2 de abril a las 8 PM. Si no confirmas, se asigna automáticamente el menú 1.</div>
+        </div>
+        <div class="ni-time">Hoy</div>
+      </div>
+      <div class="notif-item info">
+        <div class="ni-icon">📋</div>
+        <div class="ni-text">
+          <div class="ni-title">Plan de Roberto actualizado por el Dr. Herrera</div>
+          <div class="ni-sub">Nutrichef · El médico ajustó el plan para la semana 7 abr. No necesitas hacer nada — la nutrióloga ya lo tiene.</div>
+        </div>
+        <div class="ni-time">Ayer</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL AGREGAR SERVICIO -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-title">Agregar servicio</div>
+    <div class="modal-sub">¿Qué necesita este integrante? Puedes agregar más de uno.</div>
+    <div class="marca-options">
+      <div class="marca-option palm" onclick="showToast('Iniciando registro NutriPalm...');closeModal()">
+        <div class="mo-emoji">🌿</div>
+        <div class="mo-info">
+          <div class="mo-name">NutriPalm</div>
+          <div class="mo-desc">Comida saludable para adultos · $2,100–$2,500/mes</div>
+        </div>
+        <div class="mo-arrow">→</div>
+      </div>
+      <div class="marca-option kifud" onclick="showToast('Iniciando registro Kifud...');closeModal()">
+        <div class="mo-emoji">🎒</div>
+        <div class="mo-info">
+          <div class="mo-name">Kifud</div>
+          <div class="mo-desc">Lonche escolar para niños · Desde $1,600/mes</div>
+        </div>
+        <div class="mo-arrow">→</div>
+      </div>
+      <div class="marca-option nutrichef" onclick="showToast('Iniciando registro Nutrichef...');closeModal()">
+        <div class="mo-emoji">🩺</div>
+        <div class="mo-info">
+          <div class="mo-name">Nutrichef</div>
+          <div class="mo-desc">Dieta terapéutica prescrita por médico · Precio variable</div>
+        </div>
+        <div class="mo-arrow">→</div>
+      </div>
+      <div class="marca-option kiwilu" onclick="showToast('Iniciando registro Kiwilu...');closeModal()">
+        <div class="mo-emoji">🌀</div>
+        <div class="mo-info">
+          <div class="mo-name">Kiwilu</div>
+          <div class="mo-desc">Plan prescrito por nutrióloga · Precio por complejidad</div>
+        </div>
+        <div class="mo-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+function openModal() {
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.opacity = 1;
+  setTimeout(() => t.style.opacity = 0, 2800);
+}
+</script>
+</body>
+</html>
