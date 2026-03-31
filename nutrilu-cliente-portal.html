@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Familia · Nutrilú</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF7F2;--cream-dark:#EDE8E0;--ink:#1A1612;--ink-soft:#4A4540;--ink-muted:#8A8480;--palm:#2D6A4F;--palm-l:#E8F5EE;--kifud:#E8751A;--kifud-l:#FEF0E3;--kiwilu:#0E7C7B;--kiwilu-l:#E3F4F4;--chef:#6B3FA0;--chef-l:#F0EBF8;--gold:#C9A84C;--gold-l:#FBF5E6;--white:#fff;--r:14px;--rs:9px;--sh:0 1px 3px rgba(26,22,18,.08);--shm:0 4px 18px rgba(26,22,18,.11);--shl:0 12px 40px rgba(26,22,18,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;font-size:14px}
+.topbar{background:var(--white);border-bottom:1px solid var(--cream-dark);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:var(--sh)}
+.brand{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--palm);letter-spacing:-.5px}
+.brand span{color:var(--ink-muted);font-weight:300;font-size:13px;margin-left:7px;font-family:'DM Sans',sans-serif}
+.tb-right{display:flex;align-items:center;gap:12px}
+.pkg-badge{background:var(--gold-l);border:1.5px solid var(--gold);color:var(--ink);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;display:flex;align-items:center;gap:5px}
+.avatar{width:34px;height:34px;background:var(--palm);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;cursor:pointer}
+.layout{display:flex;min-height:calc(100vh - 56px)}
+.sidebar{width:210px;background:var(--white);border-right:1px solid var(--cream-dark);padding:20px 0;flex-shrink:0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
+.sb-label{font-size:10px;font-weight:700;letter-spacing:1.2px;color:var(--ink-muted);text-transform:uppercase;padding:0 20px;margin-bottom:5px}
+.sb-item{display:flex;align-items:center;gap:9px;padding:9px 14px;margin:0 6px;border-radius:var(--rs);cursor:pointer;font-size:13.5px;font-weight:500;color:var(--ink-soft);transition:.15s;border:none;background:none;width:calc(100% - 12px);text-align:left;font-family:'DM Sans',sans-serif}
+.sb-item:hover{background:var(--cream);color:var(--ink)}
+.sb-item.active{background:var(--palm-l);color:var(--palm);font-weight:600}
+.sb-item .ico{font-size:15px;width:20px;text-align:center}
+.sb-divider{height:1px;background:var(--cream-dark);margin:12px 14px}
+.sb-marca{display:flex;align-items:center;gap:9px;padding:9px 14px;margin:0 6px;border-radius:var(--rs);cursor:pointer;font-size:13px;font-weight:600;transition:.15s;border:none;background:none;width:calc(100% - 12px);text-align:left;font-family:'DM Sans',sans-serif}
+.sb-marca.palm{color:var(--palm)}.sb-marca.palm.active{background:var(--palm-l)}
+.sb-marca.kifud{color:var(--kifud)}.sb-marca.kifud.active{background:var(--kifud-l)}
+.sb-marca.kiwilu{color:var(--kiwilu)}.sb-marca.kiwilu.active{background:var(--kiwilu-l)}
+.sb-marca.chef{color:var(--chef)}.sb-marca.chef.active{background:var(--chef-l)}
+.main{flex:1;padding:26px 28px;min-width:0}
+.view{display:none;animation:fadeIn .2s ease}
+.view.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.page-title{font-family:'Fraunces',serif;font-size:26px;font-weight:600;letter-spacing:-.5px;margin-bottom:4px}
+.page-title em{font-style:italic;color:var(--palm)}
+.page-sub{color:var(--ink-muted);font-size:13px;margin-bottom:24px}
+.pkg-banner{background:linear-gradient(135deg,var(--palm) 0%,#1B4D36 100%);border-radius:var(--r);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:14px;overflow:hidden;position:relative}
+.pkg-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)}
+.pb-l{position:relative;z-index:1}
+.pb-badge{background:var(--gold);color:var(--ink);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:7px}
+.pb-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#fff;line-height:1.2}
+.pb-desc{color:rgba(255,255,255,.7);font-size:12px;margin-top:3px}
+.pb-r{display:flex;align-items:center;gap:18px;position:relative;z-index:1;flex-shrink:0}
+.pb-saving-n{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--gold);line-height:1}
+.pb-saving-l{color:rgba(255,255,255,.65);font-size:11px;margin-top:2px;text-align:center}
+.pb-btn{background:var(--gold);color:var(--ink);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;padding:9px 16px;border-radius:var(--rs);white-space:nowrap;transition:.15s}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.res-card{background:var(--white);border-radius:var(--r);padding:18px;box-shadow:var(--sh)}
+.rc-lbl{font-size:11px;color:var(--ink-muted);font-weight:500;margin-bottom:5px}
+.rc-val{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1}
+.rc-val small{font-size:13px;font-weight:400;color:var(--ink-muted);font-family:'DM Sans',sans-serif}
+.rc-sub{font-size:11px;color:var(--ink-muted);margin-top:5px}
+.rc-green{color:var(--palm);font-weight:600}
+.rc-breakdown{margin-top:10px;display:flex;flex-direction:column;gap:4px}
+.rcb{display:flex;align-items:center;justify-content:space-between;font-size:11px}
+.rcb-l{display:flex;align-items:center;gap:5px;color:var(--ink-soft)}
+.rcb-dot{width:7px;height:7px;border-radius:50%}
+.rcb-v{font-weight:600;color:var(--ink)}
+.rc-btn{margin-top:12px;background:var(--palm);color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:block;transition:.15s}
+.rc-warn{color:var(--gold);font-weight:600;font-size:15px}
+.rc-warn-btn{margin-top:10px;background:var(--gold);color:var(--ink);border:none;padding:7px 14px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:block}
+.semana-mini{background:var(--white);border-radius:var(--r);padding:18px;box-shadow:var(--sh);margin-bottom:24px}
+.sm-title{font-family:'Fraunces',serif;font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.sm-ver{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--palm);font-weight:500;cursor:pointer;background:none;border:none}
+.dias-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.dia-col{border-radius:var(--rs);overflow:hidden}
+.dc-head{padding:6px 8px;font-size:10px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--ink-muted);background:var(--cream);border-bottom:1px solid var(--cream-dark);text-align:center}
+.dc-head.hoy{background:var(--palm);color:#fff;border-color:var(--palm)}
+.dc-body{padding:6px;display:flex;flex-direction:column;gap:4px;background:var(--white)}
+.dc-pill{display:flex;align-items:center;gap:4px;padding:4px 6px;border-radius:6px;font-size:10px}
+.dc-pill.palm{background:var(--palm-l)}.dc-pill.kifud{background:var(--kifud-l)}.dc-pill.chef{background:var(--chef-l)}.dc-pill.kiwilu{background:var(--kiwilu-l)}
+.dc-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.dc-dot.palm{background:var(--palm)}.dc-dot.kifud{background:var(--kifud)}.dc-dot.chef{background:var(--chef)}.dc-dot.kiwilu{background:var(--kiwilu)}
+.dc-txt{color:var(--ink-soft);line-height:1.2}
+.dc-quien{color:var(--ink-muted);font-size:9px}
+.notifs{display:flex;flex-direction:column;gap:9px}
+.notif{background:var(--white);border-radius:var(--rs);padding:13px 15px;display:flex;align-items:flex-start;gap:11px;box-shadow:var(--sh);border-left:3px solid transparent}
+.notif.ok{border-color:var(--palm)}.notif.warn{border-color:var(--gold)}.notif.info{border-color:var(--kiwilu)}
+.ni-ico{font-size:18px;flex-shrink:0;margin-top:1px}
+.ni-body{flex:1}
+.ni-t{font-size:13px;font-weight:600;color:var(--ink)}
+.ni-s{font-size:11px;color:var(--ink-muted);margin-top:2px}
+.ni-time{font-size:10px;color:var(--ink-muted);flex-shrink:0;margin-top:2px}
+.sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.sec-title{font-family:'Fraunces',serif;font-size:17px;font-weight:600}
+.sec-btn{background:none;border:1.5px solid var(--cream-dark);color:var(--ink-soft);font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.15s}
+.sec-btn:hover{border-color:var(--palm);color:var(--palm);background:var(--palm-l)}
+.int-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:20px}
+.int-card{background:var(--white);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;border:2px solid transparent;transition:.2s}
+.int-card:hover{box-shadow:var(--shm);border-color:var(--cream-dark)}
+.ic-hd{padding:14px 16px 10px;display:flex;align-items:center;gap:11px}
+.ic-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ic-av.palm{background:var(--palm-l)}.ic-av.kifud{background:var(--kifud-l)}.ic-av.chef{background:var(--chef-l)}.ic-av.kiwilu{background:var(--kiwilu-l)}.ic-av.none{background:var(--cream-dark)}
+.ic-inf{flex:1}
+.ic-name{font-weight:700;font-size:14px}
+.ic-rol{font-size:11px;color:var(--ink-muted);margin-top:1px}
+.ic-edit{background:none;border:none;cursor:pointer;color:var(--ink-muted);font-size:14px;padding:4px 6px;border-radius:6px;transition:.15s}
+.ic-edit:hover{background:var(--cream)}
+.ic-svcs{padding:0 14px 14px;display:flex;flex-direction:column;gap:7px}
+.ic-svc{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:var(--rs)}
+.ic-svc.palm{background:var(--palm-l)}.ic-svc.kifud{background:var(--kifud-l)}.ic-svc.chef{background:var(--chef-l)}.ic-svc.kiwilu{background:var(--kiwilu-l)}
+.ics-ico{font-size:15px;width:20px;text-align:center}
+.ics-inf{flex:1}
+.ics-n{font-size:12px;font-weight:600;color:var(--ink)}
+.ics-d{font-size:10px;color:var(--ink-muted)}
+.ics-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;flex-shrink:0;background:var(--palm);color:#fff}
+.ic-add-svc{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px;border-radius:var(--rs);border:1.5px dashed var(--cream-dark);color:var(--ink-muted);font-size:12px;cursor:pointer;background:none;width:100%;transition:.15s;font-family:'DM Sans',sans-serif}
+.ic-add-svc:hover{border-color:var(--palm);color:var(--palm);background:var(--palm-l)}
+.int-add-card{background:none;border:2px dashed var(--cream-dark);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:.2s;font-family:'DM Sans',sans-serif;width:100%}
+.int-add-card:hover{border-color:var(--palm);background:var(--palm-l)}
+.int-add-card .plus{width:42px;height:42px;border-radius:50%;background:var(--cream-dark);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--ink-muted);transition:.2s}
+.int-add-label{font-size:13px;font-weight:600;color:var(--ink-muted)}
+.int-add-card:hover .int-add-label{color:var(--palm)}
+.semana-full{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.sf-col{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.sf-head{padding:10px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink-muted);border-bottom:1px solid var(--cream-dark);background:var(--cream)}
+.sf-head.hoy{background:var(--palm);color:#fff;border-color:var(--palm)}
+.sf-body{padding:10px;display:flex;flex-direction:column;gap:8px}
+.sf-item{border-radius:var(--rs);overflow:hidden}
+.sf-top{display:flex;align-items:center;gap:7px;padding:7px 9px}
+.sf-top.palm{background:var(--palm-l)}.sf-top.kifud{background:var(--kifud-l)}.sf-top.chef{background:var(--chef-l)}.sf-top.kiwilu{background:var(--kiwilu-l)}
+.sf-ico{font-size:14px}
+.sf-brand{font-size:10px;font-weight:700;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.5px}
+.sf-quien{font-size:12px;font-weight:600;color:var(--ink)}
+.sf-dish{padding:6px 9px 8px;background:rgba(0,0,0,.025);font-size:11px;color:var(--ink-soft);line-height:1.3}
+.hist-list{display:flex;flex-direction:column;gap:10px}
+.hist-item{background:var(--white);border-radius:var(--r);padding:16px;box-shadow:var(--sh);display:flex;align-items:center;gap:14px}
+.hi-ico{font-size:22px;flex-shrink:0}
+.hi-inf{flex:1}
+.hi-t{font-size:14px;font-weight:600;color:var(--ink)}
+.hi-s{font-size:12px;color:var(--ink-muted);margin-top:2px}
+.hi-tags{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.hi-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px}
+.hi-tag.palm{background:var(--palm-l);color:var(--palm)}.hi-tag.kifud{background:var(--kifud-l);color:var(--kifud)}.hi-tag.chef{background:var(--chef-l);color:var(--chef)}
+.hi-monto{text-align:right;flex-shrink:0}
+.hi-precio{font-family:'Fraunces',serif;font-size:18px;font-weight:700}
+.hi-est{font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;margin-top:4px;display:inline-block;background:var(--palm-l);color:var(--palm)}
+.marca-header{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.marca-logo-big{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.marca-logo-big.palm{background:var(--palm-l)}.marca-logo-big.kifud{background:var(--kifud-l)}.marca-logo-big.chef{background:var(--chef-l)}.marca-logo-big.kiwilu{background:var(--kiwilu-l)}
+.marca-name{font-family:'Fraunces',serif;font-size:22px;font-weight:700}
+.marca-name.palm{color:var(--palm)}.marca-name.kifud{color:var(--kifud)}.marca-name.chef{color:var(--chef)}.marca-name.kiwilu{color:var(--kiwilu)}
+.marca-desc-txt{font-size:13px;color:var(--ink-muted);margin-top:2px}
+.mq-tag{margin-left:auto;flex-shrink:0;text-align:right}
+.mq-lbl{font-size:10px;color:var(--ink-muted);margin-bottom:3px}
+.mq-name{font-size:13px;font-weight:600}
+.marca-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.mig-card{background:var(--white);border-radius:var(--r);padding:16px;box-shadow:var(--sh)}
+.mig-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink-muted);margin-bottom:8px}
+.mig-val{font-size:15px;font-weight:700}
+.mig-sub{font-size:12px;color:var(--ink-muted);margin-top:4px}
+.plan-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.plan-pill.palm{background:var(--palm-l);color:var(--palm)}.plan-pill.kifud{background:var(--kifud-l);color:var(--kifud)}.plan-pill.chef{background:var(--chef-l);color:var(--chef)}.plan-pill.kiwilu{background:var(--kiwilu-l);color:var(--kiwilu)}
+.menu-semana{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
+.ms-dia{background:var(--white);border-radius:var(--rs);overflow:hidden;box-shadow:var(--sh)}
+.ms-dh{padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ink-muted);background:var(--cream);border-bottom:1px solid var(--cream-dark);text-align:center}
+.ms-dh.hoy{background:var(--palm);color:#fff;border-color:var(--palm)}
+.ms-body{padding:8px}
+.ms-platillo{padding:7px 9px;border-radius:7px;font-size:11px;font-weight:500;color:var(--ink-soft);line-height:1.3;margin-bottom:4px;cursor:pointer;transition:.15s;width:100%;text-align:left;border:none;font-family:'DM Sans',sans-serif}
+.ms-platillo.palm{background:var(--palm-l)}.ms-platillo.kifud{background:var(--kifud-l)}.ms-platillo.chef{background:var(--chef-l)}.ms-platillo.kiwilu{background:var(--kiwilu-l)}
+.ms-kcal{font-size:9px;color:var(--ink-muted);margin-top:2px}
+.nutri-card{background:var(--white);border-radius:var(--r);padding:16px;box-shadow:var(--sh);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.nutri-av{width:44px;height:44px;border-radius:50%;background:var(--cream-dark);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.nutri-name{font-size:14px;font-weight:600}
+.nutri-esp{font-size:12px;color:var(--ink-muted);margin-top:2px}
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(26,22,18,.5);z-index:300;align-items:center;justify-content:center;padding:20px}
+.modal-ov.open{display:flex}
+.modal{background:var(--white);border-radius:18px;padding:28px;max-width:440px;width:100%;box-shadow:var(--shl);animation:popIn .2s ease;max-height:90vh;overflow-y:auto}
+@keyframes popIn{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-title{font-family:'Fraunces',serif;font-size:20px;font-weight:600;margin-bottom:4px}
+.modal-sub{font-size:13px;color:var(--ink-muted);margin-bottom:22px}
+.modal-close{float:right;background:none;border:none;cursor:pointer;color:var(--ink-muted);font-size:22px;margin:-4px -4px 0 0;line-height:1;padding:4px}
+.form-row{margin-bottom:14px}
+.form-label{font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:5px;display:block}
+.form-input,.form-select{width:100%;padding:9px 13px;border:1.5px solid var(--cream-dark);border-radius:var(--rs);font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--white);outline:none;transition:.15s}
+.form-input:focus,.form-select:focus{border-color:var(--palm)}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.form-divider{height:1px;background:var(--cream-dark);margin:16px 0;position:relative;display:flex;align-items:center;justify-content:center}
+.form-divider span{background:var(--white);padding:0 10px;font-size:11px;color:var(--ink-muted);font-weight:600;position:relative}
+.svc-checks{display:flex;flex-direction:column;gap:8px}
+.svc-chk{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--rs);cursor:pointer;transition:.15s;border:1.5px solid var(--cream-dark);background:none;width:100%;text-align:left;font-family:'DM Sans',sans-serif}
+.svc-chk.on.palm{background:var(--palm-l);border-color:var(--palm)}.svc-chk.on.kifud{background:var(--kifud-l);border-color:var(--kifud)}.svc-chk.on.chef{background:var(--chef-l);border-color:var(--chef)}.svc-chk.on.kiwilu{background:var(--kiwilu-l);border-color:var(--kiwilu)}
+.chk-box{width:18px;height:18px;border-radius:5px;border:2px solid var(--cream-dark);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:transparent;transition:.15s}
+.svc-chk.on.palm .chk-box{background:var(--palm);border-color:var(--palm);color:#fff}.svc-chk.on.kifud .chk-box{background:var(--kifud);border-color:var(--kifud);color:#fff}.svc-chk.on.chef .chk-box{background:var(--chef);border-color:var(--chef);color:#fff}.svc-chk.on.kiwilu .chk-box{background:var(--kiwilu);border-color:var(--kiwilu);color:#fff}
+.chk-ico{font-size:16px}
+.chk-n{font-size:13px;font-weight:600;color:var(--ink)}
+.chk-d{font-size:11px;color:var(--ink-muted)}
+.modal-actions{display:flex;gap:10px;margin-top:20px}
+.btn-primary{flex:1;background:var(--palm);color:#fff;border:none;padding:11px;border-radius:var(--rs);font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-ghost{background:none;border:1.5px solid var(--cream-dark);color:var(--ink-soft);padding:11px 18px;border-radius:var(--rs);font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-danger{background:none;border:none;color:#DC2626;padding:9px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:underline}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:30px;font-size:13px;font-weight:500;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Nutrilú <span>· Mi Familia</span></div>
+  <div class="tb-right">
+    <div class="pkg-badge"><span>★</span> Paquete Familia Activo</div>
+    <div class="avatar">SR</div>
+  </div>
+</div>
+
+<div class="layout">
+<div class="sidebar">
+  <div style="margin-bottom:6px">
+    <div class="sb-label">Menú</div>
+    <button class="sb-item active" data-view="resumen" onclick="nav(this)"><span class="ico">🏠</span> Resumen</button>
+    <button class="sb-item" data-view="integrantes" onclick="nav(this)"><span class="ico">👨‍👩‍👧‍👦</span> Integrantes</button>
+    <button class="sb-item" data-view="semana" onclick="nav(this)"><span class="ico">📅</span> Esta semana</button>
+    <button class="sb-item" data-view="historial" onclick="nav(this)"><span class="ico">📋</span> Historial</button>
+  </div>
+  <div class="sb-divider"></div>
+  <div style="margin-bottom:6px">
+    <div class="sb-label">Mis Servicios</div>
+    <button class="sb-marca palm" data-view="palm" onclick="nav(this)"><span class="ico">🌿</span> NutriPalm</button>
+    <button class="sb-marca kifud" data-view="kifud" onclick="nav(this)"><span class="ico">🎒</span> Kifud</button>
+    <button class="sb-marca chef" data-view="chef" onclick="nav(this)"><span class="ico">🩺</span> Nutrichef</button>
+    <button class="sb-marca kiwilu" data-view="kiwilu" onclick="nav(this)"><span class="ico">🌀</span> Kiwilu</button>
+  </div>
+  <div class="sb-divider"></div>
+  <div>
+    <button class="sb-item" onclick="toast('Pagos · próximamente')"><span class="ico">💳</span> Pagos</button>
+    <button class="sb-item" onclick="toast('Soporte por WhatsApp')"><span class="ico">💬</span> Soporte</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- RESUMEN -->
+<div class="view active" id="v-resumen">
+  <div class="page-title">Hola, <em>familia Rodríguez</em> 👋</div>
+  <div class="page-sub">Semana del 31 mar – 4 abr · Escápate Café · Saltillo</div>
+  <div class="pkg-banner">
+    <div class="pb-l">
+      <div class="pb-badge">★ Plan Familia Activo</div>
+      <div class="pb-title">Paquete Familia Completa</div>
+      <div class="pb-desc">NutriPalm · Kifud · Nutrichef · 3 integrantes</div>
+    </div>
+    <div class="pb-r">
+      <div><div class="pb-saving-n">$480</div><div class="pb-saving-l">ahorras al mes</div></div>
+      <button class="pb-btn" onclick="toast('Renovación automática el 7 de abril ✓')">Renovar → 7 abr</button>
+    </div>
+  </div>
+  <div class="res-grid">
+    <div class="res-card">
+      <div class="rc-lbl">Total del mes</div>
+      <div class="rc-val">$9,200 <small>/mes</small></div>
+      <div class="rc-sub rc-green">✓ Ahorras $480 con paquete familiar</div>
+      <div class="rc-breakdown">
+        <div class="rcb"><span class="rcb-l"><div class="rcb-dot" style="background:var(--palm)"></div>NutriPalm · Ana</span><span class="rcb-v">$2,500</span></div>
+        <div class="rcb"><span class="rcb-l"><div class="rcb-dot" style="background:var(--kifud)"></div>Kifud · Emilio</span><span class="rcb-v">$1,800</span></div>
+        <div class="rcb"><span class="rcb-l"><div class="rcb-dot" style="background:var(--chef)"></div>Nutrichef · Roberto</span><span class="rcb-v">$4,900</span></div>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="rc-lbl">Próxima recolección</div>
+      <div class="rc-val" style="font-size:18px">Hoy · Lun 31 mar</div>
+      <div class="rc-sub">3 contenedores listos<br>Escápate Café · ~5:30 PM</div>
+      <button class="rc-btn" onclick="toast('📲 Aviso enviado por WhatsApp ✓')">📲 Avisarme cuando estén</button>
+    </div>
+    <div class="res-card">
+      <div class="rc-lbl">Menú pendiente</div>
+      <div class="rc-warn">⚠ Ana · NutriPalm</div>
+      <div class="rc-sub" style="margin-top:6px">Semana 7–11 abr<br>Antes del <strong>mié 2 abr 8 PM</strong></div>
+      <button class="rc-warn-btn" onclick="navById('palm')">Elegir menú →</button>
+    </div>
+  </div>
+  <div class="semana-mini">
+    <div class="sm-title">Esta semana <button class="sm-ver" onclick="navById('semana')">Ver completo →</button></div>
+    <div class="dias-row">
+      <div class="dia-col"><div class="dc-head hoy">Lun 31</div><div class="dc-body">
+        <div class="dc-pill palm"><div class="dc-dot palm"></div><div class="dc-txt"><div>Pollo limón</div><div class="dc-quien">Ana</div></div></div>
+        <div class="dc-pill kifud"><div class="dc-dot kifud"></div><div class="dc-txt"><div>Croquetitas</div><div class="dc-quien">Emilio</div></div></div>
+        <div class="dc-pill chef"><div class="dc-dot chef"></div><div class="dc-txt"><div>Diab. A</div><div class="dc-quien">Roberto</div></div></div>
+      </div></div>
+      <div class="dia-col"><div class="dc-head">Mar 1</div><div class="dc-body">
+        <div class="dc-pill palm"><div class="dc-dot palm"></div><div class="dc-txt"><div>Salmón</div><div class="dc-quien">Ana</div></div></div>
+        <div class="dc-pill kifud"><div class="dc-dot kifud"></div><div class="dc-txt"><div>Mini hamb.</div><div class="dc-quien">Emilio</div></div></div>
+        <div class="dc-pill chef"><div class="dc-dot chef"></div><div class="dc-txt"><div>Diab. B</div><div class="dc-quien">Roberto</div></div></div>
+      </div></div>
+      <div class="dia-col"><div class="dc-head">Mié 2</div><div class="dc-body">
+        <div class="dc-pill palm"><div class="dc-dot palm"></div><div class="dc-txt"><div>Bowl res</div><div class="dc-quien">Ana</div></div></div>
+        <div class="dc-pill kifud"><div class="dc-dot kifud"></div><div class="dc-txt"><div>Rollitos</div><div class="dc-quien">Emilio</div></div></div>
+        <div class="dc-pill chef"><div class="dc-dot chef"></div><div class="dc-txt"><div>Diab. C</div><div class="dc-quien">Roberto</div></div></div>
+      </div></div>
+      <div class="dia-col"><div class="dc-head">Jue 3</div><div class="dc-body">
+        <div class="dc-pill palm"><div class="dc-dot palm"></div><div class="dc-txt"><div>Pollo most.</div><div class="dc-quien">Ana</div></div></div>
+        <div class="dc-pill kifud"><div class="dc-dot kifud"></div><div class="dc-txt"><div>Rollitos</div><div class="dc-quien">Emilio</div></div></div>
+        <div class="dc-pill chef"><div class="dc-dot chef"></div><div class="dc-txt"><div>Diab. D</div><div class="dc-quien">Roberto</div></div></div>
+      </div></div>
+      <div class="dia-col"><div class="dc-head">Vie 4</div><div class="dc-body">
+        <div class="dc-pill palm"><div class="dc-dot palm"></div><div class="dc-txt"><div>Bowl med.</div><div class="dc-quien">Ana</div></div></div>
+        <div class="dc-pill kifud"><div class="dc-dot kifud"></div><div class="dc-txt"><div>Nidos pasta</div><div class="dc-quien">Emilio</div></div></div>
+        <div class="dc-pill chef"><div class="dc-dot chef"></div><div class="dc-txt"><div>Diab. E</div><div class="dc-quien">Roberto</div></div></div>
+      </div></div>
+    </div>
+  </div>
+  <div class="sec-hd"><div class="sec-title">Avisos recientes</div></div>
+  <div class="notifs">
+    <div class="notif ok"><div class="ni-ico">✅</div><div class="ni-body"><div class="ni-t">3 contenedores listos para hoy</div><div class="ni-s">NutriPalm · Kifud · Nutrichef · Recoge después de las 5:30 PM</div></div><div class="ni-time">Hace 2h</div></div>
+    <div class="notif warn"><div class="ni-ico">⏰</div><div class="ni-body"><div class="ni-t">Confirma el menú de Ana · semana 7–11 abr</div><div class="ni-s">NutriPalm · Límite: mié 2 abr 8 PM</div></div><div class="ni-time">Hoy</div></div>
+    <div class="notif info"><div class="ni-ico">📋</div><div class="ni-body"><div class="ni-t">Plan de Roberto actualizado por Dr. Herrera</div><div class="ni-s">Nutrichef · La nutrióloga ya tiene el ajuste</div></div><div class="ni-time">Ayer</div></div>
+  </div>
+</div>
+
+<!-- INTEGRANTES -->
+<div class="view" id="v-integrantes">
+  <div class="page-title">Integrantes</div>
+  <div class="page-sub">Agrega o edita los miembros de tu familia y sus servicios activos</div>
+  <div class="int-grid" id="int-grid"></div>
+</div>
+
+<!-- ESTA SEMANA -->
+<div class="view" id="v-semana">
+  <div class="page-title">Esta semana</div>
+  <div class="page-sub">31 mar – 4 abr · Un contenedor por integrante cada día en Escápate Café</div>
+  <div class="semana-full">
+    <div class="sf-col"><div class="sf-head hoy">Lunes 31</div><div class="sf-body">
+      <div class="sf-item"><div class="sf-top palm"><div class="sf-ico">🌿</div><div><div class="sf-brand">NutriPalm</div><div class="sf-quien">Ana</div></div></div><div class="sf-dish">Pollo al limón con quinoa y verduras · 470 kcal</div></div>
+      <div class="sf-item"><div class="sf-top kifud"><div class="sf-ico">🎒</div><div><div class="sf-brand">Kifud</div><div class="sf-quien">Emilio</div></div></div><div class="sf-dish">Croquetitas de atún con puré de camote · 340 kcal</div></div>
+      <div class="sf-item"><div class="sf-top chef"><div class="sf-ico">🩺</div><div><div class="sf-brand">Nutrichef</div><div class="sf-quien">Roberto</div></div></div><div class="sf-dish">Menú diabético A · Dr. Herrera</div></div>
+    </div></div>
+    <div class="sf-col"><div class="sf-head">Martes 1</div><div class="sf-body">
+      <div class="sf-item"><div class="sf-top palm"><div class="sf-ico">🌿</div><div><div class="sf-brand">NutriPalm</div><div class="sf-quien">Ana</div></div></div><div class="sf-dish">Salmón glaseado con puré de coliflor · 510 kcal</div></div>
+      <div class="sf-item"><div class="sf-top kifud"><div class="sf-ico">🎒</div><div><div class="sf-brand">Kifud</div><div class="sf-quien">Emilio</div></div></div><div class="sf-dish">Mini hamburguesas de lentejas · 380 kcal</div></div>
+      <div class="sf-item"><div class="sf-top chef"><div class="sf-ico">🩺</div><div><div class="sf-brand">Nutrichef</div><div class="sf-quien">Roberto</div></div></div><div class="sf-dish">Menú diabético B · Dr. Herrera</div></div>
+    </div></div>
+    <div class="sf-col"><div class="sf-head">Miércoles 2</div><div class="sf-body">
+      <div class="sf-item"><div class="sf-top palm"><div class="sf-ico">🌿</div><div><div class="sf-brand">NutriPalm</div><div class="sf-quien">Ana</div></div></div><div class="sf-dish">Bowl de res con quinoa y vegetales · 520 kcal</div></div>
+      <div class="sf-item"><div class="sf-top kifud"><div class="sf-ico">🎒</div><div><div class="sf-brand">Kifud</div><div class="sf-quien">Emilio</div></div></div><div class="sf-dish">Rollitos de pollo y espinaca · 340 kcal</div></div>
+      <div class="sf-item"><div class="sf-top chef"><div class="sf-ico">🩺</div><div><div class="sf-brand">Nutrichef</div><div class="sf-quien">Roberto</div></div></div><div class="sf-dish">Menú diabético C · Dr. Herrera</div></div>
+    </div></div>
+    <div class="sf-col"><div class="sf-head">Jueves 3</div><div class="sf-body">
+      <div class="sf-item"><div class="sf-top palm"><div class="sf-ico">🌿</div><div><div class="sf-brand">NutriPalm</div><div class="sf-quien">Ana</div></div></div><div class="sf-dish">Pollo a la mostaza con verduras · 460 kcal</div></div>
+      <div class="sf-item"><div class="sf-top kifud"><div class="sf-ico">🎒</div><div><div class="sf-brand">Kifud</div><div class="sf-quien">Emilio</div></div></div><div class="sf-dish">Rollitos de pollo y espinaca · 340 kcal</div></div>
+      <div class="sf-item"><div class="sf-top chef"><div class="sf-ico">🩺</div><div><div class="sf-brand">Nutrichef</div><div class="sf-quien">Roberto</div></div></div><div class="sf-dish">Menú diabético D · Dr. Herrera</div></div>
+    </div></div>
+    <div class="sf-col"><div class="sf-head">Viernes 4</div><div class="sf-body">
+      <div class="sf-item"><div class="sf-top palm"><div class="sf-ico">🌿</div><div><div class="sf-brand">NutriPalm</div><div class="sf-quien">Ana</div></div></div><div class="sf-dish">Bowl mediterráneo de pollo · 490 kcal</div></div>
+      <div class="sf-item"><div class="sf-top kifud"><div class="sf-ico">🎒</div><div><div class="sf-brand">Kifud</div><div class="sf-quien">Emilio</div></div></div><div class="sf-dish">Nidos de pasta integral · 360 kcal</div></div>
+      <div class="sf-item"><div class="sf-top chef"><div class="sf-ico">🩺</div><div><div class="sf-brand">Nutrichef</div><div class="sf-quien">Roberto</div></div></div><div class="sf-dish">Menú diabético E · Dr. Herrera</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- HISTORIAL -->
+<div class="view" id="v-historial">
+  <div class="page-title">Historial</div>
+  <div class="page-sub">Pedidos y pagos de los últimos meses</div>
+  <div class="hist-list">
+    <div class="hist-item"><div class="hi-ico">📦</div><div class="hi-inf"><div class="hi-t">Semana 24–28 mar 2026</div><div class="hi-s">3 integrantes · 15 contenedores · sin incidencias</div><div class="hi-tags"><span class="hi-tag palm">NutriPalm</span><span class="hi-tag kifud">Kifud</span><span class="hi-tag chef">Nutrichef</span></div></div><div class="hi-monto"><div class="hi-precio">$2,300</div><div class="hi-est">Pagado</div></div></div>
+    <div class="hist-item"><div class="hi-ico">📦</div><div class="hi-inf"><div class="hi-t">Semana 17–21 mar 2026</div><div class="hi-s">3 integrantes · 15 contenedores entregados</div><div class="hi-tags"><span class="hi-tag palm">NutriPalm</span><span class="hi-tag kifud">Kifud</span><span class="hi-tag chef">Nutrichef</span></div></div><div class="hi-monto"><div class="hi-precio">$2,300</div><div class="hi-est">Pagado</div></div></div>
+    <div class="hist-item"><div class="hi-ico">📦</div><div class="hi-inf"><div class="hi-t">Semana 10–14 mar 2026</div><div class="hi-s">Nutrichef sin entrega el viernes (reposición aplicada)</div><div class="hi-tags"><span class="hi-tag palm">NutriPalm</span><span class="hi-tag kifud">Kifud</span><span class="hi-tag chef">Nutrichef</span></div></div><div class="hi-monto"><div class="hi-precio">$2,120</div><div class="hi-est">Pagado</div></div></div>
+    <div class="hist-item"><div class="hi-ico">💳</div><div class="hi-inf"><div class="hi-t">Cargo mensual marzo 2026</div><div class="hi-s">Paquete Familia Completa · NutriPalm + Kifud + Nutrichef</div><div class="hi-tags"><span class="hi-tag palm">NutriPalm</span><span class="hi-tag kifud">Kifud</span><span class="hi-tag chef">Nutrichef</span></div></div><div class="hi-monto"><div class="hi-precio">$9,200</div><div class="hi-est">Pagado</div></div></div>
+    <div class="hist-item"><div class="hi-ico">💳</div><div class="hi-inf"><div class="hi-t">Cargo mensual febrero 2026</div><div class="hi-s">Paquete Familia Completa</div><div class="hi-tags"><span class="hi-tag palm">NutriPalm</span><span class="hi-tag kifud">Kifud</span><span class="hi-tag chef">Nutrichef</span></div></div><div class="hi-monto"><div class="hi-precio">$9,200</div><div class="hi-est">Pagado</div></div></div>
+  </div>
+</div>
+
+<!-- NUTRIPALM -->
+<div class="view" id="v-palm">
+  <div class="marca-header">
+    <div class="marca-logo-big palm">🌿</div>
+    <div><div class="marca-name palm">NutriPalm</div><div class="marca-desc-txt">Comida saludable para adultos · recogida en Escápate Café</div></div>
+    <div class="mq-tag"><div class="mq-lbl">Integrante</div><div class="mq-name">Ana Rodríguez</div></div>
+  </div>
+  <div class="marca-info-grid">
+    <div class="mig-card"><div class="mig-lbl">Plan activo</div><span class="plan-pill palm">⭐ Premium</span><div class="mig-sub" style="margin-top:8px">5 porciones/semana · salmón incluido · $2,500/mes</div></div>
+    <div class="mig-card"><div class="mig-lbl">Nutrióloga asignada</div><div class="mig-val">Nut. Valeria Ríos</div><div class="mig-sub">Alimentación balanceada para adultos</div></div>
+  </div>
+  <div class="sec-hd"><div class="sec-title">Menú semana 31 mar – 4 abr</div><button class="sec-btn" onclick="toast('Selector de menú para semana 7–11 abr')">Elegir próxima semana →</button></div>
+  <div class="menu-semana">
+    <div class="ms-dia"><div class="ms-dh hoy">Lun 31</div><div class="ms-body"><button class="ms-platillo palm" onclick="toast('Pollo al limón · 470 kcal · 40g prot · GI bajo')">Pollo al limón con quinoa<div class="ms-kcal">470 kcal · 40g prot</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Mar 1</div><div class="ms-body"><button class="ms-platillo palm" onclick="toast('Salmón glaseado · 510 kcal · Omega-3 · GI bajo')">Salmón glaseado<div class="ms-kcal">510 kcal · 36g prot</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Mié 2</div><div class="ms-body"><button class="ms-platillo palm" onclick="toast('Bowl de res · 520 kcal · GI bajo-moderado')">Bowl de res con quinoa<div class="ms-kcal">520 kcal · 38g prot</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Jue 3</div><div class="ms-body"><button class="ms-platillo palm" onclick="toast('Pollo a la mostaza · 460 kcal · GI bajo')">Pollo a la mostaza<div class="ms-kcal">460 kcal · 38g prot</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Vie 4</div><div class="ms-body"><button class="ms-platillo palm" onclick="toast('Bowl mediterráneo · 490 kcal · GI bajo')">Bowl mediterráneo<div class="ms-kcal">490 kcal · 35g prot</div></button></div></div>
+  </div>
+  <div class="nutri-card"><div class="nutri-av">👩‍🍳</div><div><div class="nutri-name">Nut. Valeria Ríos</div><div class="nutri-esp">Cocinando para 6 clientes esta semana · Menú publicado ✓</div></div><button class="sec-btn" style="margin-left:auto" onclick="toast('Cambia de nutrióloga explorando su menú')">Cambiar nutrióloga</button></div>
+</div>
+
+<!-- KIFUD -->
+<div class="view" id="v-kifud">
+  <div class="marca-header">
+    <div class="marca-logo-big kifud">🎒</div>
+    <div><div class="marca-name kifud">Kifud</div><div class="marca-desc-txt">Lonche escolar saludable · Preescolar y primaria</div></div>
+    <div class="mq-tag"><div class="mq-lbl">Integrante</div><div class="mq-name">Emilio Rodríguez</div></div>
+  </div>
+  <div class="marca-info-grid">
+    <div class="mig-card"><div class="mig-lbl">Plan activo</div><span class="plan-pill kifud">🎒 Lonche escolar</span><div class="mig-sub" style="margin-top:8px">5 lonches/semana · preescolar · $1,800/mes</div></div>
+    <div class="mig-card"><div class="mig-lbl">Nutrióloga asignada</div><div class="mig-val">Nut. Carmen Mejía</div><div class="mig-sub">Nutrición infantil · alergias registradas</div></div>
+  </div>
+  <div class="sec-hd"><div class="sec-title">Lonches semana 31 mar – 4 abr</div></div>
+  <div class="menu-semana">
+    <div class="ms-dia"><div class="ms-dh hoy">Lun 31</div><div class="ms-body"><button class="ms-platillo kifud" onclick="toast('Croquetitas de atún · 340 kcal · Omega-3')">Croquetitas de atún<div class="ms-kcal">340 kcal · 18g prot</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Mar 1</div><div class="ms-body"><button class="ms-platillo kifud" onclick="toast('Mini hamburguesas de lentejas · 380 kcal')">Mini hamb. de lentejas<div class="ms-kcal">380 kcal · 20g prot</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Mié 2</div><div class="ms-body"><button class="ms-platillo kifud" onclick="toast('Rollitos de pollo y espinaca · 340 kcal')">Rollitos de pollo<div class="ms-kcal">340 kcal · 22g prot</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Jue 3</div><div class="ms-body"><button class="ms-platillo kifud" onclick="toast('Rollitos de pollo y espinaca · 340 kcal')">Rollitos de pollo<div class="ms-kcal">340 kcal · 22g prot</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Vie 4</div><div class="ms-body"><button class="ms-platillo kifud" onclick="toast('Nidos de pasta integral · 360 kcal · Hierro')">Nidos de pasta integral<div class="ms-kcal">360 kcal · 18g prot</div></button></div></div>
+  </div>
+  <div class="nutri-card"><div class="nutri-av">👩‍🍳</div><div><div class="nutri-name">Nut. Carmen Mejía</div><div class="nutri-esp">Sin mariscos · Sin nueces · alergias de Emilio registradas</div></div><button class="sec-btn" style="margin-left:auto" onclick="toast('Editar alergias de Emilio')">Editar alergias</button></div>
+</div>
+
+<!-- NUTRICHEF -->
+<div class="view" id="v-chef">
+  <div class="marca-header">
+    <div class="marca-logo-big chef">🩺</div>
+    <div><div class="marca-name chef">Nutrichef</div><div class="marca-desc-txt">Dieta terapéutica prescrita por médico · diabetes tipo 2</div></div>
+    <div class="mq-tag"><div class="mq-lbl">Integrante</div><div class="mq-name">Roberto Rodríguez</div></div>
+  </div>
+  <div class="marca-info-grid">
+    <div class="mig-card"><div class="mig-lbl">Plan activo</div><span class="plan-pill chef">🩺 Dieta terapéutica</span><div class="mig-sub" style="margin-top:8px">Diabetes tipo 2 · 5 comidas/semana · $4,900/mes</div></div>
+    <div class="mig-card"><div class="mig-lbl">Médico tratante</div><div class="mig-val">Dr. Arturo Herrera</div><div class="mig-sub">Internista · Plan actualizado 30 mar 2026</div></div>
+  </div>
+  <div class="sec-hd"><div class="sec-title">Menú semana 31 mar – 4 abr</div></div>
+  <div class="menu-semana">
+    <div class="ms-dia"><div class="ms-dh hoy">Lun 31</div><div class="ms-body"><button class="ms-platillo chef" onclick="toast('Menú A · Bajo carbohidratos · GI bajo · Dr. Herrera')">Menú diabético A<div class="ms-kcal">Prescrito · GI bajo</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Mar 1</div><div class="ms-body"><button class="ms-platillo chef" onclick="toast('Menú B · Proteína magra · bajo IG')">Menú diabético B<div class="ms-kcal">Prescrito · GI bajo</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Mié 2</div><div class="ms-body"><button class="ms-platillo chef" onclick="toast('Menú C · Fibra alta · control glucémico')">Menú diabético C<div class="ms-kcal">Prescrito · GI bajo</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Jue 3</div><div class="ms-body"><button class="ms-platillo chef" onclick="toast('Menú D · Sin azúcares simples · bajo sodio')">Menú diabético D<div class="ms-kcal">Prescrito · GI bajo</div></button></div></div>
+    <div class="ms-dia"><div class="ms-dh">Vie 4</div><div class="ms-body"><button class="ms-platillo chef" onclick="toast('Menú E · Proteína completa · bajo IG')">Menú diabético E<div class="ms-kcal">Prescrito · GI bajo</div></button></div></div>
+  </div>
+  <div class="nutri-card" style="background:var(--chef-l);border:1.5px solid rgba(107,63,160,.15)"><div class="nutri-av">⚠️</div><div><div class="nutri-name">Restricciones activas</div><div class="nutri-esp">Sin azúcar · Bajo en carbohidratos · Sin sodio elevado · Sin grasas saturadas</div></div></div>
+</div>
+
+<!-- KIWILU -->
+<div class="view" id="v-kiwilu">
+  <div class="page-title">Kiwilu</div>
+  <div class="page-sub">Plan nutricional prescrito por nutrióloga</div>
+  <div style="background:var(--white);border-radius:var(--r);padding:32px;box-shadow:var(--sh);text-align:center">
+    <div style="font-size:40px;margin-bottom:14px">🌀</div>
+    <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:8px">Kiwilu no está activo aún</div>
+    <div style="font-size:13px;color:var(--ink-muted);max-width:320px;margin:0 auto 20px">Kiwilu cocina el plan nutricional que prescribe tu nutrióloga. Si algún integrante tiene un plan, puedes activarlo aquí.</div>
+    <button class="btn-primary" style="max-width:220px;margin:0 auto;display:block" onclick="toast('Iniciando activación de Kiwilu...')">Activar Kiwilu →</button>
+  </div>
+</div>
+
+</div></div>
+
+<!-- MODAL -->
+<div class="modal-ov" id="modal" onclick="if(event.target===this)cerrarModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="cerrarModal()">×</button>
+    <div class="modal-title" id="m-title">Agregar integrante</div>
+    <div class="modal-sub" id="m-sub">Llena los datos y elige qué servicios necesita.</div>
+    <input type="hidden" id="m-idx" value="-1">
+    <div class="form-row-2">
+      <div><label class="form-label">Nombre</label><input class="form-input" id="m-nombre" placeholder="Ej: Ana"></div>
+      <div><label class="form-label">Apellido</label><input class="form-input" id="m-apellido" placeholder="Rodríguez"></div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Rol en la familia</label>
+      <select class="form-select" id="m-rol"><option>Mamá</option><option>Papá</option><option>Hijo/a</option><option>Abuelo/a</option><option>Otro</option></select>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Nota (opcional)</label>
+      <input class="form-input" id="m-nota" placeholder="Ej: Diabetes tipo 2, 4 años, preferencias...">
+    </div>
+    <div class="form-divider"><span>Servicios</span></div>
+    <div class="svc-checks">
+      <button class="svc-chk palm" id="c-palm" type="button" onclick="this.classList.toggle('on')"><div class="chk-box">✓</div><div class="chk-ico">🌿</div><div><div class="chk-n">NutriPalm</div><div class="chk-d">Comida adultos · $2,100–$2,500/mes</div></div></button>
+      <button class="svc-chk kifud" id="c-kifud" type="button" onclick="this.classList.toggle('on')"><div class="chk-box">✓</div><div class="chk-ico">🎒</div><div><div class="chk-n">Kifud</div><div class="chk-d">Lonche escolar niños · desde $1,600/mes</div></div></button>
+      <button class="svc-chk chef" id="c-chef" type="button" onclick="this.classList.toggle('on')"><div class="chk-box">✓</div><div class="chk-ico">🩺</div><div><div class="chk-n">Nutrichef</div><div class="chk-d">Dieta terapéutica por médico · precio variable</div></div></button>
+      <button class="svc-chk kiwilu" id="c-kiwilu" type="button" onclick="this.classList.toggle('on')"><div class="chk-box">✓</div><div class="chk-ico">🌀</div><div><div class="chk-n">Kiwilu</div><div class="chk-d">Plan por nutrióloga · precio por complejidad</div></div></button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="cerrarModal()">Cancelar</button>
+      <button class="btn-primary" onclick="guardar()">Guardar</button>
+    </div>
+    <div style="text-align:center;margin-top:8px" id="m-del"></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+<script>
+const SVCS=['palm','kifud','chef','kiwilu'];
+const ICONS={palm:'🌿',kifud:'🎒',chef:'🩺',kiwilu:'🌀'};
+const NAMES={palm:'NutriPalm',kifud:'Kifud',chef:'Nutrichef',kiwilu:'Kiwilu'};
+const DETAILS={palm:'Esta semana: Pollo al limón · Lun',kifud:'Esta semana: Croquetitas · Lun',chef:'Plan Dr. Herrera · activo',kiwilu:'Plan nutricional activo'};
+let integrantes=[
+  {nombre:'Ana',apellido:'Rodríguez',rol:'Mamá',nota:'Come sano',svcs:['palm']},
+  {nombre:'Emilio',apellido:'Rodríguez',rol:'Hijo/a',nota:'4 años · Preescolar',svcs:['kifud']},
+  {nombre:'Roberto',apellido:'Rodríguez',rol:'Papá',nota:'Diabetes tipo 2',svcs:['chef']},
+];
+function emojiRol(r){return r==='Mamá'?'👩':r==='Papá'?'👨':r==='Hijo/a'?'👦':r==='Abuelo/a'?'👴':'🧑'}
+function renderIntegrantes(){
+  const g=document.getElementById('int-grid');
+  g.innerHTML=integrantes.map((p,i)=>`
+    <div class="int-card">
+      <div class="ic-hd">
+        <div class="ic-av ${p.svcs[0]||'none'}">${emojiRol(p.rol)}</div>
+        <div class="ic-inf"><div class="ic-name">${p.nombre} · ${p.rol}</div><div class="ic-rol">${p.nota||''}</div></div>
+        <button class="ic-edit" onclick="abrirEditar(${i})">✏️</button>
+      </div>
+      <div class="ic-svcs">
+        ${p.svcs.map(s=>`<div class="ic-svc ${s}"><div class="ics-ico">${ICONS[s]}</div><div class="ics-inf"><div class="ics-n">${NAMES[s]}</div><div class="ics-d">${DETAILS[s]}</div></div><div class="ics-tag">Activo</div></div>`).join('')}
+        <button class="ic-add-svc" onclick="abrirAgregar()">+ Agregar servicio</button>
+      </div>
+    </div>`).join('')+
+    '<button class="int-add-card" onclick="abrirAgregar()"><div class="plus">+</div><div class="int-add-label">Agregar integrante</div></button>';
+}
+function nav(btn){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('v-'+btn.dataset.view).classList.add('active');
+  document.querySelectorAll('.sb-item,.sb-marca').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function navById(v){const b=document.querySelector('[data-view="'+v+'"]');if(b)nav(b);}
+function abrirAgregar(){
+  document.getElementById('m-idx').value=-1;
+  document.getElementById('m-title').textContent='Agregar integrante';
+  document.getElementById('m-sub').textContent='Llena los datos y elige qué servicios necesita.';
+  document.getElementById('m-nombre').value='';
+  document.getElementById('m-apellido').value='';
+  document.getElementById('m-nota').value='';
+  document.getElementById('m-rol').value='Mamá';
+  document.getElementById('m-del').innerHTML='';
+  SVCS.forEach(s=>document.getElementById('c-'+s).classList.remove('on'));
+  document.getElementById('modal').classList.add('open');
+}
+function abrirEditar(i){
+  const p=integrantes[i];
+  document.getElementById('m-idx').value=i;
+  document.getElementById('m-title').textContent='Editar integrante';
+  document.getElementById('m-sub').textContent='Modifica los datos o los servicios activos.';
+  document.getElementById('m-nombre').value=p.nombre;
+  document.getElementById('m-apellido').value=p.apellido;
+  document.getElementById('m-nota').value=p.nota||'';
+  document.getElementById('m-rol').value=p.rol;
+  SVCS.forEach(s=>{const el=document.getElementById('c-'+s);p.svcs.includes(s)?el.classList.add('on'):el.classList.remove('on');});
+  document.getElementById('m-del').innerHTML='<button class="btn-danger" onclick="eliminar('+i+')">🗑 Eliminar integrante</button>';
+  document.getElementById('modal').classList.add('open');
+}
+function cerrarModal(){document.getElementById('modal').classList.remove('open')}
+function guardar(){
+  const nombre=document.getElementById('m-nombre').value.trim();
+  if(!nombre){toast('Escribe el nombre');return;}
+  const obj={nombre,apellido:document.getElementById('m-apellido').value.trim(),rol:document.getElementById('m-rol').value,nota:document.getElementById('m-nota').value.trim(),svcs:SVCS.filter(s=>document.getElementById('c-'+s).classList.contains('on'))};
+  const idx=parseInt(document.getElementById('m-idx').value);
+  if(idx>=0){integrantes[idx]=obj;toast('✓ '+nombre+' actualizado');}
+  else{integrantes.push(obj);toast('✓ '+nombre+' agregado');}
+  cerrarModal();renderIntegrantes();
+}
+function eliminar(i){const n=integrantes[i].nombre;integrantes.splice(i,1);cerrarModal();renderIntegrantes();toast(n+' eliminado');}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.opacity=1;clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity=0,2800);}
+renderIntegrantes();
+</script>
+</body>
+</html>
