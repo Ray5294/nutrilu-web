@@ -367,6 +367,69 @@ textarea{resize:vertical;min-height:80px}
 .edad-desc{font-size:12px;color:var(--mid);margin-top:8px;line-height:1.5;font-weight:300}
 
 #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:12px 24px;border-radius:100px;font-size:13px;z-index:9999;opacity:0;transition:opacity .3s;white-space:nowrap;font-weight:500}
+
+/* ── MIS SERVICIOS ── */
+.svc-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:12px;transition:.2s}
+.svc-card.inactive{opacity:.75}
+.svc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.svc-left{display:flex;align-items:flex-start;gap:10px}
+.svc-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.svc-name{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:2px}
+.svc-desc{font-size:12px;color:var(--mid);font-weight:300;line-height:1.5}
+.svc-badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:100px;flex-shrink:0}
+.svc-badge-on{background:var(--okl);color:var(--ok)}
+.svc-badge-off{background:var(--cream);color:var(--light)}
+.svc-toggle{width:40px;height:22px;border-radius:100px;background:var(--cream);border:none;cursor:pointer;display:flex;align-items:center;padding:3px;transition:.2s;flex-shrink:0}
+.svc-toggle.on{background:var(--palm)}
+.svc-knob{width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.svc-toggle.on .svc-knob{transform:translateX(18px)}
+.svc-reqs{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.svc-req{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mid)}
+.req-icon-ok{width:18px;height:18px;border-radius:50%;background:var(--okl);color:var(--ok);font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.req-icon-pend{width:18px;height:18px;border-radius:50%;background:var(--chef-l);color:var(--chef);font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.svc-meta{display:flex;flex-wrap:wrap;gap:6px}
+.svc-chip{font-size:11px;background:var(--cream);color:var(--mid);padding:3px 10px;border-radius:100px;font-weight:500}
+.svc-chip-chef{background:var(--chef-l);color:var(--chef-d)}
+
+/* ── HOY: SEPARADORES DE SECCIÓN ── */
+.hoy-sec-wrap{display:flex;align-items:baseline;gap:10px;margin:18px 0 10px}
+.hoy-sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mid);display:flex;align-items:center;gap:6px}
+.hoy-sec-hint{font-size:12px;color:var(--light);font-weight:300}
+
+/* ── HOY: PACIENTES INDIVIDUALES ── */
+.hoy-pac-row{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;border-bottom:1px solid var(--border);transition:.1s}
+.hoy-pac-row:last-child{border-bottom:none}
+.hoy-pac-row:hover{background:var(--off)}
+.hoy-pac-row.listo{opacity:.45}
+.hoy-pac-av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px}
+.hoy-pac-info{flex:1;min-width:0}
+.hoy-pac-name{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:1px}
+.hoy-pac-dish{font-size:12px;color:var(--mid);font-weight:300;margin-bottom:5px}
+.hoy-pac-tags{display:flex;flex-wrap:wrap;gap:4px}
+.rtag-kiwilu{font-size:10px;padding:2px 8px;border-radius:100px;font-weight:600;background:var(--kiwilu-l);color:var(--kiwilu-d)}
+.rtag-chef{font-size:10px;padding:2px 8px;border-radius:100px;font-weight:600;background:var(--chef-l);color:var(--chef-d)}
+.hoy-pac-btn{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);background:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:.15s;color:transparent}
+.hoy-pac-btn:hover{border-color:var(--palm);color:var(--palm)}
+.hoy-pac-btn.done{background:var(--ok);border-color:var(--ok);color:#fff}
+.hoy-pac-btn-chef:hover{border-color:var(--chef);color:var(--chef)}
+.hoy-pac-btn-chef.done{background:var(--chef);border-color:var(--chef);color:#fff}
+.chef-alerta{background:rgba(216,90,48,.06);padding:8px 18px;font-size:12px;color:var(--chef-d);display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(216,90,48,.12)}
+
+/* ── CONSTRUCTOR: tabs extra y vista individual ── */
+.pac-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;transition:.15s;margin-bottom:8px;display:flex;align-items:flex-start;gap:12px}
+.pac-card:hover{border-color:rgba(0,0,0,.14);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.pac-card.sel-kiwilu{border-color:var(--kiwilu);background:var(--kiwilu-l)}
+.pac-card.sel-chef{border-color:var(--chef);background:var(--chef-l)}
+.pac-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.pac-nombre{font-size:13px;font-weight:700;color:var(--dark)}
+.pac-plan{font-size:11px;color:var(--mid);margin-top:1px;font-weight:300}
+.pac-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px}
+.pac-asignado{font-size:11px;color:var(--ok);font-weight:600;margin-top:3px}
+.pac-libre{font-size:11px;color:var(--light);font-weight:400;margin-top:3px}
+.compat-dish{background:var(--off);border:1px solid var(--border);border-radius:8px;padding:9px 12px;cursor:pointer;transition:.12s;font-size:12px;margin-bottom:6px}
+.compat-dish:hover{border-color:var(--palm);background:var(--palm-l)}
+.compat-dish-name{font-weight:600;color:var(--dark);margin-bottom:2px}
+.compat-dish-meta{color:var(--mid);font-weight:300}
 </style>
 </head>
 <body>
@@ -475,26 +538,29 @@ textarea{resize:vertical;min-height:80px}
     <div class="hoy-alerta-hora"><span>límite hoy</span>4:00 PM</div>
   </div>
 
-  <div class="hoy-marca-row">
-    <div class="hoy-marca-h">
-      <div class="hoy-marca-n"><div class="dot dot-palm"></div>NutriPalm · Lunes 7 abr</div>
-      <span class="pill pill-palm">7 personas</span>
+  <!-- SECCIÓN LOTE -->
+  <div class="hoy-sec-wrap">
+    <div class="hoy-sec-label">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="5" height="5" rx="1" opacity=".8"/><rect x="7" y="0" width="5" height="5" rx="1"/><rect x="0" y="7" width="5" height="5" rx="1" opacity=".4"/><rect x="7" y="7" width="5" height="5" rx="1" opacity=".6"/></svg>
+      Producción por lote
     </div>
+    <div class="hoy-sec-hint">NutriPalm · Kifud — prepara el total por platillo</div>
+  </div>
+
+  <div class="hoy-marca-row">
+    <div class="hoy-marca-h"><div class="hoy-marca-n"><div class="dot dot-palm"></div>NutriPalm · Lunes 7 abr</div><span class="pill pill-palm">7 personas</span></div>
     <div class="hoy-platillo-row">
       <div class="hoy-platillo-name"><span style="font-size:20px">🍋</span><span>Pollo al limón con quinoa</span></div>
-      <div style="text-align:right"><div class="hoy-count" style="color:var(--palm)">5</div><div class="hoy-count-lbl">personas</div></div>
+      <div style="text-align:right"><div class="hoy-count" style="color:var(--palm)">5</div><div class="hoy-count-lbl">porciones</div></div>
     </div>
     <div class="hoy-platillo-row">
       <div class="hoy-platillo-name"><span style="font-size:20px">🫒</span><span>Bowl mediterráneo de pollo</span></div>
-      <div style="text-align:right"><div class="hoy-count" style="color:var(--palm)">2</div><div class="hoy-count-lbl">personas</div></div>
+      <div style="text-align:right"><div class="hoy-count" style="color:var(--palm)">2</div><div class="hoy-count-lbl">porciones</div></div>
     </div>
   </div>
 
   <div class="hoy-marca-row">
-    <div class="hoy-marca-h">
-      <div class="hoy-marca-n"><div class="dot dot-kifud"></div>Kifud · Lunes 7 abr</div>
-      <span class="pill pill-kifud">9 loncheras</span>
-    </div>
+    <div class="hoy-marca-h"><div class="hoy-marca-n"><div class="dot dot-kifud"></div>Kifud · Lunes 7 abr</div><span class="pill pill-kifud">9 loncheras</span></div>
     <div class="hoy-platillo-row">
       <div class="hoy-platillo-name"><span style="font-size:20px">🥕</span><span>Croquetitas de atún con puré de camote</span><span class="pill pill-off" style="margin-left:8px;font-size:10px">Preescolar</span></div>
       <div style="text-align:right"><div class="hoy-count" style="color:var(--kifud-d)">3</div><div class="hoy-count-lbl">loncheras</div></div>
@@ -506,6 +572,89 @@ textarea{resize:vertical;min-height:80px}
     <div class="hoy-platillo-row">
       <div class="hoy-platillo-name"><span style="font-size:20px">🌯</span><span>Rollitos de pollo y espinaca</span><span class="pill pill-off" style="margin-left:8px;font-size:10px">Primaria alta</span></div>
       <div style="text-align:right"><div class="hoy-count" style="color:var(--kifud-d)">2</div><div class="hoy-count-lbl">loncheras</div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN INDIVIDUAL -->
+  <div class="hoy-sec-wrap" style="margin-top:24px">
+    <div class="hoy-sec-label">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="4" r="2.5"/><path d="M1 11c0-2.76 2.24-4 5-4s5 1.24 5 4" fill="currentColor"/></svg>
+      Producción individual
+    </div>
+    <div class="hoy-sec-hint">Kiwilu · Nutrichef — etiqueta cada contenedor con el nombre del paciente</div>
+  </div>
+
+  <!-- Kiwilu -->
+  <div class="hoy-marca-row">
+    <div class="hoy-marca-h"><div class="hoy-marca-n"><div class="dot dot-kiwilu"></div>Kiwilu · Lunes 7 abr</div><span class="pill pill-kiwilu">4 pacientes</span></div>
+    <div class="hoy-pac-row">
+      <div class="hoy-pac-av" style="background:var(--kiwilu-l);color:var(--kiwilu-d)">LG</div>
+      <div class="hoy-pac-info">
+        <div class="hoy-pac-name">Laura González</div>
+        <div class="hoy-pac-dish">Pollo al limón con quinoa</div>
+        <div class="hoy-pac-tags"><span class="rtag-kiwilu">Bajo IG</span><span class="rtag-kiwilu">Sin azúcar</span></div>
+      </div>
+      <button class="hoy-pac-btn" onclick="toggleHoyCheck(this)"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="hoy-pac-row">
+      <div class="hoy-pac-av" style="background:var(--kiwilu-l);color:var(--kiwilu-d)">MR</div>
+      <div class="hoy-pac-info">
+        <div class="hoy-pac-name">Marco Reyes</div>
+        <div class="hoy-pac-dish">Salmón con verduras al vapor</div>
+        <div class="hoy-pac-tags"><span class="rtag-kiwilu">Alta proteína</span><span class="rtag-kiwilu">Sin gluten</span></div>
+      </div>
+      <button class="hoy-pac-btn" onclick="toggleHoyCheck(this)"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="hoy-pac-row">
+      <div class="hoy-pac-av" style="background:var(--kiwilu-l);color:var(--kiwilu-d)">SC</div>
+      <div class="hoy-pac-info">
+        <div class="hoy-pac-name">Sofía Castro</div>
+        <div class="hoy-pac-dish">Bowl de pollo con leguminosas</div>
+        <div class="hoy-pac-tags"><span class="rtag-kiwilu">Pérdida de peso</span></div>
+      </div>
+      <button class="hoy-pac-btn" onclick="toggleHoyCheck(this)"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="hoy-pac-row">
+      <div class="hoy-pac-av" style="background:var(--kiwilu-l);color:var(--kiwilu-d)">JM</div>
+      <div class="hoy-pac-info">
+        <div class="hoy-pac-name">Jorge Morales</div>
+        <div class="hoy-pac-dish">Res magra con camote y brócoli</div>
+        <div class="hoy-pac-tags"><span class="rtag-kiwilu">Hipertensión</span><span class="rtag-kiwilu">Bajo sodio</span></div>
+      </div>
+      <button class="hoy-pac-btn" onclick="toggleHoyCheck(this)"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+
+  <!-- Nutrichef -->
+  <div class="hoy-marca-row" style="border:1.5px solid rgba(216,90,48,.3)">
+    <div class="hoy-marca-h" style="background:var(--chef-l)"><div class="hoy-marca-n"><div class="dot dot-chef"></div>Nutrichef · Lunes 7 abr</div><span class="pill pill-chef">3 pacientes · Clínico</span></div>
+    <div class="chef-alerta"><span style="font-size:15px">⚠️</span><span><strong>Restricciones médicas críticas.</strong> Revisa cada etiqueta antes de empacar. Cualquier error debe reportarse al equipo antes de la entrega.</span></div>
+    <div class="hoy-pac-row">
+      <div class="hoy-pac-av" style="background:var(--chef-l);color:var(--chef-d)">MG</div>
+      <div class="hoy-pac-info">
+        <div class="hoy-pac-name">María González <span style="font-size:10px;color:var(--light);font-weight:400">· Dr. Pérez · Nefrología</span></div>
+        <div class="hoy-pac-dish">Arroz blanco con pechuga al vapor y calabacita</div>
+        <div class="hoy-pac-tags"><span class="rtag-chef">⚠ Sin sal</span><span class="rtag-chef">⚠ Sin fósforo añadido</span><span class="rtag-chef">⚠ Bajo potasio</span></div>
+      </div>
+      <button class="hoy-pac-btn hoy-pac-btn-chef" onclick="toggleHoyCheck(this)"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="hoy-pac-row">
+      <div class="hoy-pac-av" style="background:var(--chef-l);color:var(--chef-d)">JR</div>
+      <div class="hoy-pac-info">
+        <div class="hoy-pac-name">Juan Ramírez <span style="font-size:10px;color:var(--light);font-weight:400">· Dra. López · Endocrinología</span></div>
+        <div class="hoy-pac-dish">Pechuga a la plancha con quinoa y ejotes</div>
+        <div class="hoy-pac-tags"><span class="rtag-chef">⚠ Sin azúcar</span><span class="rtag-chef">⚠ IG bajo estricto</span><span class="rtag-chef">⚠ Sin harinas blancas</span></div>
+      </div>
+      <button class="hoy-pac-btn hoy-pac-btn-chef" onclick="toggleHoyCheck(this)"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="hoy-pac-row">
+      <div class="hoy-pac-av" style="background:var(--chef-l);color:var(--chef-d)">LM</div>
+      <div class="hoy-pac-info">
+        <div class="hoy-pac-name">Laura Morales <span style="font-size:10px;color:var(--light);font-weight:400">· Dr. Soto · Cardiología</span></div>
+        <div class="hoy-pac-dish">Tilapia al vapor con pasta y zanahoria hervida</div>
+        <div class="hoy-pac-tags"><span class="rtag-chef">⚠ Bajo sodio</span><span class="rtag-chef">⚠ Sin grasas trans</span></div>
+      </div>
+      <button class="hoy-pac-btn hoy-pac-btn-chef" onclick="toggleHoyCheck(this)"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
     </div>
   </div>
 </div>
@@ -591,14 +740,50 @@ textarea{resize:vertical;min-height:80px}
   <div class="builder-tabs">
     <button class="btab active-palm" id="btab-palm" onclick="setBuilderMarca('palm',this)"><div class="dot dot-palm"></div>NutriPalm</button>
     <button class="btab" id="btab-kifud" onclick="setBuilderMarca('kifud',this)"><div class="dot dot-kifud"></div>Kifud</button>
+    <button class="btab" id="btab-kiwilu" onclick="switchToIndividual('kiwilu',this)"><div class="dot dot-kiwilu"></div>Kiwilu</button>
+    <button class="btab" id="btab-chef" onclick="switchToIndividual('chef',this)"><div class="dot dot-chef"></div>Nutrichef</button>
   </div>
 
-  <div class="builder">
-    <div class="dayscol" id="builder-days"></div>
-    <div class="dpanel">
-      <div class="dph"><span class="dpt">Banco de platillos</span><button class="btn-sm" onclick="openModal()">+ Nuevo</button></div>
-      <div class="dpsearch"><input placeholder="Buscar platillo…" oninput="filterDPList(this.value)"></div>
-      <div class="dplist" id="dplist"></div>
+  <!-- Vista lote (NutriPalm / Kifud) — existente sin cambios -->
+  <div id="builder-lote-wrap">
+    <div class="builder">
+      <div class="dayscol" id="builder-days"></div>
+      <div class="dpanel">
+        <div class="dph"><span class="dpt">Banco de platillos</span><button class="btn-sm" onclick="openModal()">+ Nuevo</button></div>
+        <div class="dpsearch"><input placeholder="Buscar platillo…" oninput="filterDPList(this.value)"></div>
+        <div class="dplist" id="dplist"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vista individual (Kiwilu / Nutrichef) — nueva -->
+  <div id="builder-individual-wrap" style="display:none">
+    <div id="ind-alerta" style="margin-bottom:14px"></div>
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap" id="ind-dias">
+      <button class="btab active-palm" onclick="setIndDia('lun',this)" style="font-size:12px;padding:6px 14px">Lunes</button>
+      <button class="btab" onclick="setIndDia('mar',this)" style="font-size:12px;padding:6px 14px">Martes</button>
+      <button class="btab" onclick="setIndDia('mie',this)" style="font-size:12px;padding:6px 14px">Miércoles</button>
+      <button class="btab" onclick="setIndDia('jue',this)" style="font-size:12px;padding:6px 14px">Jueves</button>
+      <button class="btab" onclick="setIndDia('vie',this)" style="font-size:12px;padding:6px 14px">Viernes</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:16px">
+      <div id="ind-pac-lista"></div>
+      <div>
+        <div id="ind-det-panel" style="display:none">
+          <div class="dpanel">
+            <div class="dph"><span class="dpt" id="ind-det-nombre">Paciente</span></div>
+            <div style="padding:10px 0 12px;border-bottom:1px solid var(--border);margin-bottom:10px">
+              <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--light);margin-bottom:7px">Restricciones</div>
+              <div id="ind-det-tags" style="display:flex;flex-wrap:wrap;gap:4px"></div>
+            </div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--light);margin-bottom:8px">Platillos compatibles</div>
+            <div id="ind-det-platillos"></div>
+          </div>
+        </div>
+        <div id="ind-det-empty" style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;font-size:13px;color:var(--light);line-height:1.6">
+          Selecciona un paciente para ver sus restricciones y asignar su platillo del día
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -763,6 +948,66 @@ textarea{resize:vertical;min-height:80px}
           </div>
         </div>
         <button class="fsave" onclick="showToast('Planes de edad actualizados ✓')">Guardar cambios</button>
+      </div>
+
+      <div class="pform-sec">
+        <div class="pform-t">Mis servicios <span>Elige qué marcas quieres cubrir</span></div>
+        <div style="font-size:13px;color:var(--mid);margin-bottom:20px;font-weight:300;line-height:1.6">Activa los servicios en los que quieres participar. Puedes pausar cualquiera en cualquier momento — los clientes activos terminan su ciclo antes del cambio.</div>
+
+        <!-- NutriPalm -->
+        <div class="svc-card" id="svc-palm">
+          <div class="svc-head">
+            <div class="svc-left"><div class="dot dot-palm" style="width:9px;height:9px;margin-top:4px"></div><div><div class="svc-name">NutriPalm</div><div class="svc-desc">Comida saludable para adultos · Menú semanal por lote</div></div></div>
+            <div class="svc-right"><span class="svc-badge svc-badge-on" id="sbadge-palm">Activa</span><button class="svc-toggle on" id="stog-palm" onclick="toggleSvc('palm')"><div class="svc-knob"></div></button></div>
+          </div>
+          <div class="svc-reqs">
+            <div class="svc-req"><div class="req-icon-ok">✓</div>Sin requisitos adicionales — disponible para todas</div>
+          </div>
+          <div class="svc-meta"><span class="svc-chip">📦 Producción por lote</span><span class="svc-chip">👤 20 personas activas</span><span class="svc-chip">💰 $88 por porción</span></div>
+        </div>
+
+        <!-- Kifud -->
+        <div class="svc-card" id="svc-kifud">
+          <div class="svc-head">
+            <div class="svc-left"><div class="dot dot-kifud" style="width:9px;height:9px;margin-top:4px"></div><div><div class="svc-name">Kifud</div><div class="svc-desc">Loncheras escolares para niños · Menú semanal por lote</div></div></div>
+            <div class="svc-right"><span class="svc-badge svc-badge-on" id="sbadge-kifud">Activa</span><button class="svc-toggle on" id="stog-kifud" onclick="toggleSvc('kifud')"><div class="svc-knob"></div></button></div>
+          </div>
+          <div class="svc-reqs">
+            <div class="svc-req"><div class="req-icon-ok">✓</div>Sin requisitos adicionales — disponible para todas</div>
+          </div>
+          <div class="svc-meta"><span class="svc-chip">📦 Producción por lote</span><span class="svc-chip">👶 12 niños activos</span><span class="svc-chip">💰 $72 por lonchera</span></div>
+        </div>
+
+        <!-- Kiwilu -->
+        <div class="svc-card" id="svc-kiwilu">
+          <div class="svc-head">
+            <div class="svc-left"><div class="dot dot-kiwilu" style="width:9px;height:9px;margin-top:4px"></div><div><div class="svc-name">Kiwilu</div><div class="svc-desc">Planes nutricionales individuales · Producción por paciente</div></div></div>
+            <div class="svc-right"><span class="svc-badge svc-badge-on" id="sbadge-kiwilu">Activa</span><button class="svc-toggle on" id="stog-kiwilu" onclick="toggleSvc('kiwilu')"><div class="svc-knob"></div></button></div>
+          </div>
+          <div class="svc-reqs">
+            <div class="svc-req"><div class="req-icon-ok">✓</div>Registro completado</div>
+            <div class="svc-req"><div class="req-icon-ok">✓</div>Comprensión de planes clínicos confirmada</div>
+          </div>
+          <div class="svc-meta"><span class="svc-chip">👤 Producción individual</span><span class="svc-chip">🩺 4 pacientes activos</span><span class="svc-chip">💰 Precio por paciente</span></div>
+        </div>
+
+        <!-- Nutrichef -->
+        <div class="svc-card inactive" id="svc-chef">
+          <div class="svc-head">
+            <div class="svc-left"><div class="dot dot-chef" style="width:9px;height:9px;margin-top:4px"></div><div><div class="svc-name">Nutrichef</div><div class="svc-desc">Alimentación clínica supervisada · Planes de médicos · Producción por paciente</div></div></div>
+            <div class="svc-right"><span class="svc-badge svc-badge-off" id="sbadge-chef">Inactiva</span><button class="svc-toggle" id="stog-chef" onclick="toggleSvc('chef')"><div class="svc-knob"></div></button></div>
+          </div>
+          <div class="svc-reqs">
+            <div class="svc-req"><div class="req-icon-ok">✓</div>Registro completado</div>
+            <div class="svc-req"><div class="req-icon-pend">!</div>Cédula profesional validada — <button onclick="showToast('Módulo de validación próximamente...')" style="background:none;border:none;color:var(--chef);font-weight:700;cursor:pointer;font-family:inherit;font-size:inherit;padding:0;margin-left:2px">Validar ahora →</button></div>
+            <div class="svc-req"><div class="req-icon-pend">!</div>Capacitación en dietas clínicas — <button onclick="showToast('Módulo de capacitación próximamente...')" style="background:none;border:none;color:var(--chef);font-weight:700;cursor:pointer;font-family:inherit;font-size:inherit;padding:0;margin-left:2px">Completar →</button></div>
+          </div>
+          <div class="svc-meta"><span class="svc-chip">🏥 Restricciones médicas críticas</span><span class="svc-chip">💰 Precio por paciente</span><span class="svc-chip svc-chip-chef">Requiere cédula validada</span></div>
+        </div>
+
+        <div style="background:var(--cream);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--mid);line-height:1.6;margin-top:4px">
+          <strong style="color:var(--dark)">¿Cómo funciona?</strong> Cada marca que actives aparecerá en tu perfil público y los clientes podrán contratarte. Los cambios aplican a partir de la siguiente semana.
+        </div>
       </div>
 
       <div class="pform-sec">
@@ -1396,6 +1641,147 @@ renderWeekInfoCard();
 renderMenuNota();
 renderBuilder();
 renderDPList();
+
+/* ════ MIS SERVICIOS ════ */
+function toggleSvc(marca) {
+  const tog = document.getElementById('stog-' + marca);
+  const card = document.getElementById('svc-' + marca);
+  const badge = document.getElementById('sbadge-' + marca);
+  const isOn = tog.classList.contains('on');
+  if (isOn) {
+    tog.classList.remove('on');
+    card.classList.add('inactive');
+    badge.className = 'svc-badge svc-badge-off';
+    badge.textContent = 'Inactiva';
+    showToast(marca.charAt(0).toUpperCase() + marca.slice(1) + ' pausada · aplica la siguiente semana');
+  } else {
+    if (marca === 'chef') {
+      const pendientes = card.querySelectorAll('.req-icon-pend');
+      if (pendientes.length > 0) { showToast('Completa los requisitos antes de activar Nutrichef'); return; }
+    }
+    tog.classList.add('on');
+    card.classList.remove('inactive');
+    badge.className = 'svc-badge svc-badge-on';
+    badge.textContent = 'Activa';
+    showToast(marca.charAt(0).toUpperCase() + marca.slice(1) + ' activada ✓');
+  }
+}
+
+/* ════ HOY: check paciente ════ */
+function toggleHoyCheck(btn) {
+  btn.classList.toggle('done');
+  btn.closest('.hoy-pac-row').classList.toggle('listo');
+}
+
+/* ════ CONSTRUCTOR INDIVIDUAL (Kiwilu / Nutrichef) ════ */
+const IND_PACIENTES = {
+  kiwilu: [
+    {ini:'LG', nombre:'Laura González', plan:'Dieta 1,200 kcal · Bajo IG', tags:['Bajo IG','Sin azúcar'], asig:{lun:'Pollo al limón con quinoa',mar:null,mie:null,jue:null,vie:null}},
+    {ini:'MR', nombre:'Marco Reyes', plan:'Alta proteína · Sin gluten', tags:['Alta proteína','Sin gluten'], asig:{lun:'Salmón con verduras',mar:null,mie:null,jue:null,vie:null}},
+    {ini:'SC', nombre:'Sofía Castro', plan:'Pérdida de peso · 1,400 kcal', tags:['Pérdida de peso','Bajo en grasa'], asig:{lun:null,mar:null,mie:null,jue:null,vie:null}},
+    {ini:'JM', nombre:'Jorge Morales', plan:'Hipertensión · DASH', tags:['Bajo sodio','Hipertensión'], asig:{lun:null,mar:null,mie:null,jue:null,vie:null}},
+  ],
+  chef: [
+    {ini:'MG', nombre:'María González', plan:'Enf. Renal · Dr. Pérez · Nefrología', tags:['⚠ Sin sal','⚠ Bajo potasio','⚠ Sin fósforo añadido'], asig:{lun:'Arroz con pechuga al vapor',mar:null,mie:null,jue:null,vie:null}},
+    {ini:'JR', nombre:'Juan Ramírez', plan:'Diabetes T2 · Dra. López · Endocrinología', tags:['⚠ Sin azúcar','⚠ IG bajo estricto','⚠ Sin harinas blancas'], asig:{lun:null,mar:null,mie:null,jue:null,vie:null}},
+    {ini:'LM', nombre:'Laura Morales', plan:'Enf. Cardiovascular · Dr. Soto · Cardiología', tags:['⚠ Bajo sodio','⚠ Sin grasas trans'], asig:{lun:null,mar:null,mie:null,jue:null,vie:null}},
+  ]
+};
+let indMarca = null;
+let indDia = 'lun';
+let indSelPac = null;
+const DIAS_MAP = {lun:'Lunes',mar:'Martes',mie:'Miércoles',jue:'Jueves',vie:'Viernes'};
+
+function switchToIndividual(marca, btn) {
+  indMarca = marca;
+  indSelPac = null;
+  // Desactivar tabs
+  document.querySelectorAll('.btab').forEach(b => b.className = 'btab');
+  btn.className = 'btab active-palm';
+  // Ocultar lote, mostrar individual
+  document.getElementById('builder-lote-wrap').style.display = 'none';
+  document.getElementById('builder-individual-wrap').style.display = '';
+  // Alerta Nutrichef
+  const al = document.getElementById('ind-alerta');
+  al.innerHTML = marca === 'chef'
+    ? `<div style="background:var(--chef-l);border:1px solid rgba(216,90,48,.25);border-radius:10px;padding:11px 16px;font-size:13px;color:var(--chef-d);display:flex;align-items:center;gap:8px"><span>⚠️</span><span><strong>Nutrichef:</strong> Asigna estrictamente según el plan clínico firmado. Las restricciones son médicas, no preferencias.</span></div>`
+    : '';
+  // Reset día al primero
+  document.querySelectorAll('#ind-dias .btab').forEach((b,i) => b.className = i===0 ? 'btab active-palm' : 'btab');
+  indDia = 'lun';
+  renderIndPacLista();
+  document.getElementById('ind-det-panel').style.display = 'none';
+  document.getElementById('ind-det-empty').style.display = '';
+}
+
+function setBuilderMarca(m, btn) {
+  builderMarca = m;
+  document.querySelectorAll('.btab').forEach(t => t.className='btab');
+  btn.className = 'btab active-'+m;
+  // Asegurarse de que lote esté visible e individual oculto
+  document.getElementById('builder-lote-wrap').style.display = '';
+  document.getElementById('builder-individual-wrap').style.display = 'none';
+  renderMenuNota(); renderBuilder(); renderDPList();
+}
+
+function setIndDia(dia, btn) {
+  indDia = dia;
+  indSelPac = null;
+  document.querySelectorAll('#ind-dias .btab').forEach(b => b.className = 'btab');
+  btn.className = 'btab active-palm';
+  renderIndPacLista();
+  document.getElementById('ind-det-panel').style.display = 'none';
+  document.getElementById('ind-det-empty').style.display = '';
+}
+
+function renderIndPacLista() {
+  const pacs = IND_PACIENTES[indMarca] || [];
+  const isChef = indMarca === 'chef';
+  const avBg = isChef ? 'var(--chef-l)' : 'var(--kiwilu-l)';
+  const avColor = isChef ? 'var(--chef-d)' : 'var(--kiwilu-d)';
+  const tagClass = isChef ? 'rtag-chef' : 'rtag-kiwilu';
+  document.getElementById('ind-pac-lista').innerHTML = pacs.map((p, i) => {
+    const asig = p.asig[indDia];
+    const selClass = indSelPac === i ? (isChef ? ' sel-chef' : ' sel-kiwilu') : '';
+    return `<div class="pac-card${selClass}" onclick="selectIndPac(${i})">
+      <div class="pac-av" style="background:${avBg};color:${avColor}">${p.ini}</div>
+      <div style="flex:1;min-width:0">
+        <div class="pac-nombre">${p.nombre}</div>
+        <div class="pac-plan">${p.plan}</div>
+        <div class="pac-tags">${p.tags.map(t=>`<span class="${tagClass}">${t}</span>`).join('')}</div>
+        <div class="${asig ? 'pac-asignado' : 'pac-libre'}">${asig ? '✓ ' + asig : 'Sin asignar — ' + DIAS_MAP[indDia]}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function selectIndPac(i) {
+  indSelPac = i;
+  const pacs = IND_PACIENTES[indMarca] || [];
+  const p = pacs[i];
+  const isChef = indMarca === 'chef';
+  const tagClass = isChef ? 'rtag-chef' : 'rtag-kiwilu';
+  renderIndPacLista();
+  document.getElementById('ind-det-panel').style.display = '';
+  document.getElementById('ind-det-empty').style.display = 'none';
+  document.getElementById('ind-det-nombre').textContent = p.nombre;
+  document.getElementById('ind-det-tags').innerHTML = p.tags.map(t => `<span class="${tagClass}">${t}</span>`).join('');
+  // Platillos compatibles del banco (primeros 4)
+  const compat = DB.filter(d => d.marca === 'palm' || d.marca === indMarca).slice(0, 4);
+  document.getElementById('ind-det-platillos').innerHTML = compat.map(d => `
+    <div class="compat-dish" onclick="assignIndDish('${d.name.replace(/'/g,"\\'")}', ${i})">
+      <div class="compat-dish-name">${d.emoji} ${d.name}</div>
+      <div class="compat-dish-meta">${d.cal} kcal · ${d.prot}g prot</div>
+    </div>`).join('');
+}
+
+function assignIndDish(name, pacIdx) {
+  IND_PACIENTES[indMarca][pacIdx].asig[indDia] = name;
+  renderIndPacLista();
+  selectIndPac(pacIdx);
+  showToast('Platillo asignado ✓');
+}
 </script>
+
 </body>
 </html>
