@@ -286,8 +286,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
 /* ── MARKETPLACE DE SERVICIOS ───────────────────── */
 
 /* Filtros de marca */
-.mk-filters{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;align-items:center}
-.mk-filter{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:24px;border:1.5px solid var(--border);background:#fff;font-size:13px;font-weight:500;color:var(--mid);cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif}
+.mk-filters{display:flex;gap:8px;margin-bottom:0;flex-wrap:wrap;align-items:center}
+.mk-filter{display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:24px;border:2px solid var(--border);background:#fff;font-size:13px;font-weight:600;color:var(--mid);cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif}
 .mk-filter:hover{border-color:var(--light);color:var(--dark)}
 .mk-filter.active{color:#fff;border-color:transparent}
 .mk-filter-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -298,6 +298,33 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
 .mk-filter[data-f="nc"].active{background:#6A1B9A}
 .mk-count{font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;background:rgba(255,255,255,.25);margin-left:2px}
 .mk-filter:not(.active) .mk-count{background:var(--off);color:var(--light)}
+
+/* Brand info panel */
+.mk-brand-info{border-radius:16px;padding:22px 26px;margin:16px 0 28px;display:flex;align-items:center;gap:20px;transition:background .3s,border-color .3s,color .3s}
+.mk-bi-icon{font-size:36px;line-height:1;flex-shrink:0;width:64px;height:64px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.07)}
+.mk-bi-content{flex:1}
+.mk-bi-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.5;margin-bottom:4px}
+.mk-bi-name{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;line-height:1.1;margin-bottom:4px}
+.mk-bi-oneliner{font-size:13.5px;font-weight:500;opacity:.9;margin-bottom:5px}
+.mk-bi-target{font-size:12px;opacity:.6;font-weight:300;display:flex;align-items:center;gap:6px}
+.mk-bi-target::before{content:'👥';font-size:12px}
+/* brand info colors */
+.mk-brand-info[data-brand="all"]{background:var(--off);border:2px solid var(--border);color:var(--dark)}
+.mk-brand-info[data-brand="all"] .mk-bi-icon{background:rgba(0,0,0,.07)}
+.mk-brand-info[data-brand="np"]{background:#d8edc3;color:#1E3A0A;border:2px solid rgba(45,80,22,.25)}
+.mk-brand-info[data-brand="np"] .mk-bi-icon{background:rgba(45,80,22,.15)}
+.mk-brand-info[data-brand="kf"]{background:#fde5ba;color:#5C3500;border:2px solid rgba(200,134,26,.3)}
+.mk-brand-info[data-brand="kf"] .mk-bi-icon{background:rgba(200,134,26,.2)}
+.mk-brand-info[data-brand="kw"]{background:#b8d9f5;color:#0D3358;border:2px solid rgba(21,101,192,.25)}
+.mk-brand-info[data-brand="kw"] .mk-bi-icon{background:rgba(21,101,192,.15)}
+.mk-brand-info[data-brand="nc"]{background:#ddb8e8;color:#2E0845;border:2px solid rgba(106,27,154,.25)}
+.mk-brand-info[data-brand="nc"] .mk-bi-icon{background:rgba(106,27,154,.15)}
+
+/* Card borders per brand when filtered */
+.mk-grid[data-active="np"] .mk-card[data-brand="np"]{border:2px solid #2D5016}
+.mk-grid[data-active="kf"] .mk-card[data-brand="kf"]{border:2px solid #C8861A}
+.mk-grid[data-active="kw"] .mk-card[data-brand="kw"]{border:2px solid #1565C0}
+.mk-grid[data-active="nc"] .mk-card[data-brand="nc"]{border:2px solid #6A1B9A}
 
 /* Grid de tarjetas */
 .mk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -788,16 +815,67 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
 
 <!-- PAGOS -->
 <div class="sec" id="sec-pagos">
-  <div class="ph"><div class="bc">Cuenta</div><h1 class="pt">Pagos y <em>planes.</em></h1><p class="ps">Gestión de servicios activos y estado de cuenta</p></div>
-  <div class="card" style="margin-bottom:16px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+  <div class="ph"><div class="bc">Cuenta</div><h1 class="pt"><em>Suscripciones.</em></h1><p class="ps">Servicios activos de tu familia y estado de cuenta</p></div>
+  <div style="margin-bottom:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
       <div class="ct" style="margin-bottom:0">Planes activos</div>
       <button class="bs pr" onclick="openM('m-contratar')">+ Contratar nuevo</button>
     </div>
-    <div class="pac"><div class="pav" style="background:#4A7A28">NP</div><div class="pin"><div class="pn2">Ana · NutriPalm Premium</div><div class="pd">Nut. Valeria Ríos · Activo desde ene 2025</div></div><div class="ppr"><div class="pm">$2,500</div><div class="pp">/mes</div></div></div>
-    <div class="pac"><div class="pav" style="background:#2D5016">KF</div><div class="pin"><div class="pn2">Emilio · Kifud Escolar</div><div class="pd">Nut. Carmen Mejía · Activo desde feb 2025</div></div><div class="ppr"><div class="pm">$1,800</div><div class="pp">/mes</div></div></div>
-    <div class="pac"><div class="pav" style="background:#5F5E5A">NC</div><div class="pin"><div class="pn2">Roberto · Nutrichef Médico</div><div class="pd">Dr. Herrera + Nut. Lucía · Activo desde mar 2025</div></div><div class="ppr"><div class="pm">$4,900</div><div class="pp">/mes</div></div></div>
-    <div style="border-top:1px solid var(--border);margin-top:4px;padding-top:16px;display:flex;justify-content:space-between;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:12px">
+
+      <!-- Ana · NutriPalm -->
+      <div style="border-radius:16px;overflow:hidden;border:1.5px solid rgba(45,80,22,.2)">
+        <div style="background:linear-gradient(135deg,#d8edc3 0%,#EBF4E0 100%);padding:18px 22px">
+          <div style="font-size:17px;font-weight:600;color:#1E3A0A;margin-bottom:2px">Ana — NutriPalm</div>
+          <div style="font-size:12px;color:rgba(30,58,10,.55);margin-bottom:12px">Comida saludable todos los días · Nut. Valeria Ríos</div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span style="font-size:11px;font-weight:600;background:rgba(45,80,22,.15);color:#1E3A0A;padding:4px 11px;border-radius:20px">🥩 Alta proteína para masa muscular</span>
+            <span style="font-size:11px;font-weight:600;background:rgba(45,80,22,.15);color:#1E3A0A;padding:4px 11px;border-radius:20px">⚡ Energía estable sin picos de glucosa</span>
+            <span style="font-size:11px;font-weight:600;background:rgba(45,80,22,.15);color:#1E3A0A;padding:4px 11px;border-radius:20px">🌿 Sin glutamato ni procesados</span>
+          </div>
+        </div>
+        <div style="background:#fff;padding:10px 22px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:12px;color:var(--light)">Activo desde ene 2025 · 5 días lun–vie</span>
+          <div style="font-size:19px;font-weight:700;color:#1E3A0A;font-family:'DM Serif Display',serif">$2,500 <span style="font-size:12px;font-weight:400;color:rgba(30,58,10,.45);font-family:'DM Sans',sans-serif">/mes</span></div>
+        </div>
+      </div>
+
+      <!-- Emilio · Kifud -->
+      <div style="border-radius:16px;overflow:hidden;border:1.5px solid rgba(200,134,26,.25)">
+        <div style="background:linear-gradient(135deg,#fde5ba 0%,#FFF3E0 100%);padding:18px 22px">
+          <div style="font-size:17px;font-weight:600;color:#5C3500;margin-bottom:2px">Emilio — Kifud</div>
+          <div style="font-size:12px;color:rgba(92,53,0,.55);margin-bottom:12px">Lonchera saludable todos los días · Nut. Carmen Mejía</div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span style="font-size:11px;font-weight:600;background:rgba(200,134,26,.18);color:#5C3500;padding:4px 11px;border-radius:20px">🧠 Nutrición para concentración escolar</span>
+            <span style="font-size:11px;font-weight:600;background:rgba(200,134,26,.18);color:#5C3500;padding:4px 11px;border-radius:20px">✓ Sin gluten disponible</span>
+            <span style="font-size:11px;font-weight:600;background:rgba(200,134,26,.18);color:#5C3500;padding:4px 11px;border-radius:20px">🦴 Calcio y Omega-3 para su desarrollo</span>
+          </div>
+        </div>
+        <div style="background:#fff;padding:10px 22px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:12px;color:var(--light)">Activo desde feb 2025 · 5 días lun–vie</span>
+          <div style="font-size:19px;font-weight:700;color:#5C3500;font-family:'DM Serif Display',serif">$1,800 <span style="font-size:12px;font-weight:400;color:rgba(92,53,0,.45);font-family:'DM Sans',sans-serif">/mes</span></div>
+        </div>
+      </div>
+
+      <!-- Roberto · Nutrichef -->
+      <div style="border-radius:16px;overflow:hidden;border:1.5px solid rgba(106,27,154,.2)">
+        <div style="background:linear-gradient(135deg,#ddb8e8 0%,#F3E5F5 100%);padding:18px 22px">
+          <div style="font-size:17px;font-weight:600;color:#2E0845;margin-bottom:2px">Roberto — Nutrichef</div>
+          <div style="font-size:12px;color:rgba(46,8,69,.55);margin-bottom:12px">Dieta terapéutica todos los días · Dr. Herrera + Nut. Lucía</div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span style="font-size:11px;font-weight:600;background:rgba(106,27,154,.15);color:#2E0845;padding:4px 11px;border-radius:20px">🩺 Control glucémico para diabetes</span>
+            <span style="font-size:11px;font-weight:600;background:rgba(106,27,154,.15);color:#2E0845;padding:4px 11px;border-radius:20px">🫀 Bajo sodio · cuida presión arterial</span>
+            <span style="font-size:11px;font-weight:600;background:rgba(106,27,154,.15);color:#2E0845;padding:4px 11px;border-radius:20px">📋 Reporte semanal al Dr. Herrera</span>
+          </div>
+        </div>
+        <div style="background:#fff;padding:10px 22px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:12px;color:var(--light)">Activo desde mar 2025 · 5 días lun–vie</span>
+          <div style="font-size:19px;font-weight:700;color:#2E0845;font-family:'DM Serif Display',serif">$4,900 <span style="font-size:12px;font-weight:400;color:rgba(46,8,69,.45);font-family:'DM Sans',sans-serif">/mes</span></div>
+        </div>
+      </div>
+
+    </div>
+    <div style="border-top:1px solid var(--border);margin-top:16px;padding-top:16px;display:flex;justify-content:space-between;align-items:center">
       <div style="font-size:13px;color:var(--mid)">Total mensual</div>
       <div style="font-size:22px;font-weight:600;font-family:'DM Serif Display',serif">$9,200 <span style="font-size:14px;color:var(--light);font-family:'DM Sans',sans-serif">/mes</span></div>
     </div>
@@ -862,9 +940,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
         <div class="br-name">NutriPalm</div>
         <div class="br-tagline">Comida saludable para adultos, diseñada por nutriólogas. Lista para recoger.</div>
       </div>
-      <div class="br-oneliner">
-        <span class="br-ol-name">NutriPalm</span><span class="br-ol-sep">·</span>
-        <span class="br-ol-text">Menú semanal rotativo preparado por nutriólogas certificadas. Tú eliges a quién sigues.</span>
+      <div class="br-oneliner" style="background:none;padding:0 24px 16px;font-size:13px;font-weight:600;opacity:.8;font-style:normal">
+        Menú semanal rotativo preparado por nutriólogas certificadas. Tú eliges a quién sigues.
       </div>
       <div class="br-body">
         <p class="br-desc">Un menú diferente cada semana, preparado con ingredientes frescos, sin glutamato ni procesados. Cada platillo tiene perfil nutricional completo. Tú eliges la nutrióloga cuya cocina prefieres.</p>
@@ -888,9 +965,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
         <div class="br-name">Kifud</div>
         <div class="br-tagline">La lonchera que tu hijo va a pedir de nuevo.</div>
       </div>
-      <div class="br-oneliner">
-        <span class="br-ol-name">Kifud</span><span class="br-ol-sep">·</span>
-        <span class="br-ol-text">Loncheras escolares diseñadas por nutriólogas pediátricas. Sin ultra-procesados, con nutrientes reales.</span>
+      <div class="br-oneliner" style="background:none;padding:0 24px 16px;font-size:13px;font-weight:600;opacity:.8;font-style:normal">
+        Loncheras escolares diseñadas por nutriólogas pediátricas. Sin ultra-procesados, con nutrientes reales.
       </div>
       <div class="br-body">
         <p class="br-desc">Loncheras que cambian cada semana como caja sorpresa. Sin colorantes artificiales, sin glutamato, con proteína real, calcio y Omega-3 para el desarrollo. La nutrióloga ajusta si hay intolerancias.</p>
@@ -914,9 +990,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
         <div class="br-name">Kiwilu</div>
         <div class="br-tagline">La dieta que te recetó tu nutrióloga, lista para comer.</div>
       </div>
-      <div class="br-oneliner">
-        <span class="br-ol-name">Kiwilu</span><span class="br-ol-sep">·</span>
-        <span class="br-ol-text">Tu plan nutricional prescrito cocinado con fidelidad exacta. Gramos, ingredientes y método sin cambios.</span>
+      <div class="br-oneliner" style="background:none;padding:0 24px 16px;font-size:13px;font-weight:600;opacity:.8;font-style:normal">
+        Tu plan nutricional prescrito cocinado con fidelidad exacta. Gramos, ingredientes y método sin cambios.
       </div>
       <div class="br-body">
         <p class="br-desc">¿Alguien en tu familia tiene plan nutricional prescrito? Kiwilu lo cocina con fidelidad total. Compatible con planes de cualquier profesional. Si no tienes nutrióloga, puedes contratar consulta incluida.</p>
@@ -940,9 +1015,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
         <div class="br-name">Nutrichef</div>
         <div class="br-tagline">La dieta de tu médico, cocinada con precisión clínica.</div>
       </div>
-      <div class="br-oneliner">
-        <span class="br-ol-name">Nutrichef</span><span class="br-ol-sep">·</span>
-        <span class="br-ol-text">Dietas terapéuticas coordinadas con tu médico. Para diabetes, hipertensión, condición renal y más.</span>
+      <div class="br-oneliner" style="background:none;padding:0 24px 16px;font-size:13px;font-weight:600;opacity:.8;font-style:normal">
+        Dietas terapéuticas coordinadas con tu médico. Para diabetes, hipertensión, condición renal y más.
       </div>
       <div class="br-body">
         <p class="br-desc">Para quienes siguen un tratamiento médico con dieta específica. La nutrióloga se coordina directamente con tu doctor — el platillo no se cocina hasta que ambos aprueban el plan. Con opción de consulta incluida.</p>
@@ -984,21 +1058,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
       Todas <span class="mk-count">7</span>
     </button>
     <button class="mk-filter" data-f="np" onclick="mkFilter('np',this)">
-      <span class="mk-filter-dot" style="background:#2D5016"></span>Comida adultos <span class="mk-count">3</span>
+      NutriPalm <span class="mk-count">3</span>
     </button>
     <button class="mk-filter" data-f="kf" onclick="mkFilter('kf',this)">
-      <span class="mk-filter-dot" style="background:#C8861A"></span>Loncheras escolares <span class="mk-count">2</span>
+      Kifud <span class="mk-count">2</span>
     </button>
     <button class="mk-filter" data-f="kw" onclick="mkFilter('kw',this)">
-      <span class="mk-filter-dot" style="background:#1565C0"></span>Plan nutricional <span class="mk-count">1</span>
+      Kiwilu <span class="mk-count">1</span>
     </button>
     <button class="mk-filter" data-f="nc" onclick="mkFilter('nc',this)">
-      <span class="mk-filter-dot" style="background:#6A1B9A"></span>Dieta terapéutica <span class="mk-count">1</span>
+      Nutrichef <span class="mk-count">1</span>
     </button>
   </div>
 
+  <!-- BRAND INFO PANEL -->
+  <div class="mk-brand-info" id="mk-brand-panel" data-brand="all">
+    <div class="mk-bi-icon" id="mk-bi-icon">🌿</div>
+    <div class="mk-bi-content">
+      <div class="mk-bi-label" id="mk-bi-label">Todas las marcas</div>
+      <div class="mk-bi-name" id="mk-bi-name">El ecosistema Nutrilú</div>
+      <div class="mk-bi-oneliner" id="mk-bi-oneliner">Comida saludable para cada persona y cada necesidad.</div>
+      <div class="mk-bi-target" id="mk-bi-target">Para toda la familia — adultos, niños y pacientes con planes médicos.</div>
+    </div>
+  </div>
+
   <!-- GRID -->
-  <div class="mk-grid">
+  <div class="mk-grid" data-active="all">
 
     <!-- ── NP · VALERIA ── -->
     <div class="mk-card" data-brand="np">
@@ -1398,6 +1483,25 @@ function mkFilter(f,btn){
     if(f==='all'||c.dataset.brand===f){c.classList.remove('mk-hidden')}
     else{c.classList.add('mk-hidden')}
   });
+  // Update grid border state
+  const grid = document.querySelector('.mk-grid');
+  grid.dataset.active = f;
+  // Update brand info panel
+  const panel = document.getElementById('mk-brand-panel');
+  const brands = {
+    all:{icon:'🌿',label:'Todas las marcas',name:'El ecosistema Nutrilú',oneliner:'Comida saludable para cada persona y cada necesidad.',target:'Para toda la familia — adultos, niños y pacientes con planes médicos.'},
+    np:{icon:'🥗',label:'NutriPalm',name:'Comida saludable lista para llevar',oneliner:'Platillos balanceados, frescos y listos — sin que tengas que cocinar.',target:'Adultos trabajadores que quieren comer bien sin cocinar.'},
+    kf:{icon:'🎒',label:'Kifud',name:'La lonchera que los niños sí se comen',oneliner:'Lonches nutritivos, ricos y sin ultra-procesados para la escuela.',target:'Mamás, papás y colegios que cuidan la nutrición de sus hijos.'},
+    kw:{icon:'🥦',label:'Kiwilu',name:'Tu plan nutricional, cocinado con fidelidad exacta',oneliner:'Cada gramo, ingrediente y método de cocción exactamente como lo prescribió tu nutrióloga.',target:'Pacientes con plan prescrito por su nutrióloga o médico.'},
+    nc:{icon:'🩺',label:'Nutrichef',name:'Dieta terapéutica con precisión clínica',oneliner:'Coordinación directa entre tu médico y la nutrióloga antes de cocinar cada platillo.',target:'Pacientes con diabetes, hipertensión, enfermedad renal u otras condiciones médicas.'}
+  };
+  const b = brands[f] || brands.all;
+  panel.dataset.brand = f;
+  document.getElementById('mk-bi-icon').textContent = b.icon;
+  document.getElementById('mk-bi-label').textContent = b.label;
+  document.getElementById('mk-bi-name').textContent = b.name;
+  document.getElementById('mk-bi-oneliner').textContent = b.oneliner;
+  document.getElementById('mk-bi-target').textContent = b.target;
 }
 document.querySelectorAll('.mo').forEach(o=>{o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')})});
 </script>
