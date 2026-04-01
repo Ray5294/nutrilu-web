@@ -210,20 +210,61 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--off);color:var(
 .dta-palm{font-size:10px;color:var(--palm-d);background:var(--palm-l);padding:1px 7px;border-radius:100px;font-weight:600}
 .dta-kifud{font-size:10px;color:var(--kifud-d);background:var(--kifud-l);padding:1px 7px;border-radius:100px;font-weight:600}
 
-/* ── PLATILLOS GRID ── */
-.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.dc2{background:var(--white);border-radius:13px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:.15s}
-.dc2:hover{box-shadow:0 6px 24px rgba(0,0,0,.09);border-color:var(--palm-m)}
-.dc2img{height:80px;display:flex;align-items:center;justify-content:center;font-size:38px}
-.dc2body{padding:14px}
-.dc2n{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:5px;line-height:1.3}
-.dc2m{display:flex;gap:6px;margin-bottom:6px}
+/* ── PLATILLOS LIST (nuevo: foto 1:1 horizontal) ── */
+.dgrid{display:flex;flex-direction:column;gap:10px}
+.dc2{background:var(--white);border-radius:13px;border:1.5px solid var(--border);overflow:hidden;cursor:pointer;transition:.15s;display:flex;align-items:stretch;min-height:110px}
+.dc2:hover{box-shadow:0 4px 18px rgba(0,0,0,.09);border-color:rgba(0,0,0,.14)}
+.dc2.selected{border-color:var(--palm);box-shadow:0 0 0 3px rgba(29,158,117,.15)}
+.dc2img{width:120px;min-width:120px;position:relative;overflow:hidden;background:var(--cream);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.dc2img img{width:100%;height:100%;object-fit:cover}
+.dc2img-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--light);font-size:11px;font-weight:500;text-align:center;padding:8px;cursor:pointer;width:100%;height:100%;border:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;transition:.12s}
+.dc2img-placeholder:hover{background:rgba(0,0,0,.03)}
+.dc2img-placeholder svg{opacity:.4}
+.dc2img-placeholder span{opacity:.6}
+.dc2img-has-photo{position:absolute;inset:0}
+.dc2img-has-photo img{width:100%;height:100%;object-fit:cover}
+.dc2img-change{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:#fff;font-size:10px;font-weight:600;text-align:center;padding:5px;opacity:0;transition:.15s;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border:none;width:100%}
+.dc2img:hover .dc2img-change{opacity:1}
+.dc2body{padding:14px 16px;flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.dc2n{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:5px;line-height:1.3}
+.dc2m{display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap}
 .dc2mm{font-size:11px;color:var(--mid);background:var(--cream);padding:2px 7px;border-radius:4px;font-weight:500}
+.dc2benefit{font-size:12px;color:var(--mid);font-weight:300;margin-bottom:7px;line-height:1.4}
 .dc2t{display:flex;flex-wrap:wrap;gap:4px}
 .dc2ta{font-size:10px;padding:1px 7px;border-radius:100px;font-weight:600}
 .dc2-palm .dc2ta{color:var(--palm-d);background:var(--palm-l)}
 .dc2-kifud .dc2ta{color:var(--kifud-d);background:var(--kifud-l)}
 .dc2-kiwilu .dc2ta{color:var(--kiwilu-d);background:var(--kiwilu-l)}
+.dc2-actions{display:flex;flex-direction:column;justify-content:center;padding:12px 14px 12px 0;gap:6px;flex-shrink:0}
+.dc2-edit{padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;border:1.5px solid var(--border);background:transparent;color:var(--mid);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.12s;white-space:nowrap}
+.dc2-edit:hover{border-color:var(--palm);color:var(--palm)}
+.dc2-del{padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;border:1.5px solid transparent;background:transparent;color:var(--light);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.12s;white-space:nowrap}
+.dc2-del:hover{color:var(--danger);border-color:var(--dangerl)}
+
+/* ── INSPIRACIÓN ── */
+.inspo-toggle{display:flex;gap:0;background:var(--cream);border-radius:100px;padding:4px;border:1px solid var(--border);width:fit-content;margin-bottom:20px}
+.itog-btn{padding:8px 22px;border-radius:100px;font-size:13px;font-weight:600;border:none;background:transparent;color:var(--mid);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s}
+.itog-btn.active{background:var(--white);color:var(--dark);box-shadow:0 1px 6px rgba(0,0,0,.1)}
+.inspo-brand-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.inspo-btab{display:flex;align-items:center;gap:7px;padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1.5px solid var(--border);background:var(--white);cursor:pointer;transition:.14s;color:var(--mid);font-family:'Plus Jakarta Sans',sans-serif}
+.inspo-btab:hover{border-color:rgba(0,0,0,.15)}
+.inspo-btab.active{color:var(--white)}
+.inspo-btab[data-b="palm"].active{background:var(--palm);border-color:var(--palm)}
+.inspo-btab[data-b="kifud"].active{background:var(--kifud-d);border-color:var(--kifud-d)}
+.inspo-btab[data-b="kiwilu"].active{background:var(--kiwilu);border-color:var(--kiwilu)}
+.inspo-grid{display:flex;flex-direction:column;gap:10px}
+.icard{background:var(--white);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;transition:.15s;position:relative}
+.icard:hover{box-shadow:0 6px 24px rgba(0,0,0,.09);border-color:rgba(0,0,0,.12)}
+.icard-img{height:80px;display:flex;align-items:center;justify-content:center;font-size:40px;position:relative}
+.icard-brand-dot{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:100px}
+.icard-body{padding:13px 14px}
+.icard-name{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:6px;line-height:1.3}
+.icard-macros{display:flex;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.icard-macro{font-size:11px;color:var(--mid);background:var(--cream);padding:2px 7px;border-radius:4px;font-weight:500}
+.icard-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.icard-tag{font-size:10px;padding:1px 7px;border-radius:100px;font-weight:600}
+.icard-add{width:100%;padding:8px;border-radius:8px;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.14s}
+.icard-add.added{background:var(--okl);color:var(--ok)}
 
 /* ── RESEÑAS ── */
 .rev-row{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid var(--border)}
@@ -391,6 +432,17 @@ textarea{resize:vertical;min-height:80px}
 .svc-chip{font-size:11px;background:var(--cream);color:var(--mid);padding:3px 10px;border-radius:100px;font-weight:500}
 .svc-chip-chef{background:var(--chef-l);color:var(--chef-d)}
 
+/* ── HOY: foto en platillos de lote ── */
+.hoy-platillo-row{display:flex;align-items:center;gap:0;border-bottom:1px solid var(--border)}
+.hoy-platillo-row:last-child{border-bottom:none}
+.hoy-platillo-photo{width:80px;min-width:80px;height:72px;overflow:hidden;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hoy-platillo-photo img{width:100%;height:100%;object-fit:cover}
+.hoy-platillo-photo-empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--light);font-size:10px;font-weight:500;text-align:center;padding:6px}
+.hoy-platillo-info{flex:1;padding:10px 14px;min-width:0}
+.hoy-platillo-name{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:2px;display:flex;align-items:center;gap:8px}
+.hoy-platillo-sub{font-size:11px;color:var(--mid);font-weight:300}
+.hoy-platillo-count{padding:10px 16px 10px 0;text-align:right;flex-shrink:0}
+
 /* ── HOY: SEPARADORES DE SECCIÓN ── */
 .hoy-sec-wrap{display:flex;align-items:baseline;gap:10px;margin:18px 0 10px}
 .hoy-sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mid);display:flex;align-items:center;gap:6px}
@@ -442,7 +494,7 @@ textarea{resize:vertical;min-height:80px}
   <div class="sb-sect">General</div>
   <button class="sbtn active" onclick="showV('resumen',this)">
     <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5" opacity=".5"/><rect x="1" y="9" width="6" height="6" rx="1.5" opacity=".5"/><rect x="9" y="9" width="6" height="6" rx="1.5" opacity=".3"/></svg>
-    Esta semana
+    Resumen
   </button>
   <button class="sbtn" onclick="showV('hoy',this)">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5" stroke-linecap="round"/></svg>
@@ -550,28 +602,48 @@ textarea{resize:vertical;min-height:80px}
   <div class="hoy-marca-row">
     <div class="hoy-marca-h"><div class="hoy-marca-n"><div class="dot dot-palm"></div>NutriPalm · Lunes 7 abr</div><span class="pill pill-palm">7 personas</span></div>
     <div class="hoy-platillo-row">
-      <div class="hoy-platillo-name"><span style="font-size:20px">🍋</span><span>Pollo al limón con quinoa</span></div>
-      <div style="text-align:right"><div class="hoy-count" style="color:var(--palm)">5</div><div class="hoy-count-lbl">porciones</div></div>
+      <div class="hoy-platillo-photo"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=160&h=144&fit=crop&auto=format" alt="Pollo al limón"></div>
+      <div class="hoy-platillo-info">
+        <div class="hoy-platillo-name">Pollo al limón con quinoa</div>
+        <div class="hoy-platillo-sub">420 kcal · 36g prot · Bajo IG</div>
+      </div>
+      <div class="hoy-platillo-count"><div class="hoy-count" style="color:var(--palm)">5</div><div class="hoy-count-lbl">porciones</div></div>
     </div>
     <div class="hoy-platillo-row">
-      <div class="hoy-platillo-name"><span style="font-size:20px">🫒</span><span>Bowl mediterráneo de pollo</span></div>
-      <div style="text-align:right"><div class="hoy-count" style="color:var(--palm)">2</div><div class="hoy-count-lbl">porciones</div></div>
+      <div class="hoy-platillo-photo"><img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=160&h=144&fit=crop&auto=format" alt="Bowl mediterráneo"></div>
+      <div class="hoy-platillo-info">
+        <div class="hoy-platillo-name">Bowl mediterráneo de pollo</div>
+        <div class="hoy-platillo-sub">460 kcal · 35g prot · Mediterráneo</div>
+      </div>
+      <div class="hoy-platillo-count"><div class="hoy-count" style="color:var(--palm)">2</div><div class="hoy-count-lbl">porciones</div></div>
     </div>
   </div>
 
   <div class="hoy-marca-row">
     <div class="hoy-marca-h"><div class="hoy-marca-n"><div class="dot dot-kifud"></div>Kifud · Lunes 7 abr</div><span class="pill pill-kifud">9 loncheras</span></div>
     <div class="hoy-platillo-row">
-      <div class="hoy-platillo-name"><span style="font-size:20px">🥕</span><span>Croquetitas de atún con puré de camote</span><span class="pill pill-off" style="margin-left:8px;font-size:10px">Preescolar</span></div>
-      <div style="text-align:right"><div class="hoy-count" style="color:var(--kifud-d)">3</div><div class="hoy-count-lbl">loncheras</div></div>
+      <div class="hoy-platillo-photo"><img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=160&h=144&fit=crop&auto=format" alt="Croquetitas de atún"></div>
+      <div class="hoy-platillo-info">
+        <div class="hoy-platillo-name">Croquetitas de atún con puré de camote <span class="pill pill-off" style="font-size:10px">Preescolar</span></div>
+        <div class="hoy-platillo-sub">360 kcal · 24g prot · Omega-3</div>
+      </div>
+      <div class="hoy-platillo-count"><div class="hoy-count" style="color:var(--kifud-d)">3</div><div class="hoy-count-lbl">loncheras</div></div>
     </div>
     <div class="hoy-platillo-row">
-      <div class="hoy-platillo-name"><span style="font-size:20px">🍔</span><span>Mini hamburguesas de lentejas</span><span class="pill pill-off" style="margin-left:8px;font-size:10px">Primaria baja</span></div>
-      <div style="text-align:right"><div class="hoy-count" style="color:var(--kifud-d)">4</div><div class="hoy-count-lbl">loncheras</div></div>
+      <div class="hoy-platillo-photo"><img src="https://images.unsplash.com/photo-1550317138-10000687a72b?w=160&h=144&fit=crop&auto=format" alt="Mini hamburguesas"></div>
+      <div class="hoy-platillo-info">
+        <div class="hoy-platillo-name">Mini hamburguesas de lentejas <span class="pill pill-off" style="font-size:10px">Primaria baja</span></div>
+        <div class="hoy-platillo-sub">380 kcal · 20g prot · Alta fibra</div>
+      </div>
+      <div class="hoy-platillo-count"><div class="hoy-count" style="color:var(--kifud-d)">4</div><div class="hoy-count-lbl">loncheras</div></div>
     </div>
     <div class="hoy-platillo-row">
-      <div class="hoy-platillo-name"><span style="font-size:20px">🌯</span><span>Rollitos de pollo y espinaca</span><span class="pill pill-off" style="margin-left:8px;font-size:10px">Primaria alta</span></div>
-      <div style="text-align:right"><div class="hoy-count" style="color:var(--kifud-d)">2</div><div class="hoy-count-lbl">loncheras</div></div>
+      <div class="hoy-platillo-photo"><img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=160&h=144&fit=crop&auto=format" alt="Rollitos de pollo"></div>
+      <div class="hoy-platillo-info">
+        <div class="hoy-platillo-name">Rollitos de pollo y espinaca <span class="pill pill-off" style="font-size:10px">Primaria alta</span></div>
+        <div class="hoy-platillo-sub">340 kcal · 22g prot · Sin lácteos</div>
+      </div>
+      <div class="hoy-platillo-count"><div class="hoy-count" style="color:var(--kifud-d)">2</div><div class="hoy-count-lbl">loncheras</div></div>
     </div>
   </div>
 
@@ -673,20 +745,6 @@ textarea{resize:vertical;min-height:80px}
     <div class="mcard"><div class="mcard-h"><div class="mcard-n"><div class="dot dot-kifud"></div>Kifud</div><span class="pill pill-kifud">Activa</span></div><div class="mcard-num">12 <span style="font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--mid)">personas</span></div><div class="mcard-foot">Lun–Vie · Loncheras escolares</div></div>
     <div class="mcard"><div class="mcard-h"><div class="mcard-n"><div class="dot dot-kiwilu"></div>Kiwilu</div><span class="pill pill-kiwilu">Activa</span></div><div class="mcard-num">4 <span style="font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--mid)">personas</span></div><div class="mcard-foot">Planes nutricionales</div></div>
     <div class="mcard inactive"><div class="mcard-h"><div class="mcard-n"><div class="dot dot-chef"></div>Nutrichef</div><span class="pill pill-chef">Inactiva</span></div><div class="mcard-num">—</div><div class="mcard-foot">Sin asignar aún</div></div>
-  </div>
-  <div class="g2">
-    <div class="card" style="margin-bottom:0"><div class="card-h"><div class="card-t">Menú esta semana</div></div><div class="inner" style="display:flex;flex-direction:column;gap:0">
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Lunes</span><span>Pollo al limón · Bowl mediterráneo</span></div>
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Martes</span><span>Salmón glaseado · Pollo mostaza</span></div>
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Miércoles</span><span>Bowl de res · Salmón al horno</span></div>
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Jueves</span><span>Pollo mostaza · Bowl mediterráneo</span></div>
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0"><span style="color:var(--mid)">Viernes</span><span>Bowl mediterráneo · Pollo al limón</span></div>
-    </div></div>
-    <div class="card" style="margin-bottom:0"><div class="card-h"><div class="card-t">Últimas reseñas</div></div><div class="inner" style="display:flex;flex-direction:column;gap:10px">
-      <div style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><strong>Claudia M.</strong> <span style="color:var(--mid);font-weight:300">sobre Emilio</span><div style="color:var(--mid);margin-top:3px;font-size:12px;font-weight:300">"El pollo al limón fue un hit."</div></div>
-      <div style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--border)"><strong>Fernanda R.</strong> <span style="color:var(--mid);font-weight:300">sobre Isabella</span><div style="color:var(--mid);margin-top:3px;font-size:12px;font-weight:300">"Se lo comió todo. Eso dice todo."</div></div>
-      <div style="font-size:13px;padding:8px 0"><strong>Ana L.</strong><div style="color:var(--mid);margin-top:3px;font-size:12px;font-weight:300">"Llego a casa, caliento y listo. Me salvó."</div></div>
-    </div></div>
   </div>
 </div>
 
@@ -792,15 +850,41 @@ textarea{resize:vertical;min-height:80px}
 <div class="view" id="v-platillos">
   <div class="ph">
     <div><div class="pt">Mis <em>platillos</em></div><div class="ps">Tu banco de recetas para los menús semanales</div></div>
-    <button class="btn-primary" onclick="openModal()">+ Nuevo platillo</button>
+    <button class="btn-primary" id="nuevo-platillo-btn" onclick="openModal()">+ Nuevo platillo</button>
   </div>
-  <div class="marca-tabs">
-    <button class="mtab active" data-m="all" onclick="filterPlatillos('all',this)">Todos</button>
-    <button class="mtab" data-m="palm" onclick="filterPlatillos('palm',this)"><div class="dot dot-palm"></div>NutriPalm</button>
-    <button class="mtab" data-m="kifud" onclick="filterPlatillos('kifud',this)"><div class="dot dot-kifud"></div>Kifud</button>
-    <button class="mtab" data-m="kiwilu" onclick="filterPlatillos('kiwilu',this)"><div class="dot dot-kiwilu"></div>Kiwilu</button>
+
+  <!-- Toggle Mis platillos / Inspiración -->
+  <div class="inspo-toggle">
+    <button class="itog-btn active" id="itog-mis" onclick="switchPlatillosTab('mis')">Mis platillos</button>
+    <button class="itog-btn" id="itog-inspo" onclick="switchPlatillosTab('inspo')">✨ Inspiración</button>
   </div>
-  <div class="dgrid" id="dgrid"></div>
+
+  <!-- PANEL: Mis platillos -->
+  <div id="panel-mis">
+    <div class="marca-tabs">
+      <button class="mtab active" data-m="all" onclick="filterPlatillos('all',this)">Todos</button>
+      <button class="mtab" data-m="palm" onclick="filterPlatillos('palm',this)"><div class="dot dot-palm"></div>NutriPalm</button>
+      <button class="mtab" data-m="kifud" onclick="filterPlatillos('kifud',this)"><div class="dot dot-kifud"></div>Kifud</button>
+      <button class="mtab" data-m="kiwilu" onclick="filterPlatillos('kiwilu',this)"><div class="dot dot-kiwilu"></div>Kiwilu</button>
+      <button class="mtab" data-m="chef" onclick="filterPlatillos('chef',this)" style=""><div class="dot dot-chef"></div>Nutrichef</button>
+    </div>
+    <div class="dgrid" id="dgrid"></div>
+  </div>
+
+  <!-- PANEL: Inspiración -->
+  <div id="panel-inspo" style="display:none">
+    <div style="background:var(--palm-l);border:1px solid rgba(29,158,117,.2);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--palm-d);margin-bottom:18px;display:flex;align-items:center;gap:8px">
+      <span style="font-size:16px">💡</span>
+      <span>Explora platillos sugeridos por Nutrilú para cada marca. Si te gustan, agrégalos a tu banco con un clic.</span>
+    </div>
+    <div class="inspo-brand-tabs">
+      <button class="inspo-btab active" data-b="palm" onclick="filterInspo('palm',this)"><div class="dot dot-palm"></div>NutriPalm</button>
+      <button class="inspo-btab" data-b="kifud" onclick="filterInspo('kifud',this)"><div class="dot dot-kifud"></div>Kifud</button>
+      <button class="inspo-btab" data-b="kiwilu" onclick="filterInspo('kiwilu',this)"><div class="dot dot-kiwilu"></div>Kiwilu</button>
+      <button class="inspo-btab" data-b="chef" onclick="filterInspo('chef',this)" style="border-color:rgba(216,90,48,.3);color:var(--chef-d)"><div class="dot dot-chef"></div>Nutrichef</button>
+    </div>
+    <div class="inspo-grid" id="inspo-grid"></div>
+  </div>
 </div>
 
 <!-- ══════ RESEÑAS ══════ -->
@@ -1026,22 +1110,54 @@ textarea{resize:vertical;min-height:80px}
     <div class="modal-head"><div class="modal-title">Nuevo platillo</div><button class="modal-close" onclick="closeModal()">✕</button></div>
     <div class="modal-body">
       <div style="margin-bottom:14px"><label>Nombre del platillo</label><input id="d-nombre" placeholder="Ej: Pollo al limón con quinoa"></div>
-      <div style="margin-bottom:14px"><label>¿Para cuál marca?</label><select id="d-marca"><option value="palm">NutriPalm</option><option value="kifud">Kifud</option><option value="kiwilu">Kiwilu</option><option value="all">Todas las marcas</option></select></div>
-      <div class="frow2" style="margin-bottom:14px"><div><label>Emoji</label><input id="d-emoji" placeholder="🥕" maxlength="4" style="font-size:22px;text-align:center"></div><div><label>Color de fondo</label><input id="d-color" type="color" value="#E1F5EE" style="height:42px;padding:4px"></div></div>
+      <div style="margin-bottom:14px"><label>¿Para cuál marca?</label><select id="d-marca"><option value="palm">NutriPalm</option><option value="kifud">Kifud</option><option value="kiwilu">Kiwilu</option><option value="chef">Nutrichef</option></select></div>
       <div style="margin-bottom:14px"><label>Ingredientes principales (separados por coma)</label><input id="d-ing" placeholder="Pollo, Quinoa, Calabacita…"></div>
       <div class="frow2" style="margin-bottom:14px"><div><label>Calorías (kcal)</label><input id="d-cal" type="number" placeholder="420"></div><div><label>Proteína (g)</label><input id="d-prot" type="number" placeholder="32"></div></div>
-      <div class="frow2" style="margin-bottom:14px"><div><label>Carbohidratos (g)</label><input id="d-carb" type="number" placeholder="38"></div><div><label>Fibra (g)</label><input id="d-fiber" type="number" placeholder="5"></div></div>
-      <div style="margin-bottom:14px"><label>Índice glucémico</label><select id="d-gi"><option value="bajo">Bajo (≤ 45)</option><option value="bajo-mod" selected>Bajo–Moderado (46–54)</option><option value="moderado">Moderado (55–65)</option></select></div>
+      <div class="frow2" style="margin-bottom:14px"><div><label>Carbohidratos (g)</label><input id="d-carb" type="number" placeholder="38"></div><div><label>Grasas (g)</label><input id="d-fat" type="number" placeholder="12"></div></div>
+      <div class="frow2" style="margin-bottom:14px"><div><label>Fibra (g)</label><input id="d-fiber" type="number" placeholder="5"></div><div><label>Índice glucémico</label><select id="d-gi"><option value="bajo">Bajo (≤ 45)</option><option value="bajo-mod" selected>Bajo–Moderado (46–54)</option><option value="moderado">Moderado (55–65)</option></select></div></div>
       <div style="margin-bottom:14px"><label>Tags (separadas por coma)</label><input id="d-tags" placeholder="Alto en proteína, Sin gluten…"></div>
       <div style="margin-bottom:14px"><label>Beneficios (uno por línea)</label><textarea id="d-ben" rows="3" placeholder="Proteína magra ideal para crecimiento&#10;Bajo IG para energía sostenida"></textarea></div>
-      <div style="margin-bottom:4px"><label>Foto del platillo (opcional)</label></div>
-      <div class="photo-drop" id="photo-drop" ondragover="event.preventDefault()" ondrop="handleDrop(event)" onclick="document.getElementById('photo-input').click()">
-        <div id="photo-placeholder"><div style="font-size:28px;margin-bottom:8px">📷</div><div style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px">Arrastra tu foto aquí</div><div style="font-size:12px;color:var(--mid);font-weight:300">JPG, PNG o WEBP · máx. 5 MB</div></div>
-        <div class="photo-preview" id="photo-preview"><img id="photo-img" src="" alt=""><div><div id="photo-name" style="font-size:12px;font-weight:700;color:var(--palm-d)"></div><button onclick="event.stopPropagation();clearPhoto()" style="font-size:11px;color:var(--danger);background:none;border:none;cursor:pointer;margin-top:4px;font-family:'Plus Jakarta Sans',sans-serif">Quitar foto</button></div></div>
+      <div style="margin-bottom:4px"><label>Foto del platillo</label></div>
+      <div class="photo-drop" id="photo-drop" ondragover="event.preventDefault();this.style.borderColor='var(--palm)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event)" onclick="document.getElementById('photo-input').click()">
+        <div id="photo-placeholder">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" style="opacity:.3;margin-bottom:8px"><rect x="2" y="6" width="28" height="21" rx="3"/><circle cx="16" cy="17" r="5"/><path d="M10 6l2-4h8l2 4"/></svg>
+          <div style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px">Arrastra tu foto aquí</div>
+          <div style="font-size:12px;color:var(--mid);font-weight:300">o haz clic para buscar · JPG, PNG o WEBP · máx. 5 MB</div>
+        </div>
+        <div class="photo-preview" id="photo-preview">
+          <img id="photo-img" src="" alt="" style="width:100%;height:160px;object-fit:cover;border-radius:8px;display:block">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+            <div id="photo-name" style="font-size:12px;font-weight:700;color:var(--palm-d)"></div>
+            <button onclick="event.stopPropagation();clearPhoto()" style="font-size:11px;color:var(--danger);background:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600">✕ Quitar</button>
+          </div>
+        </div>
         <input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handlePhotoFile(this.files[0])">
       </div>
     </div>
     <div class="modal-foot"><button class="mbtn-ghost" onclick="closeModal()">Cancelar</button><button class="mbtn-prim" onclick="saveD()">Guardar platillo</button></div>
+  </div>
+</div>
+
+<!-- ── MODAL EDITAR PLATILLO ── -->
+<div class="modal-bg" id="modal-editar">
+  <div class="modal">
+    <div class="modal-head"><div class="modal-title">Editar platillo</div><button class="modal-close" onclick="closeEditDish()">✕</button></div>
+    <div class="modal-body">
+      <div style="margin-bottom:14px"><label>Nombre del platillo</label><input id="edit-nombre" placeholder="Nombre"></div>
+      <div style="margin-bottom:14px"><label>¿Para cuál marca?</label><select id="edit-marca"><option value="palm">NutriPalm</option><option value="kifud">Kifud</option><option value="kiwilu">Kiwilu</option><option value="chef">Nutrichef</option></select></div>
+      <div class="frow2" style="margin-bottom:14px"><div><label>Calorías (kcal)</label><input id="edit-cal" type="number"></div><div><label>Proteína (g)</label><input id="edit-prot" type="number"></div></div>
+      <div class="frow2" style="margin-bottom:14px"><div><label>Carbohidratos (g)</label><input id="edit-carb" type="number"></div><div><label>Fibra (g)</label><input id="edit-fiber" type="number"></div></div>
+      <div style="margin-bottom:14px"><label>Tags (separadas por coma)</label><input id="edit-tags" placeholder="Alto en proteína, Sin gluten…"></div>
+      <div style="margin-bottom:14px"><label>Beneficios (uno por línea)</label><textarea id="edit-ben" rows="3"></textarea></div>
+      <div style="margin-bottom:4px"><label>Foto del platillo</label></div>
+      <div id="edit-photo-preview" style="margin-bottom:10px;display:none"><img id="edit-photo-img" src="" alt="" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px"></div>
+      <div style="display:flex;gap:8px">
+        <button onclick="document.getElementById('edit-photo-input').click()" style="flex:1;padding:9px;border-radius:8px;border:1.5px dashed var(--border);background:var(--off);color:var(--mid);font-size:12px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif">📷 Cambiar foto</button>
+        <button onclick="clearEditPhoto()" style="padding:9px 14px;border-radius:8px;border:1.5px solid var(--border);background:transparent;color:var(--light);font-size:12px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif">Quitar</button>
+      </div>
+      <input type="file" id="edit-photo-input" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handleEditPhoto(this.files[0])">
+    </div>
+    <div class="modal-foot"><button class="mbtn-ghost" onclick="closeEditDish()">Cancelar</button><button class="mbtn-prim" onclick="saveEditDish()">Guardar cambios</button></div>
   </div>
 </div>
 
@@ -1068,36 +1184,35 @@ textarea{resize:vertical;min-height:80px}
 <script>
 /* ═══ DATOS ═══ */
 let DB = [
-  {marca:'palm',name:'Pollo al limón con quinoa',emoji:'🍋',color:'#E1F5EE',cal:420,prot:36,fat:10,carb:38,fiber:5,gi:'Bajo–Moderado (45–50)',
+  {marca:'palm',name:'Pollo al limón con quinoa',photo:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=320&h=320&fit=crop&auto=format',emoji:'🍋',color:'#E1F5EE',cal:420,prot:36,fat:10,carb:38,fiber:5,gi:'Bajo–Moderado (45–50)',
    ingredients:['Pechuga de pollo','Quinoa','Calabacita','Limón','Ajo','Aceite de oliva'],
-   // gramos por porción para lista de compras
    insumos:[{ing:'Pechuga de pollo',g:180},{ing:'Quinoa',g:60},{ing:'Calabacita',g:100},{ing:'Limón',g:30},{ing:'Aceite de oliva',g:15}],
    vitamins:['Vitamina C','Vitamina B6','Hierro','Zinc','Potasio'],benefits:['Proteína completa para músculo','Quinoa de bajo IG','Limón antioxidante'],tags:['Alto en proteína','Sin gluten','Bajo IG']},
-  {marca:'palm',name:'Salmón glaseado con puré de coliflor',emoji:'🐟',color:'#EEF6FE',cal:510,prot:38,fat:22,carb:28,fiber:6,gi:'Bajo (38–44)',
+  {marca:'palm',name:'Salmón glaseado con puré de coliflor',photo:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=320&h=320&fit=crop&auto=format',emoji:'🐟',color:'#EEF6FE',cal:510,prot:38,fat:22,carb:28,fiber:6,gi:'Bajo (38–44)',
    ingredients:['Salmón','Coliflor','Espinaca','Limón','Miel','Aceite de oliva'],
    insumos:[{ing:'Salmón',g:200},{ing:'Coliflor',g:150},{ing:'Espinaca',g:60},{ing:'Aceite de oliva',g:15}],
    vitamins:['Omega-3','Vitamina D','Vitamina B12','Selenio','Magnesio'],benefits:['Omega-3 antiinflamatorio','Salud cardiovascular','Alta proteína'],tags:['Omega-3','Alto en proteína','Sin gluten']},
-  {marca:'palm',name:'Bowl de res con quinoa y verduras',emoji:'🥩',color:'#FEF0E6',cal:490,prot:40,fat:14,carb:42,fiber:7,gi:'Bajo–Moderado (46–52)',
+  {marca:'palm',name:'Bowl de res con quinoa y verduras',photo:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=320&h=320&fit=crop&auto=format',emoji:'🥩',color:'#FEF0E6',cal:490,prot:40,fat:14,carb:42,fiber:7,gi:'Bajo–Moderado (46–52)',
    ingredients:['Res magra','Quinoa','Pimiento','Cebolla morada','Aguacate','Cilantro'],
    insumos:[{ing:'Res magra',g:180},{ing:'Quinoa',g:60},{ing:'Pimiento',g:80},{ing:'Aguacate',g:60}],
    vitamins:['Hierro','Zinc','Vitamina B12','Folato','Vitamina K'],benefits:['Hierro hemo de alta absorción','Grasas saludables','Aminoácidos completos'],tags:['Alto en hierro','Sin lácteos','Alta proteína']},
-  {marca:'palm',name:'Pollo a la mostaza con verduras al vapor',emoji:'🍗',color:'#FEFEE6',cal:440,prot:34,fat:13,carb:40,fiber:5,gi:'Moderado (50–55)',
+  {marca:'palm',name:'Pollo a la mostaza con verduras al vapor',photo:'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=320&h=320&fit=crop&auto=format',emoji:'🍗',color:'#FEFEE6',cal:440,prot:34,fat:13,carb:40,fiber:5,gi:'Moderado (50–55)',
    ingredients:['Muslo de pollo','Papa','Brócoli','Mostaza Dijon','Ajo','Aceite de oliva'],
    insumos:[{ing:'Muslo de pollo',g:200},{ing:'Papa',g:120},{ing:'Brócoli',g:100},{ing:'Mostaza Dijon',g:20}],
    vitamins:['Vitamina C','Vitamina K','Folato','Potasio','Calcio'],benefits:['Calcio para huesos','Proteína completa','Vitamina C inmune'],tags:['Calcio','Alta proteína','Vitamina C']},
-  {marca:'palm',name:'Bowl mediterráneo de pollo',emoji:'🫒',color:'#EEEDFE',cal:460,prot:35,fat:16,carb:44,fiber:6,gi:'Bajo (40–46)',
+  {marca:'palm',name:'Bowl mediterráneo de pollo',photo:'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=320&h=320&fit=crop&auto=format',emoji:'🫒',color:'#EEEDFE',cal:460,prot:35,fat:16,carb:44,fiber:6,gi:'Bajo (40–46)',
    ingredients:['Pollo','Garbanzo','Pepino','Tomate cherry','Aceitunas','Feta','Orégano'],
    insumos:[{ing:'Pollo',g:160},{ing:'Garbanzo cocido',g:100},{ing:'Pepino',g:80},{ing:'Tomate cherry',g:80},{ing:'Queso feta',g:40}],
    vitamins:['Vitamina E','Calcio','Hierro vegetal','Folato','Potasio'],benefits:['Grasa saludable','Proteína vegetal','Dieta mediterránea'],tags:['Mediterráneo','Calcio','Anti-inflamatorio']},
-  {marca:'kifud',name:'Croquetitas de atún con puré de camote',emoji:'🥕',color:'#FEF8E3',cal:360,prot:24,fat:8,carb:44,fiber:6,gi:'Bajo–Moderado (45–50)',
+  {marca:'kifud',name:'Croquetitas de atún con puré de camote',photo:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=320&h=320&fit=crop&auto=format',emoji:'🥕',color:'#FEF8E3',cal:360,prot:24,fat:8,carb:44,fiber:6,gi:'Bajo–Moderado (45–50)',
    ingredients:['Atún en agua','Camote','Zanahoria','Huevo','Avena integral','Limón'],
    insumos:[{ing:'Atún en agua (lata)',g:120},{ing:'Camote',g:150},{ing:'Zanahoria',g:60},{ing:'Huevo',g:50},{ing:'Avena integral',g:30}],
    vitamins:['Omega-3','Vitamina A','Vitamina B12','Calcio','Hierro'],benefits:['Omega-3 cognitivo','Vitamina A para la vista','Proteína para crecimiento'],tags:['Omega-3','Vitamina A','Infantil']},
-  {marca:'kifud',name:'Mini hamburguesas de lentejas y queso',emoji:'🍔',color:'#E6FEF5',cal:380,prot:20,fat:10,carb:50,fiber:8,gi:'Bajo–Moderado (45–52)',
+  {marca:'kifud',name:'Mini hamburguesas de lentejas y queso',photo:'https://images.unsplash.com/photo-1550317138-10000687a72b?w=320&h=320&fit=crop&auto=format',emoji:'🍔',color:'#E6FEF5',cal:380,prot:20,fat:10,carb:50,fiber:8,gi:'Bajo–Moderado (45–52)',
    ingredients:['Lentejas','Queso Oaxaca','Pan integral','Jitomate','Lechuga','Mostaza'],
    insumos:[{ing:'Lentejas',g:100},{ing:'Queso Oaxaca',g:60},{ing:'Pan integral',g:60},{ing:'Jitomate',g:60}],
    vitamins:['Hierro vegetal','Folato','Calcio','Vitamina K','Fibra'],benefits:['Alta fibra','Calcio de queso','Proteína vegetal'],tags:['Alta fibra','Vegetal','Calcio']},
-  {marca:'kifud',name:'Rollitos de pollo y espinaca integral',emoji:'🌯',color:'#FEEFEE',cal:340,prot:22,fat:9,carb:42,fiber:5,gi:'Bajo (40–46)',
+  {marca:'kifud',name:'Rollitos de pollo y espinaca integral',photo:'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=320&h=320&fit=crop&auto=format',emoji:'🌯',color:'#FEEFEE',cal:340,prot:22,fat:9,carb:42,fiber:5,gi:'Bajo (40–46)',
    ingredients:['Pollo desmenuzado','Espinaca','Tortilla integral','Queso','Jitomate','Aguacate'],
    insumos:[{ing:'Pollo desmenuzado',g:140},{ing:'Espinaca',g:60},{ing:'Tortilla integral',g:60},{ing:'Aguacate',g:40}],
    vitamins:['Vitamina K','Vitamina C','Calcio','Hierro','Vitamina B6'],benefits:['Vitaminas liposolubles','Bajo IG','Grasas buenas para el cerebro'],tags:['Vitamina K','Bajo IG','Infantil']},
@@ -1451,8 +1566,8 @@ function renderBuilder() {
       <div class="drow2">
         ${[0,1].map(si => {
           const idx = menu[di][si];
-          if(locked) return `<div class="locked-slot">${idx!==null ? DB[idx].emoji+' '+DB[idx].name : 'Sin asignar'}</div>`;
-          if(idx!==null){const d=DB[idx];return `<div class="adish adish-${m}"><div><div class="adn adn-${m}">${d.emoji} ${d.name}</div><div class="adm adm-${m}">${d.cal} kcal · ${d.prot}g prot</div></div><button class="adrm" onclick="removeDish(${di},${si})">×</button></div>`;}
+          if(locked) return `<div class="locked-slot">${DB[idx] ? '<span style="display:flex;align-items:center;gap:6px">'+(DB[idx].photo?`<img src="${DB[idx].photo}" style="width:20px;height:20px;border-radius:4px;object-fit:cover">`:DB[idx].emoji)+' '+DB[idx].name+'</span>' : 'Sin asignar'}</div>`;
+          if(idx!==null){const d=DB[idx];const thumb=d.photo?`<img src="${d.photo}" style="width:22px;height:22px;border-radius:4px;object-fit:cover;flex-shrink:0">`:null;return `<div class="adish adish-${m}"><div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">${thumb||''}<div><div class="adn adn-${m}">${d.name}</div><div class="adm adm-${m}">${d.cal} kcal · ${d.prot}g prot</div></div></div><button class="adrm" onclick="removeDish(${di},${si})">×</button></div>`;}
           return `<button class="eslot" onclick="setSlot(${di},${si})">+ Opción ${si+1}</button>`;
         }).join('')}
       </div>
@@ -1463,7 +1578,7 @@ function assignDish(idx){
   if(!activeSlot||WEEK_DATA[activeWeek].locked) return;
   menus[activeWeek][activeSlot.di][activeSlot.si]=idx; activeSlot=null;
   renderWeekInfoCard(); renderBuilder(); renderDPList();
-  showToast(`${DB[idx].emoji} ${DB[idx].name} asignado ✓`);
+  showToast(`${DB[idx].name} asignado ✓`);
 }
 function removeDish(di,si){if(WEEK_DATA[activeWeek].locked)return;menus[activeWeek][di][si]=null;renderWeekInfoCard();renderBuilder();renderDPList();}
 function publishMenu(){
@@ -1478,11 +1593,16 @@ function renderDPList(filter=''){
   const menu=menus[activeWeek]; const used=menu.flat().filter(v=>v!==null);
   document.getElementById('dplist').innerHTML=db.map(d=>{
     const inUse=used.includes(d.i); const tc=`dta-${builderMarca}`;
-    return `<div class="ditem${inUse?' in-use':''}" onclick="assignDish(${d.i})">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="dinm">${d.emoji} ${d.name}</div>${inUse?'<span style="font-size:10px;color:var(--palm-d);background:var(--palm-l);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-left:6px;font-weight:700">En menú</span>':''}</div>
-      <div class="dimac"><span class="dimm">${d.cal} kcal</span><span class="dimm">${d.prot}g prot</span></div>
-      <div class="ditg">${d.tags.map(t=>`<span class="${tc}">${t}</span>`).join('')}</div>
-      <div style="margin-top:5px;font-size:11px;color:var(--mid)">Toca para asignar · <span style="color:var(--palm);font-weight:600;cursor:pointer" onclick="event.stopPropagation();openDet(${d.i})">ver detalle →</span></div>
+    const thumb = d.photo
+      ? `<div style="width:44px;height:44px;border-radius:8px;overflow:hidden;flex-shrink:0"><img src="${d.photo}" style="width:100%;height:100%;object-fit:cover"></div>`
+      : `<div style="width:44px;height:44px;border-radius:8px;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">${d.emoji||'🍽'}</div>`;
+    return `<div class="ditem${inUse?' in-use':''}" onclick="assignDish(${d.i})" style="display:flex;gap:10px;align-items:flex-start">
+      ${thumb}
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="dinm">${d.name}</div>${inUse?'<span style="font-size:10px;color:var(--palm-d);background:var(--palm-l);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-left:6px;font-weight:700">En menú</span>':''}</div>
+        <div class="dimac"><span class="dimm">${d.cal} kcal</span><span class="dimm">${d.prot}g prot</span></div>
+        <div class="ditg">${d.tags.map(t=>`<span class="${tc}">${t}</span>`).join('')}</div>
+      </div>
     </div>`;
   }).join('');
 }
@@ -1492,23 +1612,191 @@ function filterDPList(v){renderDPList(v);}
 function renderGrid(f){
   const db=f==='all'?DB:DB.filter(d=>d.marca===f);
   const mc={palm:'dc2-palm',kifud:'dc2-kifud',kiwilu:'dc2-kiwilu'};
-  document.getElementById('dgrid').innerHTML=db.map(d=>`
-    <div class="dc2 ${mc[d.marca]||'dc2-palm'}" onclick="openDet(${DB.indexOf(d)})">
-      <div class="dc2img" style="background:${d.color}">${d.emoji}</div>
-      <div class="dc2body"><div class="dc2n">${d.name}</div><div class="dc2m"><span class="dc2mm">${d.cal} kcal</span><span class="dc2mm">${d.prot}g prot</span></div><div class="dc2t">${d.tags.map(t=>`<span class="dc2ta">${t}</span>`).join('')}</div><div style="margin-top:8px;font-size:11px;color:var(--palm);font-weight:600">Ver detalle →</div></div>
-    </div>`).join('');
+  document.getElementById('dgrid').innerHTML=db.map((d,globalIdx)=>{
+    const idx=DB.indexOf(d);
+    const photoHtml = d.photo
+      ? `<div class="dc2img-has-photo"><img src="${d.photo}" alt="${d.name}"></div>
+         <button class="dc2img-change" onclick="event.stopPropagation();triggerPhotoChange(${idx})">Cambiar foto</button>`
+      : `<button class="dc2img-placeholder" onclick="event.stopPropagation();triggerPhotoChange(${idx})">
+           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="4" width="20" height="15" rx="3"/><circle cx="11" cy="12" r="3.5"/><path d="M7 4l1.5-3h5L15 4"/></svg>
+           <span>Agregar foto</span>
+         </button>`;
+    const benefit = d.benefits&&d.benefits[0] ? d.benefits[0].replace(/^✔\s*/,'') : '';
+    return `<div class="dc2 ${mc[d.marca]||'dc2-palm'}">
+      <div class="dc2img" style="${d.photo?'':'background:var(--cream)'}">
+        <input type="file" id="photo-file-${idx}" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handleDishPhoto(this,${idx})">
+        ${photoHtml}
+      </div>
+      <div class="dc2body" onclick="openDet(${idx})">
+        <div class="dc2n">${d.name}</div>
+        <div class="dc2m"><span class="dc2mm">${d.cal} kcal</span><span class="dc2mm">${d.prot}g prot</span><span class="dc2mm">${d.fat}g grasas</span><span class="dc2mm">${d.carb}g carbs</span></div>
+        ${benefit?`<div class="dc2benefit">${benefit}</div>`:''}
+        <div class="dc2t">${d.tags.map(t=>`<span class="dc2ta">${t}</span>`).join('')}</div>
+      </div>
+      <div class="dc2-actions">
+        <button class="dc2-edit" onclick="event.stopPropagation();openEditDish(${idx})">Editar</button>
+        <button class="dc2-del" onclick="event.stopPropagation();deleteDish(${idx})">Eliminar</button>
+      </div>
+    </div>`;
+  }).join('');
 }
 function filterPlatillos(m,btn){
+  currentFilter = m;
   document.querySelectorAll('#v-platillos .mtab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active'); renderGrid(m);
 }
+
+/* ─── TOGGLE MIS PLATILLOS / INSPIRACIÓN ─── */
+function switchPlatillosTab(tab){
+  const isMis = tab==='mis';
+  document.getElementById('panel-mis').style.display = isMis ? '' : 'none';
+  document.getElementById('panel-inspo').style.display = isMis ? 'none' : '';
+  document.getElementById('itog-mis').classList.toggle('active', isMis);
+  document.getElementById('itog-inspo').classList.toggle('active', !isMis);
+  document.getElementById('nuevo-platillo-btn').style.display = isMis ? '' : 'none';
+  if(!isMis) renderInspoGrid('palm');
+}
+
+/* ─── INSPIRACIÓN DATA ─── */
+const INSPO_DB = {
+  palm: [
+    {photo:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=320&h=320&fit=crop&auto=format',color:'#E1F5EE',name:'Bowl de frijoles negros con huevo pochado',cal:410,prot:28,fat:14,carb:40,fiber:9,tags:['Alto en fibra','Sin gluten','Vegetariano'],gi:'Bajo (38–44)'},
+    {photo:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=320&h=320&fit=crop&auto=format',color:'#EEF6FE',name:'Ensalada de atún con aguacate y pepino',cal:380,prot:32,fat:18,carb:18,fiber:6,tags:['Omega-3','Bajo IG','Sin lácteos'],gi:'Bajo (30–38)'},
+    {photo:'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=320&h=320&fit=crop&auto=format',color:'#FEF0E6',name:'Camote relleno de pollo y espinaca',cal:450,prot:34,fat:11,carb:52,fiber:8,tags:['Vitamina A','Alto en proteína','Sin gluten'],gi:'Bajo–Moderado (48–54)'},
+    {photo:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=320&h=320&fit=crop&auto=format',color:'#EEEDFE',name:'Tazón de quinoa con verduras rostizadas',cal:430,prot:18,fat:14,carb:54,fiber:10,tags:['Vegano','Bajo IG','Alto en fibra'],gi:'Bajo (40–46)'},
+    {photo:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=320&h=320&fit=crop&auto=format',color:'#EEF6FE',name:'Tilapia al horno con ensalada de col',cal:350,prot:36,fat:9,carb:22,fiber:5,tags:['Bajo calórico','Sin gluten','Omega-3'],gi:'Bajo (35–42)'},
+    {photo:'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=320&h=320&fit=crop&auto=format',color:'#FEF0E6',name:'Filete de res con puré de betabel',cal:480,prot:42,fat:15,carb:34,fiber:5,tags:['Alto en hierro','Sin gluten','Sin lácteos'],gi:'Moderado (50–56)'},
+    {photo:'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=320&h=320&fit=crop&auto=format',color:'#FEFEE6',name:'Tacos de pescado en tortilla integral',cal:420,prot:30,fat:12,carb:46,fiber:7,tags:['Alto en proteína','Omega-3','Integral'],gi:'Bajo–Moderado (45–52)'},
+    {photo:'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=320&h=320&fit=crop&auto=format',color:'#E1F5EE',name:'Falafel de garbanzo con tzatziki',cal:400,prot:16,fat:16,carb:46,fiber:9,tags:['Vegetal','Mediterráneo','Alto en fibra'],gi:'Bajo (42–48)'},
+    {photo:'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=320&h=320&fit=crop&auto=format',color:'#FEFEE6',name:'Omelette de espinaca y champiñones',cal:330,prot:26,fat:20,carb:12,fiber:4,tags:['Bajo carbos','Sin gluten','Cetogénico'],gi:'Bajo (25–35)'},
+    {photo:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=320&h=320&fit=crop&auto=format',color:'#E1F5EE',name:'Pechuga al cilantro con brócoli al vapor',cal:390,prot:38,fat:9,carb:28,fiber:6,tags:['Alto en proteína','Sin gluten','Bajo IG'],gi:'Bajo (38–44)'},
+  ],
+  kifud: [
+    {photo:'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=320&h=320&fit=crop&auto=format',color:'#FEF8E3',name:'Hot cakes integrales con fruta y miel',cal:340,prot:12,fat:8,carb:56,fiber:6,tags:['Integral','Vitaminas','Infantil'],gi:'Bajo–Moderado (48–54)'},
+    {photo:'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=320&h=320&fit=crop&auto=format',color:'#E6FEF5',name:'Wrap de pollo con zanahoria y guacamole',cal:360,prot:22,fat:12,carb:44,fiber:7,tags:['Calcio','Vitamina A','Infantil'],gi:'Bajo (42–48)'},
+    {photo:'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=320&h=320&fit=crop&auto=format',color:'#FEEFEE',name:'Espagueti de lentejas con salsa de jitomate',cal:380,prot:18,fat:9,carb:52,fiber:10,tags:['Proteína vegetal','Alta fibra','Sin carne'],gi:'Bajo (38–45)'},
+    {photo:'https://images.unsplash.com/photo-1528736235302-52922df5c122?w=320&h=320&fit=crop&auto=format',color:'#FEF8E3',name:'Sándwich integral de pavo y aguacate',cal:350,prot:24,fat:11,carb:40,fiber:7,tags:['Integral','Calcio','Infantil'],gi:'Bajo–Moderado (46–52)'},
+    {photo:'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=320&h=320&fit=crop&auto=format',color:'#E6FEF5',name:'Bento de arroz con pollo y edamame',cal:400,prot:26,fat:8,carb:54,fiber:8,tags:['Completo','Proteína','Colorido'],gi:'Bajo–Moderado (45–50)'},
+    {photo:'https://images.unsplash.com/photo-1565299715199-866c917206bb?w=320&h=320&fit=crop&auto=format',color:'#FEF8E3',name:'Quesadilla de frijol con espinaca',cal:370,prot:20,fat:13,carb:46,fiber:8,tags:['Calcio','Fibra','Vegetariano'],gi:'Bajo–Moderado (48–54)'},
+    {photo:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=320&h=320&fit=crop&auto=format',color:'#FEEFEE',name:'Granola artesanal con yogur y fresas',cal:310,prot:14,fat:10,carb:44,fiber:5,tags:['Probiótico','Calcio','Antioxidante'],gi:'Bajo–Moderado (44–50)'},
+    {photo:'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=320&h=320&fit=crop&auto=format',color:'#E6FEF5',name:'Muffin de avena con plátano y nuez',cal:290,prot:10,fat:9,carb:44,fiber:6,tags:['Potasio','Omega-3','Integral'],gi:'Bajo–Moderado (45–50)'},
+    {photo:'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=320&h=320&fit=crop&auto=format',color:'#FEF8E3',name:'Sopa de elote con pollo y calabacita',cal:350,prot:22,fat:8,carb:48,fiber:7,tags:['Vitamina A','Calcio','Antiinflamatorio'],gi:'Bajo–Moderado (46–52)'},
+    {photo:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=320&h=320&fit=crop&auto=format',color:'#FEEFEE',name:'Mini albóndigas de pavo con pasta integral',cal:390,prot:26,fat:11,carb:50,fiber:8,tags:['Hierro','Alta proteína','Integral'],gi:'Bajo–Moderado (46–52)'},
+  ],
+  kiwilu: [
+    {photo:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=320&h=320&fit=crop&auto=format',color:'#EEEDFE',name:'Bowl de arroz integral con salmón y aguacate',cal:520,prot:36,fat:22,carb:46,fiber:7,tags:['Omega-3','Bajo IG','Grasas saludables'],gi:'Bajo (40–46)'},
+    {photo:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=320&h=320&fit=crop&auto=format',color:'#E1F5EE',name:'Pollo en mole verde ligero con chayote',cal:430,prot:34,fat:14,carb:36,fiber:6,tags:['Antioxidante','Sin lácteos','Tradicional'],gi:'Bajo–Moderado (45–50)'},
+    {photo:'https://images.unsplash.com/photo-1547592180-85f173990554?w=320&h=320&fit=crop&auto=format',color:'#EEEDFE',name:'Caldo de res con verduras de temporada',cal:320,prot:28,fat:10,carb:28,fiber:5,tags:['Bajo calórico','Sin gluten','Antiinflamatorio'],gi:'Bajo (35–42)'},
+    {photo:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=320&h=320&fit=crop&auto=format',color:'#EEEDFE',name:'Buddha bowl con tofu y semillas de chía',cal:440,prot:20,fat:18,carb:48,fiber:11,tags:['Vegano','Omega-3','Fibra'],gi:'Bajo (38–44)'},
+    {photo:'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=320&h=320&fit=crop&auto=format',color:'#EEEDFE',name:'Smoothie bowl de moras con granola casera',cal:350,prot:14,fat:9,carb:54,fiber:9,tags:['Antioxidante','Probiótico','Bajo IG'],gi:'Bajo–Moderado (44–50)'},
+    {photo:'https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=320&h=320&fit=crop&auto=format',color:'#EEEDFE',name:'Ensalada de betabel con queso de cabra',cal:360,prot:16,fat:16,carb:36,fiber:7,tags:['Hierro','Calcio','Antiinflamatorio'],gi:'Bajo (38–44)'},
+    {photo:'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=320&h=320&fit=crop&auto=format',color:'#E1F5EE',name:'Lentejas rojas con cúrcuma y jengibre',cal:390,prot:22,fat:8,carb:54,fiber:12,tags:['Antiinflamatorio','Vegano','Alta fibra'],gi:'Bajo (36–43)'},
+    {photo:'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=320&h=320&fit=crop&auto=format',color:'#EEEDFE',name:'Ceviche de camarón con pepino y jícama',cal:280,prot:30,fat:5,carb:22,fiber:4,tags:['Bajo calórico','Sin gluten','Proteína magra'],gi:'Bajo (30–38)'},
+    {photo:'https://images.unsplash.com/photo-1495214783159-3503fd1b572d?w=320&h=320&fit=crop&auto=format',color:'#EEEDFE',name:'Porridge de avena con fruta deshidratada',cal:370,prot:13,fat:8,carb:62,fiber:9,tags:['Bajo IG','Integral','Saciante'],gi:'Bajo–Moderado (44–50)'},
+    {photo:'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=320&h=320&fit=crop&auto=format',color:'#E1F5EE',name:'Panzanella mediterránea con pollo orgánico',cal:410,prot:32,fat:14,carb:38,fiber:6,tags:['Mediterráneo','Antiinflamatorio','Vitamina E'],gi:'Bajo (40–46)'},
+  ],
+  chef: [
+    {photo:'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Arroz blanco con pechuga al vapor y calabacita',cal:310,prot:30,fat:5,carb:36,fiber:3,tags:['⚠ Sin sal','⚠ Bajo potasio','⚠ Sin fósforo'],gi:'Bajo (38–44)',clinical:true},
+    {photo:'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Omelette de claras con espinaca sin sal',cal:220,prot:28,fat:8,carb:8,fiber:2,tags:['⚠ Sin azúcar','⚠ Sin sal','⚠ Alto en proteína'],gi:'Bajo (20–28)',clinical:true},
+    {photo:'https://images.unsplash.com/photo-1547592180-85f173990554?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Caldo de pollo sin sodio con verduras blandas',cal:180,prot:22,fat:4,carb:14,fiber:3,tags:['⚠ Sin sodio','⚠ Bajo fósforo','⚠ Sin lácteos'],gi:'Bajo (25–32)',clinical:true},
+    {photo:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Pechuga a la plancha con camote cocido',cal:340,prot:34,fat:7,carb:34,fiber:4,tags:['⚠ Sin sal','⚠ IG bajo estricto','⚠ Sin harinas'],gi:'Bajo (38–44)',clinical:true},
+    {photo:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Filete de tilapia al vapor con brócoli',cal:280,prot:32,fat:6,carb:18,fiber:4,tags:['⚠ Bajo sodio','⚠ Sin grasas trans','⚠ Omega-3'],gi:'Bajo (30–38)',clinical:true},
+    {photo:'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Res magra cocida con zanahoria y chayote',cal:300,prot:28,fat:8,carb:22,fiber:5,tags:['⚠ Sin sal','⚠ Bajo potasio','⚠ Hierro hemo'],gi:'Bajo (35–42)',clinical:true},
+    {photo:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Ensalada de verduras cocidas con aceite de oliva',cal:160,prot:5,fat:9,carb:16,fiber:6,tags:['⚠ Sin sal','⚠ Sin fósforo añadido','⚠ Bajo calórico'],gi:'Bajo (25–32)',clinical:true},
+    {photo:'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Camote al horno con aceite de oliva',cal:240,prot:4,fat:7,carb:40,fiber:5,tags:['⚠ Sin sal','⚠ Bajo sodio','⚠ Antioxidante'],gi:'Bajo–Moderado (48–54)',clinical:true},
+    {photo:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Albóndiga de pavo magro en caldo claro',cal:260,prot:26,fat:8,carb:16,fiber:2,tags:['⚠ Sin sal añadida','⚠ Bajo fósforo','⚠ Sin gluten'],gi:'Bajo (35–42)',clinical:true},
+    {photo:'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=320&h=320&fit=crop&auto=format',color:'#FAECE7',name:'Sopa de pasta integral con pollo sin sodio',cal:290,prot:24,fat:5,carb:38,fiber:5,tags:['⚠ Sin sodio','⚠ Sin harinas blancas','⚠ Bajo IG'],gi:'Bajo (40–46)',clinical:true},
+  ]
+};
+
+let inspoAdded = {};
+let inspoCurrentBrand = 'palm';
+
+function renderInspoGrid(brand){
+  inspoCurrentBrand = brand;
+  const items = INSPO_DB[brand] || [];
+  const brandLabel = {palm:'NutriPalm',kifud:'Kifud',kiwilu:'Kiwilu',chef:'Nutrichef'};
+  const addBg = {palm:'var(--palm)',kifud:'var(--kifud-d)',kiwilu:'var(--kiwilu)',chef:'var(--chef)'};
+  const tagBg = {palm:'var(--palm-l)',kifud:'var(--kifud-l)',kiwilu:'var(--kiwilu-l)',chef:'var(--chef-l)'};
+  const tagColor = {palm:'var(--palm-d)',kifud:'var(--kifud-d)',kiwilu:'var(--kiwilu-d)',chef:'var(--chef-d)'};
+  const isChef = brand === 'chef';
+
+  document.getElementById('inspo-grid').innerHTML = (isChef ? `
+    <div style="background:var(--chef-l);border:1px solid rgba(216,90,48,.25);border-radius:10px;padding:11px 16px;font-size:13px;color:var(--chef-d);margin-bottom:16px;display:flex;align-items:center;gap:8px;grid-column:1/-1">
+      <span>⚠️</span><span><strong>Platillos clínicos:</strong> Diseñados para restricciones médicas específicas. Ajusta siempre según el plan firmado del paciente.</span>
+    </div>` : '') + items.map((d,i)=>{
+    const key = brand+'-'+i;
+    const isAdded = !!inspoAdded[key];
+    return `<div style="background:var(--white);border-radius:13px;border:1.5px solid ${isAdded?'var(--ok)':isChef?'rgba(216,90,48,.2)':'var(--border)'};overflow:hidden;display:flex;align-items:stretch;min-height:110px;transition:.15s">
+      <div style="width:110px;min-width:110px;overflow:hidden;flex-shrink:0">
+        <img src="${d.photo}" alt="${d.name}" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+      <div style="flex:1;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;min-width:0">
+        <div style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:5px;line-height:1.3">${d.name}</div>
+        <div style="display:flex;gap:5px;margin-bottom:6px;flex-wrap:wrap">
+          <span style="font-size:11px;color:var(--mid);background:var(--cream);padding:2px 7px;border-radius:4px;font-weight:500">${d.cal} kcal</span>
+          <span style="font-size:11px;color:var(--mid);background:var(--cream);padding:2px 7px;border-radius:4px;font-weight:500">${d.prot}g prot</span>
+          <span style="font-size:11px;color:var(--mid);background:var(--cream);padding:2px 7px;border-radius:4px;font-weight:500">${d.fat}g grasas</span>
+          <span style="font-size:11px;color:var(--mid);background:var(--cream);padding:2px 7px;border-radius:4px;font-weight:500">${d.carb}g carbs</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">${d.tags.map(t=>`<span style="font-size:10px;padding:1px 7px;border-radius:100px;font-weight:600;background:${tagBg[brand]};color:${tagColor[brand]}">${t}</span>`).join('')}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;padding:12px 14px 12px 0;flex-shrink:0">
+        <button id="inspo-btn-${key}" onclick="addInspoToMis('${brand}',${i},'${key}')"
+          style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.14s;white-space:nowrap;${isAdded?'background:var(--okl);color:var(--ok)':'background:'+addBg[brand]+';color:#fff'}">
+          ${isAdded ? '✓ Agregado' : '+ Agregar'}
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function isInspoTagBg(brand){
+  return {palm:'var(--palm-l)',kifud:'var(--kifud-l)',kiwilu:'var(--kiwilu-l)'}[brand]||'var(--palm-l)';
+}
+function isInspoTagColor(brand){
+  return {palm:'var(--palm-d)',kifud:'var(--kifud-d)',kiwilu:'var(--kiwilu-d)'}[brand]||'var(--palm-d)';
+}
+
+function addInspoToMis(brand, idx, key){
+  if(inspoAdded[key]) return;
+  const d = INSPO_DB[brand][idx];
+  DB.push({
+    marca: brand, name: d.name, emoji: d.emoji, color: d.color,
+    cal: d.cal, prot: d.prot, fat: d.fat, carb: d.carb, fiber: d.fiber,
+    gi: d.gi,
+    ingredients: ['Ingredientes frescos seleccionados'],
+    insumos: [], vitamins: ['Vitaminas y minerales'],
+    benefits: d.tags.map(t=>'✔ '+t),
+    tags: d.tags
+  });
+  inspoAdded[key] = true;
+  renderInspoGrid(inspoCurrentBrand);
+  renderDPList();
+  showToast(d.name + ' agregado a tus platillos ✓');
+}
+
+function filterInspo(brand, btn){
+  document.querySelectorAll('.inspo-btab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderInspoGrid(brand);
+}
+
+
 
 /* ─── DETALLE ─── */
 function openDet(idx){
   const d=DB[idx];
   document.getElementById('det-title').textContent=d.name;
-  document.getElementById('det-emoji').textContent=d.emoji;
-  document.getElementById('det-emoji').style.background=d.color;
+  const emojiEl = document.getElementById('det-emoji');
+  if(d.photo){
+    emojiEl.innerHTML=`<img src="${d.photo}" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`;
+    emojiEl.style.fontSize='';
+    emojiEl.style.background='';
+  } else {
+    emojiEl.innerHTML = d.emoji||'🍽';
+    emojiEl.style.background = d.color||'var(--cream)';
+  }
   document.getElementById('det-name').textContent=d.name;
   document.getElementById('det-gi').textContent=`Índice glucémico ${d.gi}`;
   document.getElementById('det-macros').innerHTML=[{v:d.cal,l:'kcal'},{v:d.prot+'g',l:'proteína'},{v:d.fat+'g',l:'grasas'},{v:d.carb+'g',l:'carbos'},{v:d.fiber+'g',l:'fibra'}].map(m=>`<div class="det-macro"><div class="det-mv">${m.v}</div><div class="det-ml">${m.l}</div></div>`).join('');
@@ -1545,6 +1833,84 @@ function filterResenas(m,btn){
   renderReviews(m);
 }
 
+/* ─── EDITAR PLATILLO ─── */
+let editingDishIdx = null;
+function openEditDish(idx){
+  editingDishIdx = idx;
+  const d = DB[idx];
+  document.getElementById('edit-nombre').value = d.name;
+  document.getElementById('edit-marca').value = d.marca;
+  document.getElementById('edit-cal').value = d.cal;
+  document.getElementById('edit-prot').value = d.prot;
+  document.getElementById('edit-carb').value = d.carb;
+  document.getElementById('edit-fiber').value = d.fiber;
+  document.getElementById('edit-tags').value = (d.tags||[]).join(', ');
+  document.getElementById('edit-ben').value = (d.benefits||[]).map(b=>b.replace(/^✔\s*/,'')).join('\n');
+  const prev = document.getElementById('edit-photo-preview');
+  const img = document.getElementById('edit-photo-img');
+  if(d.photo){ img.src=d.photo; prev.style.display=''; }
+  else { prev.style.display='none'; }
+  document.getElementById('modal-editar').style.display='flex';
+}
+function closeEditDish(){ document.getElementById('modal-editar').style.display='none'; editingDishIdx=null; }
+function saveEditDish(){
+  if(editingDishIdx===null) return;
+  const d = DB[editingDishIdx];
+  d.name = document.getElementById('edit-nombre').value.trim() || d.name;
+  d.marca = document.getElementById('edit-marca').value;
+  d.cal = parseInt(document.getElementById('edit-cal').value)||d.cal;
+  d.prot = parseInt(document.getElementById('edit-prot').value)||d.prot;
+  d.carb = parseInt(document.getElementById('edit-carb').value)||d.carb;
+  d.fiber = parseInt(document.getElementById('edit-fiber').value)||d.fiber;
+  d.tags = document.getElementById('edit-tags').value.split(',').map(s=>s.trim()).filter(Boolean);
+  d.benefits = document.getElementById('edit-ben').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  const newPhoto = document.getElementById('edit-photo-img').src;
+  if(newPhoto && newPhoto !== window.location.href) d.photo = newPhoto;
+  closeEditDish();
+  renderGrid(currentFilter||'all');
+  renderDPList();
+  showToast('Platillo actualizado ✓');
+}
+function handleEditPhoto(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('edit-photo-img').src = e.target.result;
+    document.getElementById('edit-photo-preview').style.display = '';
+  };
+  reader.readAsDataURL(file);
+}
+function clearEditPhoto(){
+  document.getElementById('edit-photo-img').src='';
+  document.getElementById('edit-photo-preview').style.display='none';
+  if(editingDishIdx!==null) delete DB[editingDishIdx].photo;
+}
+
+/* ─── FOTO DE PLATILLO ─── */
+function triggerPhotoChange(idx){
+  document.getElementById('photo-file-'+idx).click();
+}
+function handleDishPhoto(input, idx){
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    DB[idx].photo = e.target.result;
+    renderGrid(currentFilter||'all');
+    showToast('Foto actualizada ✓');
+  };
+  reader.readAsDataURL(file);
+}
+let currentFilter = 'all';
+
+/* ─── ELIMINAR PLATILLO ─── */
+function deleteDish(idx){
+  DB.splice(idx, 1);
+  renderGrid(currentFilter||'all');
+  renderDPList();
+  showToast('Platillo eliminado');
+}
+
 /* ─── NUEVO PLATILLO ─── */
 function openModal(){document.getElementById('modal-nuevo').style.display='flex';clearPhoto();}
 function closeModal(){document.getElementById('modal-nuevo').style.display='none';}
@@ -1555,15 +1921,16 @@ function saveD(){
   const ings=(document.getElementById('d-ing').value||'').split(',').map(s=>s.trim()).filter(Boolean);
   DB.push({
     marca:document.getElementById('d-marca').value, name:nom,
-    emoji:document.getElementById('d-emoji').value||'🍽',
-    color:document.getElementById('d-color').value+'44',
+    photo: currentPhoto || null,
+    emoji:'🍽', color:'#E1F5EE',
     cal:parseInt(document.getElementById('d-cal').value)||400,
     prot:parseInt(document.getElementById('d-prot').value)||25,
-    fat:12, carb:parseInt(document.getElementById('d-carb').value)||38,
+    fat:parseInt(document.getElementById('d-fat').value)||12,
+    carb:parseInt(document.getElementById('d-carb').value)||38,
     fiber:parseInt(document.getElementById('d-fiber').value)||5,
     gi:giMap[document.getElementById('d-gi').value],
     ingredients:ings,
-    insumos:ings.map(i=>({ing:i,g:100})), // estimado por defecto
+    insumos:ings.map(i=>({ing:i,g:100})),
     vitamins:['Vitaminas del complejo B','Minerales esenciales'],
     benefits:(document.getElementById('d-ben').value||'').split('\n').map(s=>s.trim()).filter(Boolean),
     tags:(document.getElementById('d-tags').value||'').split(',').map(s=>s.trim()).filter(Boolean),
