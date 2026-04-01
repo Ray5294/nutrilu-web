@@ -214,6 +214,165 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
 .bp2:hover{background:var(--green-light)}
 .bs2{padding:10px 22px;background:#fff;color:var(--mid);border:1px solid var(--border);border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
 .bs2:hover{border-color:var(--dark);color:var(--dark)}
+
+/* ── SECCIÓN COMIDA SALUDABLE (marcas) ─────────── */
+.br-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
+
+.br-card{border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s;cursor:pointer}
+.br-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-2px)}
+
+.br-header{padding:24px 24px 20px}
+.br-status{display:inline-block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:4px 10px;border-radius:20px;margin-bottom:14px}
+
+.br-emoji{font-size:38px;line-height:1;margin-bottom:12px;display:block}
+.br-name{font-family:'DM Serif Display',serif;font-size:28px;line-height:1.1;margin-bottom:6px}
+.br-tagline{font-size:13px;font-weight:400;font-style:italic;line-height:1.5;opacity:.75}
+
+/* brand pill debajo de header */
+.br-oneliner{margin:0 20px 20px;border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.br-ol-name{font-size:12px;font-weight:700;letter-spacing:.04em}
+.br-ol-sep{opacity:.4;font-size:12px}
+.br-ol-text{font-size:12px;font-weight:400;opacity:.85;line-height:1.4}
+
+.br-divider{height:1px;margin:0 20px;opacity:.15;background:currentColor}
+
+.br-body{padding:18px 24px;flex:1;display:flex;flex-direction:column;gap:14px}
+.br-desc{font-size:13.5px;line-height:1.65;font-weight:300}
+.br-feats{display:flex;flex-direction:column;gap:7px}
+.br-feat{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;line-height:1.45;opacity:.8}
+.br-feat::before{content:'✓';font-weight:700;flex-shrink:0;opacity:.6}
+
+.br-foot{padding:14px 24px;border-top:1px solid rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between}
+.br-foot-who{font-size:11px;opacity:.55;font-weight:500}
+.br-foot-who strong{opacity:1;font-weight:600}
+.br-btn{padding:8px 18px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;border:none}
+
+/* NutriPalm — verde */
+.br-np{background:#EBF4E0;color:#1E3A0A}
+.br-np .br-header{background:linear-gradient(140deg,#d8edc3 0%,#EBF4E0 100%)}
+.br-np .br-status{background:rgba(45,80,22,.15);color:#2D5016}
+.br-np .br-name{color:#2D5016}
+.br-np .br-oneliner{background:rgba(45,80,22,.12);color:#1E3A0A}
+.br-np .br-btn{background:#2D5016;color:#fff}
+.br-np .br-btn:hover{background:#4A7A28}
+
+/* Kifud — ámbar */
+.br-kf{background:#FFF3E0;color:#5C3500}
+.br-kf .br-header{background:linear-gradient(140deg,#fde5ba 0%,#FFF3E0 100%)}
+.br-kf .br-status{background:rgba(200,134,26,.15);color:#C8861A}
+.br-kf .br-name{color:#C8861A}
+.br-kf .br-oneliner{background:rgba(200,134,26,.14);color:#5C3500}
+.br-kf .br-btn{background:#C8861A;color:#fff}
+.br-kf .br-btn:hover{background:#d9971e}
+
+/* Kiwilu — azul */
+.br-kw{background:#E3F2FD;color:#0D3358}
+.br-kw .br-header{background:linear-gradient(140deg,#b8d9f5 0%,#E3F2FD 100%)}
+.br-kw .br-status{background:rgba(21,101,192,.15);color:#1565C0}
+.br-kw .br-name{color:#1565C0}
+.br-kw .br-oneliner{background:rgba(21,101,192,.12);color:#0D3358}
+.br-kw .br-btn{background:#1565C0;color:#fff}
+.br-kw .br-btn:hover{background:#1976D2}
+
+/* Nutrichef — morado */
+.br-nc{background:#F3E5F5;color:#2E0845}
+.br-nc .br-header{background:linear-gradient(140deg,#ddb8e8 0%,#F3E5F5 100%)}
+.br-nc .br-status{background:rgba(106,27,154,.15);color:#6A1B9A}
+.br-nc .br-name{color:#6A1B9A}
+.br-nc .br-oneliner{background:rgba(106,27,154,.12);color:#2E0845}
+.br-nc .br-btn{background:#6A1B9A;color:#fff}
+.br-nc .br-btn:hover{background:#7B1FA2}
+
+/* ── MARKETPLACE DE SERVICIOS ───────────────────── */
+
+/* Filtros de marca */
+.mk-filters{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;align-items:center}
+.mk-filter{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:24px;border:1.5px solid var(--border);background:#fff;font-size:13px;font-weight:500;color:var(--mid);cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif}
+.mk-filter:hover{border-color:var(--light);color:var(--dark)}
+.mk-filter.active{color:#fff;border-color:transparent}
+.mk-filter-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.mk-filter[data-f="all"].active{background:var(--dark)}
+.mk-filter[data-f="np"].active{background:#2D5016}
+.mk-filter[data-f="kf"].active{background:#C8861A}
+.mk-filter[data-f="kw"].active{background:#1565C0}
+.mk-filter[data-f="nc"].active{background:#6A1B9A}
+.mk-count{font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;background:rgba(255,255,255,.25);margin-left:2px}
+.mk-filter:not(.active) .mk-count{background:var(--off);color:var(--light)}
+
+/* Grid de tarjetas */
+.mk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* Tarjeta de nutrióloga */
+.mk-card{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s;cursor:default}
+.mk-card:hover{box-shadow:0 6px 28px rgba(0,0,0,.08);transform:translateY(-2px)}
+.mk-card[data-brand="np"]{display:flex}
+.mk-card[data-brand="kf"]{display:flex}
+.mk-card[data-brand="kw"]{display:flex}
+.mk-card[data-brand="nc"]{display:flex}
+.mk-card.mk-hidden{display:none!important}
+
+/* Header de tarjeta */
+.mk-ch{padding:16px 18px 14px;border-bottom:1px solid var(--border)}
+.mk-brand-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.mk-brand-tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:12px}
+.mk-brand-tag.np{background:#EBF4E0;color:#2D5016}
+.mk-brand-tag.kf{background:#FFF3E0;color:#C8861A}
+.mk-brand-tag.kw{background:#E3F2FD;color:#1565C0}
+.mk-brand-tag.nc{background:#F3E5F5;color:#6A1B9A}
+.mk-price{font-size:13px;font-weight:600;color:var(--dark)}
+.mk-price span{font-size:11px;font-weight:400;color:var(--light)}
+
+.mk-nutri-row{display:flex;align-items:center;gap:10px}
+.mk-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.mk-av.np{background:#2D5016}
+.mk-av.kf{background:#C8861A}
+.mk-av.kw{background:#1565C0}
+.mk-av.nc{background:#6A1B9A}
+.mk-nutri-name{font-size:14px;font-weight:600;color:var(--dark);line-height:1.2}
+.mk-nutri-spec{font-size:11px;color:var(--light);margin-top:1px}
+.mk-stars{font-size:11px;color:var(--warning);margin-top:3px;display:flex;align-items:center;gap:4px}
+.mk-stars span{color:var(--light);font-weight:400}
+
+/* Cuerpo de tarjeta */
+.mk-body{padding:14px 18px;flex:1;display:flex;flex-direction:column;gap:12px}
+
+/* Menú de la semana (NutriPalm / Kifud) */
+.mk-menu-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--light);font-weight:500;margin-bottom:6px}
+.mk-menu-list{display:flex;flex-direction:column;gap:4px}
+.mk-menu-item{display:flex;align-items:baseline;gap:6px;font-size:12px}
+.mk-menu-day{font-size:10px;font-weight:600;color:var(--light);width:22px;flex-shrink:0;text-transform:uppercase}
+.mk-menu-dish{color:var(--dark);line-height:1.4}
+
+/* Descripción (Kiwilu / Nutrichef) */
+.mk-desc{font-size:12.5px;color:var(--mid);line-height:1.6;font-weight:300}
+
+/* Especialidades como pills */
+.mk-specs{display:flex;flex-wrap:wrap;gap:5px}
+.mk-spec{font-size:10.5px;font-weight:500;padding:3px 9px;border-radius:12px}
+
+/* Footer */
+.mk-foot{padding:12px 18px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--off)}
+.mk-foot-info{font-size:11px;color:var(--light)}
+.mk-foot-info strong{color:var(--dark);font-weight:500}
+.mk-btn{padding:7px 16px;border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;border:none;white-space:nowrap}
+.mk-btn.np{background:#2D5016;color:#fff}.mk-btn.np:hover{background:#4A7A28}
+.mk-btn.kf{background:#C8861A;color:#fff}.mk-btn.kf:hover{background:#d9971e}
+.mk-btn.kw{background:#1565C0;color:#fff}.mk-btn.kw:hover{background:#1976D2}
+.mk-btn.nc{background:#6A1B9A;color:#fff}.mk-btn.nc:hover{background:#7B1FA2}
+
+/* Kiwilu info-card (sin menú, con opciones) */
+.mk-kw-opts{display:flex;flex-direction:column;gap:6px}
+.mk-kw-opt{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--off);font-size:12px}
+.mk-kw-opt-title{font-weight:600;color:var(--dark);margin-bottom:2px}
+.mk-kw-opt-desc{color:var(--mid);font-weight:300;line-height:1.4}
+
+/* CTA bottom */
+.mk-cta{margin-top:24px;background:linear-gradient(135deg,#1A1A18 0%,#2D5016 100%);border-radius:14px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.mk-cta-left .mk-cta-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px}
+.mk-cta-left h3{font-family:'DM Serif Display',serif;font-size:19px;color:#fff;line-height:1.2;margin-bottom:4px}
+.mk-cta-left p{font-size:12px;color:rgba(255,255,255,.55);font-weight:300}
+.mk-cta-btn{flex-shrink:0;padding:10px 22px;background:#fff;color:var(--dark);border:none;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:all .15s}
+.mk-cta-btn:hover{background:var(--off)}
 </style>
 </head>
 <body>
@@ -233,13 +392,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
     <button class="nav-item" onclick="show('proxima',this)">
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M12 14l2 2 4-4"/></svg>Próxima semana
     </button>
-  </div>
-  <div class="nav-section">
     <button class="nav-item" onclick="show('integrantes',this)">
       <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Integrantes
     </button>
+  </div>
+  <div class="nav-section">
+    <button class="nav-item" onclick="show('marcas',this)">
+      <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Comida saludable
+    </button>
+    <button class="nav-item" onclick="show('servicios',this)">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Tus nutriólogas
+    </button>
     <button class="nav-item" onclick="show('pagos',this)">
-      <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Pagos
+      <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Suscripciones
     </button>
     <button class="nav-item" onclick="show('config',this)">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Configuración
@@ -679,6 +844,452 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);mi
   </div>
 </div>
 
+<!-- COMIDA SALUDABLE — marcas -->
+<div class="sec" id="sec-marcas">
+  <div class="ph">
+    <div class="bc">Nutrilú · Ecosistema</div>
+    <h1 class="pt">Comida <em>saludable.</em></h1>
+    <p class="ps">Cuatro servicios, una sola familia. Cada uno diseñado para una necesidad distinta.</p>
+  </div>
+
+  <div class="br-grid">
+
+    <!-- NutriPalm -->
+    <div class="br-card br-np">
+      <div class="br-header">
+        <div class="br-status">Ya en tu plan · Ana, Roberto</div>
+        <span class="br-emoji">🥗</span>
+        <div class="br-name">NutriPalm</div>
+        <div class="br-tagline">Comida saludable para adultos, diseñada por nutriólogas. Lista para recoger.</div>
+      </div>
+      <div class="br-oneliner">
+        <span class="br-ol-name">NutriPalm</span><span class="br-ol-sep">·</span>
+        <span class="br-ol-text">Menú semanal rotativo preparado por nutriólogas certificadas. Tú eliges a quién sigues.</span>
+      </div>
+      <div class="br-body">
+        <p class="br-desc">Un menú diferente cada semana, preparado con ingredientes frescos, sin glutamato ni procesados. Cada platillo tiene perfil nutricional completo. Tú eliges la nutrióloga cuya cocina prefieres.</p>
+        <div class="br-feats">
+          <div class="br-feat">Menú cambia cada semana — nunca el mismo platillo dos veces seguidas</div>
+          <div class="br-feat">Varias nutriólogas compiten — tú eliges con quién quedarte</div>
+          <div class="br-feat">Recoge lunes a viernes 4–9 PM en Escápate Café</div>
+        </div>
+      </div>
+      <div class="br-foot">
+        <div class="br-foot-who">Activo · <strong>Ana · Roberto</strong></div>
+        <button class="br-btn" onclick="show('esta',null)">Ver menú →</button>
+      </div>
+    </div>
+
+    <!-- Kifud -->
+    <div class="br-card br-kf">
+      <div class="br-header">
+        <div class="br-status">Activo · Emilio</div>
+        <span class="br-emoji">🎒</span>
+        <div class="br-name">Kifud</div>
+        <div class="br-tagline">La lonchera que tu hijo va a pedir de nuevo.</div>
+      </div>
+      <div class="br-oneliner">
+        <span class="br-ol-name">Kifud</span><span class="br-ol-sep">·</span>
+        <span class="br-ol-text">Loncheras escolares diseñadas por nutriólogas pediátricas. Sin ultra-procesados, con nutrientes reales.</span>
+      </div>
+      <div class="br-body">
+        <p class="br-desc">Loncheras que cambian cada semana como caja sorpresa. Sin colorantes artificiales, sin glutamato, con proteína real, calcio y Omega-3 para el desarrollo. La nutrióloga ajusta si hay intolerancias.</p>
+        <div class="br-feats">
+          <div class="br-feat">Nutrióloga pediátrica diseña y supervisa cada platillo</div>
+          <div class="br-feat">Se recoge la tarde anterior — sin carreras en la mañana</div>
+          <div class="br-feat">Perfil nutricional visible en el portal por cada lonche</div>
+        </div>
+      </div>
+      <div class="br-foot">
+        <div class="br-foot-who">Activo · <strong>Emilio</strong></div>
+        <button class="br-btn" onclick="show('esta',null)">Ver lonche →</button>
+      </div>
+    </div>
+
+    <!-- Kiwilu -->
+    <div class="br-card br-kw">
+      <div class="br-header">
+        <div class="br-status">Disponible</div>
+        <span class="br-emoji">🥦</span>
+        <div class="br-name">Kiwilu</div>
+        <div class="br-tagline">La dieta que te recetó tu nutrióloga, lista para comer.</div>
+      </div>
+      <div class="br-oneliner">
+        <span class="br-ol-name">Kiwilu</span><span class="br-ol-sep">·</span>
+        <span class="br-ol-text">Tu plan nutricional prescrito cocinado con fidelidad exacta. Gramos, ingredientes y método sin cambios.</span>
+      </div>
+      <div class="br-body">
+        <p class="br-desc">¿Alguien en tu familia tiene plan nutricional prescrito? Kiwilu lo cocina con fidelidad total. Compatible con planes de cualquier profesional. Si no tienes nutrióloga, puedes contratar consulta incluida.</p>
+        <div class="br-feats">
+          <div class="br-feat">Compatible con el plan de cualquier nutrióloga o médico externo</div>
+          <div class="br-feat">Sin sustituciones no autorizadas — cocinamos exactamente lo indicado</div>
+          <div class="br-feat">Opción con consulta incluida si no tienes nutrióloga asignada</div>
+        </div>
+      </div>
+      <div class="br-foot">
+        <div class="br-foot-who">Disponible para tu familia</div>
+        <button class="br-btn" onclick="openM('m-contratar')">Contratar →</button>
+      </div>
+    </div>
+
+    <!-- Nutrichef -->
+    <div class="br-card br-nc">
+      <div class="br-header">
+        <div class="br-status">Activo · Roberto</div>
+        <span class="br-emoji">🩺</span>
+        <div class="br-name">Nutrichef</div>
+        <div class="br-tagline">La dieta de tu médico, cocinada con precisión clínica.</div>
+      </div>
+      <div class="br-oneliner">
+        <span class="br-ol-name">Nutrichef</span><span class="br-ol-sep">·</span>
+        <span class="br-ol-text">Dietas terapéuticas coordinadas con tu médico. Para diabetes, hipertensión, condición renal y más.</span>
+      </div>
+      <div class="br-body">
+        <p class="br-desc">Para quienes siguen un tratamiento médico con dieta específica. La nutrióloga se coordina directamente con tu doctor — el platillo no se cocina hasta que ambos aprueban el plan. Con opción de consulta incluida.</p>
+        <div class="br-feats">
+          <div class="br-feat">Médico y nutrióloga aprueban cada platillo antes de cocinarlo</div>
+          <div class="br-feat">Reporte semanal de adherencia enviado al médico tratante</div>
+          <div class="br-feat">Opción con consulta incluida si no tienes dietista asignado</div>
+        </div>
+      </div>
+      <div class="br-foot">
+        <div class="br-foot-who">Activo · <strong>Roberto</strong></div>
+        <button class="br-btn" onclick="openM('m-contratar')">Ver plan →</button>
+      </div>
+    </div>
+
+  </div><!-- /br-grid -->
+
+  <div class="mk-cta">
+    <div class="mk-cta-left">
+      <div class="mk-cta-label">¿Alguien más en tu familia?</div>
+      <h3>Agrégalos y elegimos juntos</h3>
+      <p>Cuéntanos quién es y te decimos qué servicio y nutrióloga se adaptan mejor.</p>
+    </div>
+    <button class="mk-cta-btn" onclick="openM('m-agregar')">Agregar integrante →</button>
+  </div>
+</div>
+
+<!-- TUS NUTRIÓLOGAS — marketplace -->
+<div class="sec" id="sec-servicios">
+  <div class="ph">
+    <div class="bc">Nutrilú · Tus nutriólogas</div>
+    <h1 class="pt">Elige tu <em>nutrióloga.</em></h1>
+    <p class="ps">Cada profesional tiene su propio estilo y menú. Filtra por servicio y elige con quién quieres cocinar tu salud.</p>
+  </div>
+
+  <!-- FILTROS -->
+  <div class="mk-filters">
+    <button class="mk-filter active" data-f="all" onclick="mkFilter('all',this)">
+      Todas <span class="mk-count">7</span>
+    </button>
+    <button class="mk-filter" data-f="np" onclick="mkFilter('np',this)">
+      <span class="mk-filter-dot" style="background:#2D5016"></span>Comida adultos <span class="mk-count">3</span>
+    </button>
+    <button class="mk-filter" data-f="kf" onclick="mkFilter('kf',this)">
+      <span class="mk-filter-dot" style="background:#C8861A"></span>Loncheras escolares <span class="mk-count">2</span>
+    </button>
+    <button class="mk-filter" data-f="kw" onclick="mkFilter('kw',this)">
+      <span class="mk-filter-dot" style="background:#1565C0"></span>Plan nutricional <span class="mk-count">1</span>
+    </button>
+    <button class="mk-filter" data-f="nc" onclick="mkFilter('nc',this)">
+      <span class="mk-filter-dot" style="background:#6A1B9A"></span>Dieta terapéutica <span class="mk-count">1</span>
+    </button>
+  </div>
+
+  <!-- GRID -->
+  <div class="mk-grid">
+
+    <!-- ── NP · VALERIA ── -->
+    <div class="mk-card" data-brand="np">
+      <div class="mk-ch">
+        <div class="mk-brand-row">
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--light);font-weight:500"><span style="width:7px;height:7px;border-radius:50%;background:#2D5016;display:inline-block"></span>Comida para adultos</span>
+          <div class="mk-price">$120 <span>/ porción</span></div>
+        </div>
+        <div class="mk-nutri-row">
+          <div class="mk-av np">VR</div>
+          <div>
+            <div class="mk-nutri-name">Nut. Valeria Ríos</div>
+            <div class="mk-nutri-spec">Nutrición clínica · UANL · 6 años</div>
+            <div class="mk-stars">★★★★★ <span>4.9 · 38 reseñas</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mk-body">
+        <div>
+          <div class="mk-menu-label">Menú esta semana</div>
+          <div class="mk-menu-list">
+            <div class="mk-menu-item"><span class="mk-menu-day">Lun</span><span class="mk-menu-dish">Bowl de res salteada con quinoa y vegetales asados</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mar</span><span class="mk-menu-dish">Salmón glaseado con puré de coliflor</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mié</span><span class="mk-menu-dish">Pechuga a la plancha con arroz integral y brócoli</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Jue</span><span class="mk-menu-dish">Atún sellado con ensalada mediterránea</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Vie</span><span class="mk-menu-dish">Lentejas guisadas con verduras y tortilla de nopal</span></div>
+          </div>
+        </div>
+        <div class="mk-specs">
+          <span class="mk-spec" style="background:#EBF4E0;color:#2D5016">Sin glutamato</span>
+          <span class="mk-spec" style="background:#E0F2F1;color:#00695C">Alta proteína</span>
+          <span class="mk-spec" style="background:#E8F5E9;color:#2E7D32">IG bajo</span>
+        </div>
+      </div>
+      <div class="mk-foot">
+        <div class="mk-foot-info">Tu nutrióloga actual · <strong>Ana</strong></div>
+        <button class="mk-btn np" onclick="show('esta',null)">Ver menú →</button>
+      </div>
+    </div>
+
+    <!-- ── NP · ANA TORRES ── -->
+    <div class="mk-card" data-brand="np">
+      <div class="mk-ch">
+        <div class="mk-brand-row">
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--light);font-weight:500"><span style="width:7px;height:7px;border-radius:50%;background:#2D5016;display:inline-block"></span>Comida para adultos</span>
+          <div class="mk-price">$120 <span>/ porción</span></div>
+        </div>
+        <div class="mk-nutri-row">
+          <div class="mk-av np" style="background:#4A7A28">AT</div>
+          <div>
+            <div class="mk-nutri-name">Nut. Ana Torres</div>
+            <div class="mk-nutri-spec">Nutrición deportiva · Tec · 4 años</div>
+            <div class="mk-stars">★★★★★ <span>4.8 · 22 reseñas</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mk-body">
+        <div>
+          <div class="mk-menu-label">Menú esta semana</div>
+          <div class="mk-menu-list">
+            <div class="mk-menu-item"><span class="mk-menu-day">Lun</span><span class="mk-menu-dish">Pollo al curry con garbanzo y arroz jazmín</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mar</span><span class="mk-menu-dish">Tazón proteico de edamame y salmón teriyaki</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mié</span><span class="mk-menu-dish">Res con camote asado y espinaca salteada</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Jue</span><span class="mk-menu-dish">Quesadillas de pollo con aguacate y tomate</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Vie</span><span class="mk-menu-dish">Pasta de garbanzo con pesto y pavo</span></div>
+          </div>
+        </div>
+        <div class="mk-specs">
+          <span class="mk-spec" style="background:#EBF4E0;color:#2D5016">Deportiva</span>
+          <span class="mk-spec" style="background:#E0F2F1;color:#00695C">Sin lácteos</span>
+          <span class="mk-spec" style="background:#FFF3E0;color:#E65100">Alta energía</span>
+        </div>
+      </div>
+      <div class="mk-foot">
+        <div class="mk-foot-info">Disponible para contratar</div>
+        <button class="mk-btn np" onclick="openM('m-contratar')">Contratar →</button>
+      </div>
+    </div>
+
+    <!-- ── NP · LAURA MENDOZA ── -->
+    <div class="mk-card" data-brand="np">
+      <div class="mk-ch">
+        <div class="mk-brand-row">
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--light);font-weight:500"><span style="width:7px;height:7px;border-radius:50%;background:#2D5016;display:inline-block"></span>Comida para adultos</span>
+          <div class="mk-price">$115 <span>/ porción</span></div>
+        </div>
+        <div class="mk-nutri-row">
+          <div class="mk-av np" style="background:#8BA640">LM</div>
+          <div>
+            <div class="mk-nutri-name">Nut. Laura Mendoza</div>
+            <div class="mk-nutri-spec">Nutrición funcional · UAdeC · 3 años</div>
+            <div class="mk-stars">★★★★☆ <span>4.6 · 14 reseñas</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mk-body">
+        <div>
+          <div class="mk-menu-label">Menú esta semana</div>
+          <div class="mk-menu-list">
+            <div class="mk-menu-item"><span class="mk-menu-day">Lun</span><span class="mk-menu-dish">Bowl mediterráneo de atún con quinoa</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mar</span><span class="mk-menu-dish">Pollo al limón con verduras al horno</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mié</span><span class="mk-menu-dish">Sopa de lentejas rojas con pan de centeno</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Jue</span><span class="mk-menu-dish">Tacos de res magra con salsa verde</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Vie</span><span class="mk-menu-dish">Pechuga rellena de espinaca y queso panela</span></div>
+          </div>
+        </div>
+        <div class="mk-specs">
+          <span class="mk-spec" style="background:#E8EAF6;color:#283593">Funcional</span>
+          <span class="mk-spec" style="background:#E8F5E9;color:#2E7D32">Sin gluten</span>
+          <span class="mk-spec" style="background:#E0F2F1;color:#00695C">Antiinflamatoria</span>
+        </div>
+      </div>
+      <div class="mk-foot">
+        <div class="mk-foot-info">Disponible para contratar</div>
+        <button class="mk-btn np" onclick="openM('m-contratar')">Contratar →</button>
+      </div>
+    </div>
+
+    <!-- ── KF · CARMEN MEJÍA ── -->
+    <div class="mk-card" data-brand="kf">
+      <div class="mk-ch">
+        <div class="mk-brand-row">
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--light);font-weight:500"><span style="width:7px;height:7px;border-radius:50%;background:#C8861A;display:inline-block"></span>Loncheras escolares</span>
+          <div class="mk-price">$90 <span>/ lonchera</span></div>
+        </div>
+        <div class="mk-nutri-row">
+          <div class="mk-av kf">CM</div>
+          <div>
+            <div class="mk-nutri-name">Nut. Carmen Mejía</div>
+            <div class="mk-nutri-spec">Nutrición pediátrica · UANL · 8 años</div>
+            <div class="mk-stars">★★★★★ <span>5.0 · 51 reseñas</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mk-body">
+        <div>
+          <div class="mk-menu-label">Lonches esta semana</div>
+          <div class="mk-menu-list">
+            <div class="mk-menu-item"><span class="mk-menu-day">Lun</span><span class="mk-menu-dish">Lonche de pavo con queso manchego y espinaca</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mar</span><span class="mk-menu-dish">Mini quesadillas de pollo con zanahoria y dip</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mié</span><span class="mk-menu-dish">Wrap de atún con lechuga y pepino</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Jue</span><span class="mk-menu-dish">Lonche de jamón de pavo sin nitratos con fruta</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Vie</span><span class="mk-menu-dish">Pasta integral con pesto y pollo desmenuzado</span></div>
+          </div>
+        </div>
+        <div class="mk-specs">
+          <span class="mk-spec" style="background:#FFF3E0;color:#C8861A">Sin ultra-procesados</span>
+          <span class="mk-spec" style="background:#E8F5E9;color:#2E7D32">Alto calcio</span>
+          <span class="mk-spec" style="background:#E0F2F1;color:#00695C">Sin gluten disp.</span>
+        </div>
+      </div>
+      <div class="mk-foot">
+        <div class="mk-foot-info">Tu nutrióloga actual · <strong>Emilio</strong></div>
+        <button class="mk-btn kf" onclick="show('esta',null)">Ver lonche →</button>
+      </div>
+    </div>
+
+    <!-- ── KF · SOFÍA RAMÍREZ ── -->
+    <div class="mk-card" data-brand="kf">
+      <div class="mk-ch">
+        <div class="mk-brand-row">
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--light);font-weight:500"><span style="width:7px;height:7px;border-radius:50%;background:#C8861A;display:inline-block"></span>Loncheras escolares</span>
+          <div class="mk-price">$90 <span>/ lonchera</span></div>
+        </div>
+        <div class="mk-nutri-row">
+          <div class="mk-av kf" style="background:#d9971e">SR</div>
+          <div>
+            <div class="mk-nutri-name">Nut. Sofía Ramírez</div>
+            <div class="mk-nutri-spec">Pediatría nutricional · Tec · 5 años</div>
+            <div class="mk-stars">★★★★★ <span>4.7 · 29 reseñas</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mk-body">
+        <div>
+          <div class="mk-menu-label">Lonches esta semana</div>
+          <div class="mk-menu-list">
+            <div class="mk-menu-item"><span class="mk-menu-day">Lun</span><span class="mk-menu-dish">Sándwich de pollo con aguacate y jitomate</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mar</span><span class="mk-menu-dish">Burrito de frijoles negros con queso y verduras</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Mié</span><span class="mk-menu-dish">Lonche de salmón con pepino y crema de queso</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Jue</span><span class="mk-menu-dish">Mini tacos de picadillo con zanahoria rallada</span></div>
+            <div class="mk-menu-item"><span class="mk-menu-day">Vie</span><span class="mk-menu-dish">Tortilla de huevo con espinaca y tomate cherry</span></div>
+          </div>
+        </div>
+        <div class="mk-specs">
+          <span class="mk-spec" style="background:#FFF3E0;color:#C8861A">Niños 4–12 años</span>
+          <span class="mk-spec" style="background:#E8F5E9;color:#2E7D32">Omega-3</span>
+          <span class="mk-spec" style="background:#FCE4EC;color:#880E4F">Sin colorantes</span>
+        </div>
+      </div>
+      <div class="mk-foot">
+        <div class="mk-foot-info">Disponible para contratar</div>
+        <button class="mk-btn kf" onclick="openM('m-contratar')">Contratar →</button>
+      </div>
+    </div>
+
+    <!-- ── KW · MARINA SOLÍS ── -->
+    <div class="mk-card" data-brand="kw">
+      <div class="mk-ch">
+        <div class="mk-brand-row">
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--light);font-weight:500"><span style="width:7px;height:7px;border-radius:50%;background:#1565C0;display:inline-block"></span>Plan nutricional prescrito</span>
+          <div class="mk-price">Precio por plan</div>
+        </div>
+        <div class="mk-nutri-row">
+          <div class="mk-av kw">MS</div>
+          <div>
+            <div class="mk-nutri-name">Nut. Marina Solís</div>
+            <div class="mk-nutri-spec">Nutrición clínica y terapéutica · UANL · 9 años</div>
+            <div class="mk-stars">★★★★★ <span>4.9 · 44 reseñas</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mk-body">
+        <p class="mk-desc">Cocina el plan que ya prescribió tu nutrióloga o médico, con fidelidad exacta a cada indicación. Los gramos, los ingredientes, el método de cocción — sin sustituciones no autorizadas.</p>
+        <div class="mk-kw-opts">
+          <div class="mk-kw-opt">
+            <div class="mk-kw-opt-title">Ya tengo mi plan nutricional</div>
+            <div class="mk-kw-opt-desc">Sube el plan de tu nutrióloga y Marina lo cocina. Cotización en menos de 24 h por WhatsApp.</div>
+          </div>
+          <div class="mk-kw-opt">
+            <div class="mk-kw-opt-title">No tengo nutrióloga — consulta incluida</div>
+            <div class="mk-kw-opt-desc">Marina hace la consulta inicial, prescribe el plan y lo cocina. Todo en un solo servicio.</div>
+          </div>
+        </div>
+        <div class="mk-specs">
+          <span class="mk-spec" style="background:#E3F2FD;color:#1565C0">Fidelidad total</span>
+          <span class="mk-spec" style="background:#E8EAF6;color:#283593">Cualquier plan</span>
+          <span class="mk-spec" style="background:#F3E5F5;color:#6A1B9A">Consulta opcional</span>
+        </div>
+      </div>
+      <div class="mk-foot">
+        <div class="mk-foot-info">Cotización personalizada · WhatsApp</div>
+        <button class="mk-btn kw" onclick="openM('m-contratar')">Contratar →</button>
+      </div>
+    </div>
+
+    <!-- ── NC · DRA. PATRICIA LUNA ── -->
+    <div class="mk-card" data-brand="nc">
+      <div class="mk-ch">
+        <div class="mk-brand-row">
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--light);font-weight:500"><span style="width:7px;height:7px;border-radius:50%;background:#6A1B9A;display:inline-block"></span>Dieta terapéutica</span>
+          <div class="mk-price">Precio por plan</div>
+        </div>
+        <div class="mk-nutri-row">
+          <div class="mk-av nc">PL</div>
+          <div>
+            <div class="mk-nutri-name">Nut. Patricia Luna</div>
+            <div class="mk-nutri-spec">Nutrición clínica · diabetes · renal · 11 años</div>
+            <div class="mk-stars">★★★★★ <span>5.0 · 67 reseñas</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mk-body">
+        <p class="mk-desc">Para dietas terapéuticas indicadas por tu médico. Patricia coordina directamente con el médico tratante — el platillo no se cocina hasta que ambos aprueban el plan. Cada semana el médico recibe un reporte de adherencia.</p>
+        <div class="mk-kw-opts">
+          <div class="mk-kw-opt">
+            <div class="mk-kw-opt-title">Mi médico ya indicó la dieta</div>
+            <div class="mk-kw-opt-desc">Comparte el contacto de tu médico. Patricia se coordina con él para cocinar exactamente lo que prescribió.</div>
+          </div>
+          <div class="mk-kw-opt">
+            <div class="mk-kw-opt-title">No tengo dietista asignado aún</div>
+            <div class="mk-kw-opt-desc">Patricia hace la evaluación inicial junto a tu médico y define el plan terapéutico. Consulta incluida.</div>
+          </div>
+        </div>
+        <div class="mk-specs">
+          <span class="mk-spec" style="background:#F3E5F5;color:#6A1B9A">Diabetes</span>
+          <span class="mk-spec" style="background:#FCE4EC;color:#880E4F">Hipertensión</span>
+          <span class="mk-spec" style="background:#E8EAF6;color:#283593">Renal</span>
+          <span class="mk-spec" style="background:#E3F2FD;color:#1565C0">Coordinación médica</span>
+        </div>
+      </div>
+      <div class="mk-foot">
+        <div class="mk-foot-info">Roberto · Nutrichef activo</div>
+        <button class="mk-btn nc" onclick="openM('m-contratar')">Ver plan →</button>
+      </div>
+    </div>
+
+  </div><!-- /mk-grid -->
+
+  <!-- CTA -->
+  <div class="mk-cta">
+    <div class="mk-cta-left">
+      <div class="mk-cta-label">¿No sabes cuál elegir?</div>
+      <h3>Cuéntanos quién necesita ayuda</h3>
+      <p>Agrégalo a tu familia y te orientamos al servicio y nutrióloga que mejor se adaptan.</p>
+    </div>
+    <button class="mk-cta-btn" onclick="openM('m-agregar')">Agregar integrante →</button>
+  </div>
+
+</div><!-- /sec-servicios -->
+
 </main>
 
 <!-- MODAL AGREGAR -->
@@ -779,6 +1390,14 @@ function editModal(p){
   document.getElementById('ec').value=x.c;
   document.getElementById('ea').value=x.a;
   openM('m-editar');
+}
+function mkFilter(f,btn){
+  document.querySelectorAll('.mk-filter').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.mk-card').forEach(c=>{
+    if(f==='all'||c.dataset.brand===f){c.classList.remove('mk-hidden')}
+    else{c.classList.add('mk-hidden')}
+  });
 }
 document.querySelectorAll('.mo').forEach(o=>{o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')})});
 </script>
