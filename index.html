@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nutrilú</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -14,7 +14,13 @@
   --mid:#5F5E5A;
   --light:#B4B2A9;
   --border:rgba(0,0,0,.07);
+
+  --palm-d:#085041; --palm:#1D9E75; --palm-l:#E4F5EE; --palm-ll:#D0EFE3;
+  --kifud-d:#633806; --kifud:#F0BC32; --kifud-l:#FEF8E3; --kifud-ll:#FBF0C0;
+  --kiwilu-d:#3C3489; --kiwilu:#7F77DD; --kiwilu-l:#EEEDFE; --kiwilu-ll:#DDDAFC;
+  --chef-d:#712B13; --chef:#D85A30; --chef-l:#FAECE7; --chef-ll:#F5D8CC;
 }
+
 body{
   font-family:'DM Sans',sans-serif;
   background:var(--off);
@@ -23,128 +29,152 @@ body{
   display:flex;flex-direction:column;
 }
 
-/* NAV */
+/* ── NAV ── */
 nav{
   display:flex;justify-content:space-between;align-items:center;
   padding:18px 48px;
   border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,240,.96);
+  backdrop-filter:blur(10px);
 }
 .logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--dark)}
 .all-pages{
-  font-size:13px;color:var(--mid);
-  text-decoration:none;
   display:flex;align-items:center;gap:6px;
-  transition:color .15s;
+  font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--light);text-decoration:none;transition:color .15s;
 }
 .all-pages:hover{color:var(--dark)}
-.all-pages svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round}
+.all-pages svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round}
 
-/* HERO */
+/* ── HERO ── */
 .hero{
-  padding:80px 48px 56px;
-  max-width:600px;
+  padding:64px 48px 48px;
 }
 .eyebrow{
-  font-size:11px;font-weight:500;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--light);
-  margin-bottom:20px;
-  display:flex;align-items:center;gap:8px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--light);font-weight:500;
+  display:flex;align-items:center;gap:10px;margin-bottom:18px;
 }
-.eyebrow::before{content:'';width:20px;height:1px;background:var(--light)}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--light)}
 h1{
   font-family:'DM Serif Display',serif;
-  font-size:48px;line-height:1.08;
-  margin-bottom:14px;
+  font-size:46px;line-height:1.08;letter-spacing:-.02em;
+  margin-bottom:12px;
 }
 h1 em{font-style:italic;color:var(--mid)}
-.sub{font-size:16px;color:var(--mid);line-height:1.7;font-weight:300}
+.sub{font-size:15px;color:var(--mid);line-height:1.7;font-weight:300;max-width:420px}
 
-/* MARCAS */
-.marcas{
+/* ── GRID ── */
+.grid{
   padding:0 48px 80px;
-  display:flex;flex-direction:column;gap:12px;
-  max-width:720px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
 }
 
-.marca-row{
-  display:flex;align-items:center;
-  padding:20px 24px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:16px;
+/* ── CARD ── */
+.card{
+  border-radius:18px;
+  overflow:hidden;
   text-decoration:none;
   color:var(--dark);
-  transition:all .15s;
-  gap:16px;
+  display:flex;flex-direction:column;
+  border:1.5px solid transparent;
+  transition:all .2s ease;
+  position:relative;
 }
-.marca-row:hover{
-  border-color:rgba(0,0,0,.16);
-  transform:translateY(-1px);
-  box-shadow:0 6px 20px rgba(0,0,0,.06);
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.1)}
+
+.card-palm  {background:var(--palm-l);  border-color:rgba(29,158,117,.18)}
+.card-kifud {background:var(--kifud-l); border-color:rgba(240,188,50,.22)}
+.card-kiwilu{background:var(--kiwilu-l);border-color:rgba(127,119,221,.2)}
+.card-chef  {background:var(--chef-l);  border-color:rgba(216,90,48,.16)}
+
+/* photo */
+.card-photo{
+  width:100%;aspect-ratio:4/3;
+  object-fit:cover;object-position:center;
+  display:block;
+  border-radius:12px;
+  margin-bottom:0;
+}
+.card-photo-wrap{
+  padding:10px 10px 0;
 }
 
-.marca-color{
-  width:12px;height:12px;border-radius:50%;flex-shrink:0;
+/* body */
+.card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+
+.card-tag{
+  font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:10px;
 }
-.marca-info{flex:1;min-width:0}
-.marca-nombre{font-family:'DM Serif Display',serif;font-size:20px;line-height:1.2}
-.marca-desc{font-size:13px;color:var(--mid);margin-top:2px}
-.marca-tag{
-  font-size:11px;font-weight:500;
-  padding:3px 10px;border-radius:100px;
-  flex-shrink:0;
+.tag-palm  {color:var(--palm-d)}
+.tag-kifud {color:var(--kifud-d)}
+.tag-kiwilu{color:var(--kiwilu-d)}
+.tag-chef  {color:var(--chef-d)}
+
+.card-nombre{
+  font-family:'DM Serif Display',serif;
+  font-size:22px;line-height:1.1;letter-spacing:-.01em;
+  margin-bottom:8px;
 }
-.btn-ver{
-  font-size:13px;font-weight:500;
-  padding:9px 22px;
-  border-radius:100px;
-  border:1.5px solid var(--border);
-  background:transparent;
-  color:var(--dark);
-  cursor:pointer;
-  text-decoration:none;
-  flex-shrink:0;
-  transition:all .15s;
-  font-family:'DM Sans',sans-serif;
-}
-.marca-row:hover .btn-ver{
-  background:var(--dark);
-  color:#fff;
-  border-color:var(--dark);
+.card-palm   .card-nombre{color:var(--palm-d)}
+.card-kifud  .card-nombre{color:var(--kifud-d)}
+.card-kiwilu .card-nombre{color:var(--kiwilu-d)}
+.card-chef   .card-nombre{color:var(--chef-d)}
+
+.card-desc{
+  font-size:13px;color:var(--mid);line-height:1.65;
+  font-weight:300;flex:1;margin-bottom:18px;
 }
 
-/* colores */
-.c-palm{background:#1D9E75}
-.c-kifud{background:#F0BC32}
-.c-kiwilu{background:#7F77DD}
-.c-chef{background:#D85A30}
+.card-cta{
+  display:inline-block;
+  font-size:12px;font-weight:600;
+  padding:9px 20px;border-radius:100px;
+  text-decoration:none;width:fit-content;
+  transition:all .15s;letter-spacing:.02em;
+  align-self:flex-start;
+}
+.cta-palm  {background:var(--palm);color:#fff}
+.cta-palm:hover  {background:var(--palm-d)}
+.cta-kifud {background:var(--kifud-d);color:#fff}
+.cta-kifud:hover {background:#4d2a00}
+.cta-kiwilu{background:var(--kiwilu);color:#fff}
+.cta-kiwilu:hover{background:var(--kiwilu-d)}
+.cta-chef  {background:var(--chef);color:#fff}
+.cta-chef:hover  {background:var(--chef-d)}
 
-.t-palm{background:#E1F5EE;color:#085041}
-.t-kifud{background:#FEF8E3;color:#633806}
-.t-kiwilu{background:#EEEDFE;color:#3C3489}
-.t-chef{background:#FAECE7;color:#712B13}
-.t-plan{background:#F1EFE8;color:#5F5E5A}
-
-/* FOOTER */
+/* ── FOOTER ── */
 footer{
   margin-top:auto;
-  padding:24px 48px;
+  padding:22px 48px;
   border-top:1px solid var(--border);
   display:flex;justify-content:space-between;
   font-size:12px;color:var(--light);
 }
 
-@media(max-width:640px){
-  nav{padding:16px 20px}
-  .hero{padding:48px 20px 36px}
-  .marcas{padding:0 20px 56px}
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero    {animation:fadeUp .45s ease both}
+.card    {animation:fadeUp .5s ease both}
+.card:nth-child(1){animation-delay:.06s}
+.card:nth-child(2){animation-delay:.12s}
+.card:nth-child(3){animation-delay:.18s}
+.card:nth-child(4){animation-delay:.24s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr 1fr;gap:12px}
+}
+@media(max-width:600px){
+  nav{padding:14px 20px}
+  .hero{padding:40px 20px 32px}
+  h1{font-size:32px}
+  .grid{padding:0 20px 56px;grid-template-columns:1fr;gap:12px}
   footer{padding:20px;flex-direction:column;gap:4px}
-  h1{font-size:34px}
-  .marca-row{padding:16px 18px;gap:12px}
-  .marca-nombre{font-size:18px}
-  .marca-tag{display:none}
-  .btn-ver{padding:8px 16px;font-size:12px}
-  .all-pages .label{display:none}
 }
 </style>
 </head>
@@ -152,64 +182,73 @@ footer{
 
 <nav>
   <div class="logo">Nutrilú</div>
-  <a href="nutrilu-marcas.html" class="all-pages">
-    <svg viewBox="0 0 14 14"><rect x="1" y="1" width="5" height="5" rx="1"/><rect x="8" y="1" width="5" height="5" rx="1"/><rect x="1" y="8" width="5" height="5" rx="1"/><rect x="8" y="8" width="5" height="5" rx="1"/></svg>
-    <span class="label">Todas las páginas</span>
-  </a>
+
 </nav>
 
 <div class="hero">
   <div class="eyebrow">nutrilu.difud.com</div>
-  <h1>Ecosistema<br><em>Nutrilú.</em></h1>
-  <p class="sub">Alimentación saludable personalizada. Saltillo, Coahuila.</p>
+  <h1>Come bien,<br><em>sin complicarte.</em></h1>
+  <p class="sub">Elige el servicio que mejor se adapta a ti. Comida preparada por nutriólogas, lista para recoger.</p>
 </div>
 
-<div class="marcas">
+<div class="grid">
 
-  <a href="nutripalm_index.html" class="marca-row">
-    <div class="marca-color c-palm"></div>
-    <div class="marca-info">
-      <div class="marca-nombre">NutriPalm</div>
-      <div class="marca-desc">Comida saludable lista para llevar · Adultos trabajadores</div>
+  <!-- NUTRIPALM -->
+  <a href="https://nutripalm.difud.com/" class="card card-palm">
+    <div class="card-photo-wrap">
+      <img class="card-photo" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80&fit=crop" alt="Comida saludable NutriPalm">
     </div>
-    <span class="marca-tag t-palm">Prioridad #1</span>
-    <span class="btn-ver">Ver →</span>
+    <div class="card-body">
+      <div class="card-tag tag-palm">Comida saludable cada día</div>
+      <div class="card-nombre">NutriPalm</div>
+      <div class="card-desc">Comida saludable para personas que quieren mejorar su alimentación. Menú diferente cada semana, listo para recoger.</div>
+      <span class="card-cta cta-palm">Ver menú →</span>
+    </div>
   </a>
 
-  <a href="kifud_index__2_.html" class="marca-row">
-    <div class="marca-color c-kifud"></div>
-    <div class="marca-info">
-      <div class="marca-nombre">Kifud</div>
-      <div class="marca-desc">Lonchera saludable para niños · Mamás y colegios</div>
+  <!-- KIFUD -->
+  <a href="https://kifud.difud.com/" class="card card-kifud">
+    <div class="card-photo-wrap">
+      <img class="card-photo" src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600&q=80&fit=crop" alt="Lonchera saludable Kifud">
     </div>
-    <span class="marca-tag t-kifud">En planeación</span>
-    <span class="btn-ver">Ver →</span>
+    <div class="card-body">
+      <div class="card-tag tag-kifud">Niños · Lonchera escolar</div>
+      <div class="card-nombre">Kifud</div>
+      <div class="card-desc">Loncheras escolares saludables para niños. Con comida divertida que nutre y que de verdad se comen.</div>
+      <span class="card-cta cta-kifud">Ver lonches →</span>
+    </div>
   </a>
 
-  <a href="kiwilu_paciente.html" class="marca-row">
-    <div class="marca-color c-kiwilu"></div>
-    <div class="marca-info">
-      <div class="marca-nombre">Kiwilu</div>
-      <div class="marca-desc">Tu plan nutricional, cocinado para ti · Pacientes de nutriólogas</div>
+  <!-- KIWILU -->
+  <a href="https://kiwilu.difud.com/" class="card card-kiwilu">
+    <div class="card-photo-wrap">
+      <img class="card-photo" src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80&fit=crop" alt="Plan nutricional Kiwilu">
     </div>
-    <span class="marca-tag t-kiwilu">En planeación</span>
-    <span class="btn-ver">Ver →</span>
+    <div class="card-body">
+      <div class="card-tag tag-kiwilu">Comida para pacientes de nutriólogas</div>
+      <div class="card-nombre">Kiwilu</div>
+      <div class="card-desc">Cocina el plan nutricional de pacientes de otras nutriólogas.</div>
+      <span class="card-cta cta-kiwilu">Ver plan →</span>
+    </div>
   </a>
 
-  <a href="https://nutrichef.difud.com/nutrichef-index" class="marca-row">
-    <div class="marca-color c-chef"></div>
-    <div class="marca-info">
-      <div class="marca-nombre">Nutrichef</div>
-      <div class="marca-desc">Alimentación clínica supervisada · Pacientes de médicos</div>
+  <!-- NUTRICHEF -->
+  <a href="https://nutrichef.difud.com/" class="card card-chef">
+    <div class="card-photo-wrap">
+      <img class="card-photo" src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80&fit=crop" alt="Nutrichef">
     </div>
-    <span class="marca-tag t-chef">En progreso</span>
-    <span class="btn-ver">Ver →</span>
+    <div class="card-body">
+      <div class="card-tag tag-chef">Comida según tus indicaciones médicas</div>
+      <div class="card-nombre">Nutrichef</div>
+      <div class="card-desc">Cocina para pacientes de médicos con necesidades clínicas específicas.</div>
+      <span class="card-cta cta-chef">Ver plan →</span>
+    </div>
   </a>
 
 </div>
 
 <footer>
-  <span>Nutrilú · Saltillo, Coahuila · 2026</span>
+  <span>Nutrilú · 2026</span>
   <span>nutrilu.difud.com</span>
 </footer>
 
