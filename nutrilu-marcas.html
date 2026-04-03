@@ -9,170 +9,142 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --off:#F7F5F0;
-  --dark:#1A1A18;
-  --mid:#5F5E5A;
-  --light:#B4B2A9;
-  --border:rgba(0,0,0,.07);
-
-  --nutrilu:#1A1A18;
-  --palm:#1D9E75;
-  --palm-l:#E1F5EE;
-  --palm-d:#085041;
-  --kifud:#F0BC32;
-  --kifud-l:#FEF8E3;
-  --kifud-d:#633806;
-  --kiwilu:#7F77DD;
-  --kiwilu-l:#EEEDFE;
-  --kiwilu-d:#3C3489;
-  --chef:#D85A30;
-  --chef-l:#FAECE7;
-  --chef-d:#712B13;
+  --off:#F7F5F0;--dark:#1A1A18;--mid:#5F5E5A;--light:#B4B2A9;--border:rgba(0,0,0,.07);
+  --palm:#1D9E75;--palm-l:#E1F5EE;--palm-d:#085041;
+  --kifud:#F0BC32;--kifud-l:#FEF8E3;--kifud-d:#633806;
+  --kiwilu:#7F77DD;--kiwilu-l:#EEEDFE;--kiwilu-d:#3C3489;
+  --chef:#D85A30;--chef-l:#FAECE7;--chef-d:#712B13;
 }
 body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);min-height:100vh}
 
 /* ── NAV ── */
-nav{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:18px 40px;
-  background:var(--off);
-  border-bottom:1px solid var(--border);
-  position:sticky;top:0;z-index:50;
-}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:var(--off);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
 .nav-logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--dark)}
 .nav-logo span{opacity:.4;font-style:italic}
 .nav-sub{font-size:12px;color:var(--light);letter-spacing:.06em}
 
 /* ── HERO ── */
-.hero{
-  padding:64px 40px 48px;
-  max-width:800px;
-}
-.eyebrow{
-  font-size:11px;font-weight:500;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--light);
-  margin-bottom:16px;
-  display:flex;align-items:center;gap:8px;
-}
+.hero{padding:56px 40px 40px;max-width:800px}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .eyebrow::before{content:'';width:20px;height:1px;background:var(--light)}
-h1{
-  font-family:'DM Serif Display',serif;
-  font-size:42px;line-height:1.1;
-  margin-bottom:12px;
-}
+h1{font-family:'DM Serif Display',serif;font-size:42px;line-height:1.1;margin-bottom:12px}
 .hero-sub{font-size:15px;color:var(--mid);line-height:1.7;max-width:480px}
 
 /* ── GRID ── */
-.grid{
-  padding:0 40px 80px;
-  display:flex;flex-direction:column;gap:48px;
-}
+.grid{padding:0 40px 80px;display:flex;flex-direction:column;gap:48px}
 
 /* ── BRAND BLOCK ── */
-.brand{}
-.brand-header{
-  display:flex;align-items:baseline;gap:16px;
-  padding:0 0 16px;
-  border-bottom:1.5px solid var(--border);
-  margin-bottom:20px;
-}
-.brand-name{
-  font-family:'DM Serif Display',serif;
-  font-size:26px;
-}
+.brand-header{display:flex;align-items:baseline;gap:16px;padding:0 0 16px;border-bottom:1.5px solid var(--border);margin-bottom:24px}
+.brand-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;align-self:center}
+.brand-name{font-family:'DM Serif Display',serif;font-size:26px}
 .brand-tagline{font-size:13px;color:var(--mid);font-style:italic}
-.brand-dot{
-  width:10px;height:10px;border-radius:50%;
-  flex-shrink:0;margin-bottom:2px;
-  align-self:center;
-}
 
-.pages{display:flex;flex-wrap:wrap;gap:10px}
+/* ── SUBSECCIÓN ── */
+.sub-label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);margin-bottom:12px;margin-top:4px;padding-left:2px}
 
-/* ── PAGE CARD ── */
-.page-card{
-  display:flex;align-items:center;gap:10px;
-  padding:12px 18px;
-  border-radius:12px;
-  background:#fff;
+/* ── CARDS GRANDES (GR) ── */
+.pages-gr{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:20px}
+.card-gr{
+  display:flex;flex-direction:row;align-items:center;gap:10px;
+  padding:12px 14px;border-radius:12px;
   border:1px solid var(--border);
-  text-decoration:none;
-  color:var(--dark);
+  text-decoration:none;color:var(--dark);
   transition:all .15s;
-  min-width:0;
+  flex-wrap:wrap;
 }
-.page-card:hover{
-  border-color:rgba(0,0,0,.18);
-  transform:translateY(-1px);
-  box-shadow:0 4px 14px rgba(0,0,0,.06);
-}
-.page-icon{
-  width:32px;height:32px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.page-icon svg{width:15px;height:15px}
-.page-info{}
-.page-title{font-size:13px;font-weight:500;line-height:1.3}
-.page-url{font-size:11px;color:var(--light);margin-top:1px;font-family:monospace}
+.card-gr:hover{border-color:rgba(0,0,0,.16);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.07)}
+.card-gr-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-gr-icon svg{width:16px;height:16px}
+.card-gr-title{font-size:14px;font-weight:500}
+.card-gr-url{font-size:10px;color:var(--light);font-family:monospace;margin-top:1px;word-break:break-all}
+.card-gr-info{flex:1;min-width:0}
+.card-gr-foot{flex-shrink:0;margin-left:auto}
 
-/* estado badge */
-.badge{
-  font-size:10px;font-weight:500;padding:2px 8px;
-  border-radius:100px;margin-left:auto;flex-shrink:0;
+/* ── ACORDEÓN FUTURO ── */
+.accordion{margin-top:4px}
+.accordion-toggle{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;color:var(--light);
+  background:none;border:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;padding:6px 0;
+  transition:.14s;
 }
-.badge.live{background:#E1F5EE;color:#085041}
-.badge.wip{background:#FAEEDA;color:#633806}
-.badge.plan{background:#F1EFE8;color:#5F5E5A}
+.accordion-toggle:hover{color:var(--mid)}
+.accordion-toggle svg{width:12px;height:12px;transition:transform .2s}
+.accordion-toggle.open svg{transform:rotate(90deg)}
+.accordion-body{display:none;padding-top:12px}
+.accordion-body.open{display:block}
+.pages-ch{display:flex;flex-wrap:wrap;gap:8px}
+.card-ch{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:100px;
+  border:1px solid var(--border);background:#fff;
+  text-decoration:none;color:var(--mid);
+  font-size:12px;font-weight:500;
+  transition:all .14s;
+}
+.card-ch:hover{border-color:rgba(0,0,0,.16);color:var(--dark)}
+.card-ch svg{width:12px;height:12px;flex-shrink:0}
 
-/* colores por marca */
-.palm .page-icon{background:var(--palm-l)}
-.palm .page-icon svg{stroke:var(--palm)}
+/* ── BADGES ── */
+.badge{font-size:10px;font-weight:500;padding:3px 9px;border-radius:100px;flex-shrink:0}
+.badge-live{background:#E1F5EE;color:#085041}
+.badge-wip{background:#FAEEDA;color:#633806}
+.badge-plan{background:#F1EFE8;color:#9F9D97}
+
+/* ── COLORES POR MARCA ── */
+.palm .card-gr{background:var(--palm-l);border-color:rgba(29,158,117,.15)}
+.palm .card-gr-icon{background:rgba(29,158,117,.15)}
+.palm .card-gr-icon svg{stroke:var(--palm-d)}
 .palm .brand-dot{background:var(--palm)}
 .palm .brand-name{color:var(--palm-d)}
+.palm .card-ch svg{stroke:var(--palm)}
+.palm .accordion-toggle:hover{color:var(--palm-d)}
 
-.kifud-brand .page-icon{background:var(--kifud-l)}
-.kifud-brand .page-icon svg{stroke:var(--kifud-d)}
-.kifud-brand .brand-dot{background:var(--kifud)}
-.kifud-brand .brand-name{color:var(--kifud-d)}
+.kifud .card-gr{background:var(--kifud-l);border-color:rgba(240,188,50,.2)}
+.kifud .card-gr-icon{background:rgba(240,188,50,.2)}
+.kifud .card-gr-icon svg{stroke:var(--kifud-d)}
+.kifud .brand-dot{background:var(--kifud)}
+.kifud .brand-name{color:var(--kifud-d)}
+.kifud .card-ch svg{stroke:var(--kifud-d)}
 
-.kiwilu-brand .page-icon{background:var(--kiwilu-l)}
-.kiwilu-brand .page-icon svg{stroke:var(--kiwilu)}
-.kiwilu-brand .brand-dot{background:var(--kiwilu)}
-.kiwilu-brand .brand-name{color:var(--kiwilu-d)}
+.kiwilu .card-gr{background:var(--kiwilu-l);border-color:rgba(127,119,221,.2)}
+.kiwilu .card-gr-icon{background:rgba(127,119,221,.2)}
+.kiwilu .card-gr-icon svg{stroke:var(--kiwilu-d)}
+.kiwilu .brand-dot{background:var(--kiwilu)}
+.kiwilu .brand-name{color:var(--kiwilu-d)}
+.kiwilu .card-ch svg{stroke:var(--kiwilu-d)}
 
-.chef-brand .page-icon{background:var(--chef-l)}
-.chef-brand .page-icon svg{stroke:var(--chef)}
-.chef-brand .brand-dot{background:var(--chef)}
-.chef-brand .brand-name{color:var(--chef-d)}
+.chef .card-gr{background:var(--chef-l);border-color:rgba(216,90,48,.15)}
+.chef .card-gr-icon{background:rgba(216,90,48,.15)}
+.chef .card-gr-icon svg{stroke:var(--chef-d)}
+.chef .brand-dot{background:var(--chef)}
+.chef .brand-name{color:var(--chef-d)}
+.chef .card-ch svg{stroke:var(--chef-d)}
+
+.nutrilu-brand .card-gr{background:#F0EDE8;border-color:rgba(0,0,0,.1)}
+.nutrilu-brand .card-gr-icon{background:rgba(0,0,0,.06)}
+.nutrilu-brand .card-gr-icon svg{stroke:var(--dark)}
+.nutrilu-brand .brand-dot{background:var(--dark)}
 
 /* ── DIVIDER ── */
 .divider{height:1px;background:var(--border);margin:0 40px}
 
 /* ── FOOTER ── */
-footer{
-  padding:28px 40px;
-  border-top:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:12px;color:var(--light);
-}
+footer{padding:28px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--light)}
 
 @media(max-width:640px){
-  nav{padding:14px 20px;gap:8px}
+  nav{padding:14px 20px}
   .nav-sub{display:none}
-  .hero{padding:40px 20px 32px}
+  .hero{padding:36px 20px 28px}
   .grid{padding:0 20px 60px;gap:36px}
   .divider{margin:0 20px}
   h1{font-size:28px}
-  .hero-sub{font-size:14px}
-  .brand-header{flex-wrap:wrap;gap:8px}
-  .brand-tagline{font-size:12px;width:100%}
-  .pages{flex-direction:column;gap:8px}
-  .page-card{width:100%}
-  .page-url{display:none}
-  .badge{font-size:10px}
+  .pages-gr{grid-template-columns:1fr 1fr}
   footer{padding:20px;flex-direction:column;gap:4px;text-align:center}
 }
+
+/* SVGs reutilizables */
 </style>
 </head>
 <body>
@@ -188,371 +160,182 @@ footer{
 <div class="hero">
   <div class="eyebrow">Ecosistema Nutrilú · Saltillo, Coahuila</div>
   <h1>Todas las marcas,<br>en un solo lugar.</h1>
-  <p class="hero-sub">Índice interno de páginas en desarrollo para el equipo de Nutrilú. Cada enlace abre la página correspondiente en su subdominio.</p>
+  <p class="hero-sub">Índice interno de páginas del ecosistema. Las páginas destacadas son las prioritarias para la primera etapa.</p>
 </div>
 
 <div class="grid">
 
-  <!-- ── NUTRILÚ ── -->
-  <div class="brand">
-    <div class="brand-header">
-      <div class="brand-dot" style="background:var(--nutrilu)"></div>
-      <div class="brand-name">Nutrilú</div>
-      <div class="brand-tagline">Ecosistema central · nutrilu.difud.com</div>
-    </div>
-    <div class="pages">
-
-      <a href="https://nutrilu.difud.com/nutrilu-index" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <rect x="2" y="3" width="16" height="13" rx="2.5"/>
-            <path d="M6 8h8M6 11h5"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Página principal</div>
-          <div class="page-url">nutrilu.difud.com/nutrilu-index</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
-
-      <a href="https://nutrilu.difud.com/nutrilu-marcas" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <rect x="2" y="2" width="7" height="7" rx="1.5"/>
-            <rect x="11" y="2" width="7" height="7" rx="1.5"/>
-            <rect x="2" y="11" width="7" height="7" rx="1.5"/>
-            <rect x="11" y="11" width="7" height="7" rx="1.5"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Índice de marcas</div>
-          <div class="page-url">nutrilu.difud.com/nutrilu-marcas</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
-
-      <a href="https://nutrilu.difud.com/nutrilu-nutriologa" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="10" cy="7" r="3.5"/>
-            <path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/>
-            <path d="M14 3l1.5 1.5L13 7"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal nutrióloga · Unificado</div>
-          <div class="page-url">nutrilu.difud.com/nutrilu-nutriologa</div>
-        </div>
-        <span class="badge live" style="background:#DCFCE7;color:#15803D">Activo</span>
-      </a>
-
-    </div>
+<!-- ══ NUTRILÚ ══ -->
+<div class="brand nutrilu-brand">
+  <div class="brand-header">
+    <div class="brand-dot"></div>
+    <div class="brand-name">Nutrilú</div>
+    <div class="brand-tagline">Ecosistema central · nutrilu.difud.com</div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ── NUTRIPALM ── -->
-  <div class="brand palm">
-    <div class="brand-header">
-      <div class="brand-dot"></div>
-      <div class="brand-name">NutriPalm</div>
-      <div class="brand-tagline">Comida saludable lista para llevar · nutripalm.difud.com</div>
-    </div>
-    <div class="pages">
-
-      <a href="https://nutripalm.difud.com/nutripalm-index" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <rect x="2" y="3" width="16" height="13" rx="2.5"/>
-            <path d="M6 8h8M6 11h5"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Página principal</div>
-          <div class="page-url">nutripalm.difud.com/nutripalm-index</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
-
-      <a href="https://nutripalm.difud.com/nutripalm-registro" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <path d="M10 4v12M4 10h12"/>
-            <circle cx="10" cy="10" r="7.5"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Registro / suscripción</div>
-          <div class="page-url">nutripalm.difud.com/nutripalm-registro</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
-
-      <a href="https://nutrilu.difud.com/nutrilu-nutriologa" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="10" cy="7" r="3.5"/>
-            <path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal nutrióloga <span style="font-size:10px;color:var(--light);font-weight:400">→ unificado</span></div>
-          <div class="page-url">nutrilu.difud.com/nutrilu-nutriologa</div>
-        </div>
-        <span class="badge" style="background:#DCFCE7;color:#15803D">Activo</span>
-      </a>
-
-      <a href="https://nutripalm.difud.com/nutripalm-cliente" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <rect x="3" y="4" width="14" height="12" rx="2"/>
-            <path d="M7 9h6M7 12h4"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal cliente</div>
-          <div class="page-url">nutripalm.difud.com/nutripalm-cliente</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
-
-      <a href="https://nutripalm.difud.com/nutripalm-corporativo" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <rect x="2" y="6" width="16" height="11" rx="2"/>
-            <path d="M6 6V5a4 4 0 018 0v1"/>
-            <circle cx="10" cy="12" r="1.5"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal corporativo</div>
-          <div class="page-url">nutripalm.difud.com/nutripalm-corporativo</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
-
-      <a href="https://nutripalm.difud.com/nutripalm-gimnasios" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <path d="M3 10h2m10 0h2M7 10h6M5 7l-2 3 2 3M15 7l2 3-2 3"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal gimnasios</div>
-          <div class="page-url">nutripalm.difud.com/nutripalm-gimnasios</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
-
-    </div>
+  <div class="sub-label">Cliente</div>
+  <div class="pages-gr">
+    <a href="https://nutrilu.difud.com/" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Homepage</div><div class="card-gr-url">nutrilu.difud.com</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+    <a href="https://nutrilu.difud.com/nutrilu-cliente-portal" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Portal</div><div class="card-gr-url">nutrilu.difud.com/nutrilu-cliente-portal</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
   </div>
 
-  <div class="divider"></div>
+  <div class="sub-label" style="margin-top:8px">Nutrióloga</div>
+  <div class="pages-gr">
+    <a href="https://nutrilu.difud.com/nutrilu-nutriologa" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Nutrióloga Homepage</div><div class="card-gr-url">nutrilu.difud.com/nutrilu-nutriologa</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+    <a href="https://nutrilu.difud.com/nutrilu-nutriologa-portal" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/><path d="M14 3l1.5 1.5L13 7"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Nutrióloga Portal</div><div class="card-gr-url">nutrilu.difud.com/nutrilu-nutriologa-portal</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+  </div>
+</div>
 
-  <!-- ── KIFUD ── -->
-  <div class="brand kifud-brand">
-    <div class="brand-header">
-      <div class="brand-dot"></div>
-      <div class="brand-name">Kifud</div>
-      <div class="brand-tagline">Lonchera saludable para niños · kifud.difud.com</div>
-    </div>
-    <div class="pages">
+<div class="divider"></div>
 
-      <a href="https://kifud.difud.com/kifud-index" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <rect x="2" y="3" width="16" height="13" rx="2.5"/>
-            <path d="M6 8h8M6 11h5"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Página principal</div>
-          <div class="page-url">kifud.difud.com/kifud-index</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
+<!-- ══ NUTRIPALM ══ -->
+<div class="brand palm">
+  <div class="brand-header">
+    <div class="brand-dot"></div>
+    <div class="brand-name">NutriPalm</div>
+    <div class="brand-tagline">Comida saludable lista para llevar · nutripalm.difud.com</div>
+  </div>
+  <div class="pages-gr">
+    <a href="https://nutripalm.difud.com" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Homepage</div><div class="card-gr-url">nutripalm.difud.com</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+  </div>
+</div>
 
-      <a href="https://kifud.difud.com/kifud-mama" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="10" cy="7" r="3.5"/>
-            <path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal mamá</div>
-          <div class="page-url">kifud.difud.com/kifud-mama</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
+<div class="divider"></div>
 
-      <a href="https://nutrilu.difud.com/nutrilu-nutriologa" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="10" cy="7" r="3.5"/>
-            <path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/>
-            <path d="M14 3l1.5 1.5L13 7"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal nutrióloga <span style="font-size:10px;color:var(--light);font-weight:400">→ unificado</span></div>
-          <div class="page-url">nutrilu.difud.com/nutrilu-nutriologa</div>
-        </div>
-        <span class="badge" style="background:#DCFCE7;color:#15803D">Activo</span>
-      </a>
+<!-- ══ KIFUD ══ -->
+<div class="brand kifud">
+  <div class="brand-header">
+    <div class="brand-dot"></div>
+    <div class="brand-name">Kifud</div>
+    <div class="brand-tagline">Lonchera saludable para niños · kifud.difud.com</div>
+  </div>
+  <div class="pages-gr">
+    <a href="https://kifud.difud.com" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Homepage</div><div class="card-gr-url">kifud.difud.com</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+  </div>
+</div>
 
-      <a href="https://kifud.difud.com/kifud-colegios" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <path d="M3 9l7-5 7 5v8a1 1 0 01-1 1H4a1 1 0 01-1-1V9z"/>
-            <path d="M8 18v-6h4v6"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal colegios</div>
-          <div class="page-url">kifud.difud.com/kifud-colegios</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
+<div class="divider"></div>
 
-      <a href="https://kifud.difud.com/kifud-pediatras" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <path d="M10 3v14M6 7h8"/>
-            <rect x="3" y="3" width="14" height="14" rx="3"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal pediatras</div>
-          <div class="page-url">kifud.difud.com/kifud-pediatras</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
-
-    </div>
+<!-- ══ KIWILU ══ -->
+<div class="brand kiwilu">
+  <div class="brand-header">
+    <div class="brand-dot"></div>
+    <div class="brand-name">Kiwilú</div>
+    <div class="brand-tagline">Tu plan nutricional, cocinado para ti · kiwilu.difud.com</div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ── KIWILU ── -->
-  <div class="brand kiwilu-brand">
-    <div class="brand-header">
-      <div class="brand-dot"></div>
-      <div class="brand-name">Kiwilu</div>
-      <div class="brand-tagline">Tu plan nutricional, cocinado para ti · kiwilu.difud.com</div>
-    </div>
-    <div class="pages">
-
-      <a href="#" class="page-card" style="opacity:.5;pointer-events:none">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <rect x="2" y="3" width="16" height="13" rx="2.5"/>
-            <path d="M6 8h8M6 11h5"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Página principal</div>
-          <div class="page-url">kiwilu.difud.com/kiwilu-index</div>
-        </div>
-        <span class="badge plan">Pendiente</span>
-      </a>
-
-      <a href="https://kiwilu.difud.com/kiwilu-paciente" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="10" cy="7" r="3.5"/>
-            <path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal paciente</div>
-          <div class="page-url">kiwilu.difud.com/kiwilu-paciente</div>
-        </div>
-        <span class="badge wip">En progreso</span>
-      </a>
-
-      <a href="https://nutrilu.difud.com/nutrilu-nutriologa" target="_blank" class="page-card">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="10" cy="7" r="3.5"/>
-            <path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/>
-            <path d="M14 3l1.5 1.5L13 7"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal nutrióloga <span style="font-size:10px;color:var(--light);font-weight:400">→ unificado</span></div>
-          <div class="page-url">nutrilu.difud.com/nutrilu-nutriologa</div>
-        </div>
-        <span class="badge" style="background:#DCFCE7;color:#15803D">Activo</span>
-      </a>
-
-    </div>
+  <div class="sub-label">Paciente</div>
+  <div class="pages-gr">
+    <a href="https://kiwilu.difud.com" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Homepage</div><div class="card-gr-url">kiwilu.difud.com</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ── NUTRICHEF ── -->
-  <div class="brand chef-brand">
-    <div class="brand-header">
-      <div class="brand-dot"></div>
-      <div class="brand-name">Nutrichef</div>
-      <div class="brand-tagline">Dietas terapéuticas · nutrichef.difud.com</div>
-    </div>
-    <div class="pages">
-
-      <a href="#" class="page-card" style="opacity:.5;pointer-events:none">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <rect x="2" y="3" width="16" height="13" rx="2.5"/>
-            <path d="M6 8h8M6 11h5"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Página principal</div>
-          <div class="page-url">nutrichef.difud.com/nutrichef-index</div>
-        </div>
-        <span class="badge plan">Pendiente</span>
-      </a>
-
-      <a href="#" class="page-card" style="opacity:.5;pointer-events:none">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="10" cy="7" r="3.5"/>
-            <path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal paciente</div>
-          <div class="page-url">nutrichef.difud.com/nutrichef-paciente</div>
-        </div>
-        <span class="badge plan">Pendiente</span>
-      </a>
-
-      <a href="#" class="page-card" style="opacity:.5;pointer-events:none">
-        <div class="page-icon">
-          <svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <path d="M3 4h14M3 8h10M3 12h12M3 16h8"/>
-            <circle cx="16" cy="14" r="3"/>
-            <path d="M16 13v2M15 14h2"/>
-          </svg>
-        </div>
-        <div class="page-info">
-          <div class="page-title">Portal médico</div>
-          <div class="page-url">nutrichef.difud.com/nutrichef-medico</div>
-        </div>
-        <span class="badge plan">Pendiente</span>
-      </a>
-
-    </div>
+  <div class="sub-label" style="margin-top:8px">Nutrióloga Titular</div>
+  <div class="pages-gr">
+    <a href="https://kiwilu.difud.com/kiwilu-nutriologa" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Nutrióloga Titular Homepage</div><div class="card-gr-url">kiwilu.difud.com/kiwilu-nutriologa</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
   </div>
 
 </div>
+
+<div class="divider"></div>
+
+<!-- ══ NUTRICHEF ══ -->
+<div class="brand chef">
+  <div class="brand-header">
+    <div class="brand-dot"></div>
+    <div class="brand-name">Nutrichef</div>
+    <div class="brand-tagline">Alimentación clínica supervisada · nutrichef.difud.com</div>
+  </div>
+
+  <div class="sub-label">Paciente</div>
+  <div class="pages-gr">
+    <a href="https://nutrichef.difud.com/" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="16" height="13" rx="2.5"/><path d="M6 8h8M6 11h5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Homepage</div><div class="card-gr-url">nutrichef.difud.com</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+    <a href="https://nutrichef.difud.com/nutrichef-registro" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M10 4v12M4 10h12"/><circle cx="10" cy="10" r="7.5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Registro</div><div class="card-gr-url">nutrichef.difud.com/nutrichef-registro</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+  </div>
+
+  <div class="sub-label" style="margin-top:8px">Doctores</div>
+  <div class="pages-gr">
+    <a href="https://nutrichef.difud.com/nutrichef-medico" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="2" width="12" height="16" rx="2"/><path d="M8 7h4M10 5v4M7 13h6M7 16h4"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Doctores Homepage</div><div class="card-gr-url">nutrichef.difud.com/nutrichef-medico</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+    <a href="https://nutrichef.difud.com/nutrichef-medico-portal" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="7" height="15" rx="1.5"/><rect x="11" y="3" width="7" height="7" rx="1.5"/><rect x="11" y="12" width="7" height="6" rx="1.5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Doctores Portal</div><div class="card-gr-url">nutrichef.difud.com/nutrichef-medico-portal</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+  </div>
+
+  <div class="sub-label" style="margin-top:8px">Nutriólogas</div>
+  <div class="pages-gr">
+    <a href="https://nutrichef.difud.com/nutrichef-nutriologa-clinica" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-4 3.1-6 7-6s7 2 7 6"/><path d="M14 3l1.5 1.5L13 7"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Nutrióloga clínica Homepage</div><div class="card-gr-url">nutrichef.difud.com/nutrichef-nutriologa-clinica</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+    <a href="https://nutrichef.difud.com/nutrichef-nutriologa-clinica-portal" target="_blank" class="card-gr">
+      <div class="card-gr-icon"><svg viewBox="0 0 20 20" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="7" height="15" rx="1.5"/><rect x="11" y="3" width="7" height="7" rx="1.5"/><rect x="11" y="12" width="7" height="6" rx="1.5"/></svg></div>
+      <div class="card-gr-info"><div class="card-gr-title">Nutrióloga clínica Portal</div><div class="card-gr-url">nutrichef.difud.com/nutrichef-nutriologa-clinica-portal</div></div>
+      <div class="card-gr-foot"><span class="badge badge-wip">En progreso</span></div>
+    </a>
+  </div>
+</div>
+
+</div><!-- /grid -->
 
 <footer>
   <span>Nutrilú · Uso interno</span>
   <span>nutrilu.difud.com</span>
 </footer>
 
+<script>
+function toggleAcc(btn) {
+  btn.classList.toggle('open');
+  const body = btn.nextElementSibling;
+  body.classList.toggle('open');
+  const label = btn.querySelector('.acc-label');
+  if(label) label.textContent = body.classList.contains('open') ? 'Ocultar páginas futuras' : 'Ver páginas futuras';
+}
+</script>
 </body>
 </html>
