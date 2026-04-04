@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrilú · Portal Nutrióloga Titular</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --off:#F7F5F0;--dark:#1A1A18;--mid:#5F5E5A;--light:#B4B2A9;--border:rgba(0,0,0,.07);
+  --white:#fff;--green:#2D5016;--green-light:#4A7A28;--accent:#8BA640;
+  --sidebar-w:256px;
+  /* marca Kiwilu */
+  --kw:#0F7A5A;--kwl:#E6F5F0;--kwm:#3DAB84;
+  /* marca Nutrichef */
+  --nc:#6A1B9A;--ncl:#F3E5F5;--ncm:#9C27B0;
+  /* estados */
+  --ok:#2E7D32;--okl:#E8F5E9;
+  --warn:#C8861A;--warnl:#FFF8E1;
+  --danger:#C62828;--dangerl:#FFEBEE;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--dark);min-height:100vh;display:flex}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);min-height:100vh;background:var(--dark);display:flex;flex-direction:column;position:fixed;top:0;left:0;z-index:100;overflow-y:auto}
+.sb-logo{padding:24px 20px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-brand{font-family:'DM Serif Display',serif;font-size:20px;color:#fff}
+.sb-role{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:3px}
+.sb-nav{padding:14px 0 8px}
+.sbtn{display:flex;align-items:center;gap:10px;padding:9px 20px;cursor:pointer;font-size:13.5px;color:rgba(255,255,255,.55);transition:all .15s;border:none;background:none;width:100%;text-align:left;font-family:'DM Sans',sans-serif}
+.sbtn:hover{color:#fff;background:rgba(255,255,255,.05)}
+.sbtn.active{color:#fff;background:rgba(255,255,255,.1)}
+.sbtn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;opacity:.6}
+.sbtn.active svg{opacity:1}
+.sb-div{height:1px;background:rgba(255,255,255,.06);margin:4px 20px}
+.sb-sp{flex:1}
+.sb-earn{margin:10px 16px;padding:14px 16px;background:rgba(139,166,64,.12);border:1px solid rgba(139,166,64,.2);border-radius:10px}
+.se-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.se-val{font-family:'DM Serif Display',serif;font-size:24px;color:#fff;margin-top:2px}
+.se-sub{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px}
+.sb-stat{margin:6px 16px;padding:12px 16px;background:rgba(255,255,255,.05);border-radius:10px}
+.ss-val{font-family:'DM Serif Display',serif;font-size:20px;color:#fff}
+.ss-label{font-size:10px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+.sb-marcas{margin:8px 16px;display:flex;gap:6px}
+.sb-marca{font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600}
+.sb-marca.kw{background:rgba(15,122,90,.2);color:var(--kwm)}
+.sb-marca.nc{background:rgba(106,27,154,.2);color:var(--ncm)}
+.sb-bottom{padding:14px 16px;border-top:1px solid rgba(255,255,255,.08)}
+.sb-user{display:flex;align-items:center;gap:10px}
+.sb-av{width:32px;height:32px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;flex-shrink:0}
+.sb-nm{font-size:13px;color:#fff;font-weight:500}
+.sb-ced{font-size:10px;color:rgba(255,255,255,.3);margin-top:1px}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar-w);flex:1;padding:28px 36px;min-height:100vh}
+.sec{display:none}.sec.active{display:block}
+.ph{margin-bottom:24px}
+.bc{font-size:11px;color:var(--light);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.pt{font-family:'DM Serif Display',serif;font-size:32px;line-height:1.1}
+.pt em{font-style:italic;color:var(--mid)}
+.ps{font-size:13px;color:var(--mid);margin-top:5px;font-weight:300}
+.ph-actions{display:flex;gap:10px;margin-top:14px}
+
+/* ── BUTTONS ── */
+.btn{padding:9px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:.15s}
+.btn-primary{background:var(--green);color:#fff}.btn-primary:hover{background:var(--green-light)}
+.btn-ghost{background:transparent;border:1.5px solid var(--border);color:var(--mid)}.btn-ghost:hover{border-color:var(--dark);color:var(--dark)}
+.btn-sm{padding:6px 14px;font-size:12px;border-radius:6px}
+.btn-wa{background:#25D366;color:#fff;display:inline-flex;align-items:center;gap:6px}
+.btn-wa:hover{background:#1fb855}
+
+/* ── PILLS ── */
+.pill{display:inline-block;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600;letter-spacing:.02em}
+.pill-kw{background:var(--kwl);color:var(--kw)}
+.pill-nc{background:var(--ncl);color:var(--nc)}
+.pill-ok{background:var(--okl);color:var(--ok)}
+.pill-warn{background:var(--warnl);color:var(--warn)}
+
+/* ── FILTER BAR ── */
+.fbar{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.fbtn{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid var(--border);background:transparent;color:var(--mid);cursor:pointer;font-family:'DM Sans',sans-serif;transition:.15s}
+.fbtn:hover{border-color:var(--dark);color:var(--dark)}
+.fbtn.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+.fcount{font-weight:400;opacity:.6;margin-left:3px}
+
+/* ── PATIENT CARDS ── */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pcard{background:var(--white);border-radius:14px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:.15s}
+.pcard:hover{border-color:rgba(45,80,22,.3);box-shadow:0 2px 12px rgba(45,80,22,.06)}
+.pcard-head{padding:16px 18px;display:flex;align-items:center;gap:12px}
+.pcard-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#fff;flex-shrink:0}
+.pcard-av.kw{background:var(--kw)}
+.pcard-av.nc{background:var(--nc)}
+.pcard-name{font-family:'DM Serif Display',serif;font-size:16px;color:var(--dark);line-height:1.2}
+.pcard-age{font-size:11px;color:var(--light);margin-top:1px}
+.pcard-pills{margin-left:auto;display:flex;gap:4px;flex-direction:column;align-items:flex-end}
+.pcard-body{padding:0 18px 18px}
+.pf{margin-bottom:12px}
+.pf:last-child{margin-bottom:0}
+.pf-label{font-size:10px;font-weight:600;color:var(--light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.pf-value{font-size:13px;color:var(--dark);line-height:1.5}
+.pf-value strong{font-weight:600}
+.pdiv{height:1px;background:var(--border);margin:12px 0}
+.p-restricciones{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.p-restric{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600;background:var(--warnl);color:var(--warn);display:inline-flex;align-items:center;gap:3px}
+.p-docs{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.p-doc{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600}
+.doc-plan{background:var(--kwl);color:var(--kw)}
+.doc-med{background:var(--ncl);color:var(--nc)}
+.doc-ok{background:var(--okl);color:var(--ok)}
+
+/* ── DOCTOR LIST ── */
+.doc-list{display:flex;flex-direction:column;gap:4px}
+.doc-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--dark)}
+.doc-icon{width:20px;height:20px;border-radius:50%;background:var(--ncl);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.doc-icon svg{width:10px;height:10px;color:var(--nc)}
+
+/* ── INACTIVE ── */
+.pcard.inactive{opacity:.5;filter:saturate(.3);cursor:default}
+.pcard.inactive:hover{border-color:var(--border);box-shadow:none}
+
+/* ── EXPEDIENTE ── */
+.exp-back{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--light);cursor:pointer;border:none;background:none;font-family:'DM Sans',sans-serif;margin-bottom:12px}
+.exp-back:hover{color:var(--dark)}
+.exp-header{background:var(--dark);border-radius:14px;padding:22px 24px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center}
+.exp-name{font-family:'DM Serif Display',serif;font-size:22px;color:#fff}
+.exp-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* ── CARDS GENERICAS ── */
+.card{background:var(--white);border-radius:14px;border:1px solid var(--border);overflow:hidden}
+.card-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border)}
+.card-t{font-size:13px;font-weight:600;color:var(--dark)}
+.card-inner{padding:16px 18px}
+
+/* ── MARCAS CARDS ── */
+.marcas-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.marca-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--white);transition:.15s}
+.marca-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.mc-top{padding:20px 22px 16px}
+.mc-status{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
+.mc-status.kw{background:var(--kwl);color:var(--kw)}
+.mc-status.nc{background:var(--ncl);color:var(--nc)}
+.mc-status.locked{background:var(--off);color:var(--light)}
+.mc-emoji{font-size:28px;margin-bottom:8px}
+.mc-name{font-family:'DM Serif Display',serif;font-size:24px;line-height:1.1}
+.mc-name.kw{color:var(--kw)}
+.mc-name.nc{color:var(--nc)}
+.mc-tagline{font-size:13px;font-style:italic;color:var(--mid);margin-top:4px}
+.mc-oneliner{padding:0 22px 14px;font-size:13px;font-weight:600;color:var(--dark);line-height:1.5}
+.mc-body{padding:0 22px 18px}
+.mc-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px}
+.mc-feats{display:flex;flex-direction:column;gap:6px}
+.mc-feat{font-size:12px;color:var(--mid);display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.mc-feat::before{content:'✓';color:var(--accent);font-weight:600;flex-shrink:0}
+.mc-foot{padding:14px 22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.mc-foot-label{font-size:12px;color:var(--light)}
+.mc-foot-label strong{color:var(--dark)}
+.mc-btn{padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:.15s;color:#fff}
+.mc-btn.kw{background:var(--kw)}.mc-btn.kw:hover{background:#0a6348}
+.mc-btn.nc{background:var(--nc)}.mc-btn.nc:hover{background:#4a148c}
+.mc-btn.locked{background:var(--light);cursor:default}
+
+/* ── PAYMENTS ── */
+.pay-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.pay-metric{background:var(--white);border-radius:12px;padding:16px;border:1px solid var(--border)}
+.pm-label{font-size:10px;color:var(--light);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:6px}
+.pm-val{font-size:22px;font-weight:700;color:var(--dark)}
+.pm-sub{font-size:11px;color:var(--mid);margin-top:2px}
+.pm-badge{display:inline-block;margin-top:5px;font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600;background:var(--kwl);color:var(--kw)}
+.pay-row{display:flex;justify-content:space-between;font-size:13px;padding:9px 0;border-bottom:1px solid var(--border);align-items:center}
+.pay-row:last-child{border-bottom:none}
+.pay-row .pr-left{color:var(--mid);display:flex;align-items:center;gap:6px}
+.pay-row .pr-right{font-weight:600}
+.pay-row.total{font-size:15px;font-weight:700;border-top:2px solid var(--border);padding-top:12px;margin-top:4px}
+.pay-row.total .pr-right{color:var(--green)}
+.pay-row.comm .pr-right{color:var(--danger)}
+
+/* ── PERFIL ── */
+.perfil-grid{display:grid;grid-template-columns:280px 1fr;gap:18px;align-items:start}
+.pcard-profile{background:var(--white);border-radius:14px;border:1px solid var(--border);overflow:hidden;position:sticky;top:20px}
+.pp-top{background:var(--dark);padding:24px;text-align:center}
+.pp-av{width:64px;height:64px;border-radius:50%;background:var(--green);border:3px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:22px;color:#fff;margin:0 auto 12px;font-weight:600}
+.pp-name{font-size:17px;font-weight:700;color:#fff;font-family:'DM Serif Display',serif}
+.pp-sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px}
+.pp-badge{display:inline-flex;align-items:center;gap:5px;margin-top:12px;background:rgba(139,166,64,.2);border:1px solid rgba(139,166,64,.3);color:var(--accent);font-size:11px;padding:5px 14px;border-radius:4px;font-weight:600}
+.pp-body{padding:16px}
+.pp-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.pp-row:last-child{border-bottom:none}
+.pp-lbl{color:var(--mid);font-weight:300}
+.pp-val{font-weight:600;color:var(--dark)}
+.pform-sec{background:var(--white);border-radius:14px;padding:20px;border:1px solid var(--border);margin-bottom:14px}
+.pform-t{font-size:14px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);color:var(--dark)}
+.frow2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+label{display:block;font-size:10px;font-weight:600;color:var(--light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+input,select,textarea{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--dark);background:var(--off);outline:none;transition:.15s}
+input:focus,select:focus,textarea:focus{border-color:var(--green);background:var(--white)}
+textarea{resize:vertical;min-height:80px}
+
+/* Toggle */
+.toggle-card{background:var(--off);border:1.5px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px}
+.toggle-card.active{border-color:var(--accent);background:rgba(139,166,64,.04)}
+.tc-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tc-title{font-size:14px;font-weight:600;color:var(--dark)}
+.tc-desc{font-size:12px;color:var(--mid);margin-top:3px;line-height:1.5}
+.tog{position:relative;width:44px;height:24px;flex-shrink:0}
+.tog input{opacity:0;width:0;height:0}
+.ts{position:absolute;inset:0;background:#D1D0CB;border-radius:24px;cursor:pointer;transition:.2s}
+.ts::before{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;transition:.2s}
+.tog input:checked+.ts{background:var(--accent)}
+.tog input:checked+.ts::before{transform:translateX(20px)}
+.tc-expand{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:none}
+.toggle-card.active .tc-expand{display:block}
+.tc-note{font-size:11px;color:var(--light);background:var(--off);padding:10px;border-radius:8px;line-height:1.5;margin-top:10px}
+
+/* ── MODAL ── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:var(--white);border-radius:16px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto}
+.modal-head{padding:20px 22px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-title{font-family:'DM Serif Display',serif;font-size:18px;color:var(--dark)}
+.modal-close{width:28px;height:28px;border-radius:50%;background:var(--off);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--mid)}
+.modal-body{padding:22px}
+.modal-foot{padding:14px 22px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end}
+
+/* ── DOC UPLOAD ── */
+.doc-upload{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border:1.5px dashed var(--border);border-radius:8px;margin-top:6px;font-size:12px;color:var(--light);font-weight:500;cursor:pointer;transition:.12s}
+.doc-upload:hover{border-color:var(--green);color:var(--green);background:rgba(45,80,22,.03)}
+
+/* ── DOC FILE ── */
+.doc-file{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--off);border-radius:8px;margin-top:6px;font-size:12px;cursor:pointer;transition:.12s;border:1px solid transparent}
+.doc-file:hover{border-color:var(--green);background:rgba(45,80,22,.03)}
+.doc-file-icon{width:30px;height:30px;border-radius:6px;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.doc-file-name{font-weight:600;color:var(--dark)}
+.doc-file-meta{font-size:10px;color:var(--light);margin-top:1px}
+
+/* ── ADD DOC ROW ── */
+.add-doc-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;margin-bottom:10px}
+.add-doc-btn{width:36px;height:36px;border-radius:8px;border:1.5px solid var(--border);background:var(--off);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--mid);font-size:18px;transition:.12s}
+.add-doc-btn:hover{border-color:var(--green);color:var(--green)}
+.added-doc{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--ncl);border-radius:8px;margin-bottom:6px;font-size:13px}
+.added-doc-remove{width:20px;height:20px;border-radius:50%;border:none;background:rgba(0,0,0,.06);cursor:pointer;font-size:12px;color:var(--mid);display:flex;align-items:center;justify-content:center;margin-left:auto}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:12px 24px;border-radius:8px;font-size:13px;z-index:9999;opacity:0;transition:opacity .3s;white-space:nowrap;font-weight:500}
+
+/* ── WA PREVIEW ── */
+.wa-preview{padding:14px;background:var(--off);border-radius:10px;margin-bottom:16px}
+.wa-preview-label{font-size:12px;font-weight:600;color:var(--dark);margin-bottom:8px}
+.wa-preview-text{font-size:13px;color:var(--mid);line-height:1.7}
+</style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-brand">Nutrilú</div>
+    <div class="sb-role">Portal · Nutrióloga Titular</div>
+  </div>
+
+  <div class="sb-nav">
+    <button class="sbtn active" onclick="showSec('pacientes',this)">
+      <svg viewBox="0 0 16 16"><circle cx="6" cy="5" r="2.5"/><path d="M1.5 13c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4"/><circle cx="12" cy="5" r="2"/><path d="M12 9c1.5 0 2.5 1 2.5 3"/></svg>
+      Mis pacientes
+    </button>
+    <button class="sbtn" onclick="showSec('qr',this)">
+      <svg viewBox="0 0 16 16"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="11" y="11" width="4" height="4" rx=".5"/></svg>
+      Mi QR y contenedores
+    </button>
+    <button class="sbtn" onclick="showSec('marcas',this)">
+      <svg viewBox="0 0 16 16"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
+      Mis marcas
+    </button>
+    <div class="sb-div"></div>
+    <button class="sbtn" onclick="showSec('perfil',this)">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5"/><path d="M2.5 13.5c0-3 2.5-4.5 5.5-4.5s5.5 1.5 5.5 4.5"/></svg>
+      Mi perfil
+    </button>
+  </div>
+
+  <div class="sb-sp"></div>
+
+  <div class="sb-marcas">
+    <span class="sb-marca kw">Kiwilu ✓</span>
+    <span class="sb-marca nc">Nutrichef ✓</span>
+  </div>
+
+  <div class="sb-stat">
+    <div class="ss-val">31</div>
+    <div class="ss-label">Pacientes atendidos</div>
+  </div>
+
+  <div class="sb-stat" style="margin-top:0">
+    <div class="ss-val">7</div>
+    <div class="ss-label">Pacientes activos</div>
+  </div>
+
+  <div class="sb-bottom">
+    <div class="sb-user">
+      <div class="sb-av">LR</div>
+      <div>
+        <div class="sb-nm">Lic. Laura Ramírez</div>
+        <div class="sb-ced">Cédula 4782910 · Nutrición clínica</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <!-- ════════ MIS PACIENTES ════════ -->
+  <div class="sec active" id="sec-pacientes">
+    <div class="ph">
+      <div class="bc">Nutrilú · Nutrióloga Titular</div>
+      <div class="pt">Mis <em>pacientes.</em></div>
+      <div class="ps">7 pacientes activos en el ecosistema Nutrilú</div>
+      <div class="ph-actions">
+        <button class="btn btn-primary" onclick="openModal('modal-agregar')">+ Agregar paciente</button>
+      </div>
+    </div>
+
+    <div class="fbar">
+      <button class="fbtn active" onclick="filterP('activos',this)">Activos<span class="fcount">7</span></button>
+      <button class="fbtn" onclick="filterP('historial',this)">Historial<span class="fcount">2</span></button>
+      <span style="width:1px;background:var(--border);margin:0 4px"></span>
+      <button class="fbtn" onclick="filterMarca('todos',this)" style="font-size:11px">Todos</button>
+      <button class="fbtn" onclick="filterMarca('kiwilu',this)" style="font-size:11px">🌿 Kiwilu</button>
+      <button class="fbtn" onclick="filterMarca('nutrichef',this)" style="font-size:11px">🩺 Nutrichef</button>
+    </div>
+
+    <!-- Activos -->
+    <div class="pgrid" id="grid-activos">
+
+      <!-- María González — Nutrichef -->
+      <div class="pcard" data-marca="nutrichef" onclick="showExp('maria')">
+        <div class="pcard-head">
+          <div class="pcard-av nc">MG</div>
+          <div>
+            <div class="pcard-name">María González</div>
+            <div class="pcard-age">52 años</div>
+          </div>
+          <div class="pcard-pills">
+            <span class="pill pill-nc">Nutrichef</span>
+            <span class="pill pill-ok">Activo</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pf"><div class="pf-label">Condición médica</div><div class="pf-value">Enfermedad renal crónica</div></div>
+          <div class="pf"><div class="pf-label">Equipo médico</div>
+            <div class="doc-list">
+              <div class="doc-item"><div class="doc-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div><strong>Dr. Hernández</strong>&nbsp;· Nefrología</div>
+              <div class="doc-item"><div class="doc-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div><strong>Dra. Vega</strong>&nbsp;· Cardiología</div>
+            </div>
+          </div>
+          <div class="pf"><div class="pf-label">Nutrióloga Chef</div><div class="pf-value"><strong>Patricia M.</strong></div></div>
+          <div class="pdiv"></div>
+          <div class="pf"><div class="pf-label">Documentos</div>
+            <div class="p-docs">
+              <span class="p-doc doc-ok">Plan nutricional ✓</span>
+              <span class="p-doc doc-med">Receta nefrología ✓</span>
+              <span class="p-doc doc-med">Receta cardiología ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carlos López — Nutrichef -->
+      <div class="pcard" data-marca="nutrichef" onclick="toast('Expediente de Carlos López')">
+        <div class="pcard-head">
+          <div class="pcard-av nc">CL</div>
+          <div>
+            <div class="pcard-name">Carlos López</div>
+            <div class="pcard-age">45 años</div>
+          </div>
+          <div class="pcard-pills">
+            <span class="pill pill-nc">Nutrichef</span>
+            <span class="pill pill-warn">Pendiente plan</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pf"><div class="pf-label">Condición médica</div><div class="pf-value">Diabetes tipo 2</div></div>
+          <div class="pf"><div class="pf-label">Equipo médico</div>
+            <div class="doc-list">
+              <div class="doc-item"><div class="doc-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div><strong>Dr. Solís</strong>&nbsp;· Endocrinología</div>
+            </div>
+          </div>
+          <div class="pf"><div class="pf-label">Nutrióloga Chef</div><div class="pf-value" style="color:var(--warn)">Pendiente de asignación</div></div>
+          <div class="pdiv"></div>
+          <div class="pf"><div class="pf-label">Documentos</div>
+            <div class="p-docs">
+              <span class="p-doc" style="background:var(--warnl);color:var(--warn)">⚠ Plan pendiente</span>
+              <span class="p-doc doc-med">Receta endocrinología ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sofía Pérez — Kiwilu -->
+      <div class="pcard" data-marca="kiwilu" onclick="toast('Expediente de Sofía Pérez')">
+        <div class="pcard-head">
+          <div class="pcard-av kw">SP</div>
+          <div>
+            <div class="pcard-name">Sofía Pérez</div>
+            <div class="pcard-age">34 años</div>
+          </div>
+          <div class="pcard-pills">
+            <span class="pill pill-kw">Kiwilu</span>
+            <span class="pill pill-ok">Activo</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pf"><div class="pf-label">Objetivo nutricional</div><div class="pf-value">Pérdida de peso · Resistencia a la insulina</div></div>
+          <div class="pf"><div class="pf-label">Nutrióloga Chef</div><div class="pf-value"><strong>Valeria G.</strong></div></div>
+          <div class="pdiv"></div>
+          <div class="pf"><div class="pf-label">Documentos</div>
+            <div class="p-docs">
+              <span class="p-doc doc-ok">Plan nutricional ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juan Ramírez — Nutrichef -->
+      <div class="pcard" data-marca="nutrichef" onclick="toast('Expediente de Juan Ramírez')">
+        <div class="pcard-head">
+          <div class="pcard-av nc">JR</div>
+          <div>
+            <div class="pcard-name">Juan Ramírez</div>
+            <div class="pcard-age">38 años</div>
+          </div>
+          <div class="pcard-pills">
+            <span class="pill pill-nc">Nutrichef</span>
+            <span class="pill pill-ok">Activo</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pf"><div class="pf-label">Condición médica</div><div class="pf-value">Enfermedad renal crónica</div></div>
+          <div class="pf"><div class="pf-label">Equipo médico</div>
+            <div class="doc-list">
+              <div class="doc-item"><div class="doc-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div><strong>Dr. Hernández</strong>&nbsp;· Nefrología</div>
+            </div>
+          </div>
+          <div class="pf"><div class="pf-label">Nutrióloga Chef</div><div class="pf-value"><strong>Patricia M.</strong></div></div>
+          <div class="pdiv"></div>
+          <div class="pf"><div class="pf-label">Documentos</div>
+            <div class="p-docs">
+              <span class="p-doc doc-ok">Plan nutricional ✓</span>
+              <span class="p-doc doc-med">Receta nefrología ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Andrea Castillo — Kiwilu con condición clínica -->
+      <div class="pcard" data-marca="kiwilu" onclick="toast('Expediente de Andrea Castillo')">
+        <div class="pcard-head">
+          <div class="pcard-av kw">AC</div>
+          <div>
+            <div class="pcard-name">Andrea Castillo</div>
+            <div class="pcard-age">48 años</div>
+          </div>
+          <div class="pcard-pills">
+            <span class="pill pill-kw">Kiwilu</span>
+            <span class="pill pill-ok">Activo</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pf"><div class="pf-label">Condición médica</div><div class="pf-value">Diabetes tipo 2 · Hipertensión</div></div>
+          <div class="pf"><div class="pf-label">Equipo médico</div>
+            <div class="doc-list">
+              <div class="doc-item"><div class="doc-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div><strong>Dr. Moreno</strong>&nbsp;· Medicina interna</div>
+            </div>
+          </div>
+          <div class="pf"><div class="pf-label">Nutrióloga Chef</div><div class="pf-value"><strong>Valeria G.</strong></div></div>
+          <div class="pdiv"></div>
+          <div class="pf"><div class="pf-label">Restricciones</div>
+            <div class="p-restricciones">
+              <span class="p-restric">⚠ Sin azúcar añadida</span>
+              <span class="p-restric">⚠ Sodio &lt;1.5g</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Laura Morales — Nutrichef -->
+      <div class="pcard" data-marca="nutrichef" onclick="toast('Expediente de Laura Morales')">
+        <div class="pcard-head">
+          <div class="pcard-av nc">LM</div>
+          <div>
+            <div class="pcard-name">Laura Morales</div>
+            <div class="pcard-age">61 años</div>
+          </div>
+          <div class="pcard-pills">
+            <span class="pill pill-nc">Nutrichef</span>
+            <span class="pill pill-ok">Activo</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pf"><div class="pf-label">Condición médica</div><div class="pf-value">Insuficiencia cardíaca</div></div>
+          <div class="pf"><div class="pf-label">Equipo médico</div>
+            <div class="doc-list">
+              <div class="doc-item"><div class="doc-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div><strong>Dra. Vega</strong>&nbsp;· Cardiología</div>
+            </div>
+          </div>
+          <div class="pf"><div class="pf-label">Nutrióloga Chef</div><div class="pf-value"><strong>Patricia M.</strong></div></div>
+          <div class="pdiv"></div>
+          <div class="pf"><div class="pf-label">Restricciones</div>
+            <div class="p-restricciones">
+              <span class="p-restric">⚠ Sodio &lt;1.5g</span>
+              <span class="p-restric">⚠ Líquidos restringidos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Daniela Torres — Kiwilu -->
+      <div class="pcard" data-marca="kiwilu" onclick="toast('Expediente de Daniela Torres')">
+        <div class="pcard-head">
+          <div class="pcard-av kw">DT</div>
+          <div>
+            <div class="pcard-name">Daniela Torres</div>
+            <div class="pcard-age">27 años</div>
+          </div>
+          <div class="pcard-pills">
+            <span class="pill pill-kw">Kiwilu</span>
+            <span class="pill pill-ok">Activo</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pf"><div class="pf-label">Objetivo nutricional</div><div class="pf-value">Ganancia muscular · Alto en proteína</div></div>
+          <div class="pf"><div class="pf-label">Nutrióloga Chef</div><div class="pf-value"><strong>Valeria G.</strong></div></div>
+          <div class="pdiv"></div>
+          <div class="pf"><div class="pf-label">Documentos</div>
+            <div class="p-docs">
+              <span class="p-doc doc-ok">Plan nutricional ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Historial -->
+    <div class="pgrid" id="grid-historial" style="display:none">
+      <div class="pcard inactive" data-marca="nutrichef">
+        <div class="pcard-head">
+          <div class="pcard-av nc">RM</div>
+          <div>
+            <div class="pcard-name">Rosa Medina</div>
+            <div class="pcard-age">58 años</div>
+          </div>
+          <div class="pcard-pills">
+            <span class="pill pill-nc">Nutrichef</span>
+            <span class="pill" style="background:var(--off);color:var(--light)">Inactivo</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pf"><div class="pf-label">Condición médica</div><div class="pf-value">Diabetes tipo 2</div></div>
+          <div style="margin-top:8px;font-size:11px;color:var(--light);padding:6px 10px;background:var(--off);border-radius:6px">Activa del 6 ene al 14 mar 2026 · 10 semanas</div>
+        </div>
+      </div>
+      <div class="pcard inactive" data-marca="kiwilu">
+        <div class="pcard-head">
+          <div class="pcard-av kw">PG</div>
+          <div>
+            <div class="pcard-name">Pamela García</div>
+            <div class="pcard-age">31 años</div>
+          </div>
+          <div class="pcard-pills">
+            <span class="pill pill-kw">Kiwilu</span>
+            <span class="pill" style="background:var(--off);color:var(--light)">Inactivo</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pf"><div class="pf-label">Objetivo nutricional</div><div class="pf-value">Pérdida de peso</div></div>
+          <div style="margin-top:8px;font-size:11px;color:var(--light);padding:6px 10px;background:var(--off);border-radius:6px">Activa del 10 feb al 28 mar 2026 · 7 semanas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ EXPEDIENTE MARÍA ════════ -->
+  <div class="sec" id="sec-exp-maria">
+    <button class="exp-back" onclick="showSec('pacientes',document.querySelectorAll('.sbtn')[0])">← Volver a mis pacientes</button>
+    <div class="exp-header">
+      <div>
+        <div class="exp-name">María González</div>
+        <div class="exp-sub">52 años · Enfermedad renal crónica</div>
+      </div>
+      <div style="text-align:right">
+        <span class="pill pill-nc" style="font-size:11px">Nutrichef</span>
+        <span class="pill pill-ok" style="font-size:11px;margin-left:4px">Activo</span>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:8px">Nutrióloga Chef: <strong style="color:rgba(255,255,255,.7)">Patricia M.</strong></div>
+      </div>
+    </div>
+
+    <div class="exp-grid">
+      <div class="card">
+        <div class="card-h"><div class="card-t">Equipo médico</div></div>
+        <div class="card-inner">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
+            <div class="doc-icon" style="width:36px;height:36px"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div>
+            <div><div style="font-size:14px;font-weight:600">Dr. Hernández</div><div style="font-size:12px;color:var(--mid)">Nefrología · IMSS</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0">
+            <div class="doc-icon" style="width:36px;height:36px"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div>
+            <div><div style="font-size:14px;font-weight:600">Dra. Vega</div><div style="font-size:12px;color:var(--mid)">Cardiología</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-t">Expediente clínico</div><span style="font-size:11px;color:var(--light)">3 documentos</span></div>
+        <div class="card-inner">
+          <div class="doc-file" onclick="toast('Abriendo plan nutricional…')">
+            <div class="doc-file-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="var(--kw)" stroke-width="1.3"><rect x="2" y="1" width="12" height="14" rx="2"/><path d="M5 5h6M5 8h6M5 11h3" stroke-linecap="round"/></svg></div>
+            <div><div class="doc-file-name">Plan nutricional — Lic. Laura Ramírez</div><div class="doc-file-meta">PDF · Cédula 4782910 · 28 mar 2026</div></div>
+            <span class="pill pill-kw" style="flex-shrink:0">Tu plan</span>
+          </div>
+          <div class="doc-file" onclick="toast('Abriendo receta…')">
+            <div class="doc-file-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="var(--nc)" stroke-width="1.3"><rect x="2" y="1" width="12" height="14" rx="2"/><path d="M5 5h6M5 8h6M5 11h3" stroke-linecap="round"/></svg></div>
+            <div><div class="doc-file-name">Receta — Dr. Hernández · Nefrología</div><div class="doc-file-meta">Imagen · 25 mar 2026</div></div>
+            <span class="pill pill-nc" style="flex-shrink:0">Médico</span>
+          </div>
+          <div class="doc-file" onclick="toast('Abriendo receta…')">
+            <div class="doc-file-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="var(--nc)" stroke-width="1.3"><rect x="2" y="1" width="12" height="14" rx="2"/><path d="M5 5h6M5 8h6M5 11h3" stroke-linecap="round"/></svg></div>
+            <div><div class="doc-file-name">Receta — Dra. Vega · Cardiología</div><div class="doc-file-meta">PDF · 26 mar 2026</div></div>
+            <span class="pill pill-nc" style="flex-shrink:0">Médico</span>
+          </div>
+          <div class="doc-upload" onclick="toast('Subir documento — próximamente')">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3v8M3 7h8" stroke-linecap="round"/></svg>
+            Subir documento (PDF, imagen)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ MIS MARCAS ════════ -->
+  <div class="sec" id="sec-marcas">
+    <div class="ph">
+      <div class="bc">Nutrilú · Ecosistema</div>
+      <div class="pt">Mis <em>marcas.</em></div>
+      <div class="ps">Las marcas donde operas como nutrióloga titular. Cada una conecta con un tipo de paciente distinto.</div>
+    </div>
+
+    <div class="marcas-grid">
+      <!-- Kiwilu -->
+      <div class="marca-card" style="background:linear-gradient(135deg,var(--kwl) 0%,#fff 100%)">
+        <div class="mc-top">
+          <div class="mc-status kw">Activa · 3 pacientes</div>
+          <div class="mc-emoji">🌿</div>
+          <div class="mc-name kw">Kiwilu</div>
+          <div class="mc-tagline">La dieta que te recetó tu nutrióloga, lista para comer.</div>
+        </div>
+        <div class="mc-oneliner">Tu plan nutricional prescrito cocinado con fidelidad exacta. Gramos, ingredientes y método sin cambios.</div>
+        <div class="mc-body">
+          <div class="mc-desc">Pacientes que llegan con un plan nutricional — prescrito por ti o por otro profesional. La nutrióloga chef lo cocina exactamente como lo indicaste.</div>
+          <div class="mc-feats">
+            <div class="mc-feat">Compatible con cualquier plan nutricional</div>
+            <div class="mc-feat">Sin sustituciones no autorizadas</div>
+            <div class="mc-feat">Tus pacientes pueden tener condiciones clínicas</div>
+          </div>
+        </div>
+        <div class="mc-foot">
+          <div class="mc-foot-label"><strong>3</strong> pacientes activos</div>
+          <button class="mc-btn kw btn" onclick="showSec('pacientes',document.querySelectorAll('.sbtn')[0])">Ver pacientes →</button>
+        </div>
+      </div>
+
+      <!-- Nutrichef -->
+      <div class="marca-card" style="background:linear-gradient(135deg,var(--ncl) 0%,#fff 100%)">
+        <div class="mc-top">
+          <div class="mc-status nc">Activa · 4 pacientes</div>
+          <div class="mc-emoji">🩺</div>
+          <div class="mc-name nc">Nutrichef</div>
+          <div class="mc-tagline">La dieta de tu médico, cocinada con precisión clínica.</div>
+        </div>
+        <div class="mc-oneliner">Dietas terapéuticas coordinadas con doctores. Para diabetes, condición renal, cardíaca y más.</div>
+        <div class="mc-body">
+          <div class="mc-desc">Pacientes referidos por doctores o que llegan con indicaciones médicas. Tú diseñas el plan clínico, la nutrióloga chef lo cocina.</div>
+          <div class="mc-feats">
+            <div class="mc-feat">Equipo médico visible en cada paciente</div>
+            <div class="mc-feat">Documentos clínicos firmados con tu cédula</div>
+            <div class="mc-feat">Invita doctores aliados por WhatsApp</div>
+          </div>
+        </div>
+        <div class="mc-foot">
+          <div class="mc-foot-label"><strong>4</strong> pacientes activos</div>
+          <button class="mc-btn nc btn" onclick="openModal('modal-invitar-doc')">Invitar doctor →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ MI QR Y CONTENEDORES ════════ -->
+  <div class="sec" id="sec-qr">
+    <div class="ph">
+      <div class="bc">Nutrilú · Tu marca en cada platillo</div>
+      <div class="pt" style="font-size:34px;max-width:600px">Cada platillo entregado es una oportunidad para que <em>recomienden tus servicios.</em></div>
+      <div class="ps">Tu nombre, tu especialidad y tu código QR van en cada contenedor. Cuando alguien pregunte "¿dónde compraste esa comida?", tu paciente solo tiene que mostrar el contenedor.</div>
+    </div>
+
+    <!-- 4 tarjetas con imagen -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px">
+
+      <!-- 1. Lonchera personalizada (1:1) -->
+      <div class="card">
+        <div style="aspect-ratio:1/1;background:var(--off);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden">
+          <div style="text-align:center;color:var(--light)">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="opacity:.4"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 3v18"/></svg>
+            <div style="font-size:11px;margin-top:8px">Foto de lonchera<br>personalizada con QR</div>
+          </div>
+        </div>
+        <div class="card-inner">
+          <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:4px">🥡 Lonchera personalizada</div>
+          <div style="font-size:12px;color:var(--mid);line-height:1.55;font-weight:300">Lonchera reutilizable con tu branding y QR permanente. Tu paciente la lleva a la oficina, el gimnasio, la escuela. Puedes comprarla para regalar a tus pacientes o el paciente la compra opcionalmente.</div>
+        </div>
+      </div>
+
+      <!-- 2. Contenedor desechable (1:1) -->
+      <div class="card">
+        <div style="aspect-ratio:1/1;background:var(--off);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden">
+          <div style="text-align:center;color:var(--light)">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="opacity:.4"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 3v18"/></svg>
+            <div style="font-size:11px;margin-top:8px">Foto de contenedor<br>desechable con sticker QR</div>
+          </div>
+        </div>
+        <div class="card-inner">
+          <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:4px">📦 Contenedor desechable</div>
+          <div style="font-size:12px;color:var(--mid);line-height:1.55;font-weight:300">Cada entrega incluye tu sticker con QR pegado en el contenedor. Tu marca presente desde el primer platillo. Tú envías las etiquetas con QR a la nutrióloga chef.</div>
+        </div>
+      </div>
+
+      <!-- 3. Código QR (1:1) -->
+      <div class="card">
+        <div style="aspect-ratio:1/1;background:var(--off);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden">
+          <div style="text-align:center;color:var(--light)">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="opacity:.4"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="16" y="16" width="5" height="5" rx=".5"/></svg>
+            <div style="font-size:11px;margin-top:8px">Imagen del<br>código QR</div>
+          </div>
+        </div>
+        <div class="card-inner">
+          <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:4px">🔳 Tu código QR</div>
+          <div style="font-size:12px;color:var(--mid);line-height:1.55;font-weight:300">Código único que abre tu tarjeta digital profesional. Quien lo escanee ve tu nombre, especialidad, redes, WhatsApp directo y botón de guardar contacto.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta digital (2:1 vertical) — ancho completo -->
+    <div class="card" style="margin-bottom:28px">
+      <div style="display:grid;grid-template-columns:auto 1fr;overflow:hidden">
+        <div style="width:240px;aspect-ratio:1/2;background:var(--off);display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border)">
+          <div style="text-align:center;color:var(--light)">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="opacity:.4"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="9" r="3"/><path d="M7 18c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg>
+            <div style="font-size:11px;margin-top:8px">Imagen de tu<br>tarjeta digital<br>(formato vertical)</div>
+          </div>
+        </div>
+        <div style="padding:24px;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-size:18px;font-weight:700;color:var(--dark);margin-bottom:6px;font-family:'DM Serif Display',serif">📱 Tu tarjeta digital profesional</div>
+          <div style="font-size:13px;color:var(--mid);line-height:1.65;font-weight:300;margin-bottom:16px">Esto es lo que ve quien escanea tu QR: tu perfil profesional completo con acceso directo a contactarte. También incluye una sección de Nutrilú para que quien lo escanee conozca el servicio y pueda registrarse como paciente.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span class="pill pill-ok">Tu nombre y foto</span>
+            <span class="pill pill-ok">Especialidad y cédula</span>
+            <span class="pill pill-ok">WhatsApp directo</span>
+            <span class="pill pill-ok">Redes sociales</span>
+            <span class="pill pill-ok">Guardar contacto</span>
+            <span class="pill pill-kw">Sección Nutrilú</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Datos de tu tarjeta -->
+    <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--dark);margin-bottom:12px">Datos de tu <em style="color:var(--mid);font-style:italic">tarjeta digital.</em></div>
+    <div style="font-size:13px;color:var(--mid);margin-bottom:16px;font-weight:300">Esta información aparece en tu tarjeta digital y se configura desde <a href="#" onclick="showSec('perfil',document.querySelectorAll('.sbtn')[4]);return false" style="color:var(--green);font-weight:500">Mi perfil</a>.</div>
+    <div class="card" style="max-width:560px">
+      <div class="card-inner">
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Nombre</span><span style="font-weight:600">Lic. Laura Ramírez Ochoa</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Especialidad</span><span style="font-weight:600">Nutrición clínica</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Cédula</span><span style="font-weight:600">4782910</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">WhatsApp</span><span style="font-weight:600">844 123 4567</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px solid var(--border)"><span style="color:var(--mid)">Instagram</span><span style="font-weight:600">@laura.nutricion</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:7px 0"><span style="color:var(--mid)">Facebook</span><span style="font-weight:600">Lic. Laura Ramírez Nutrición</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ MI PERFIL ════════ -->
+  <div class="sec" id="sec-perfil">
+    <div class="ph">
+      <div class="bc">Nutrilú · Nutrióloga Titular</div>
+      <div class="pt">Mi <em>perfil.</em></div>
+    </div>
+
+    <div class="perfil-grid">
+      <div class="pcard-profile">
+        <div class="pp-top">
+          <div class="pp-av">LR</div>
+          <div class="pp-name">Lic. Laura Ramírez</div>
+          <div class="pp-sub">Nutrióloga Clínica Titular · Nutrilú</div>
+          <div class="pp-badge">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Cédula 4782910 verificada
+          </div>
+        </div>
+        <div class="pp-body">
+          <div class="pp-row"><span class="pp-lbl">Especialidad</span><span class="pp-val">Nutrición clínica</span></div>
+          <div class="pp-row"><span class="pp-lbl">Pacientes activos</span><span class="pp-val">7</span></div>
+          <div class="pp-row"><span class="pp-lbl">Total atendidos</span><span class="pp-val" style="color:var(--green)">31</span></div>
+          <div class="pp-row"><span class="pp-lbl">Marcas activas</span><span class="pp-val" style="font-size:12px">Kiwilu · Nutrichef</span></div>
+          <div class="pp-row"><span class="pp-lbl">En la red desde</span><span class="pp-val">Enero 2026</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="pform-sec">
+          <div class="pform-t">Información profesional</div>
+          <div class="frow2">
+            <div><label>Nombre completo</label><input type="text" value="Laura Ramírez Ochoa"></div>
+            <div><label>Cédula profesional</label><input type="text" value="4782910"></div>
+          </div>
+          <div class="frow2">
+            <div><label>Especialidad clínica</label><select><option selected>Nutrición clínica general</option><option>Nutrición renal</option><option>Nutrición metabólica</option></select></div>
+            <div><label>Correo</label><input type="email" value="laura@nutriologa.com"></div>
+          </div>
+          <div><label>Áreas de especialización</label><textarea>Dieta renal, control glucémico, nutrición post-quirúrgica, hipertensión</textarea></div>
+          <div style="margin-top:16px"><button class="btn btn-primary" onclick="toast('Perfil actualizado ✓')">Guardar cambios</button></div>
+        </div>
+
+        <!-- Datos para tarjeta digital -->
+        <div class="pform-sec">
+          <div class="pform-t">Tarjeta digital y contacto</div>
+          <div style="font-size:12px;color:var(--mid);margin-bottom:14px;margin-top:-8px;line-height:1.5">Esta información aparece en tu tarjeta digital profesional (la que se abre al escanear tu QR en los contenedores).</div>
+          <div class="frow2">
+            <div><label>WhatsApp de contacto</label><input type="tel" value="844 123 4567" placeholder="10 dígitos"></div>
+            <div><label>Teléfono consultorio (opcional)</label><input type="tel" value="" placeholder="844 000 0000"></div>
+          </div>
+          <div class="frow2">
+            <div><label>Instagram</label><input type="text" value="@laura.nutricion" placeholder="@tu_usuario"></div>
+            <div><label>Facebook</label><input type="text" value="Lic. Laura Ramírez Nutrición" placeholder="Nombre de tu página"></div>
+          </div>
+          <div class="frow2">
+            <div><label>TikTok (opcional)</label><input type="text" value="" placeholder="@tu_usuario"></div>
+            <div><label>Sitio web (opcional)</label><input type="text" value="" placeholder="www.tudominio.com"></div>
+          </div>
+          <div><label>Dirección del consultorio (opcional)</label><input type="text" value="" placeholder="Calle, número, colonia, ciudad"></div>
+          <div style="margin-top:14px"><label>Frase profesional (opcional)</label><input type="text" value="Especialista en nutrición clínica renal y metabólica" placeholder="Una línea que te describa profesionalmente"></div>
+          <div style="margin-top:16px"><button class="btn btn-primary" onclick="toast('Tarjeta digital actualizada ✓')">Guardar datos de tarjeta</button></div>
+        </div>
+
+        <!-- Toggle disponible para consultas -->
+        <div class="toggle-card active" id="tc-disponible">
+          <div class="tc-header">
+            <div>
+              <div class="tc-title">Disponible para agendar nuevas consultas</div>
+              <div class="tc-desc">Nutrilú pondrá tus servicios en la plataforma por si algún paciente necesita consulta.</div>
+            </div>
+            <label class="tog"><input type="checkbox" checked onchange="toggleDisponible(this)"><span class="ts"></span></label>
+          </div>
+          <div class="tc-expand">
+            <div class="frow2">
+              <div><label>Tarifa por consulta inicial</label><input type="text" value="$900"></div>
+              <div><label>Tarifa por revisión mensual</label><input type="text" value="$500"></div>
+            </div>
+            <div class="frow2">
+              <div><label>Especialidades que atiendes</label>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+                  <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" checked style="width:auto;padding:0"> Renal</label>
+                  <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" checked style="width:auto;padding:0"> Metabólica/Diabetes</label>
+                  <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" checked style="width:auto;padding:0"> Cardíaca</label>
+                  <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" style="width:auto;padding:0"> Oncológica</label>
+                  <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" style="width:auto;padding:0"> Post-quirúrgica</label>
+                  <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" checked style="width:auto;padding:0"> General</label>
+                </div>
+              </div>
+              <div><label>Capacidad semanal</label><select><option>1–3 pacientes nuevos</option><option selected>4–6 pacientes nuevos</option><option>7–10 pacientes nuevos</option><option>Más de 10</option></select></div>
+            </div>
+            <div class="tc-note">Nutrilú aplica una comisión del 10% sobre cada consulta generada a través de la plataforma. Esta comisión solo aplica a pacientes que Nutrilú te asigna, no a pacientes que tú refieres.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MODAL: AGREGAR PACIENTE ══ -->
+<div class="modal-bg" id="modal-agregar">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title">Agregar paciente</div>
+      <button class="modal-close" onclick="closeModal('modal-agregar')">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="padding:12px;background:var(--kwl);border-radius:8px;font-size:13px;color:var(--kw);margin-bottom:18px;line-height:1.6">
+        Registra los datos del paciente y sube los documentos clínicos disponibles. Los doctores no necesitan estar registrados en Nutrilú.
+      </div>
+
+      <div style="font-size:12px;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Datos del paciente</div>
+      <div class="frow2">
+        <div><label>Nombre del paciente</label><input type="text" placeholder="Nombre completo"></div>
+        <div><label>Edad</label><input type="number" placeholder="Ej. 52"></div>
+      </div>
+
+      <!-- Campos clínicos (visibles porque es nutrióloga clínica) -->
+      <div style="margin-bottom:14px"><label>Condición médica</label>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" style="width:auto;padding:0"> Enfermedad renal crónica</label>
+          <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" style="width:auto;padding:0"> Diabetes tipo 2</label>
+          <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" style="width:auto;padding:0"> Insuficiencia cardíaca</label>
+          <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" style="width:auto;padding:0"> Post-quirúrgico</label>
+          <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" style="width:auto;padding:0"> Hipertensión</label>
+          <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--dark);text-transform:none;letter-spacing:0;margin-bottom:0;cursor:pointer"><input type="checkbox" style="width:auto;padding:0"> Otra</label>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px"><label>Objetivo nutricional (si aplica)</label><input type="text" placeholder="Ej. Pérdida de peso, ganancia muscular, control glucémico..."></div>
+
+      <div style="font-size:12px;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;margin-top:18px">Equipo médico del paciente</div>
+      <div id="doctors-added">
+        <div class="added-doc">
+          <div class="doc-icon" style="width:24px;height:24px"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div>
+          <span style="font-weight:600">Dr. Ejemplo</span>&nbsp;· Especialidad
+          <button class="added-doc-remove" onclick="this.parentElement.remove()">×</button>
+        </div>
+      </div>
+      <div class="add-doc-row">
+        <div><label>Nombre del doctor</label><input type="text" id="new-doc-name" placeholder="Ej. Dr. Hernández"></div>
+        <div><label>Especialidad</label><input type="text" id="new-doc-spec" placeholder="Ej. Nefrología"></div>
+        <button class="add-doc-btn" onclick="addDoctor()" title="Agregar doctor">+</button>
+      </div>
+      <div style="font-size:11px;color:var(--light);margin-bottom:14px">No necesitan tener cuenta en Nutrilú.</div>
+
+      <div style="font-size:12px;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;margin-top:18px">Documentos clínicos</div>
+      <div class="doc-upload" onclick="toast('Subir archivo — próximamente')" style="margin-top:0">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3v8M3 7h8" stroke-linecap="round"/></svg>
+        Subir receta u otro documento
+      </div>
+      <div class="doc-upload" onclick="toast('Subir archivo — próximamente')" style="border-color:var(--green);color:var(--green)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3v8M3 7h8" stroke-linecap="round"/></svg>
+        Subir mi plan nutricional (firmado con cédula)
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('modal-agregar')">Cancelar</button>
+      <button class="btn btn-primary" onclick="closeModal('modal-agregar');toast('Paciente agregado ✓ · Nutrilú asignará nutrióloga chef')">Agregar paciente</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL: INVITAR DOCTOR ══ -->
+<div class="modal-bg" id="modal-invitar-doc">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title">Invitar doctor a Nutrichef</div>
+      <button class="modal-close" onclick="closeModal('modal-invitar-doc')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="wa-preview">
+        <div class="wa-preview-label">Vista previa del mensaje:</div>
+        <div class="wa-preview-text" id="wa-preview">¡Hola Doctor! Soy la Lic. Laura Ramírez, nutrióloga clínica. Actualicé mis servicios: además de diseñar el plan nutricional de sus pacientes, ahora también podemos encargarnos de la preparación de sus alimentos a través de Nutrichef. Así aseguramos que sus pacientes sigan sus indicaciones al pie de la letra. ¿Le comparto más información?</div>
+      </div>
+      <div class="frow2">
+        <div><label>Nombre del doctor</label><input type="text" id="wa-doc-name" placeholder="Ej. Dr. Hernández" oninput="updateWaPreview()"></div>
+        <div><label>Teléfono / WhatsApp</label><input type="tel" id="wa-doc-tel" placeholder="844 000 0000"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('modal-invitar-doc')">Cancelar</button>
+      <button class="btn btn-wa" onclick="sendWaDoctor()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enviar por WhatsApp →
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+function showSec(id, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  if (btn) {
+    document.querySelectorAll('.sbtn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+}
+
+function showExp(patient) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-exp-' + patient).classList.add('active');
+}
+
+function filterP(type, btn) {
+  document.querySelectorAll('.fbar .fbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('grid-activos').style.display = type === 'activos' ? '' : 'none';
+  document.getElementById('grid-historial').style.display = type === 'historial' ? '' : 'none';
+}
+
+function filterMarca(marca, btn) {
+  // Simple visual filter — in production this would filter cards
+  const cards = document.querySelectorAll('.pcard[data-marca]');
+  cards.forEach(c => {
+    if (marca === 'todos') { c.style.display = ''; return; }
+    c.style.display = c.dataset.marca === marca ? '' : 'none';
+  });
+}
+
+function toggleDisponible(el) {
+  document.getElementById('tc-disponible').classList.toggle('active', el.checked);
+}
+
+function addDoctor() {
+  const name = document.getElementById('new-doc-name').value;
+  const spec = document.getElementById('new-doc-spec').value;
+  if (!name || !spec) { toast('Completa nombre y especialidad'); return; }
+  const div = document.createElement('div');
+  div.className = 'added-doc';
+  div.innerHTML = '<div class="doc-icon" style="width:24px;height:24px"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><circle cx="8" cy="5" r="2.5"/><path d="M3 14c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></div><span style="font-weight:600">' + name + '</span>&nbsp;· ' + spec + '<button class="added-doc-remove" onclick="this.parentElement.remove()">×</button>';
+  document.getElementById('doctors-added').appendChild(div);
+  document.getElementById('new-doc-name').value = '';
+  document.getElementById('new-doc-spec').value = '';
+}
+
+function updateWaPreview() {
+  const name = document.getElementById('wa-doc-name').value || 'Doctor';
+  document.getElementById('wa-preview').textContent = '¡Hola ' + name + '! Soy la Lic. Laura Ramírez, nutrióloga clínica. Actualicé mis servicios: además de diseñar el plan nutricional de sus pacientes, ahora también podemos encargarnos de la preparación de sus alimentos a través de Nutrichef. Así aseguramos que sus pacientes sigan sus indicaciones al pie de la letra. ¿Le comparto más información?';
+}
+
+function sendWaDoctor() {
+  const tel = document.getElementById('wa-doc-tel').value.replace(/\s/g, '');
+  const msg = encodeURIComponent(document.getElementById('wa-preview').textContent.trim());
+  const waNumber = tel ? '52' + tel : '528441234567';
+  window.open('https://wa.me/' + waNumber + '?text=' + msg, '_blank');
+  closeModal('modal-invitar-doc');
+  toast('Abriendo WhatsApp…');
+}
+
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.opacity = 1;
+  setTimeout(() => t.style.opacity = 0, 2800);
+}
+
+document.querySelectorAll('.modal-bg').forEach(m => {
+  m.addEventListener('click', function(e) {
+    if (e.target === this) closeModal(this.id);
+  });
+});
+</script>
+</body>
+</html>
