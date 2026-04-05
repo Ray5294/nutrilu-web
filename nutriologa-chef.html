@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Únete como nutrióloga · Nutrilú</title>
+<title>Nutrióloga Chef · Nutrilú</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -19,30 +19,94 @@
 html{scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--off);color:var(--dark);line-height:1.6;overflow-x:hidden}
 
-/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,245,240,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;height:58px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--dark);letter-spacing:-.02em;text-decoration:none}
 .nav-logo em{font-style:italic;color:var(--green);font-size:14px}
 .nav-cta{background:var(--dark);color:#fff;padding:8px 20px;border-radius:100px;font-size:13px;font-weight:700;text-decoration:none;transition:.15s}
 .nav-cta:hover{background:var(--green)}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 64px 80px;gap:80px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-120px;right:-120px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,.08) 0%,transparent 70%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(240,188,50,.06) 0%,transparent 70%);pointer-events:none}
-
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 64px 80px;gap:80px;position:relative;overflow:hidden;background:var(--dark)}
+.hero::before{content:'';position:absolute;top:-120px;right:-120px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(95,196,164,.06) 0%,transparent 70%);pointer-events:none}
 .hero-left{position:relative;z-index:1}
-.h-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--green-l);color:var(--green-d);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:24px}
-.h-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,54px);line-height:1.08;letter-spacing:-.03em;color:var(--dark);margin-bottom:20px}
-.hero-title em{font-style:italic;color:var(--green);display:block}
-.hero-sub{font-size:17px;color:var(--mid);font-weight:300;line-height:1.65;margin-bottom:36px;max-width:480px}
-.hero-sub b{color:var(--dark);font-weight:600}
-.btn-hero{display:inline-block;background:var(--dark);color:#fff;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:800;text-decoration:none;transition:.18s;letter-spacing:-.01em}
-.btn-hero:hover{background:var(--green)}
-
+.h-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(29,158,117,.15);color:var(--green-m);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:24px;border:1px solid rgba(29,158,117,.25)}
+.h-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green-m);flex-shrink:0}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,54px);line-height:1.08;letter-spacing:-.03em;color:#fff;margin-bottom:20px}
+.hero-title em{font-style:italic;color:var(--green-m);display:block}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.55);font-weight:300;line-height:1.65;margin-bottom:36px;max-width:480px}
+.hero-sub b{color:rgba(255,255,255,.85);font-weight:600}
+.btn-hero{display:inline-block;background:var(--green);color:#fff;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:800;text-decoration:none;transition:.18s;letter-spacing:-.01em}
+.btn-hero:hover{background:var(--green-m)}
 .hero-right{position:relative;z-index:1}
-.hero-img-wrap{border-radius:24px;overflow:hidden;height:580px;background:var(--cream);box-shadow:0 24px 64px rgba(0,0,0,.12)}
+.hero-img-wrap{border-radius:24px;overflow:hidden;height:580px;background:rgba(255,255,255,.05);box-shadow:0 24px 64px rgba(0,0,0,.3)}
+
+section{padding:96px 64px}
+.seye{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.stit{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,42px);line-height:1.1;letter-spacing:-.025em;color:var(--dark);margin-bottom:16px}
+.stit em{font-style:italic;color:var(--green)}
+.ssub{font-size:16px;color:var(--mid);font-weight:300;line-height:1.7;max-width:560px}
+
+.marcas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
+.mcard{border-radius:18px;border:1px solid;overflow:hidden}
+.mcard.palm{background:var(--palm-l);border-color:rgba(29,158,117,.2)}
+.mcard.kifud{background:var(--kifud-l);border-color:rgba(240,188,50,.2)}
+.mcard.kiwilu{background:var(--kiwilu-l);border-color:rgba(127,119,221,.2)}
+.mcard.chef{background:var(--chef-l);border-color:rgba(216,90,48,.2)}
+.mcard-img{width:100%;height:160px;object-fit:cover;display:block}
+.mcard-body{padding:22px}
+.mcard-name{font-size:16px;font-weight:800;margin-bottom:4px}
+.mcard.palm .mcard-name{color:var(--palm-d)}
+.mcard.kifud .mcard-name{color:var(--kifud-d)}
+.mcard.kiwilu .mcard-name{color:var(--kiwilu-d)}
+.mcard.chef .mcard-name{color:var(--chef-d)}
+.mcard-tipo{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.5;margin-bottom:14px}
+.mcard.palm .mcard-tipo{color:var(--palm-d)}
+.mcard.kifud .mcard-tipo{color:var(--kifud-d)}
+.mcard.kiwilu .mcard-tipo{color:var(--kiwilu-d)}
+.mcard.chef .mcard-tipo{color:var(--chef-d)}
+.mcard-desc{font-size:13px;font-weight:300;line-height:1.6;margin-bottom:20px}
+.mcard.palm .mcard-desc{color:var(--palm-d)}
+.mcard.kifud .mcard-desc{color:var(--kifud-d)}
+.mcard.kiwilu .mcard-desc{color:var(--kiwilu-d)}
+.mcard.chef .mcard-desc{color:var(--chef-d)}
+.mcard-req{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;display:inline-block}
+.mcard.kiwilu .mcard-req{background:rgba(127,119,221,.15);color:var(--kiwilu-d)}
+.mcard.chef .mcard-req{background:rgba(216,90,48,.15);color:var(--chef-d)}
+
+.act-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px;align-items:center}
+.act-list{display:flex;flex-direction:column;gap:0}
+.act-item{display:flex;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid var(--border)}
+.act-item:last-child{border-bottom:none}
+.act-check{width:28px;height:28px;border-radius:50%;background:var(--green-l);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.act-text{font-size:15px;color:var(--dark);font-weight:500}
+
+.ing-hero{background:var(--dark);border-radius:22px;padding:52px;margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative;overflow:hidden}
+.ing-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,.15) 0%,transparent 65%);pointer-events:none}
+.ing-main{position:relative;z-index:1}
+.ing-amount{font-family:'Playfair Display',serif;font-size:72px;color:#fff;line-height:1;letter-spacing:-.04em}
+.ing-amount span{font-size:24px;color:var(--green-m)}
+.ing-per{font-size:15px;color:rgba(255,255,255,.4);font-weight:300;margin-top:6px}
+.ing-context{font-size:14px;color:rgba(255,255,255,.55);font-weight:300;line-height:1.7;margin-top:24px}
+.ing-context b{color:rgba(255,255,255,.85);font-weight:600}
+.ing-details{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+.ing-detail-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px}
+.ing-dc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-bottom:8px}
+.ing-dc-value{font-family:'Playfair Display',serif;font-size:28px;color:var(--green-m);line-height:1}
+.ing-dc-sub{font-size:12px;color:rgba(255,255,255,.35);font-weight:300;margin-top:4px}
+.ing-note{font-size:11px;color:rgba(255,255,255,.2);font-weight:300;margin-top:8px;text-align:center}
+
+.sub-banner{background:var(--green);padding:72px 64px;position:relative;overflow:hidden}
+.sub-banner::before{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
+.sub-banner::after{content:'';position:absolute;bottom:-60px;left:30%;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
+
+.req-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.rcard{background:var(--white);border-radius:16px;padding:28px;border:1px solid var(--border)}
+.rcard-num{font-family:'Playfair Display',serif;font-size:40px;color:var(--off);font-weight:700;margin-bottom:12px;-webkit-text-stroke:1px rgba(0,0,0,.08)}
+.rcard-title{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:8px}
+.rcard-desc{font-size:13px;color:var(--mid);font-weight:300;line-height:1.6;margin-bottom:14px}
+.rcard-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px}
+.rb-yes{background:var(--green-l);color:var(--green-d)}
+
 .form-card{background:var(--white);border-radius:22px;padding:36px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.08)}
 .fc-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--dark);margin-bottom:5px}
 .fc-title em{color:var(--green);font-style:italic}
@@ -72,107 +136,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,245,240,
 .btn-register:hover{background:var(--green)}
 .btn-register:active{transform:scale(.98)}
 .fc-disclaimer{font-size:11px;color:var(--light);text-align:center;margin-top:12px;font-weight:300;line-height:1.5}
-
-/* ── SUCCESS STATE ── */
 .success-state{display:none;text-align:center;padding:20px 0}
 .ss-icon{font-size:48px;margin-bottom:16px}
 .ss-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--dark);margin-bottom:8px}
 .ss-sub{font-size:14px;color:var(--mid);font-weight:300;line-height:1.6}
 
-/* ── SECCIONES ── */
-section{padding:96px 64px}
-.seye{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
-.stit{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,42px);line-height:1.1;letter-spacing:-.025em;color:var(--dark);margin-bottom:16px}
-.stit em{font-style:italic;color:var(--green)}
-.ssub{font-size:16px;color:var(--mid);font-weight:300;line-height:1.7;max-width:560px}
-
-/* ── CONCEPTO CENTRAL ── */
-.concepto{background:var(--dark);padding:80px 64px;text-align:center;position:relative;overflow:hidden}
-.concepto::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,.15) 0%,transparent 65%);pointer-events:none}
-.c-quote{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,46px);color:#fff;line-height:1.2;letter-spacing:-.03em;max-width:780px;margin:0 auto 24px;position:relative;z-index:1}
-.c-quote em{font-style:italic;color:var(--green-m)}
-.c-sub{font-size:16px;color:rgba(255,255,255,.45);font-weight:300;max-width:520px;margin:0 auto;position:relative;z-index:1;line-height:1.7}
-
-/* ── APORTAS / APORTAMOS ── */
-.intercambio{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
-.icard{background:var(--white);border-radius:18px;padding:36px;border:1px solid var(--border)}
-.icard.dark{background:var(--dark);border-color:transparent}
-.ic-eyebrow{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
-.icard .ic-eyebrow{color:var(--light)}
-.icard.dark .ic-eyebrow{color:rgba(255,255,255,.3)}
-.ic-eyebrow::before{content:'';width:20px;height:1.5px;background:currentColor}
-.ic-title{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:24px;line-height:1.2}
-.icard .ic-title{color:var(--dark)}
-.icard.dark .ic-title{color:#fff}
-.ic-list{list-style:none;display:flex;flex-direction:column;gap:13px}
-.ic-item{display:flex;align-items:flex-start;gap:12px;font-size:14px}
-.icard .ic-item{color:var(--mid)}
-.icard.dark .ic-item{color:rgba(255,255,255,.55)}
-.ic-check{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:10px}
-.icard .ic-check{background:var(--green-l);color:var(--green)}
-.icard.dark .ic-check{background:rgba(255,255,255,.08);color:rgba(255,255,255,.4)}
-
-/* ── MARCAS ── */
-.marcas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
-.mcard{border-radius:18px;border:1px solid;overflow:hidden;position:relative}
-.mcard.palm{background:var(--palm-l);border-color:rgba(29,158,117,.2)}
-.mcard.kifud{background:var(--kifud-l);border-color:rgba(240,188,50,.2)}
-.mcard.kiwilu{background:var(--kiwilu-l);border-color:rgba(127,119,221,.2)}
-.mcard.chef{background:var(--chef-l);border-color:rgba(216,90,48,.2)}
-.mcard-img{width:100%;height:160px;object-fit:cover;display:block}
-.mcard-body{padding:22px}
-.mcard-name{font-size:16px;font-weight:800;margin-bottom:4px}
-.mcard.palm .mcard-name{color:var(--palm-d)}
-.mcard.kifud .mcard-name{color:var(--kifud-d)}
-.mcard.kiwilu .mcard-name{color:var(--kiwilu-d)}
-.mcard.chef .mcard-name{color:var(--chef-d)}
-.mcard-tipo{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.5;margin-bottom:14px}
-.mcard.palm .mcard-tipo{color:var(--palm-d)}
-.mcard.kifud .mcard-tipo{color:var(--kifud-d)}
-.mcard.kiwilu .mcard-tipo{color:var(--kiwilu-d)}
-.mcard.chef .mcard-tipo{color:var(--chef-d)}
-.mcard-desc{font-size:13px;font-weight:300;line-height:1.6;margin-bottom:20px}
-.mcard.palm .mcard-desc{color:var(--palm-d)}
-.mcard.kifud .mcard-desc{color:var(--kifud-d)}
-.mcard.kiwilu .mcard-desc{color:var(--kiwilu-d)}
-.mcard.chef .mcard-desc{color:var(--chef-d)}
-.mcard-req{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;display:inline-block}
-.mcard.palm .mcard-req{background:rgba(29,158,117,.15);color:var(--palm-d)}
-.mcard.kifud .mcard-req{background:rgba(240,188,50,.15);color:var(--kifud-d)}
-.mcard.kiwilu .mcard-req{background:rgba(127,119,221,.15);color:var(--kiwilu-d)}
-.mcard.chef .mcard-req{background:rgba(216,90,48,.15);color:var(--chef-d)}
-
-/* ── INGRESOS ── */
-.ingresos-wrap{background:var(--white);border-radius:22px;padding:52px;border:1px solid var(--border);margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.ing-range{margin:28px 0}
-.ing-num{font-family:'Playfair Display',serif;font-size:64px;color:var(--dark);letter-spacing:-.04em;line-height:1}
-.ing-num span{font-size:32px;color:var(--green)}
-.ing-unit{font-size:14px;color:var(--light);font-weight:300;margin-top:4px}
-.ing-note{font-size:14px;color:var(--mid);font-weight:300;line-height:1.6;margin-bottom:20px}
-.ing-note b{color:var(--dark);font-weight:600}
-.ing-badge{display:inline-flex;align-items:center;gap:7px;background:var(--green-l);color:var(--green-d);padding:8px 16px;border-radius:100px;font-size:13px;font-weight:700}
-.ing-scenarios{display:flex;flex-direction:column;gap:14px}
-.isc{background:var(--off);border-radius:14px;padding:20px 22px;border:1px solid var(--border)}
-.isc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
-.isc-label{font-size:13px;font-weight:700;color:var(--dark)}
-.isc-earn{font-family:'Playfair Display',serif;font-size:22px;color:var(--green)}
-.isc-detail{font-size:12px;color:var(--light);font-weight:300}
-.isc.highlight{background:var(--dark);border-color:transparent}
-.isc.highlight .isc-label{color:rgba(255,255,255,.7)}
-.isc.highlight .isc-earn{color:var(--green-m)}
-.isc.highlight .isc-detail{color:rgba(255,255,255,.3)}
-
-/* ── REQUISITOS ── */
-.req-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
-.rcard{background:var(--white);border-radius:16px;padding:28px;border:1px solid var(--border)}
-.rcard-num{font-family:'Playfair Display',serif;font-size:40px;color:var(--off);font-weight:700;margin-bottom:12px;-webkit-text-stroke:1px rgba(0,0,0,.08)}
-.rcard-title{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:8px}
-.rcard-desc{font-size:13px;color:var(--mid);font-weight:300;line-height:1.6;margin-bottom:14px}
-.rcard-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px}
-.rb-yes{background:var(--green-l);color:var(--green-d)}
-.rb-no{background:var(--cream);color:var(--light)}
-
-/* ── FAQ ── */
 .faq-item{border-bottom:1px solid rgba(255,255,255,.08);cursor:pointer;padding:24px 0}
 .faq-q{display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:600;color:#fff;line-height:1.4;gap:16px}
 .faq-icon{width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.4);flex-shrink:0;transition:.2s;font-style:normal}
@@ -181,19 +149,6 @@ section{padding:96px 64px}
 .faq-a strong{color:rgba(255,255,255,.8);font-weight:600}
 .faq-item.open .faq-a{display:block}
 
-/* ── CTA FINAL ── */
-.cta-final{background:var(--dark);padding:100px 64px;text-align:center;position:relative;overflow:hidden}
-.cta-final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,.12) 0%,transparent 65%);pointer-events:none}
-.cf-title{font-family:'Playfair Display',serif;font-size:clamp(32px,4.5vw,52px);color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:18px;position:relative;z-index:1}
-.cf-title em{font-style:italic;color:var(--green-m)}
-.cf-sub{font-size:16px;color:rgba(255,255,255,.4);font-weight:300;max-width:480px;margin:0 auto 36px;line-height:1.7;position:relative;z-index:1}
-.btn-white{background:#fff;color:var(--dark);padding:16px 36px;border-radius:100px;font-size:15px;font-weight:800;text-decoration:none;display:inline-block;transition:.18s;position:relative;z-index:1}
-.btn-white:hover{background:var(--green);color:#fff}
-.btn-ghost{border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);padding:16px 36px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;display:inline-block;transition:.18s;position:relative;z-index:1}
-.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-
-/* ── FOOTER ── */
 footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:28px 64px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .footer-logo{font-family:'Playfair Display',serif;font-size:16px;color:#fff;text-decoration:none}
 .footer-logo em{color:var(--green-m);font-style:italic;font-size:12px}
@@ -202,195 +157,69 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 .footer-links a{font-size:12px;color:rgba(255,255,255,.25);text-decoration:none;transition:.15s}
 .footer-links a:hover{color:rgba(255,255,255,.6)}
 
-/* ── FADE-IN ANIMATIONS ── */
 .fade-up{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .fade-up.visible{opacity:1;transform:none}
 
-/* ── RESPONSIVE ── */
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;padding:90px 28px 60px;gap:48px}
   .hero-right{order:-1}
   section{padding:72px 28px}
-  .intercambio,.marcas-grid{grid-template-columns:1fr;gap:14px}
   .marcas-grid{grid-template-columns:1fr 1fr}
-  .ingresos-wrap{grid-template-columns:1fr;padding:32px;gap:36px}
+  .act-grid{grid-template-columns:1fr}
+  .ing-hero{grid-template-columns:1fr;padding:32px}
   .req-grid{grid-template-columns:1fr}
-  .concepto,.cta-final{padding:72px 28px}
+  .sub-banner{padding:72px 28px}
   footer{padding:28px;flex-direction:column;text-align:center}
   .footer-links{justify-content:center}
-  .hero-proof{gap:12px}
-  .hp-div{display:none}
+  .hero-img-wrap{height:400px}
   .mcard-img{height:120px}
-  section[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+  .oport-grid{grid-template-columns:1fr !important}
+  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+  div[style*="grid-template-columns:300px"]{grid-template-columns:1fr !important}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="nav-logo" href="nutrilu-index.html">Nutri<em>lú</em></a>
-  <a class="nav-cta" href="#registro">Registrarme →</a>
+  <a class="nav-cta" href="#registro">Me interesa →</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="h-eyebrow">Una plataforma hecha para nutriólogas que cocinan</div>
+    <div class="h-eyebrow">Red de Nutriólogas Chef · Nutrilú</div>
     <h1 class="hero-title">
-      ¿Ya cocinas<br>para ti?
-      <em>Cocina un poco<br>más y genera un<br>ingreso extra.</em>
+      Genera un ingreso extra cocinando
+      <em>en tus horas<br>sin consulta.</em>
     </h1>
     <p class="hero-sub">
-      Ya tienes el conocimiento y la cocina.<br>
-      Convierte tu pasión en un <b>ingreso recurrente</b> — cocinando lo que ya sabes hacer, para personas que necesitan exactamente eso.
+      Muchas personas saben que deberían comer mejor, pero no saben cómo ni tienen tiempo de prepararlo. Ahí entras tú: <b>cocinas lo que ellos necesitan y generas un ingreso recurrente.</b>
     </p>
-    <a href="#registro" class="btn-hero">Quiero saber más →</a>
+    <a href="#registro" class="btn-hero">Me interesa →</a>
   </div>
-
-  <!-- FOTO NUTRIÓLOGA -->
   <div class="hero-right">
     <div class="hero-img-wrap">
-      <img src="/mnt/user-data/uploads/Nutri_cocinando_V1.png" alt="Nutrióloga cocinando" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+      <img src="Nutri_cocinando_V1.webp" alt="Nutrióloga Chef cocinando" style="width:100%;height:100%;object-fit:cover;object-position:center top">
     </div>
   </div>
 </section>
 
-<!-- CONCEPTO -->
-<div class="concepto">
-  <p class="c-quote">"Ya tienes lo más difícil:<br>el conocimiento <em>y la cocina.</em><br>Nosotros ponemos los clientes."</p>
-  <p class="c-sub">Millones de personas quieren comer mejor pero no saben cómo, o simplemente no tienen tiempo de cocinar saludable cada día. Esa brecha es tu oportunidad.</p>
-</div>
-
-<!-- MISIÓN -->
+<!-- LA OPORTUNIDAD -->
 <section style="background:var(--off);padding:96px 64px">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
-    <div>
-      <div class="seye fade-up">Por qué importa</div>
-      <h2 class="stit fade-up">Estudiaste para<br><em>transformar vidas.</em><br>Esto te lo permite.</h2>
-      <p style="font-size:18px;color:var(--mid);font-weight:300;line-height:1.85;max-width:460px" class="fade-up">
-        Tu conocimiento ayuda a las personas a comer bien en su día a día — no una vez en consulta, sino <strong style="color:var(--dark)">cada semana, en cada comida.</strong>
-      </p>
-    </div>
+  <div class="oport-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
     <div class="fade-up" style="position:relative">
       <div style="border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:var(--cream)">
-        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80" alt="Comida saludable preparada" style="width:100%;height:100%;object-fit:cover">
+        <img src="Platillo_V1.webp" alt="Platillo saludable preparado" style="width:100%;height:100%;object-fit:cover">
       </div>
     </div>
-  </div>
-</section>
-
-<!-- FRANJA HORAS LIBRES -->
-<div style="background:var(--green);padding:72px 64px;position:relative;overflow:hidden">
-  <div style="position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none"></div>
-  <div style="position:absolute;bottom:-60px;left:30%;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none"></div>
-  <div style="max-width:820px;margin:0 auto;text-align:center;position:relative;z-index:1">
-    <div style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:18px">Tu tiempo libre</div>
-    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(32px,4.5vw,52px);color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:22px">¿Tienes horas<br><em style="font-style:italic;color:rgba(255,255,255,.75)">sin consulta?</em></h2>
-    <p style="font-size:18px;color:rgba(255,255,255,.75);font-weight:300;line-height:1.75;max-width:580px;margin:0 auto 32px">
-      Ese tiempo ya lo tienes. Cocinar para Nutrilú en tus horas libres te permite generar una segunda fuente de ingreso — sin reorganizar tu agenda ni sacrificar tu práctica clínica.
-    </p>
-    <a href="#registro" style="display:inline-block;background:#fff;color:var(--green-d);padding:14px 32px;border-radius:100px;font-size:15px;font-weight:800;text-decoration:none;transition:.18s;letter-spacing:-.01em">Quiero saber más →</a>
-  </div>
-</div>
-
-<!-- COBRO RECURRENTE -->
-<div style="background:var(--dark);padding:80px 64px;position:relative;overflow:hidden">
-  <div style="position:absolute;top:50%;right:-100px;transform:translateY(-50%);width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,.12) 0%,transparent 65%);pointer-events:none"></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1">
     <div>
-      <div style="font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green-m);margin-bottom:16px">Cobro automático</div>
-      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);color:#fff;line-height:1.1;letter-spacing:-.025em;margin-bottom:20px">Cada suscripción garantiza<br><em style="color:var(--green-m)">tu ingreso semana<br>a semana.</em></h2>
-      <p style="font-size:16px;color:rgba(255,255,255,.5);font-weight:300;line-height:1.8;max-width:460px">
-        Los clientes contratan su suscripción con cobro recurrente a su tarjeta bancaria. El pago ocurre automáticamente cada semana — lo que garantiza continuidad semana a semana.
+      <div class="seye fade-up">La oportunidad</div>
+      <h2 class="stit fade-up">Quieren comer bien.<br><em>No pueden hacerlo solos.</em></h2>
+      <p style="font-size:18px;color:var(--mid);font-weight:300;line-height:1.85;max-width:460px" class="fade-up">
+        Adultos que trabajan todo el día, mamás sin tiempo, pacientes con indicaciones médicas que no saben cocinar su dieta. Todos necesitan lo mismo: <strong style="color:var(--dark)">alguien con conocimiento en nutrición que les cocine.</strong> Esa persona eres tú.
       </p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.2);border-radius:16px;padding:32px 28px">
-        <div style="font-size:13px;font-weight:700;color:var(--green-m);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Cómo funciona el cobro</div>
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <div style="display:flex;align-items:flex-start;gap:12px">
-            <div style="width:20px;height:20px;border-radius:50%;background:rgba(29,158,117,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:10px;color:var(--green-m);font-weight:700">1</div>
-            <div style="font-size:14px;color:rgba(255,255,255,.6);font-weight:300;line-height:1.6">El cliente elige su plan y registra su tarjeta al suscribirse</div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:12px">
-            <div style="width:20px;height:20px;border-radius:50%;background:rgba(29,158,117,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:10px;color:var(--green-m);font-weight:700">2</div>
-            <div style="font-size:14px;color:rgba(255,255,255,.6);font-weight:300;line-height:1.6">Nutrilú procesa el cobro automáticamente cada semana</div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:12px">
-            <div style="width:20px;height:20px;border-radius:50%;background:rgba(29,158,117,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:10px;color:var(--green-m);font-weight:700">3</div>
-            <div style="font-size:14px;color:rgba(255,255,255,.6);font-weight:300;line-height:1.6">Tu ingreso se transfiere puntualmente — sin gestiones de tu parte</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<section style="background:var(--off)">
-  <div class="seye fade-up">Cómo funciona la alianza</div>
-  <div class="stit fade-up">Lo que pone cada quien<br><em>sobre la mesa.</em></div>
-  <div class="ssub fade-up">Una alianza honesta: tú cocinas, nosotros operamos. Sin sorpresas.</div>
-  <div class="intercambio">
-    <div class="icard fade-up">
-      <div class="ic-eyebrow">Lo que tú aportas</div>
-      <div class="ic-title">Tu cocina.<br>Tu menú.<br>Tu sazón.</div>
-      <ul class="ic-list">
-        <li class="ic-item"><div class="ic-check">✓</div>Diseño y planeación del menú semanal</li>
-        <li class="ic-item"><div class="ic-check">✓</div>Compra de insumos</li>
-        <li class="ic-item"><div class="ic-check">✓</div>Preparación y empaque de los alimentos</li>
-        <li class="ic-item"><div class="ic-check">✓</div>Control de calidad e higiene</li>
-        <li class="ic-item"><div class="ic-check">✓</div>Entrega en punto de recolección acordado</li>
-      </ul>
-    </div>
-    <div class="icard dark fade-up">
-      <div class="ic-eyebrow">Lo que Nutrilú aporta</div>
-      <div class="ic-title" style="color:#fff">Local, plataforma<br>y todo lo demás.</div>
-      <ul class="ic-list">
-        <li class="ic-item"><div class="ic-check">✓</div>Cafetería asignada como punto de recolección en tu ciudad</li>
-        <li class="ic-item"><div class="ic-check">✓</div>Refrigeración y almacenamiento frío</li>
-        <li class="ic-item"><div class="ic-check">✓</div>Plataforma digital y sistema de pedidos</li>
-        <li class="ic-item"><div class="ic-check">✓</div>Captación de clientes, cobro y facturación</li>
-        <li class="ic-item"><div class="ic-check">✓</div>Suscripción recurrente garantiza tu ingreso semana a semana</li>
-        <li class="ic-item"><div class="ic-check">✓</div>Administración y atención al cliente</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- CÓMO FUNCIONA -->
-<section style="background:var(--off)">
-  <div class="seye fade-up">¿Cómo funciona?</div>
-  <div class="stit fade-up">Tres pasos.<br><em>Nada más.</em></div>
-  <div class="ssub fade-up">El proceso está diseñado para que puedas enfocarte en cocinar bien — el resto lo maneja Nutrilú.</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:52px;position:relative" class="fade-up">
-    <!-- línea conectora -->
-    <div style="position:absolute;top:36px;left:calc(16.6% + 16px);right:calc(16.6% + 16px);height:2px;background:linear-gradient(90deg,var(--green),var(--green));opacity:.15;pointer-events:none"></div>
-    <!-- PASO 1 -->
-    <div style="padding:0 32px 0 0;border-right:1px solid var(--border)">
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:24px">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M9 12h6M9 16h4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:10px">Paso 1</div>
-      <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--dark);margin-bottom:12px;line-height:1.2">Defines tu<br>menú semanal</div>
-      <p style="font-size:14px;color:var(--mid);font-weight:300;line-height:1.7">Cada semana decides qué van a comer tus suscriptores. Tú tienes total libertad para diseñar el menú según tu estilo y conocimiento nutricional.</p>
-    </div>
-    <!-- PASO 2 -->
-    <div style="padding:0 32px;border-right:1px solid var(--border)">
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:24px">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.5"/></svg>
-      </div>
-      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:10px">Paso 2</div>
-      <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--dark);margin-bottom:12px;line-height:1.2">Cocinas y entregas<br>en el punto asignado</div>
-      <p style="font-size:14px;color:var(--mid);font-weight:300;line-height:1.7">Preparas los alimentos en tu cocina y los llevas a la cafetería asignada en tu ciudad. Nutrilú se encarga de la distribución a los clientes.</p>
-    </div>
-    <!-- PASO 3 -->
-    <div style="padding:0 0 0 32px">
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:24px">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#fff" stroke-width="1.5"/><path d="M3 10h18M8 3v3M16 3v3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:10px">Paso 3</div>
-      <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--dark);margin-bottom:12px;line-height:1.2">Recibes tu pago<br>automáticamente</div>
-      <p style="font-size:14px;color:var(--mid);font-weight:300;line-height:1.7">Cada semana, al completarse el ciclo de suscripción, recibes tu parte automáticamente. Sin tener que cobrar, recordar ni hacer seguimiento.</p>
     </div>
   </div>
 </section>
@@ -399,107 +228,114 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 <section style="background:var(--cream)">
   <div class="seye fade-up">4 marcas, 1 registro</div>
   <div class="stit fade-up">¿Qué te gustaría<br><em>cocinar?</em></div>
-  <div class="ssub fade-up">Te registras una sola vez en Nutrilú y activas las marcas que te interesen. Puedes cambiar cuando quieras.</div>
   <div class="marcas-grid">
     <div class="mcard palm fade-up">
-      <img class="mcard-img" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80" alt="NutriPalm">
+      <img class="mcard-img" src="Platillo_NutriPalm.webp" alt="NutriPalm">
       <div class="mcard-body">
         <div class="mcard-name">NutriPalm</div>
         <div class="mcard-tipo">Producción por lote</div>
-        <div class="mcard-desc">Comida saludable para personas que quieren mejorar su alimentación.</div>
+        <div class="mcard-desc">Comida saludable para adultos. Tú diseñas el menú — mismo platillo para todos los suscriptores.</div>
       </div>
     </div>
     <div class="mcard kifud fade-up">
-      <img class="mcard-img" src="https://images.unsplash.com/photo-1611068661827-a6e2cc7cc634?w=400&q=80" alt="Kifud">
+      <img class="mcard-img" src="Platillo_Kifud.webp" alt="Kifud">
       <div class="mcard-body">
         <div class="mcard-name">Kifud</div>
         <div class="mcard-tipo">Producción por lote</div>
-        <div class="mcard-desc">Loncheras escolares saludables para niños. Con comida divertida que nutre.</div>
+        <div class="mcard-desc">Loncheras escolares para niños. Tú diseñas el menú — mismo para todos los niños suscritos.</div>
       </div>
     </div>
     <div class="mcard kiwilu fade-up">
-      <img class="mcard-img" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80" alt="Kiwilu">
+      <img class="mcard-img" src="Platillo_Kiwilu.webp" alt="Kiwilu">
       <div class="mcard-body">
         <div class="mcard-name">Kiwilu</div>
         <div class="mcard-tipo">Producción individual</div>
-        <div class="mcard-desc">Cocina el plan nutricional de pacientes de otras nutriólogas.</div>
-        <div class="mcard-req">Comprensión de planes clínicos</div>
+        <div class="mcard-desc">Cocinas el plan que diseñó la nutrióloga del paciente. Cada persona tiene un menú diferente.</div>
+        <div class="mcard-req">Comprensión de planes nutricionales</div>
       </div>
     </div>
     <div class="mcard chef fade-up">
-      <img class="mcard-img" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80" alt="Nutrichef">
+      <img class="mcard-img" src="Platillo_NutriChef.webp" alt="Nutrichef">
       <div class="mcard-body">
         <div class="mcard-name">Nutrichef</div>
         <div class="mcard-tipo">Producción individual · clínico</div>
-        <div class="mcard-desc">Cocina para pacientes de médicos con necesidades clínicas específicas.</div>
-        <div class="mcard-req">Comprensión de planes clínicos</div>
+        <div class="mcard-desc">Cocinas planes clínicos validados por una nutrióloga clínica para pacientes de médicos.</div>
+        <div class="mcard-req">Cédula profesional obligatoria</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ACTIVIDADES -->
+<section style="background:var(--off)">
+  <div class="act-grid">
+    <div>
+      <div class="seye fade-up">Tu rol</div>
+      <h2 class="stit fade-up">¿Cuáles serán<br><em>tus actividades?</em></h2>
+    </div>
+    <div class="act-list fade-up">
+      <div class="act-item">
+        <div class="act-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-4.5" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="act-text">Diseño del menú semanal</div>
+      </div>
+      <div class="act-item">
+        <div class="act-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-4.5" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="act-text">Compra de insumos</div>
+      </div>
+      <div class="act-item">
+        <div class="act-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-4.5" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="act-text">Preparación de los alimentos</div>
+      </div>
+      <div class="act-item">
+        <div class="act-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-4.5" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="act-text">Entrega de platillos en cafetería local asignada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSCRIPCIÓN -->
+<div class="sub-banner">
+  <div style="max-width:820px;margin:0 auto;text-align:center;position:relative;z-index:1">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:18px">Cobro automático</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(32px,4.5vw,52px);color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:22px">Cada suscripción garantiza<br><em style="font-style:italic;color:rgba(255,255,255,.75)">tu ingreso semana a semana.</em></h2>
+    <p style="font-size:18px;color:rgba(255,255,255,.75);font-weight:300;line-height:1.75;max-width:580px;margin:0 auto">
+      Los clientes pagan su suscripción semanal con tarjeta. El cobro es automático — lo que garantiza que tu ingreso se repite cada semana mientras el cliente siga activo.
+    </p>
+  </div>
+</div>
+
 <!-- INGRESOS -->
 <section style="background:var(--off)">
   <div class="seye fade-up">Tu ingreso</div>
-  <div class="stit fade-up">Tú decides<br><em>el precio.</em></div>
-  <div class="ssub fade-up">Nutrilú toma una comisión de plataforma. El resto es tuyo.</div>
-
-  <!-- 3 STATS -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0 48px" class="fade-up">
-    <div style="background:var(--white);border-radius:16px;padding:28px;border:1px solid var(--border)">
-      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--light);margin-bottom:12px">Ingreso promedio por platillo</div>
-      <div style="font-family:'Playfair Display',serif;font-size:42px;color:var(--dark);line-height:1;letter-spacing:-.03em">$60<span style="font-size:24px;color:var(--green)">–$90</span></div>
-      <div style="font-size:13px;color:var(--light);font-weight:300;margin-top:6px">MXN · tú fijas el precio</div>
-    </div>
-    <div style="background:var(--white);border-radius:16px;padding:28px;border:1px solid var(--border)">
-      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--light);margin-bottom:12px">Ingreso promedio por persona</div>
-      <div style="font-family:'Playfair Display',serif;font-size:42px;color:var(--dark);line-height:1;letter-spacing:-.03em">$300<span style="font-size:24px;color:var(--green)">–$450</span></div>
-      <div style="font-size:13px;color:var(--light);font-weight:300;margin-top:6px">MXN / semana · 5 días</div>
-    </div>
-    <div style="background:var(--dark);border-radius:16px;padding:28px;border:1px solid transparent">
-      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:12px">Modelo de cobro</div>
-      <div style="font-family:'Playfair Display',serif;font-size:32px;color:#fff;line-height:1.15;letter-spacing:-.02em">Semanal<br><em style="color:var(--green-m)">recurrente</em></div>
-      <div style="font-size:13px;color:rgba(255,255,255,.3);font-weight:300;margin-top:6px">Cobro automático · tarjeta</div>
-    </div>
-  </div>
-
-  <!-- TABLA -->
-  <div style="background:var(--white);border-radius:18px;border:1px solid var(--border);overflow:hidden" class="fade-up">
-    <div style="padding:20px 28px;border-bottom:1px solid var(--border)">
-      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--light)">Ganancia neta mensual estimada</div>
-    </div>
-    <div style="padding:8px 0">
-      <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:18px 28px;border-bottom:1px solid var(--border)">
-        <div>
-          <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px">10 suscriptores</div>
-          <div style="height:4px;width:20%;background:var(--green);border-radius:100px"></div>
-        </div>
-        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--green);letter-spacing:-.02em">$7,600</div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:18px 28px;border-bottom:1px solid var(--border)">
-        <div>
-          <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px">20 suscriptores</div>
-          <div style="height:4px;width:40%;background:var(--green);border-radius:100px"></div>
-        </div>
-        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--green);letter-spacing:-.02em">$15,200</div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:18px 28px;border-bottom:1px solid var(--border)">
-        <div>
-          <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px">30 suscriptores</div>
-          <div style="height:4px;width:60%;background:var(--green);border-radius:100px"></div>
-        </div>
-        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--green);letter-spacing:-.02em">$22,800</div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:18px 28px">
-        <div>
-          <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px">50 suscriptores</div>
-          <div style="height:4px;width:100%;background:var(--green);border-radius:100px"></div>
-        </div>
-        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--green);letter-spacing:-.02em">$38,000</div>
+  <div class="stit fade-up">Ganas por cada<br><em>suscriptor activo.</em></div>
+  <div class="ssub fade-up">Tú defines el precio de tus platillos. Sin inversión inicial. Sin cuotas. Tu ingreso crece con el número de suscriptores.</div>
+  <div class="ing-hero fade-up">
+    <div class="ing-main">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green-m);margin-bottom:20px">Por cada suscriptor activo</div>
+      <div class="ing-amount">~$760<span> /mes</span></div>
+      <div class="ing-per">ganancia neta por suscriptor</div>
+      <div class="ing-context">
+        Cada suscriptor activo te genera aproximadamente <b>$760 al mes</b> de ganancia neta — después de cubrir el costo de insumos. Tú defines el precio de tus platillos y mientras el cliente siga suscrito, ese ingreso se repite automáticamente.
       </div>
     </div>
-    <div style="padding:14px 28px;background:var(--off);border-top:1px solid var(--border)">
-      <div style="font-size:11px;color:var(--light);font-weight:300">* Estimados ilustrativos. Tu ingreso real depende del precio que establezcas y las marcas activas.</div>
+    <div class="ing-details">
+      <div class="ing-detail-card">
+        <div class="ing-dc-label">Con 10 suscriptores</div>
+        <div class="ing-dc-value">~$7,600<span style="font-size:16px;color:rgba(255,255,255,.3)"> /mes</span></div>
+        <div class="ing-dc-sub">Ingreso neto mensual estimado</div>
+      </div>
+      <div class="ing-detail-card">
+        <div class="ing-dc-label">Con 20 suscriptores</div>
+        <div class="ing-dc-value">~$15,200<span style="font-size:16px;color:rgba(255,255,255,.3)"> /mes</span></div>
+        <div class="ing-dc-sub">Ingreso neto mensual estimado</div>
+      </div>
+      <div class="ing-detail-card">
+        <div class="ing-dc-label">Con 50 suscriptores</div>
+        <div class="ing-dc-value">~$38,000<span style="font-size:16px;color:rgba(255,255,255,.3)"> /mes</span></div>
+        <div class="ing-dc-sub">Ingreso neto mensual estimado</div>
+      </div>
+      <div class="ing-note">* Estimados ilustrativos con Plan Básico NutriPalm $110/porción. Tu ingreso depende del precio y las marcas activas.</div>
     </div>
   </div>
 </section>
@@ -509,7 +345,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   <div class="seye fade-up">Quién puede unirse</div>
   <div class="stit fade-up">Solo necesitas<br><em>tres cosas.</em></div>
   <div class="ssub fade-up">Sin requisitos complicados. Si ya cocinas y estudiaste nutrición, prácticamente ya cumples.</div>
-  <div class="req-grid" style="grid-template-columns:repeat(3,1fr)">
+  <div class="req-grid">
     <div class="rcard fade-up">
       <div class="rcard-num">01</div>
       <div class="rcard-title">Formación en nutrición</div>
@@ -531,45 +367,35 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   </div>
 </section>
 
-<!-- REGISTRO -->
-<section id="registro" style="background:var(--cream);padding:96px 64px">
+<!-- FORMULARIO -->
+<section id="registro" style="background:var(--off);padding:96px 64px">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
     <div>
       <div class="seye fade-up">Únete a la red</div>
       <h2 class="stit fade-up">¿Lista para<br><em>dar el primer paso?</em></h2>
       <p style="font-size:16px;color:var(--mid);font-weight:300;line-height:1.8;margin-bottom:32px;max-width:440px" class="fade-up">
-        Llena el formulario y el equipo de Nutrilú te contacta en menos de 24 horas. Sin compromisos — primero platicamos, luego decidimos juntas.
+        Llena el formulario y el equipo de Nutrilú te contactará para darte más información y resolver tus dudas.
       </p>
-      <div style="display:flex;flex-direction:column;gap:12px" class="fade-up">
-        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mid);font-weight:300">
-          <div style="width:22px;height:22px;border-radius:50%;background:var(--green-l);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);font-weight:700;flex-shrink:0">1</div>
-          Llenas el formulario — 2 minutos
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mid);font-weight:300">
-          <div style="width:22px;height:22px;border-radius:50%;background:var(--green-l);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);font-weight:700;flex-shrink:0">2</div>
-          Te contactamos por WhatsApp en menos de 24h
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mid);font-weight:300">
-          <div style="width:22px;height:22px;border-radius:50%;background:var(--green-l);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);font-weight:700;flex-shrink:0">3</div>
-          Platicamos, resolvemos dudas y activamos tu perfil
-        </div>
-      </div>
     </div>
     <div class="fade-up">
       <div class="form-card">
         <div id="form-state">
-          <div class="fc-title">Registrarme como<br><em>nutrióloga aliada</em></div>
-          <div class="fc-sub">Solo tres campos. El equipo te contacta en menos de 24 horas.</div>
+          <div class="fc-title">Nutrióloga <em>Chef</em></div>
+          <div class="fc-sub">Llena el formulario y el equipo de Nutrilú te contactará para darte más información y resolver tus dudas.</div>
           <div class="fc-field">
             <label class="fc-label" for="inp-nombre">Tu nombre</label>
             <input class="fc-input" type="text" id="inp-nombre" placeholder="Lic. Nombre Apellido">
+          </div>
+          <div class="fc-field">
+            <label class="fc-label" for="inp-correo">Correo electrónico</label>
+            <input class="fc-input" type="email" id="inp-correo" placeholder="tu@correo.com">
           </div>
           <div class="fc-field">
             <label class="fc-label" for="inp-wa">WhatsApp</label>
             <input class="fc-input" type="tel" id="inp-wa" placeholder="844 000 0000">
           </div>
           <div class="fc-field">
-            <div class="fc-label-brands">¿En qué marcas te interesa cocinar?</div>
+            <div class="fc-label-brands">¿Qué marcas te llaman la atención?</div>
             <div class="brands-check">
               <label class="bc-item palm" onclick="toggleBrand(this)">
                 <input type="checkbox" value="nutripalm">
@@ -593,13 +419,13 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
               </label>
             </div>
           </div>
-          <button class="btn-register" onclick="submitForm()">Quiero registrarme →</button>
-          <div class="fc-disclaimer">Sin compromisos. Te contactamos para platicar antes de cualquier acuerdo formal.</div>
+          <button class="btn-register" onclick="submitForm()">Platicar con asesor →</button>
+          <div class="fc-disclaimer">Sin compromisos. Solo es una plática para resolver tus dudas.</div>
         </div>
         <div class="success-state" id="success-state">
           <div class="ss-icon">✅</div>
           <div class="ss-title">¡Listo, <span id="ss-nombre">nutrióloga</span>!</div>
-          <p class="ss-sub">Recibimos tu solicitud. El equipo de Nutrilú te contactará por WhatsApp en las próximas 24 horas para platicar y resolver cualquier duda antes de activar tu perfil.</p>
+          <p class="ss-sub">Recibimos tus datos. El equipo de Nutrilú te contactará por WhatsApp en las próximas 24 horas para platicar y resolver cualquier duda.</p>
         </div>
       </div>
     </div>
@@ -609,92 +435,77 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 <!-- FAQ -->
 <div style="background:var(--dark);padding:96px 64px">
   <div style="display:grid;grid-template-columns:300px 1fr;gap:80px;align-items:start">
-    <!-- Lado izquierdo -->
     <div style="position:sticky;top:80px">
       <div style="font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green-m);margin-bottom:16px">Preguntas frecuentes</div>
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(32px,3.5vw,44px);color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:16px">Todo lo que<br><em style="color:var(--green-m)">quieres<br>saber.</em></h2>
-      <p style="font-size:14px;color:rgba(255,255,255,.3);font-weight:300;line-height:1.7;margin-bottom:28px">Si tu pregunta no está aquí, te respondemos por WhatsApp.</p>
-      <a href="#registro" style="display:inline-block;background:var(--green);color:#fff;padding:12px 24px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;transition:.15s">Aplicar ahora →</a>
+      <p style="font-size:14px;color:rgba(255,255,255,.3);font-weight:300;line-height:1.7">Si tu pregunta no está aquí, te respondemos por WhatsApp.</p>
     </div>
-    <!-- Preguntas -->
     <div style="display:flex;flex-direction:column" id="faq-list">
-
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">¿Cuál es mi comisión por cada platillo?<span class="faq-icon">→</span></div>
-        <div class="faq-a">Tu ganancia estimada es de <strong>$60 a $90 MXN por platillo</strong> — tú fijas el precio dentro del rango sugerido. En términos mensuales, con 20 suscriptores activos estarías generando aproximadamente $15,200 MXN, y con 50 suscriptores alrededor de $38,000 MXN. El equipo de Nutrilú te presenta la propuesta completa al registrarte, según la marca en la que operes.</div>
+        <div class="faq-q">¿Cuánto puedo ganar?<span class="faq-icon">→</span></div>
+        <div class="faq-a">Cada suscriptor activo te genera aproximadamente <strong>$760 al mes</strong> de ganancia neta. Con 20 suscriptores, eso se traduce en ~$15,200 mensuales. El equipo te presenta los números detallados cuando platiques con ellos.</div>
       </div>
-
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">¿Puedo definir mi propio menú o hay restricciones?<span class="faq-icon">→</span></div>
-        <div class="faq-a">Tienes libertad creativa total. Diseñas el menú semanal con los platillos que tú eliges, bajo tus criterios nutricionales. La única condición es que sea un platillo por día (lunes a viernes) con información nutricional básica: nombre, ingredientes principales, calorías y macronutrientes aproximados. Nutrilú no impone recetas.</div>
+        <div class="faq-q">¿Puedo definir mi propio menú?<span class="faq-icon">→</span></div>
+        <div class="faq-a">Depende de la marca. En <strong>NutriPalm y Kifud</strong> tienes libertad creativa total: tú diseñas el menú semanal. En <strong>Kiwilu y Nutrichef</strong>, recibes el plan nutricional ya diseñado por otra nutrióloga y tu trabajo es cocinarlo con fidelidad exacta a las indicaciones.</div>
       </div>
-
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">¿Necesito cocina comercial o equipos especiales?<span class="faq-icon">→</span></div>
-        <div class="faq-a">No. Tu cocina en casa es suficiente para empezar. No necesitas local comercial ni equipos industriales. Solo que cumpla con normas básicas de higiene y manejo de alimentos — lo mismo que usas cuando cocinas para ti y tu familia.</div>
+        <div class="faq-a">No. Tu cocina en casa es suficiente para empezar. No necesitas local comercial ni equipos industriales. Solo que cumpla con normas básicas de higiene y manejo de alimentos.</div>
       </div>
-
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">¿Cómo y cuándo recibo el pago?<span class="faq-icon">→</span></div>
-        <div class="faq-a">El cobro a los clientes ocurre automáticamente cada semana a través de su suscripción. Tu parte se transfiere puntualmente al completarse cada ciclo semanal. El equipo de Nutrilú te confirma el método y calendario de transferencia durante el proceso de activación.</div>
+        <div class="faq-a">El cobro a los clientes es automático cada semana por suscripción con tarjeta. Tu parte se transfiere puntualmente al completarse cada ciclo semanal.</div>
       </div>
-
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Puedo cocinar para varias marcas a la vez?<span class="faq-icon">→</span></div>
+        <div class="faq-a">Sí. Activas las marcas que quieras desde tu portal en la sección <strong>Mis Servicios</strong>. Puedes activar o desactivar marcas cuando quieras según tu disponibilidad.</div>
+      </div>
       <div class="faq-item" onclick="toggleFaq(this)" style="border-bottom:none">
         <div class="faq-q">¿Hay cuota o inversión inicial para unirme?<span class="faq-icon">→</span></div>
-        <div class="faq-a">No. Registrarte y activar tu perfil no tiene ningún costo. Nutrilú cobra directamente a los clientes y te transfiere tu parte. Empiezas sin poner un peso.</div>
+        <div class="faq-a">No. Unirte no tiene ningún costo. Empiezas sin poner un peso.</div>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <a href="nutrilu-index.html" class="footer-logo">Nutri<em>lú</em></a>
   <div class="footer-mid">nutrilu.difud.com<br>Nutrilú actúa como intermediario digital. La responsabilidad del alimento recae en la nutrióloga aliada.</div>
   <div class="footer-links">
     <a href="nutrilu-index.html">Inicio</a>
-    <a href="#registro">Registrarme</a>
+    <a href="#registro">Me interesa</a>
   </div>
 </footer>
 
 <script>
-/* ── FAQ ACCORDION ── */
 function toggleFaq(item){
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
   if(!isOpen) item.classList.add('open');
 }
-
-/* ── BRAND CHECKBOXES ── */
 function toggleBrand(label){
   label.classList.toggle('checked');
   const inp = label.querySelector('input');
   inp.checked = !inp.checked;
 }
-
-/* ── FORM SUBMIT ── */
 function submitForm(){
   const nombre = document.getElementById('inp-nombre').value.trim();
+  const correo = document.getElementById('inp-correo').value.trim();
   const wa = document.getElementById('inp-wa').value.trim();
   if(!nombre){alert('Por favor ingresa tu nombre.');return;}
+  if(!correo){alert('Por favor ingresa tu correo electrónico.');return;}
   if(!wa){alert('Por favor ingresa tu número de WhatsApp.');return;}
   const firstName = nombre.split(' ')[0];
   document.getElementById('ss-nombre').textContent = firstName;
   document.getElementById('form-state').style.display = 'none';
   document.getElementById('success-state').style.display = 'block';
 }
-
-/* ── FADE-UP ON SCROLL ── */
 const fadeEls = document.querySelectorAll('.fade-up');
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting){ e.target.classList.add('visible'); }
-  });
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold: 0.12});
 fadeEls.forEach(el => observer.observe(el));
-
-/* Hero elements visible on load */
 document.querySelectorAll('.hero .fade-up').forEach(el => el.classList.add('visible'));
 </script>
 </body>
